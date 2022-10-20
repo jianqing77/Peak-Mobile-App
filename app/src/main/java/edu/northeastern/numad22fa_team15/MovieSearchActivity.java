@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.List;
+
 import edu.northeastern.numad22fa_team15.model.MovieTv;
 import edu.northeastern.numad22fa_team15.network.MovieSearchService;
 import edu.northeastern.numad22fa_team15.network.RetrofitMovieClientInstance;
