@@ -2,12 +2,14 @@ package edu.northeastern.numad22fa_team15;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -25,6 +27,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.List;
 
 import edu.northeastern.numad22fa_team15.model.MovieTv;
@@ -146,6 +149,9 @@ public class MovieSearchActivityWithRecyclerView extends AppCompatActivity {
     }
 
     public void searchMovieUsingApi(View view) {
+        // close Keyboard
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(),0);
         progressDialog.show();
 
         if (movieThread != null && movieThread.isAlive()) {
