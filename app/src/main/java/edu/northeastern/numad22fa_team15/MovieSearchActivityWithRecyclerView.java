@@ -214,6 +214,8 @@ public class MovieSearchActivityWithRecyclerView extends AppCompatActivity {
                     Result movieTvResponses = response.body();
                     Log.v(TAG, "Total results: " + movieTvResponses.getTotalResults() +
                             ". Response: " + movieTvResponses.getResponse());
+                    // clear previous result
+                    matchResults.clear();
                     for (MovieTv movieTvResponse : movieTvResponses.getMovieTvList()) {
                         Log.v(TAG, "Response: " + movieTvResponse.getMovieTvTitle());
                         addResultToList(movieTvResponse);
