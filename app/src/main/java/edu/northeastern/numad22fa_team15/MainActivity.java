@@ -20,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void movieSearchActivity(View view) {
-        Intent intent = new Intent(getApplicationContext(), MovieSearchActivity.class);
+//        Intent intent = new Intent(getApplicationContext(), MovieSearchActivity.class);
+        Intent intent = new Intent(getApplicationContext(), MovieSearchActivityWithRecyclerView.class);
         startActivity(intent);
     }
 

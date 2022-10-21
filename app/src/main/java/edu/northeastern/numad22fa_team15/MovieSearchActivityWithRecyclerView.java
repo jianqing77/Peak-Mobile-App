@@ -5,7 +5,9 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -16,6 +18,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -32,7 +35,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MovieSearchActivity extends AppCompatActivity {
+public class MovieSearchActivityWithRecyclerView extends AppCompatActivity {
 
     private static final String TAG = "MovieSearchActivity___";
     private static final String API_KEY = "ecafb541";
@@ -62,26 +65,23 @@ public class MovieSearchActivity extends AppCompatActivity {
         Log.v(TAG, "onCreate()");
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie_search);
+        setContentView(R.layout.activity_movie_search_w_recycler_view);
 
-//        if (savedInstanceState != null) {
-//            // When screen is rotated, the list of match results is restored
-////            matchResults = (ArrayList<MovieTv>) savedInstanceState.getSerializable(STATE_LINKS);
-//        } else {
-//            // List is empty at first
-//            matchResults = new ArrayList<>();
-//        }
-//
-//        movieTvRecyclerView = findViewById(R.id.movie_tv_recycler_view);
-//
-//        // Define the way in which the RecyclerView is oriented
-//        linkCollectorRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-//
-//        // Associates the adapter with the RecyclerView
-//        linkCollectorRecyclerView.setAdapter(new LinkAdapter(linkList, this));
-//
-//        ViewGroup viewGroup = findViewById(android.R.id.content);
-//        View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_link, viewGroup, false);
+        if (savedInstanceState != null) {
+            // When screen is rotated, the list of match results is restored
+//            matchResults = (ArrayList<MovieTv>) savedInstanceState.getSerializable(STATE_LINKS);
+        } else {
+            // List is empty at first
+            matchResults = new ArrayList<>();
+        }
+
+        movieTvRecyclerView = findViewById(R.id.movie_tv_recycler_view);
+
+        // Define the way in which the RecyclerView is oriented
+        movieTvRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        // Associates the adapter with the RecyclerView
+        movieTvRecyclerView.setAdapter(new MovieTvAdapter(matchResults, this));
 
         // Input: title, year, type
         titleInput = (EditText) findViewById(R.id.movie_tv_title_edit_text);
@@ -106,14 +106,7 @@ public class MovieSearchActivity extends AppCompatActivity {
         });
         typeRadioButton = findViewById(R.id.no_preference_radio_button);
 
-        // Output: type, title, year, id, poster
-        type = (TextView) findViewById(R.id.movie_tv_type_text_view);
-        title = (TextView) findViewById(R.id.movie_tv_title_text_view);
-        year = (TextView) findViewById(R.id.movie_tv_year_text_view);
-        id = (TextView) findViewById(R.id.imdb_id_text_view);
-        poster = (ImageView) findViewById(R.id.poster_image_view);
-
-        progressDialog = new ProgressDialog(MovieSearchActivity.this);
+        progressDialog = new ProgressDialog(MovieSearchActivityWithRecyclerView.this);
         progressDialog.setMessage("Loading...");
 
         movieSearchThread = new MovieSearchThread();
@@ -124,11 +117,11 @@ public class MovieSearchActivity extends AppCompatActivity {
      * movie/tv in.
      */
     private void yearPickerDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(MovieSearchActivity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(MovieSearchActivityWithRecyclerView.this);
         builder.setTitle("Pick a specific year");
 
         // Set view to be a number picker (1888 - 2022)
-        NumberPicker yearPicker = new NumberPicker(MovieSearchActivity.this);
+        NumberPicker yearPicker = new NumberPicker(MovieSearchActivityWithRecyclerView.this);
         yearPicker.setMinValue(1888);
         yearPicker.setMaxValue(2022);
         yearPicker.setValue(2008);
@@ -217,6 +210,7 @@ public class MovieSearchActivity extends AppCompatActivity {
                             ". Response: " + movieTvResponses.getResponse());
                     for (MovieTv movieTvResponse : movieTvResponses.getMovieTvList()) {
                         Log.v(TAG, "Response: " + movieTvResponse.getMovieTvTitle());
+                        addResultToList(movieTvResponse);
                     }
                 }
 
@@ -229,6 +223,11 @@ public class MovieSearchActivity extends AppCompatActivity {
                     Snackbar.make(findViewById(android.R.id.content), searchFailureMessage, Snackbar.LENGTH_SHORT).show();
                 }
             });
+        }
+
+        private void addResultToList(MovieTv movieTvResponse) {
+            matchResults.add(movieTvResponse);
+            movieTvRecyclerView.getAdapter().notifyDataSetChanged();
         }
 
         private void callServiceGetMovieTvByTitle(MovieSearchService service, String titleInputString,

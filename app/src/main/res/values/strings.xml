@@ -16,4 +16,11 @@
     <string name="year">Year:</string>
     <string name="no_preference">no preference</string>
     <string name="type_optional">Type:</string>
+    <string name="item_movie_title">Movie Title</string>
+    <string name="item_year_of_release">Year of Release:</string>
+    <string name="item_set_year">1999</string>
+    <string name="item_type">Type:</string>
+    <string name="item_set_type">TV Series</string>
+    <string name="item_imdb_id">IMDb ID:</string>
+    <string name="item_set_imdb_id">tt0241527</string>
 </resources>

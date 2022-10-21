@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/movie_tv_title_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/year_text_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/movie_tv_title_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_movie_tv_title"
+            android:textColorHint="#616161"
+            tools:ignore="TextContrastCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/search_movie_tv_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="searchMovieUsingApi"
+        android:text="@string/search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/type_radio_group" />
+
+    <RadioGroup
+        android:id="@+id/type_radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/search_movie_tv_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/type_text_view"
+        app:layout_constraintTop_toBottomOf="@id/year_text_view">
+
+        <RadioButton
+            android:id="@+id/movie_type_radio_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/movie" />
+
+        <RadioButton
+            android:id="@+id/series_type_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/series" />
+
+        <RadioButton
+            android:id="@+id/no_preference_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="@string/no_preference" />
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/customized_year_check_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/specific"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/customized_year_text_view"
+        app:layout_constraintTop_toBottomOf="@id/movie_tv_title_input" />
+
+    <TextView
+        android:id="@+id/year_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/year"
+        android:textColor="#616161"
+        app:layout_constraintBaseline_toBaselineOf="@id/customized_year_text_view"
+        app:layout_constraintEnd_toStartOf="@id/customized_year_text_view"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/movie_tv_title_input" />
+
+    <TextView
+        android:id="@+id/customized_year_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/customized_year"
+        android:textColor="#616161"
+        app:layout_constraintBaseline_toBaselineOf="@id/customized_year_check_box"
+        app:layout_constraintBottom_toTopOf="@id/type_radio_group"
+        app:layout_constraintEnd_toStartOf="@+id/customized_year_check_box"
+        app:layout_constraintStart_toEndOf="@+id/year_text_view" />
+
+    <TextView
+        android:id="@+id/type_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/type_optional"
+        android:textColor="#616161"
+        app:layout_constraintBottom_toTopOf="@id/search_movie_tv_button"
+        app:layout_constraintEnd_toStartOf="@+id/type_radio_group"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/year_text_view" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/movie_tv_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_movie_tv_button" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
