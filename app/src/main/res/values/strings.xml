@@ -2,10 +2,18 @@
     <string name="app_name">NUMAD22Fa_Team15</string>
     <string name="team_15">Team 15</string>
     <string name="movie_tv_search">Movie/TV Search</string>
-    <string name="enter_movie_tv_title">Enter movie/tv title</string>
+    <string name="enter_movie_tv_title">Enter movie/series title</string>
     <string name="search">Search</string>
     <string name="movie_tv_title">[movie/tv title]</string>
     <string name="movie_tv_year">[movie/tv year]</string>
     <string name="imdb_id">[IMDB ID]</string>
     <string name="type">[type]</string>
+    <string name="poster">poster</string>
+    <string name="movie">movie</string>
+    <string name="series">series</string>
+    <string name="specific">specific</string>
+    <string name="customized_year">-</string>
+    <string name="year">Year:</string>
+    <string name="no_preference">no preference</string>
+    <string name="type_optional">Type:</string>
 </resources>
