@@ -117,6 +117,7 @@ public class MovieSearchActivity extends AppCompatActivity {
 
             MovieSearchService service = RetrofitMovieClientInstance.getRetrofitInstance().create(MovieSearchService.class);
             // This should be modified to <List<MovieTv>>
+            /*
             Call<MovieTv> call = service.getMovieTvByTitle(titleInputString, API_KEY);
             call.enqueue(new Callback<MovieTv>() {
                 @Override
@@ -147,6 +148,8 @@ public class MovieSearchActivity extends AppCompatActivity {
                     Snackbar.make(findViewById(android.R.id.content), searchFailureMessage, Snackbar.LENGTH_SHORT).show();
                 }
             });
+
+             */
         }
     }
 
