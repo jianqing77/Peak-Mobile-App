@@ -34,60 +34,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/type_radio_group" />
 
-    <TextView
-        android:id="@+id/movie_tv_title_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/movie_tv_title"
-        android:textColor="#616161"
-        app:layout_constraintBottom_toTopOf="@+id/movie_tv_year_text_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/movie_tv_type_text_view" />
-
-    <TextView
-        android:id="@+id/movie_tv_year_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/movie_tv_year"
-        android:textColor="#616161"
-        app:layout_constraintBottom_toTopOf="@+id/imdb_id_text_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/movie_tv_title_text_view" />
-
-    <TextView
-        android:id="@+id/imdb_id_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/imdb_id"
-        android:textColor="#616161"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/movie_tv_year_text_view" />
-
-    <TextView
-        android:id="@+id/movie_tv_type_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/type"
-        android:textColor="#616161"
-        app:layout_constraintBottom_toTopOf="@id/movie_tv_title_text_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_movie_tv_button" />
-
-    <ImageView
-        android:id="@+id/poster_image_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/poster"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imdb_id_text_view"
-        tools:ignore="ImageContrastCheck"
-        tools:srcCompat="@tools:sample/avatars" />
-
     <RadioGroup
         android:id="@+id/type_radio_group"
         android:layout_width="wrap_content"
@@ -161,5 +107,14 @@
         app:layout_constraintEnd_toStartOf="@+id/type_radio_group"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/year_text_view" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/movie_tv_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_movie_tv_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
