@@ -21,9 +21,11 @@ public class Result {
     }
 
     public List<MovieTv> getMovieTvList() {
-//        List<MovieTv> listCopy = new ArrayList<MovieTv>();
-//        for ()
-        return this.movieTvList;
+        List<MovieTv> listCopy = new ArrayList<MovieTv>();
+        for (MovieTv movieTv : this.movieTvList) {
+            listCopy.add(movieTv);
+        }
+        return listCopy;
     }
 
     public String getTotalResults() {

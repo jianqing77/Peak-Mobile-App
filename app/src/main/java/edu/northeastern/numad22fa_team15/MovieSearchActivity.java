@@ -3,13 +3,9 @@ package edu.northeastern.numad22fa_team15;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -18,16 +14,11 @@ import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.squareup.picasso.Picasso;
-
-import java.io.InputStream;
-import java.net.URL;
-import java.util.List;
 
 import edu.northeastern.numad22fa_team15.model.MovieTv;
 import edu.northeastern.numad22fa_team15.model.Result;
@@ -42,7 +33,6 @@ public class MovieSearchActivity extends AppCompatActivity {
     private static final String TAG = "MovieSearchActivity___";
     private static final String API_KEY = "ecafb541";
 
-//    private Handler textHandler = new Handler();
     private MovieSearchThread movieSearchThread;
     private Thread movieThread;
 
@@ -88,6 +78,7 @@ public class MovieSearchActivity extends AppCompatActivity {
                 typeRadioButton = findViewById(checkedID);
             }
         });
+        typeRadioButton = findViewById(R.id.no_preference_radio_button);
 
         // Output: type, title, year, id, poster
         type = (TextView) findViewById(R.id.movie_tv_type_text_view);
@@ -162,7 +153,13 @@ public class MovieSearchActivity extends AppCompatActivity {
         public void run() {
             String titleInputString = titleInput.getText().toString();
             String yearInputString = yearInput.getText().toString();
+            if (yearInputString.equals(getString(R.string.customized_year))) {
+                yearInputString = "";
+            }
             String typeInputString = typeRadioButton.getText().toString();
+            if (typeInputString.equals(getString(R.string.no_preference))) {
+                typeInputString = "";
+            }
 
             StringBuilder searchMessageStringBuilder = new StringBuilder();
             searchMessageStringBuilder.append("Searching for title: ");
