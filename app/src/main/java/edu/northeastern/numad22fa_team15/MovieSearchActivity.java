@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,6 +48,7 @@ public class MovieSearchActivity extends AppCompatActivity {
     TextView title;
     TextView year;
     TextView id;
+    ImageView poster;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +65,7 @@ public class MovieSearchActivity extends AppCompatActivity {
         title = (TextView) findViewById(R.id.tv_movieTvTitle);
         year = (TextView) findViewById(R.id.tv_setYear);
         id = (TextView) findViewById(R.id.tv_setImdbID);
+        poster = (ImageView) findViewById(R.id.iv_movieTvImage);
 
         progressDialog = new ProgressDialog(MovieSearchActivity.this);
         progressDialog.setMessage("Loading...");
