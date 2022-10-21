@@ -5,13 +5,19 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.northeastern.numad22fa_team15.model.MovieTv;
@@ -32,7 +38,11 @@ public class MovieSearchActivity extends AppCompatActivity {
 
     private ProgressDialog progressDialog;
 
+    Button button_search;
     EditText titleInput;
+    EditText yearInput;
+    String[] types = {"Movie", "TV Series"};
+    String typeInput;
     TextView type;
     TextView title;
     TextView year;
@@ -45,14 +55,39 @@ public class MovieSearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_search);
 
-        titleInput = (EditText) findViewById(R.id.movie_tv_title_edit_text);
-        type = (TextView) findViewById(R.id.movie_tv_type_text_view);
-        title = (TextView) findViewById(R.id.movie_tv_title_text_view);
-        year = (TextView) findViewById(R.id.movie_tv_year_text_view);
-        id = (TextView) findViewById(R.id.imdb_id_text_view);
+        button_search = (Button) findViewById(R.id.button_search);
+        titleInput = (EditText) findViewById(R.id.et_searchTitle);
+        yearInput = (EditText) findViewById(R.id.et_searchYear);
+
+        type = (TextView) findViewById(R.id.tv_setType);
+        title = (TextView) findViewById(R.id.tv_movieTvTitle);
+        year = (TextView) findViewById(R.id.tv_setYear);
+        id = (TextView) findViewById(R.id.tv_setImdbID);
 
         progressDialog = new ProgressDialog(MovieSearchActivity.this);
         progressDialog.setMessage("Loading...");
+
+        Spinner spinner = findViewById(R.id.spinner_type);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, types);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(arrayAdapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
+                String selectedType = parent.getItemAtPosition(position).toString();
+                if (selectedType == "Movie") {
+                    typeInput = "movie";
+                } else if (selectedType == "Series") {
+                    typeInput = "series";
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                // typeInput = null;
+            }
+        });
 
         movieSearchThread = new MovieSearchThread();
     }
@@ -73,10 +108,15 @@ public class MovieSearchActivity extends AppCompatActivity {
 
         @Override
         public void run() {
+            // get all the user inputs
             String titleInputString = titleInput.getText().toString();
             Log.v(TAG, "Searching for " + titleInputString);
+            String yearInputString = yearInput.getText().toString();
+            String typeInputString = typeInput;
+            // --------------- What we did so far --------------------
 
             MovieSearchService service = RetrofitMovieClientInstance.getRetrofitInstance().create(MovieSearchService.class);
+            // This should be modified to <List<MovieTv>>
             Call<MovieTv> call = service.getMovieTvByTitle(titleInputString, API_KEY);
             call.enqueue(new Callback<MovieTv>() {
                 @Override

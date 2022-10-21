@@ -1,80 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".MovieSearchActivity">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/movie_tv_title_input"
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/search_movie_tv_button"
+        android:layout_margin="8dp"
+        android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread_inside">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/movie_tv_title_edit_text"
+        <TextView
+            android:id="@+id/tv_searchTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:text="@string/title"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@id/et_searchTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/enter_movie_tv_title"
-            android:textColorHint="#616161"
-            tools:ignore="TextContrastCheck" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_toEndOf="@id/tv_searchTitle"
+            android:autofillHints="Required"
+            android:hint="@string/required"
+            android:inputType="text"
+            android:minHeight="48dp" />
 
-    <Button
-        android:id="@+id/search_movie_tv_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="searchMovieUsingApi"
-        android:text="@string/search"
+        <TextView
+            android:id="@+id/tv_searchYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_searchTitle"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:text="@string/year"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/et_searchYear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_searchTitle"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="75dp"
+            android:layout_toLeftOf="@+id/spinner_type"
+            android:layout_toRightOf="@id/tv_searchYear"
+            android:autofillHints=""
+            android:hint="YYYY"
+            android:inputType="number"
+            android:minHeight="48dp"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/tv_searchType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_searchTitle"
+            android:layout_marginTop="8dp"
+            android:layout_toStartOf="@id/spinner_type"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:text="@string/type_tv"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@id/spinner_type"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_searchTitle"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:minHeight="48dp"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@id/button_search"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spinner_type"
+            android:layout_alignParentEnd="true"
+            android:text="@string/search_button" />
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_View"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/movie_tv_title_input" />
+        app:layout_constraintTop_toBottomOf="@id/relativeLayout" />
 
-    <TextView
-        android:id="@+id/movie_tv_title_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/movie_tv_title"
-        android:textColor="#616161"
-        app:layout_constraintBottom_toTopOf="@+id/movie_tv_year_text_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/movie_tv_type_text_view" />
-
-    <TextView
-        android:id="@+id/movie_tv_year_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/movie_tv_year"
-        android:textColor="#616161"
-        app:layout_constraintBottom_toTopOf="@+id/imdb_id_text_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/movie_tv_title_text_view" />
-
-    <TextView
-        android:id="@+id/imdb_id_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/imdb_id"
-        android:textColor="#616161"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/movie_tv_year_text_view" />
-
-    <TextView
-        android:id="@+id/movie_tv_type_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/type"
-        android:textColor="#616161"
-        app:layout_constraintBottom_toTopOf="@id/movie_tv_title_text_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_movie_tv_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

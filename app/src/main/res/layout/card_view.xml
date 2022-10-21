@@ -54,12 +54,12 @@
                 android:id="@+id/tv_yearOfRelease"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Year of Release: "
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@android:color/background_dark"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="168dp"
-                android:layout_marginLeft="16dp"/>
+                android:text="Year of Release: "
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_setYear"
@@ -78,12 +78,12 @@
                 android:id="@+id/tv_movieTvType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Type: "
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@android:color/background_dark"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="212dp"
-                android:layout_marginLeft="16dp"/>
+                android:text="Type: "
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_setType"

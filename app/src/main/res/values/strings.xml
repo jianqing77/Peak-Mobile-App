@@ -8,4 +8,9 @@
     <string name="movie_tv_year">[movie/tv year]</string>
     <string name="imdb_id">[IMDB ID]</string>
     <string name="type">[type]</string>
+    <string name="title">Title:</string>
+    <string name="year">Year:</string>
+    <string name="search_button">Search</string>
+    <string name="type_tv">Type:</string>
+    <string name="required">Required</string>
 </resources>
