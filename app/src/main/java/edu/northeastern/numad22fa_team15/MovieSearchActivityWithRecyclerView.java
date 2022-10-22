@@ -44,6 +44,7 @@ public class MovieSearchActivityWithRecyclerView extends AppCompatActivity {
     private Thread movieThread;
     private List<MovieTv> matchResults;
     private ProgressDialog progressDialog;
+    private int resetButtonCounter;
 
     EditText titleInput;
     TextView yearInput;
@@ -69,6 +70,8 @@ public class MovieSearchActivityWithRecyclerView extends AppCompatActivity {
         } catch (NullPointerException e) {
             Log.e(TAG, "Failed to load metadata: " + e.getMessage());
         }
+
+        resetButtonCounter = 0;
 
         matchResults = new ArrayList<>();
         movieTvRecyclerView = findViewById(R.id.movie_tv_recycler_view);
@@ -188,6 +191,68 @@ public class MovieSearchActivityWithRecyclerView extends AppCompatActivity {
         AlertDialog alertDialog = builder.create();
         // Display the Alert Dialog to the user
         alertDialog.show();
+    }
+
+    /**
+     * Generate a reset dialog that asks users to confirm their reset action.
+     */
+    private void resetDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MovieSearchActivityWithRecyclerView.this);
+        builder.setTitle("Alert");
+
+        builder.setMessage("Are you sure to clear all the selections and search results?");
+
+        // Choosing "Confirm" will reset the selection and the results
+        builder.setPositiveButton("Confirm", (DialogInterface.OnClickListener) (dialog, which) -> {
+            clearSelection();
+            clearResults();
+            dialog.cancel();
+        });
+        // Choosing "Cancel" will close the reset dialog
+        builder.setNegativeButton("Cancel", (DialogInterface.OnClickListener) (dialog, which) -> {
+            dialog.cancel();
+        });
+        // Nothing happens if the user clicks anywhere outside the dialog
+        builder.setCancelable(false);
+        AlertDialog alertDialog = builder.create();
+        // Display the Alert Dialog to the user
+        alertDialog.show();
+    }
+
+    /**
+     * Clear user selection.
+     */
+    private void clearSelection() {
+        // Empty title input
+        titleInput.setText("");
+        // Clear year input
+        yearCheckBox.setChecked(false);
+        yearInput.setText(getString(R.string.customized_year));
+        // Set type preference to "no preference"
+        typeRadioGroup.check(R.id.no_preference_radio_button);
+    }
+
+    /**
+     * Clear results.
+     */
+    private void clearResults() {
+        matchResults.clear();
+        movieTvRecyclerView.getAdapter().notifyDataSetChanged();
+    }
+
+    /**
+     * This method gets called when the RESET button is pressed.
+     * @param view view
+     */
+    public void resetSelectionAndResults(View view) {
+        // If it is the first time the reset button is pressed, show a reset dialog.
+        if (resetButtonCounter == 0) {
+            resetDialog();
+            resetButtonCounter++;
+        } else {
+            clearSelection();
+            clearResults();
+        }
     }
 
     /**
