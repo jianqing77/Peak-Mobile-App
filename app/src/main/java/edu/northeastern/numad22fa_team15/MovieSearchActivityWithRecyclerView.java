@@ -314,4 +314,24 @@ public class MovieSearchActivityWithRecyclerView extends AppCompatActivity {
         super.onStop();
     }
 
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder alertDialog = new AlertDialog
+                .Builder(MovieSearchActivityWithRecyclerView.this);
+        alertDialog.setTitle("Confirm Exit");
+        alertDialog.setMessage("Are you sure to ignore the search results and close the activity?");
+        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        alertDialog.show();
+    }
 }
