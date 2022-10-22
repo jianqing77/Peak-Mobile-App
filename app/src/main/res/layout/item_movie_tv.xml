@@ -25,7 +25,6 @@
             android:layout_height="150dp"
             android:contentDescription="@string/poster"
             android:scaleType="centerCrop"
-
             android:src="@drawable/ic_launcher_team15_background"
             android:tintMode="src_atop"
             app:tint="#6F000000" />
