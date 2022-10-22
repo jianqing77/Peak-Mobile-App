@@ -152,13 +152,13 @@ public class MovieSearchActivityWithRecyclerView extends AppCompatActivity {
         yearPicker.setValue(2008);
         builder.setView(yearPicker);
 
-        // Choosing "Confirm" will close the MovieSearchActivity
+        // Choosing "Confirm" will close the year picker dialog
         builder.setPositiveButton("Confirm", (DialogInterface.OnClickListener) (dialog, which) -> {
             String yearString = String.valueOf(yearPicker.getValue());
             yearInput.setText(yearString);
             dialog.cancel();
         });
-        // Choosing "Cancel" will let the user remain in the MovieSearchActivity
+        // Choosing "Cancel" will close the year picker dialog
         builder.setNegativeButton("Cancel", (DialogInterface.OnClickListener) (dialog, which) -> {
             yearCheckBox.setChecked(false);
             dialog.cancel();
@@ -170,10 +170,42 @@ public class MovieSearchActivityWithRecyclerView extends AppCompatActivity {
         alertDialog.show();
     }
 
+    /**
+     * Generate a required title input dialog that asks users to enter a movie/series title.
+     */
+    private void requiredTitleInputDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MovieSearchActivityWithRecyclerView.this);
+        builder.setTitle("Warning");
+
+        // Choosing "Ok" will close the required title input dialog
+        builder.setPositiveButton("Ok", (DialogInterface.OnClickListener) (dialog, which) -> {
+            dialog.cancel();
+        });
+        builder.setMessage("Title input is required.");
+
+        // Nothing happens if the user clicks anywhere outside the dialog
+        builder.setCancelable(false);
+        AlertDialog alertDialog = builder.create();
+        // Display the Alert Dialog to the user
+        alertDialog.show();
+    }
+
+    /**
+     * This method gets called when the SEARCH button is pressed.
+     * @param view view
+     */
     public void searchMovieUsingApi(View view) {
-        // close Keyboard
+        // Close Keyboard
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(),0);
+
+        // Check if title input has anything
+        String titleInputString = titleInput.getText().toString();
+        if (titleInputString == null || titleInputString.isEmpty()) {
+            requiredTitleInputDialog();
+            return;
+        }
+
         progressDialog.show();
 
         if (movieThread != null && movieThread.isAlive()) {
@@ -226,12 +258,21 @@ public class MovieSearchActivityWithRecyclerView extends AppCompatActivity {
                     Result movieTvResponses = response.body();
                     Log.v(TAG, "Total results: " + movieTvResponses.getTotalResults() +
                             ". Response: " + movieTvResponses.getResponse());
-                    // clear previous result
+
+                    // Clear previous result
                     matchResults.clear();
+                    movieTvRecyclerView.getAdapter().notifyDataSetChanged();
+
+                    // Check if the response field is False
+                    if (!Boolean.parseBoolean(movieTvResponses.getResponse())) {
+                        String searchFailureMessage= "No matches found.";
+                        Snackbar.make(findViewById(android.R.id.content), searchFailureMessage, Snackbar.LENGTH_SHORT).show();
+                        return;
+                    }
+
                     for (MovieTv movieTvResponse : movieTvResponses.getMovieTvList()) {
                         Log.v(TAG, "Response: " + movieTvResponse.getMovieTvTitle());
                         addResultToList(movieTvResponse);
-
                     }
                 }
 
@@ -246,6 +287,11 @@ public class MovieSearchActivityWithRecyclerView extends AppCompatActivity {
             });
         }
 
+        /**
+         * Add a movie/tv match result to the match results list and notify RecyclerView about the
+         * change.
+         * @param movieTvResponse a movie/tv match result
+         */
         private void addResultToList(MovieTv movieTvResponse) {
             matchResults.add(movieTvResponse);
             movieTvRecyclerView.getAdapter().notifyDataSetChanged();
