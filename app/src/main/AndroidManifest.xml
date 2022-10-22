@@ -27,9 +27,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MovieSearchActivity">
-        </activity>
-        <activity
             android:name=".MovieSearchActivityWithRecyclerView"
             android:configChanges="orientation|screenSize"/>
         <activity

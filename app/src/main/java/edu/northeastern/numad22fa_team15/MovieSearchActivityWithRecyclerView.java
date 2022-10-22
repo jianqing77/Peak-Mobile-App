@@ -45,7 +45,7 @@ public class MovieSearchActivityWithRecyclerView extends AppCompatActivity {
 
     private MovieSearchThread movieSearchThread;
     private Thread movieThread;
-
+    private List<MovieTv> matchResults;
     private ProgressDialog progressDialog;
 
     EditText titleInput;
@@ -53,14 +53,6 @@ public class MovieSearchActivityWithRecyclerView extends AppCompatActivity {
     CheckBox yearCheckBox;
     RadioGroup typeRadioGroup;
     RadioButton typeRadioButton;
-
-    TextView type;
-    TextView title;
-    TextView year;
-    TextView id;
-    ImageView poster;
-
-    private List<MovieTv> matchResults;
     RecyclerView movieTvRecyclerView;
 
     @Override
@@ -70,14 +62,7 @@ public class MovieSearchActivityWithRecyclerView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_search_w_recycler_view);
 
-        if (savedInstanceState != null) {
-            // When screen is rotated, the list of match results is restored
-//            matchResults = (ArrayList<MovieTv>) savedInstanceState.getSerializable(STATE_LINKS);
-        } else {
-            // List is empty at first
-            matchResults = new ArrayList<>();
-        }
-
+        matchResults = new ArrayList<>();
         movieTvRecyclerView = findViewById(R.id.movie_tv_recycler_view);
 
         // Define the way in which the RecyclerView is oriented
@@ -113,6 +98,27 @@ public class MovieSearchActivityWithRecyclerView extends AppCompatActivity {
         progressDialog.setMessage("Loading...");
 
         movieSearchThread = new MovieSearchThread();
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder alertDialog = new AlertDialog
+                .Builder(MovieSearchActivityWithRecyclerView.this);
+        alertDialog.setTitle("Confirm Exit");
+        alertDialog.setMessage("Are you sure to ignore the search results and close the activity?");
+        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        alertDialog.show();
     }
 
     /**
@@ -192,7 +198,6 @@ public class MovieSearchActivityWithRecyclerView extends AppCompatActivity {
 
             MovieSearchService service = RetrofitMovieClientInstance.getRetrofitInstance().create(MovieSearchService.class);
 
-//            callServiceGetMovieTvByTitle(service, titleInputString, API_KEY);
             callServiceGetMovieTvByCriteria(service, titleInputString, yearInputString, typeInputString, API_KEY);
         }
 
@@ -234,44 +239,6 @@ public class MovieSearchActivityWithRecyclerView extends AppCompatActivity {
             movieTvRecyclerView.getAdapter().notifyDataSetChanged();
         }
 
-        private void callServiceGetMovieTvByTitle(MovieSearchService service, String titleInputString,
-                                                  String apiKey) {
-            Call<MovieTv> call = service.getMovieTvByTitle(titleInputString, API_KEY);
-            call.enqueue(new Callback<MovieTv>() {
-                @Override
-                public void onResponse(Call<MovieTv> call, Response<MovieTv> response) {
-                    Log.v(TAG, "onResponse() " + titleInputString);
-                    progressDialog.dismiss();
-
-                    MovieTv movieResponse = response.body();
-
-//                    boolean searchResult = Boolean.parseBoolean(movieResponse.getResponse());
-                    boolean searchResult = true;
-                    Log.v(TAG, "Search result: " + searchResult);
-                    if (searchResult) {
-                        loadImageInImageView(movieResponse.getPosterURL());
-                        type.setText(movieResponse.getType());
-                        title.setText(movieResponse.getMovieTvTitle());
-                        year.setText(movieResponse.getMovieTvYear());
-                        id.setText(movieResponse.getMovieTvImdbID());
-                    } else {
-                        type.setText("not found");
-                        title.setText(R.string.movie_tv_title);
-                        year.setText(R.string.movie_tv_year);
-                        id.setText(R.string.imdb_id);
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<MovieTv> call, Throwable t) {
-                    Log.v(TAG, "onFailure() " + titleInputString);
-                    progressDialog.dismiss();
-
-                    String searchFailureMessage= "Something went wrong. Please try again later!";
-                    Snackbar.make(findViewById(android.R.id.content), searchFailureMessage, Snackbar.LENGTH_SHORT).show();
-                }
-            });
-        }
     }
 
     @Override
@@ -310,24 +277,4 @@ public class MovieSearchActivityWithRecyclerView extends AppCompatActivity {
         super.onStop();
     }
 
-    @Override
-    public void onBackPressed() {
-        AlertDialog.Builder alertDialog = new AlertDialog
-                .Builder(MovieSearchActivityWithRecyclerView.this);
-        alertDialog.setTitle("Confirm Exit");
-        alertDialog.setMessage("Are you sure to ignore the search results and close the activity?");
-        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                finish();
-            }
-        });
-        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
-            }
-        });
-        alertDialog.show();
-    }
 }
