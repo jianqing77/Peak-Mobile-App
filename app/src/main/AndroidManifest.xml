@@ -32,6 +32,11 @@
         <activity
             android:name=".FullImageActivity"
             android:configChanges="orientation|screenSize"/>
+
+        <meta-data
+            android:name="API_KEY"
+            android:value="${API_KEY}" />
+
     </application>
 
 </manifest>

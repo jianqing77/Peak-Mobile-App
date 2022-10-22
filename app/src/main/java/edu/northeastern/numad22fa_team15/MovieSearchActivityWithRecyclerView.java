@@ -4,16 +4,15 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -24,10 +23,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
 import java.util.List;
 
 import edu.northeastern.numad22fa_team15.model.MovieTv;
@@ -41,8 +38,8 @@ import retrofit2.Response;
 public class MovieSearchActivityWithRecyclerView extends AppCompatActivity {
 
     private static final String TAG = "MovieSearchActivity___";
-    private static final String API_KEY = "ecafb541";
 
+    private String API_KEY;
     private MovieSearchThread movieSearchThread;
     private Thread movieThread;
     private List<MovieTv> matchResults;
@@ -61,6 +58,17 @@ public class MovieSearchActivityWithRecyclerView extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_search_w_recycler_view);
+
+        // Retrieve OMDB API Key
+        ApplicationInfo applicationInfo = null;
+        try {
+            applicationInfo = getPackageManager().getApplicationInfo(this.getPackageName(), PackageManager.GET_META_DATA);
+            API_KEY = applicationInfo.metaData.getString("API_KEY");
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.e(TAG, "Failed to load metadata: " + e.getMessage());
+        } catch (NullPointerException e) {
+            Log.e(TAG, "Failed to load metadata: " + e.getMessage());
+        }
 
         matchResults = new ArrayList<>();
         movieTvRecyclerView = findViewById(R.id.movie_tv_recycler_view);
@@ -100,12 +108,20 @@ public class MovieSearchActivityWithRecyclerView extends AppCompatActivity {
         movieSearchThread = new MovieSearchThread();
     }
 
+    /**
+     * This method gets called when the BACK button is pressed. It confirms a user's action to
+     * dismiss the activity.
+     */
     @Override
     public void onBackPressed() {
         AlertDialog.Builder alertDialog = new AlertDialog
                 .Builder(MovieSearchActivityWithRecyclerView.this);
         alertDialog.setTitle("Confirm Exit");
-        alertDialog.setMessage("Are you sure to ignore the search results and close the activity?");
+        if (!matchResults.isEmpty()) {
+            alertDialog.setMessage("Are you sure to ignore the search results and close the activity?");
+        } else {
+            alertDialog.setMessage("Are you sure to close the activity?");
+        }
         alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -170,10 +186,6 @@ public class MovieSearchActivityWithRecyclerView extends AppCompatActivity {
     }
 
     class MovieSearchThread implements Runnable {
-
-        public void loadImageInImageView(String url) {
-
-        };
 
         @Override
         public void run() {
