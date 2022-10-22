@@ -29,4 +29,6 @@ For assignment 7, we implemented a move/series search service using a publicly a
 
 ### Demo
 
+Click the image below to see the demo video.
+
 [![A7 At Your Service Demo](https://github.com/jaimesi/NUMADFa22_Team15/blob/master/app/src/main/AtYourServiceScreenshot.png)](https://youtube.com/shorts/5BUv1S5vinA?feature=share)
