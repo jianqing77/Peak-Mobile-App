@@ -7,8 +7,6 @@ import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,7 +15,6 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import edu.northeastern.numad22fa_team15.model.MovieTv;
-import edu.northeastern.numad22fa_team15.model.Result;
 
 public class MovieTvAdapter extends RecyclerView.Adapter<MovieTvViewHolder> {
 
@@ -55,26 +52,15 @@ public class MovieTvAdapter extends RecyclerView.Adapter<MovieTvViewHolder> {
             intent.putExtras(imageBundle);
             context.startActivity(intent);
         });
-
-//        // Set an OnClick event on the itemview
-//        holder.itemView.setOnClickListener(view -> {
-//            // Try to launch link in a web browser
-//            try {
-//                Uri linkUri = convertStringToUri(links.get(position).getActualLink());
-//                Intent openLinkIntent = new Intent(Intent.ACTION_VIEW, linkUri);
-//                context.startActivity(openLinkIntent);
-//            } catch (ActivityNotFoundException e) {
-//                Snackbar.make(view, e.getMessage(), Snackbar.LENGTH_SHORT).show();
-//            }
-//        });
     }
 
     /**
-     * Return the number of lists in the link list
-     * @return the number of lists
+     * Return the number of movie/tv search results in the result list
+     * @return the number of movie/tv search results
      */
     @Override
     public int getItemCount() {
         return results.size();
     }
+
 }

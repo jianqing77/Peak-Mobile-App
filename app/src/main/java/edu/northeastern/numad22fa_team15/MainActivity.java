@@ -19,8 +19,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    /**
+     * Clicking the MOVIE/TV SEARCH button will start the MovieSearchActivityWithRecyclerView activity.
+     * @param view view
+     */
     public void movieSearchActivity(View view) {
-//        Intent intent = new Intent(getApplicationContext(), MovieSearchActivity.class);
         Intent intent = new Intent(getApplicationContext(), MovieSearchActivityWithRecyclerView.class);
         startActivity(intent);
     }
