@@ -2,6 +2,7 @@ package edu.northeastern.numad22fa_team15;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
@@ -38,12 +39,16 @@ public class MovieTvAdapter extends RecyclerView.Adapter<MovieTvViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MovieTvViewHolder holder, int position) {
+        holder.itemTitle.setTextColor(Color.WHITE);
         holder.itemTitle.setText(results.get(position).getMovieTvTitle());
         holder.itemYear.setText(results.get(position).getMovieTvYear());
         holder.itemID.setText(results.get(position).getMovieTvImdbID());
         holder.itemType.setText(results.get(position).getType());
 
         String imageURL = results.get(position).getPosterURL();
+        if (imageURL == null || imageURL.isEmpty() || imageURL.equals("N/A")) {
+            holder.itemTitle.setTextColor(Color.BLACK);
+        }
         Picasso.get().load(imageURL).resize(400,600).centerCrop().into(holder.itemPoster);
         holder.itemPoster.setOnClickListener(v -> {
             Intent intent = new Intent(context, FullImageActivity.class);
