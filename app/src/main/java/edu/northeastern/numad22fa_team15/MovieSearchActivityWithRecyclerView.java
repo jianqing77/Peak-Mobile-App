@@ -165,14 +165,9 @@ public class MovieSearchActivityWithRecyclerView extends AppCompatActivity {
 
     class MovieSearchThread implements Runnable {
 
-        /**
-         * Use the Picasso package to load the poster image from the given url and assign it to the
-         * poster image view.
-         * @param url poster URL
-         */
-        private void loadImageInImageView(String url) {
-            Picasso.get().load(url).resize(400,600).centerCrop().into(poster);
-        }
+        public void loadImageInImageView(String url) {
+
+        };
 
         @Override
         public void run() {
@@ -219,6 +214,7 @@ public class MovieSearchActivityWithRecyclerView extends AppCompatActivity {
                     for (MovieTv movieTvResponse : movieTvResponses.getMovieTvList()) {
                         Log.v(TAG, "Response: " + movieTvResponse.getMovieTvTitle());
                         addResultToList(movieTvResponse);
+
                     }
                 }
 
