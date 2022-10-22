@@ -10,7 +10,7 @@ public class MovieTv {
     private String movieTvYear;
     @SerializedName("imdbID")
     private String movieTvImdbID;
-//    @SerializedName("Response")
+    //    @SerializedName("Response")
 //    private String response;
     @SerializedName("Type")
     private String type;
