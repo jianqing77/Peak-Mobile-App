@@ -32,6 +32,9 @@
         <activity
             android:name=".MovieSearchActivityWithRecyclerView"
             android:configChanges="orientation|screenSize"/>
+        <activity
+            android:name=".FullImageActivity"
+            android:configChanges="orientation|screenSize"/>
     </application>
 
 </manifest>
