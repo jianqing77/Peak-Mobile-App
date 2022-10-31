@@ -28,6 +28,24 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Clicking the FIREBASE button will start the FirebaseLoginActivity activity.
+     * @param view view
+     */
+    public void firebaseLoginActivity(View view) {
+        Intent intent = new Intent(getApplicationContext(), FirebaseLoginActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Clicking the ABOUT button will start the AboutTeamActivity activity.
+     * @param view view
+     */
+    public void aboutTeamActivity(View view) {
+        Intent intent = new Intent(getApplicationContext(), AboutTeamActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onPause() {
         Log.v(TAG, "onPause()");

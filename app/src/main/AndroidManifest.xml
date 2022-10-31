@@ -32,6 +32,12 @@
         <activity
             android:name=".FullImageActivity"
             android:configChanges="orientation|screenSize"/>
+        <activity
+            android:name=".FirebaseLoginActivity"
+            android:configChanges="orientation|screenSize"/>
+        <activity
+            android:name=".AboutTeamActivity"
+            android:configChanges="orientation|screenSize"/>
 
         <meta-data
             android:name="API_KEY"

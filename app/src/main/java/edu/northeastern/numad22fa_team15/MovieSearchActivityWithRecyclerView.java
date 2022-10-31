@@ -29,6 +29,7 @@ import java.util.List;
 
 import edu.northeastern.numad22fa_team15.model.MovieTv;
 import edu.northeastern.numad22fa_team15.model.Result;
+import edu.northeastern.numad22fa_team15.movieTvRecyclerUtil.MovieTvAdapter;
 import edu.northeastern.numad22fa_team15.network.MovieSearchService;
 import edu.northeastern.numad22fa_team15.network.RetrofitMovieClientInstance;
 import retrofit2.Call;
