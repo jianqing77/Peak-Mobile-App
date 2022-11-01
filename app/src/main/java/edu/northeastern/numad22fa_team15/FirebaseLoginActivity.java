@@ -1,6 +1,7 @@
 package edu.northeastern.numad22fa_team15;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -57,6 +58,8 @@ public class FirebaseLoginActivity extends AppCompatActivity {
 
     public void firebaseUsernameLogin(View view) {
         closeKeyboard(view);
+        Intent intent = new Intent(getApplicationContext(), FirebaseFriendList.class);
+        startActivity(intent);
     }
 
     private void addUserToFirebase(@NonNull String username) {

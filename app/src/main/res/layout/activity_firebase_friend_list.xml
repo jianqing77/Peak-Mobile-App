@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".FirebaseFriendList">
+
+        <TextView
+            android:id="@+id/current_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="24dp"
+            android:text="Current user: "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/current_userTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="-"
+            app:layout_constraintStart_toEndOf="@+id/current_user"
+            app:layout_constraintTop_toTopOf="@+id/current_user" />
+
+        <TextView
+            android:id="@+id/sticker_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Number of sticker sent: "
+            app:layout_constraintStart_toStartOf="@+id/current_user"
+            app:layout_constraintTop_toBottomOf="@+id/current_user" />
+
+        <TextView
+            android:id="@+id/sticker_numTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="-"
+            app:layout_constraintStart_toEndOf="@+id/sticker_num"
+            app:layout_constraintTop_toTopOf="@+id/sticker_num" />
+
+        <Button
+            android:id="@+id/button_sticker_history"
+            android:layout_width="108dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="40dp"
+            android:text="History"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/current_user" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="108dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
