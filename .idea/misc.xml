@@ -8,7 +8,7 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.23" />
         <entry key="app/src/main/res/drawable/ic_launcher_team15_background.xml" value="0.23" />
         <entry key="app/src/main/res/layout/activity_about_team.xml" value="0.26132246376811596" />
-        <entry key="app/src/main/res/layout/activity_firebase_friend_list.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/activity_firebase_friend_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_firebase_login.xml" value="0.26132246376811596" />
         <entry key="app/src/main/res/layout/activity_friend_list.xml" value="0.26132246376811596" />
         <entry key="app/src/main/res/layout/activity_full_image.xml" value="0.19202898550724637" />
