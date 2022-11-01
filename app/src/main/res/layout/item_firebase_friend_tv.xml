@@ -22,10 +22,10 @@
         android:id="@+id/friend_line"
         android:layout_width="1000dp"
         android:layout_height="1dp"
-        android:layout_constraintTop_toBottomOf="@id/friend_nameTV"
-        android:layout_constraintEnd_toEndOf="parent"
-        android:layout_constraintStart_toStartOf="parent"
         android:background="@android:color/darker_gray"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/friend_nameTV"
+        android:layout_marginTop="12dp"/> />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
