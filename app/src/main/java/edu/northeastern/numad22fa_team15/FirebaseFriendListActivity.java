@@ -1,26 +1,37 @@
 package edu.northeastern.numad22fa_team15;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
-import android.widget.Button;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Map;
 
 public class FirebaseFriendListActivity extends AppCompatActivity {
 
     private static final String TAG = "FirebaseFriendListActivity______";
 
     private TextView currentUserTextView;
-    Button sticker_history;
-    Button add_friend;
+    private TextView numOfStickersSentTextView;
 
-    private String userName;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference userDatabaseReference;
+    private DatabaseReference numOfStickersDatabaseReference;
+    private DatabaseReference friendsDatabaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,30 +46,115 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
         currentUserTextView = findViewById(R.id.current_userTV);
         currentUserTextView.setText(username);
 
-        sticker_history = findViewById(R.id.button_sticker_history);
-        add_friend = findViewById(R.id.button_add_friend);
+        numOfStickersSentTextView = findViewById(R.id.sticker_numTV);
 
-        add_friend.setOnClickListener(view -> addFriend());
+        // Get the instance of the Firebase database.
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        Log.v(TAG, "Firebase Database " + firebaseDatabase.toString());
+        // Get the "user" reference for our database.
+        userDatabaseReference = firebaseDatabase.getReference().child("users").child(username);
 
+        // Get the "numOfStickerSent" reference for our database and add ValueEventListener to it.
+        numOfStickersDatabaseReference = userDatabaseReference.child("numOfStickersSent");
+        addEventListenerToNumOfStickersDatabaseReference();
+
+        // Get the "friends" reference for our database and add ValueEventListener to it.
+        friendsDatabaseReference = userDatabaseReference.child("friends");
+        addEventListenerToFriendsDatabaseReference();
     }
 
-    private void addFriend() {
-        // pop up window for adding friend
+    /**
+     * Listening for a change to the friends database reference.
+     */
+    private void addEventListenerToFriendsDatabaseReference() {
+        // Listening for a change to the numOfStickersSent item
+        friendsDatabaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // Need to check for null because user may not have any friends. SAD =)
+                Object friendsValue = dataSnapshot.getValue();
+                if (friendsValue == null) {
+                    Log.v(TAG, "No friends detected for the current user.");
+                    return;
+                }
+                Map<String, String> friendsMap = (Map<String, String>) friendsValue;
+                for (Map.Entry<String, String> entry : friendsMap.entrySet()) {
+                    Log.v(TAG, String.format("FRIEND: KEY - %s. Value - %s.", entry.getKey(), entry.getValue()));
+                    // TO DO: Actual implementation needed
+                    // Display these friends in the RecyclerView.
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Failed to update value
+                String errorMessage = String.format("Failed to update value. %s", error.toException());
+                Log.v(TAG, errorMessage);
+            }
+        });
+    }
+
+    /**
+     * Listening for a change to the numOfStickersSent database reference.
+     */
+    private void addEventListenerToNumOfStickersDatabaseReference() {
+        // Listening for a change to the numOfStickersSent item
+        numOfStickersDatabaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again whenever data
+                // at this location is updated.
+                Integer numOfStickersValue = dataSnapshot.getValue(Integer.class);
+                Log.v(TAG, String.format("Updated number of stickers sent: %d", numOfStickersValue));
+                numOfStickersSentTextView.setText(String.valueOf(numOfStickersValue));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Failed to update value
+                String errorMessage = String.format("Failed to update value. %s", error.toException());
+                Log.v(TAG, errorMessage);
+            }
+        });
+    }
+
+    /**
+     * Clicking the STICKER HISTORY button will start the FirebaseStickerHistoryActivity activity.
+     * @param view view
+     */
+    public void stickerHistoryActivity(View view) {
+        Intent intent = new Intent(getApplicationContext(), FirebaseStickerHistoryActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Clicking the ADD FRIEND button will open up the add friend dialog.
+     * @param view view
+     */
+    public void addFriendDialog(View view) {
+        // Pop up window for adding friend
         AlertDialog.Builder b = new AlertDialog.Builder(this);
         b.setCancelable(false);
-        b.setMessage("Enter Username to Add Friend");
+        b.setTitle("Add a Friend");
+        b.setView(R.layout.dialog_add_friend);
 
-        // set up input EditText view
-        EditText userName_text = new EditText(this);
-        userName_text.setInputType(InputType.TYPE_CLASS_TEXT);
-        b.setView(userName_text);
-
-        // set up buttons
+        // Set up buttons
         b.setPositiveButton("Add", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                // saving to local variable for now, need to be modified
-                userName = userName_text.getText().toString();
+                // TO DO:
+                // (0) Check if the given username is the same as the current username
+                // (0a) [YES] Display message in Snackbar "Cannot add yourself as a friend."
+                // (0b) [NO] Go to step (1)
+                // (1) Check if the given username exists in the firebase realtime database
+                // (1a) [YES] Go to step (2)
+                // (1b) [NO] Display message in Snackbar "User does not exist."
+                // (2) Check if the current user already has this person as a friend
+                // (2a) [YES] Display message in Snackbar "You already have this user as a friend."
+                // (2b) [NO] Go to step (3)
+                // (3) Try to add the given username in current user's friends list
+                // (3a) [YES] Display message in Snackbar "Friend added successfully."
+                // (3b) [NO] Display error message in Snackbar "Failed to add user as friend."
             }
         });
         b.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -71,6 +167,7 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
         AlertDialog alert = b.create();
         alert.show();
     }
+
 
     @Override
     protected void onPause() {
@@ -107,4 +204,5 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
         Log.v(TAG, "onStop()");
         super.onStop();
     }
+
 }
