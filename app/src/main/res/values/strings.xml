@@ -30,4 +30,8 @@
     <string name="enter_username">Enter Username</string>
     <string name="sign_up">Sign Up</string>
     <string name="login">Login</string>
+    <string name="current_user">Current user:</string>
+    <string name="number_of_stickers_sent">Number of stickers sent:</string>
+    <string name="add_friend">Add Friend</string>
+    <string name="sticker_history">Sticker History</string>
 </resources>

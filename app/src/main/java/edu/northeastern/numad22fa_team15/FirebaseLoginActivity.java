@@ -110,6 +110,8 @@ public class FirebaseLoginActivity extends AppCompatActivity {
                 // If yes, open the FirebaseFriendListActivity class.
                 if (existenceResult) {
                     Intent intent = new Intent(getApplicationContext(), FirebaseFriendListActivity.class);
+                    // Add current user's username to the intent.
+                    intent.putExtra("current_user", usernameInput);
                     startActivity(intent);
                 } else { // If no, display message in a Snackbar.
                     String errorMessage = "User does not exist.";

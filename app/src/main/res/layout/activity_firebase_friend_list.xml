@@ -8,7 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".FirebaseFriendListActivity">
 
         <TextView
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginTop="24dp"
-            android:text="Current user: "
+            android:text="@string/current_user"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +26,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="-"
             app:layout_constraintStart_toEndOf="@+id/current_user"
             app:layout_constraintTop_toTopOf="@+id/current_user" />
 
@@ -35,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Number of sticker sent: "
+            android:text="@string/number_of_stickers_sent"
             app:layout_constraintStart_toStartOf="@+id/current_user"
             app:layout_constraintTop_toBottomOf="@+id/current_user" />
 
@@ -44,7 +43,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:text="-"
             app:layout_constraintStart_toEndOf="@+id/sticker_num"
             app:layout_constraintTop_toTopOf="@+id/sticker_num" />
 
@@ -54,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="268dp"
-            android:text="Sticker History"
+            android:text="@string/sticker_history"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/sticker_num"
             app:layout_constraintTop_toBottomOf="@+id/sticker_num" />
@@ -72,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="40dp"
-            android:text="Add Friend"
+            android:text="@string/add_friend"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/button_sticker_history" />
 
