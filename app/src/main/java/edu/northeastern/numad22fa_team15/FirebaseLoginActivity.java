@@ -109,6 +109,8 @@ public class FirebaseLoginActivity extends AppCompatActivity {
                 boolean existenceResult = checkUserExistenceInFirebase(usernameInput, t);
                 // If yes, open the FirebaseFriendListActivity class.
                 if (existenceResult) {
+                    // Clear the EditText input field.
+                    usernameEditText.setText("");
                     Intent intent = new Intent(getApplicationContext(), FirebaseFriendListActivity.class);
                     // Add current user's username to the intent.
                     intent.putExtra("current_user", usernameInput);
