@@ -1,14 +1,9 @@
-package edu.northeastern.numad22fa_team15.firebase_friendTVRecyclerUtil;
+package edu.northeastern.numad22fa_team15.firebaseFriendTVRecyclerUtil;
 
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import edu.northeastern.numad22fa_team15.R;
-import edu.northeastern.numad22fa_team15.movieTvRecyclerUtil.MovieTvViewHolder;
 
 public class FriendTvAdapter extends RecyclerView.Adapter<FriendTvViewHolder> {
     @NonNull

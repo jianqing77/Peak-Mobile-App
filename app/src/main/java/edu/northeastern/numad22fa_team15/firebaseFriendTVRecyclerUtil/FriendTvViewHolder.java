@@ -1,4 +1,4 @@
-package edu.northeastern.numad22fa_team15.firebase_friendTVRecyclerUtil;
+package edu.northeastern.numad22fa_team15.firebaseFriendTVRecyclerUtil;
 
 import android.view.View;
 import android.widget.TextView;
