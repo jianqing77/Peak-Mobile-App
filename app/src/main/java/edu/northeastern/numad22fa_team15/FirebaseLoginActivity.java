@@ -27,7 +27,7 @@ public class FirebaseLoginActivity extends AppCompatActivity {
 
     private EditText usernameEditText;
     private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference databaseReference;
+    private DatabaseReference usersDatabaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +41,8 @@ public class FirebaseLoginActivity extends AppCompatActivity {
         // Get the instance of the Firebase database.
         firebaseDatabase = FirebaseDatabase.getInstance();
         Log.v(TAG, "Firebase Database " + firebaseDatabase.toString());
-        // Get the reference for our database.
-        databaseReference = firebaseDatabase.getReference("UserInfo");
+        // Get the "Users" reference for our database.
+        usersDatabaseReference = firebaseDatabase.getReference().child("users");
     }
 
     public void firebaseUsernameSignUp(View view) {
@@ -58,7 +58,9 @@ public class FirebaseLoginActivity extends AppCompatActivity {
 
     public void firebaseUsernameLogin(View view) {
         closeKeyboard(view);
-        Intent intent = new Intent(getApplicationContext(), FirebaseFriendList.class);
+        // XH TO DO:
+        // Need to add "username login" logic.
+        Intent intent = new Intent(getApplicationContext(), FirebaseFriendListActivity.class);
         startActivity(intent);
     }
 
@@ -66,8 +68,9 @@ public class FirebaseLoginActivity extends AppCompatActivity {
         Log.v(TAG, "Trying to add user " + username);
         // Construct a User object using the given username
         User user = new User(username);
+        DatabaseReference newUserDatabaseReference = usersDatabaseReference.child(user.getUsername());
         // Set this user info at the given location
-        Task<Void> t = databaseReference.setValue(user);
+        Task<Void> t = newUserDatabaseReference.setValue(user);
 
         t.addOnCompleteListener(task -> {
             if(!t.isSuccessful()){
@@ -82,7 +85,7 @@ public class FirebaseLoginActivity extends AppCompatActivity {
         });
 
         // Read from the database by listening for a change to that item.
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        newUserDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again whenever data

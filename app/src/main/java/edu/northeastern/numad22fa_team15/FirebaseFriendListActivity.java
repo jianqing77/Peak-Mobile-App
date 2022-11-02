@@ -9,7 +9,7 @@ import android.text.InputType;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class FirebaseFriendList extends AppCompatActivity {
+public class FirebaseFriendListActivity extends AppCompatActivity {
 
     Button sticker_history;
     Button add_friend;
