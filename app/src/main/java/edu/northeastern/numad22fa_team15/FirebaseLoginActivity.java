@@ -1,5 +1,7 @@
 package edu.northeastern.numad22fa_team15;
 
+import static edu.northeastern.numad22fa_team15.utils.commonUtils.*;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -45,25 +47,58 @@ public class FirebaseLoginActivity extends AppCompatActivity {
         usersDatabaseReference = firebaseDatabase.getReference().child("users");
     }
 
+    /**
+     * This method gets called when the user clicks the SIGN UP button. It will try to add
+     * a new user to the firebase realtime database.
+     * @param view view
+     */
     public void firebaseUsernameSignUp(View view) {
-        closeKeyboard(view);
+        closeKeyboard(this.getApplicationContext(), view);
         String usernameInput = usernameEditText.getText().toString();
-        if (usernameInput == null || usernameInput.isEmpty()) {
-            String usernameErrorMessage = "Username cannot be null or empty.";
-            displayMessageInSnackbar(view, usernameErrorMessage, Snackbar.LENGTH_SHORT);
+        if (!usernameInputChecker(usernameInput, view)) {
             return;
         }
         addUserToFirebase(usernameInput);
     }
 
+    /**
+     * This method gets called when the user clicks the LOGIN button. It will try to log in
+     * with the username in the usernameEditText field.
+     * @param view view
+     */
     public void firebaseUsernameLogin(View view) {
-        closeKeyboard(view);
+        closeKeyboard(this.getApplicationContext(), view);
+        String usernameInput = usernameEditText.getText().toString();
         // XH TO DO:
         // Need to add "username login" logic.
-        Intent intent = new Intent(getApplicationContext(), FirebaseFriendListActivity.class);
-        startActivity(intent);
+        if (!usernameInputChecker(usernameInput, view)) {
+            return;
+        }
+//        Intent intent = new Intent(getApplicationContext(), FirebaseFriendListActivity.class);
+//        startActivity(intent);
     }
 
+    /**
+     * This helper method returns true if the given username input is valid. Otherwise, it
+     * returns false.s
+     * @param usernameInput a username input
+     * @param view view
+     * @return true if username input is valid. Otherwise, return false
+     */
+    private boolean usernameInputChecker(String usernameInput, View view) {
+        if (usernameInput == null || usernameInput.isEmpty()) {
+            String usernameErrorMessage = "Username cannot be null or empty.";
+            displayMessageInSnackbar(view, usernameErrorMessage, Snackbar.LENGTH_SHORT);
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * This helper method will try to add a User object with the given username to the firebase
+     * realtime database.
+     * @param username a username
+     */
     private void addUserToFirebase(@NonNull String username) {
         Log.v(TAG, "Trying to add user " + username);
         // Construct a User object using the given username
@@ -103,24 +138,24 @@ public class FirebaseLoginActivity extends AppCompatActivity {
         });
     }
 
-    /**
-     * Display the given message in the given view for a certain duration.
-     * @param view the view
-     * @param message a message
-     * @param duration the duration of the snackbar
-     */
-    private void displayMessageInSnackbar(View view, @NonNull String message, int duration) {
-        Snackbar.make(view, message, duration).show();
-    }
-
-    /**
-     * This method close the keyboard on the given view.
-     * @param view the view
-     */
-    private void closeKeyboard(View view) {
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(view.getWindowToken(),0);
-    }
+//    /**
+//     * Display the given message in the given view for a certain duration.
+//     * @param view the view
+//     * @param message a message
+//     * @param duration the duration of the snackbar
+//     */
+//    private void displayMessageInSnackbar(View view, @NonNull String message, int duration) {
+//        Snackbar.make(view, message, duration).show();
+//    }
+//
+//    /**
+//     * This method close the keyboard on the given view.
+//     * @param view the view
+//     */
+//    private void closeKeyboard(View view) {
+//        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//        imm.hideSoftInputFromWindow(view.getWindowToken(),0);
+//    }
 
     @Override
     protected void onPause() {
