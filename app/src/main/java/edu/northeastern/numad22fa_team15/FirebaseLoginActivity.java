@@ -18,6 +18,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Map;
+
 import edu.northeastern.numad22fa_team15.model.User;
 
 public class FirebaseLoginActivity extends AppCompatActivity {
@@ -133,12 +135,16 @@ public class FirebaseLoginActivity extends AppCompatActivity {
     private boolean checkUserExistenceInFirebase(String usernameInput, Task<DataSnapshot> t) {
         boolean existenceResult = false;
         for (DataSnapshot dataSnapshot : t.getResult().getChildren()) {
-            User user = dataSnapshot.getValue(User.class);
-            String existingUsername = user.getUsername();
-            Log.v(TAG, String.format("Existing user: %s", existingUsername));
-            if (usernameInput.equals(existingUsername)) {
-                existenceResult = true;
-                break;
+            Map<String, Object> userObjectMap = (Map<String, Object>) dataSnapshot.getValue();
+            for (Map.Entry<String, Object> entry : userObjectMap.entrySet()) {
+                if (entry.getKey().equals("username")) {
+                    String existingUsername = (String) entry.getValue();
+                    Log.v(TAG, String.format("Existing user: %s", existingUsername));
+                    if (usernameInput.equals(existingUsername)) {
+                        existenceResult = true;
+                        break;
+                    }
+                }
             }
         }
         return existenceResult;
@@ -189,25 +195,6 @@ public class FirebaseLoginActivity extends AppCompatActivity {
                 }
             }
         });
-
-        // XH Note: No need to set listener here. Kept for future use. Will Delete.
-//        // Read from the database by listening for a change to that item.
-//        newUserDatabaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                // This method is called once with the initial value and again whenever data
-//                // at this location is updated.
-//                User userValue = dataSnapshot.getValue(User.class);
-//                Log.v(TAG, String.format("Updated username: %s", userValue.getUsername()));
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//                // Failed to add value
-//                String errorMessage = String.format("Failed to add value. %s", error.toException());
-//                Log.v(TAG, errorMessage);
-//            }
-//        });
     }
 
     @Override

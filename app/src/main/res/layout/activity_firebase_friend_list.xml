@@ -51,9 +51,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:layout_marginEnd="268dp"
+            android:onClick="stickerHistoryActivity"
             android:text="@string/sticker_history"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/sticker_num"
             app:layout_constraintTop_toBottomOf="@+id/sticker_num" />
 
@@ -70,6 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="40dp"
+            android:onClick="addFriendDialog"
             android:text="@string/add_friend"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/button_sticker_history" />
