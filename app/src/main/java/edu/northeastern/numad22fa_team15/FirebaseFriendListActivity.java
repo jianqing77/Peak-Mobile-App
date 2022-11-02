@@ -1,23 +1,18 @@
 package edu.northeastern.numad22fa_team15;
 
-import static edu.northeastern.numad22fa_team15.utils.commonUtils.displayMessageInSnackbar;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,8 +20,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Map;
-
-import edu.northeastern.numad22fa_team15.model.User;
 
 public class FirebaseFriendListActivity extends AppCompatActivity {
 
@@ -74,6 +67,31 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
      * Listening for a change to the friends database reference.
      */
     private void addEventListenerToFriendsDatabaseReference() {
+        // Listening for a change to the numOfStickersSent item
+        friendsDatabaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // Need to check for null because user may not have any friends. SAD =)
+                Object friendsValue = dataSnapshot.getValue();
+                if (friendsValue == null) {
+                    Log.v(TAG, "No friends detected for the current user.");
+                    return;
+                }
+                Map<String, String> friendsMap = (Map<String, String>) friendsValue;
+                for (Map.Entry<String, String> entry : friendsMap.entrySet()) {
+                    Log.v(TAG, String.format("FRIEND: KEY - %s. Value - %s.", entry.getKey(), entry.getValue()));
+                    // TO DO: Actual implementation needed
+                    // Display these friends in the RecyclerView.
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Failed to update value
+                String errorMessage = String.format("Failed to update value. %s", error.toException());
+                Log.v(TAG, errorMessage);
+            }
+        });
     }
 
     /**
@@ -100,23 +118,27 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
         });
     }
 
-
+    /**
+     * Clicking the STICKER HISTORY button will start the FirebaseStickerHistoryActivity activity.
+     * @param view view
+     */
     public void stickerHistoryActivity(View view) {
-
+        Intent intent = new Intent(getApplicationContext(), FirebaseStickerHistoryActivity.class);
+        startActivity(intent);
     }
 
+    /**
+     * Clicking the ADD FRIEND button will open up the add friend dialog.
+     * @param view view
+     */
     public void addFriendDialog(View view) {
-        // pop up window for adding friend
+        // Pop up window for adding friend
         AlertDialog.Builder b = new AlertDialog.Builder(this);
         b.setCancelable(false);
-        b.setMessage("Enter Username to Add Friend");
+        b.setTitle("Add a Friend");
+        b.setView(R.layout.dialog_add_friend);
 
-        // set up input EditText view
-        EditText userName_text = new EditText(this);
-        userName_text.setInputType(InputType.TYPE_CLASS_TEXT);
-        b.setView(userName_text);
-
-        // set up buttons
+        // Set up buttons
         b.setPositiveButton("Add", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
