@@ -1,4 +1,4 @@
-package edu.northeastern.numad22fa_team15.firebaseFriendTVRecyclerUtil;
+package edu.northeastern.numad22fa_team15.firebaseFriendTvRecyclerUtil;
 
 import android.content.Context;
 import android.view.LayoutInflater;

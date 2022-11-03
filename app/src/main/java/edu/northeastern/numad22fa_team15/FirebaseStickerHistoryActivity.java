@@ -1,5 +1,6 @@
 package edu.northeastern.numad22fa_team15;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -14,9 +15,11 @@ public class FirebaseStickerHistoryActivity extends AppCompatActivity {
         Log.v(TAG, "OnCreate()");
 
         super.onCreate(savedInstanceState);
-        // TO DO:
-        // Set Content View
-//        setContentView(R.layout.);
+        setContentView(R.layout.activity_sticker_history);
+
+        // Retrieve current user's username from intent.
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("current_user");
     }
 
     @Override

@@ -36,4 +36,7 @@
     <string name="sticker_history">Sticker History</string>
     <string name="profile_icon">Profile Icon</string>
     <string name="friends_list">Friends List</string>
+    <string name="sticker_id">Sticker ID:</string>
+    <string name="sent_by">Sent by:</string>
+    <string name="sent_on">Sent on:</string>
 </resources>

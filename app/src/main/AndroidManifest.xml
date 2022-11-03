@@ -40,6 +40,9 @@
             android:name=".FirebaseFriendListActivity"
             android:configChanges="orientation|screenSize" />
         <activity
+            android:name=".FirebaseStickerHistoryActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity
             android:name=".AboutTeamActivity"
             android:configChanges="orientation|screenSize" />
 

@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import edu.northeastern.numad22fa_team15.firebaseFriendTVRecyclerUtil.FriendTvAdapter;
+import edu.northeastern.numad22fa_team15.firebaseFriendTvRecyclerUtil.FriendTvAdapter;
 import edu.northeastern.numad22fa_team15.model.Friend;
 
 public class FirebaseFriendListActivity extends AppCompatActivity {
@@ -150,6 +150,8 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
      */
     public void stickerHistoryActivity(View view) {
         Intent intent = new Intent(getApplicationContext(), FirebaseStickerHistoryActivity.class);
+        // Add current user's username to the intent.
+        intent.putExtra("current_user", currentUserTextView.getText().toString());
         startActivity(intent);
     }
 
