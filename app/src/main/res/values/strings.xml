@@ -34,4 +34,6 @@
     <string name="number_of_stickers_sent">Number of stickers sent:</string>
     <string name="add_friend">Add Friend</string>
     <string name="sticker_history">Sticker History</string>
+    <string name="profile_icon">Profile Icon</string>
+    <string name="friends_list">Friends List</string>
 </resources>

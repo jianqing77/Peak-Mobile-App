@@ -12,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,7 +21,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+
+import edu.northeastern.numad22fa_team15.firebaseFriendTVRecyclerUtil.FriendTvAdapter;
+import edu.northeastern.numad22fa_team15.model.Friend;
 
 public class FirebaseFriendListActivity extends AppCompatActivity {
 
@@ -32,6 +39,9 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
     private DatabaseReference userDatabaseReference;
     private DatabaseReference numOfStickersDatabaseReference;
     private DatabaseReference friendsDatabaseReference;
+
+    private List<Friend> friendResults;
+    private RecyclerView friendsRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +63,11 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
         Log.v(TAG, "Firebase Database " + firebaseDatabase.toString());
         // Get the "user" reference for our database.
         userDatabaseReference = firebaseDatabase.getReference().child("users").child(username);
+
+        friendResults = new ArrayList<Friend>();
+        friendsRecyclerView = findViewById(R.id.friends_recycler_view);
+        friendsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        friendsRecyclerView.setAdapter(new FriendTvAdapter(friendResults, this));
 
         // Get the "numOfStickerSent" reference for our database and add ValueEventListener to it.
         numOfStickersDatabaseReference = userDatabaseReference.child("numOfStickersSent");
@@ -78,11 +93,14 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
                     return;
                 }
                 Map<String, String> friendsMap = (Map<String, String>) friendsValue;
+                friendResults.clear();
                 for (Map.Entry<String, String> entry : friendsMap.entrySet()) {
-                    Log.v(TAG, String.format("FRIEND: KEY - %s. Value - %s.", entry.getKey(), entry.getValue()));
-                    // TO DO: Actual implementation needed
-                    // Display these friends in the RecyclerView.
+                    String friendUsername = entry.getKey();
+                    Log.v(TAG, String.format("FRIEND: %s.", friendUsername));
+                    Friend friend = new Friend(friendUsername);
+                    friendResults.add(friend);
                 }
+                friendsRecyclerView.getAdapter().notifyDataSetChanged();
             }
 
             @Override
