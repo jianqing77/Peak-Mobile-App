@@ -89,7 +89,7 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
      * Listening for a change to the friends database reference.
      */
     private void addEventListenerToFriendsDatabaseReference() {
-        // Listening for a change to the numOfStickersSent item
+        // Listening for a change to the friends item
         friendsDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
