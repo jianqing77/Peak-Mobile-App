@@ -1,4 +1,4 @@
-package edu.northeastern.numad22fa_team15;
+package edu.northeastern.numad22fa_team15.activities.firebaseActivities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.firebaseStickerHistoryRecyclerUtil.StickerHistoryAdapter;
 import edu.northeastern.numad22fa_team15.model.Friend;
 import edu.northeastern.numad22fa_team15.model.StickerRecord;

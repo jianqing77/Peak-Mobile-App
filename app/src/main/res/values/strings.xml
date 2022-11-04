@@ -39,4 +39,5 @@
     <string name="sticker_id">Sticker ID:</string>
     <string name="sent_by">Sent by:</string>
     <string name="sent_on">Sent on:</string>
+    <string name="sticker_image">Sticker Image</string>
 </resources>

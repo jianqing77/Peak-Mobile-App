@@ -1,4 +1,4 @@
-package edu.northeastern.numad22fa_team15;
+package edu.northeastern.numad22fa_team15.activities.firebaseActivities;
 
 import static edu.northeastern.numad22fa_team15.utils.commonUtils.closeKeyboard;
 import static edu.northeastern.numad22fa_team15.utils.commonUtils.displayMessageInSnackbar;
@@ -19,8 +19,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.Map;
-
+import edu.northeastern.numad22fa_team15.R;
+import edu.northeastern.numad22fa_team15.activities.firebaseActivities.FirebaseFriendListActivity;
 import edu.northeastern.numad22fa_team15.model.User;
 
 public class FirebaseLoginActivity extends AppCompatActivity {

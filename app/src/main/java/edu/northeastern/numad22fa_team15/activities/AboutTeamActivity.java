@@ -1,9 +1,11 @@
-package edu.northeastern.numad22fa_team15;
+package edu.northeastern.numad22fa_team15.activities;
 
 import android.os.Bundle;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import edu.northeastern.numad22fa_team15.R;
 
 public class AboutTeamActivity extends AppCompatActivity {
 

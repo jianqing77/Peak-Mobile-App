@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import edu.northeastern.numad22fa_team15.R;
 
-public class FriendTvViewHolder extends RecyclerView.ViewHolder{
+public class FriendTvViewHolder extends RecyclerView.ViewHolder {
 
     public TextView itemFriend;
 

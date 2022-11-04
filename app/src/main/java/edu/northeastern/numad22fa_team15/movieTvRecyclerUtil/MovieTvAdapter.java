@@ -16,7 +16,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import edu.northeastern.numad22fa_team15.FullImageActivity;
+import edu.northeastern.numad22fa_team15.activities.movieApiActivities.FullImageActivity;
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.model.MovieTv;
 
