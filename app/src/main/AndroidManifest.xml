@@ -33,8 +33,9 @@
         <activity
             android:name=".activities.movieApiActivities.FullImageActivity"
             android:configChanges="orientation|screenSize" />
-        <activity
-            android:name=".activities.firebaseActivities.FirebaseLoginActivity"
+        <activity android:name=".activities.firebaseActivities.FirebaseLoginActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity android:name=".activities.firebaseActivities.FirebaseSignUpActivity"
             android:configChanges="orientation|screenSize" />
         <activity
             android:name=".activities.firebaseActivities.FirebaseFriendListActivity"
