@@ -40,4 +40,10 @@
     <string name="sent_by">Sent by:</string>
     <string name="sent_on">Sent on:</string>
     <string name="sticker_image">Sticker Image</string>
+    <string name="welcome">Welcome</string>
+    <string name="usernameHint">Username</string>
+    <string name="log_in">log in</string>
+    <string name="new_user">New User?</string>
+    <string name="passwordHint">Password (No need to fill in)</string>
+    <string name="already_have_an_account">Already have an account?</string>
 </resources>
