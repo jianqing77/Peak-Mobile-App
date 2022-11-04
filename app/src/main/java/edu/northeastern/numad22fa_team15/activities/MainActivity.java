@@ -1,4 +1,4 @@
-package edu.northeastern.numad22fa_team15;
+package edu.northeastern.numad22fa_team15.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
+import edu.northeastern.numad22fa_team15.activities.firebaseActivities.FirebaseLoginActivity;
+import edu.northeastern.numad22fa_team15.activities.movieApiActivities.MovieSearchActivityWithRecyclerView;
+import edu.northeastern.numad22fa_team15.R;
 
 public class MainActivity extends AppCompatActivity {
 

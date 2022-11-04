@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="150dp"
     android:layout_marginStart="5dp"
-    android:layout_marginTop="5dp"
+    android:layout_marginTop="10dp"
     android:layout_marginEnd="5dp"
     app:cardBackgroundColor="@android:color/white"
     app:cardCornerRadius="10dp"
@@ -25,83 +25,82 @@
             android:id="@+id/iv_sticker_history"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/sticker_image"
             android:padding="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_dateSent_history"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
+
         <TextView
             android:id="@+id/tv_resourceID_history"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
-            android:text="Sticker ID: "
+            android:text="@string/sticker_id"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/iv_sticker_history"
             app:layout_constraintBottom_toTopOf="@+id/tv_sentBy_history"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintStart_toEndOf="@+id/iv_sticker_history"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_sentBy_history"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
-            android:text="Sent by: "
+            android:text="@string/sent_by"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/iv_sticker_history"
             app:layout_constraintBottom_toTopOf="@+id/tv_dateSent_history"
-            app:layout_constraintTop_toBottomOf="@+id/tv_resourceID_history"/>
+            app:layout_constraintStart_toEndOf="@+id/iv_sticker_history"
+            app:layout_constraintTop_toBottomOf="@+id/tv_resourceID_history" />
 
         <TextView
             android:id="@+id/tv_dateSent_history"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
-            android:text="Sent on: "
+            android:text="@string/sent_on"
             android:textSize="18sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_sticker_history"
-            app:layout_constraintTop_toBottomOf="@+id/tv_sentBy_history"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/tv_sentBy_history" />
 
         <TextView
             android:id="@+id/tv_edit_resourceID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="resourceID"
+            android:paddingLeft="5dp"
             android:textSize="18sp"
             android:textStyle="italic"
-            app:layout_constraintStart_toEndOf="@+id/tv_resourceID_history"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/tv_edit_sentBy"
-            android:paddingLeft="5dp"/>
+            app:layout_constraintStart_toEndOf="@+id/tv_resourceID_history"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_edit_sentBy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="usernameID"
+            android:paddingLeft="5dp"
             android:textSize="18sp"
             android:textStyle="italic"
-            app:layout_constraintStart_toEndOf="@+id/tv_sentBy_history"
-            app:layout_constraintTop_toBottomOf="@+id/tv_edit_resourceID"
             app:layout_constraintBottom_toTopOf="@+id/tv_edit_sentOn"
-            android:paddingLeft="5dp"/>
+            app:layout_constraintStart_toEndOf="@+id/tv_sentBy_history"
+            app:layout_constraintTop_toBottomOf="@+id/tv_edit_resourceID" />
 
         <TextView
             android:id="@+id/tv_edit_sentOn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="dateSentID"
+            android:paddingLeft="5dp"
             android:textSize="18sp"
             android:textStyle="italic"
-            app:layout_constraintStart_toEndOf="@id/tv_dateSent_history"
-            app:layout_constraintTop_toBottomOf="@+id/tv_edit_sentBy"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:paddingLeft="5dp"/>
+            app:layout_constraintStart_toEndOf="@id/tv_dateSent_history"
+            app:layout_constraintTop_toBottomOf="@+id/tv_edit_sentBy" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

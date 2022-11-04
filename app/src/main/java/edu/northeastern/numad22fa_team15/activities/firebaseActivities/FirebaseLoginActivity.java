@@ -1,7 +1,8 @@
-package edu.northeastern.numad22fa_team15;
+package edu.northeastern.numad22fa_team15.activities.firebaseActivities;
 
 import static edu.northeastern.numad22fa_team15.utils.commonUtils.closeKeyboard;
 import static edu.northeastern.numad22fa_team15.utils.commonUtils.displayMessageInSnackbar;
+import static edu.northeastern.numad22fa_team15.utils.firebaseUtils.checkUserExistenceInFirebase;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,8 +19,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.Map;
-
+import edu.northeastern.numad22fa_team15.R;
+import edu.northeastern.numad22fa_team15.activities.firebaseActivities.FirebaseFriendListActivity;
 import edu.northeastern.numad22fa_team15.model.User;
 
 public class FirebaseLoginActivity extends AppCompatActivity {
@@ -108,7 +109,7 @@ public class FirebaseLoginActivity extends AppCompatActivity {
                 displayMessageInSnackbar(findViewById(android.R.id.content), errorMessage, Snackbar.LENGTH_SHORT);
             } else {
                 // Check if the given username exists in the firebase realtime database
-                boolean existenceResult = checkUserExistenceInFirebase(usernameInput, t);
+                boolean existenceResult = checkUserExistenceInFirebase(TAG, usernameInput, t);
                 // If yes, open the FirebaseFriendListActivity class.
                 if (existenceResult) {
                     // Clear the EditText input field.
@@ -126,29 +127,29 @@ public class FirebaseLoginActivity extends AppCompatActivity {
         });
     }
 
-    /**
-     * Return true if the given username exists in the database. Otherwise, return false.
-     * @param usernameInput username input
-     * @param t task
-     * @return true if user exists in the database. Otherwise, return false
-     */
-    private boolean checkUserExistenceInFirebase(String usernameInput, Task<DataSnapshot> t) {
-        boolean existenceResult = false;
-        for (DataSnapshot dataSnapshot : t.getResult().getChildren()) {
-            Map<String, Object> userObjectMap = (Map<String, Object>) dataSnapshot.getValue();
-            for (Map.Entry<String, Object> entry : userObjectMap.entrySet()) {
-                if (entry.getKey().equals("username")) {
-                    String existingUsername = (String) entry.getValue();
-                    Log.v(TAG, String.format("Existing user: %s", existingUsername));
-                    if (usernameInput.equals(existingUsername)) {
-                        existenceResult = true;
-                        break;
-                    }
-                }
-            }
-        }
-        return existenceResult;
-    }
+//    /**
+//     * Return true if the given username exists in the database. Otherwise, return false.
+//     * @param usernameInput username input
+//     * @param t task
+//     * @return true if user exists in the database. Otherwise, return false
+//     */
+//    public static boolean checkUserExistenceInFirebase(String usernameInput, Task<DataSnapshot> t) {
+//        boolean existenceResult = false;
+//        for (DataSnapshot dataSnapshot : t.getResult().getChildren()) {
+//            Map<String, Object> userObjectMap = (Map<String, Object>) dataSnapshot.getValue();
+//            for (Map.Entry<String, Object> entry : userObjectMap.entrySet()) {
+//                if (entry.getKey().equals("username")) {
+//                    String existingUsername = (String) entry.getValue();
+//                    Log.v(TAG, String.format("Existing user: %s", existingUsername));
+//                    if (usernameInput.equals(existingUsername)) {
+//                        existenceResult = true;
+//                        break;
+//                    }
+//                }
+//            }
+//        }
+//        return existenceResult;
+//    }
 
     /**
      * This helper method will try to add a User object with the given username to the firebase
@@ -167,7 +168,7 @@ public class FirebaseLoginActivity extends AppCompatActivity {
                 displayMessageInSnackbar(findViewById(android.R.id.content), errorMessage, Snackbar.LENGTH_SHORT);
             } else {
                 // Check if the given username exists in the firebase realtime database
-                boolean existenceResult = checkUserExistenceInFirebase(username, task1);
+                boolean existenceResult = checkUserExistenceInFirebase(TAG, username, task1);
                 // If so, display "user already exists" message in a Snackbar.
                 if (existenceResult) {
                     String errorMessage = String.format("User %s already exists in the database.", username);

@@ -1,4 +1,4 @@
-package edu.northeastern.numad22fa_team15;
+package edu.northeastern.numad22fa_team15.activities.movieApiActivities;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -27,6 +27,7 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.model.MovieTv;
 import edu.northeastern.numad22fa_team15.model.Result;
 import edu.northeastern.numad22fa_team15.movieTvRecyclerUtil.MovieTvAdapter;
