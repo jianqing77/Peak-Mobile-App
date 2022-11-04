@@ -16,6 +16,7 @@
         <entry key="app/src/main/res/layout/activity_movie_search_w_recycler_view.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_sticker_history.xml" value="0.13518518518518519" />
         <entry key="app/src/main/res/layout/dialog_add_friend.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/dialog_send_sticker_w_recycler_view.xml" value="0.30027173913043476" />
         <entry key="app/src/main/res/layout/dialog_year_picker.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_firebase_friend_tv.xml" value="0.375" />
         <entry key="app/src/main/res/layout/item_movie_tv.xml" value="0.25" />

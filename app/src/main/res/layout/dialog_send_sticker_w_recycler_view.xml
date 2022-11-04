@@ -12,56 +12,34 @@
         android:padding="15dp">
 
         <TextView
-            android:id="@+id/tv_sendingStickerTo"
+            android:id="@+id/selected_sticker_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sending sticker to: "
-            android:textSize="20sp"
+            android:text="@string/selected_sticker"
+            android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tv_send_sticker_username"/>
+            app:layout_constraintEnd_toStartOf="@+id/sticker_selected_text_view"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_send_sticker_username"
+            android:id="@+id/sticker_selected_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Friend 1"
-            android:textSize="20sp"
-            android:textStyle="italic"
             android:layout_marginLeft="5dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_sendingStickerTo"/>
+            android:text="@string/nan"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toEndOf="@+id/selected_sticker_text_view"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/send_sticker_recycler_view"
+            android:id="@+id/available_stickers_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_sendingStickerTo"
-            app:layout_constraintBottom_toTopOf="@+id/btn_cancel_image"/>
-
-        <Button
-            android:id="@+id/btn_cancel_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cancel"
-            android:layout_marginTop="15dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/send_sticker_recycler_view"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btn_send_image"/>
-
-        <Button
-            android:id="@+id/btn_send_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@+id/btn_cancel_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:text="Send"
-            android:layout_marginTop="15dp"/>
+            app:layout_constraintTop_toBottomOf="@id/selected_sticker_text_view" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
