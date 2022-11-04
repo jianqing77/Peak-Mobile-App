@@ -53,7 +53,7 @@ public class FriendTvAdapter extends RecyclerView.Adapter<FriendTvViewHolder> {
     private void openSendStickerDialog(String username, View view) {
         AlertDialog.Builder b = new AlertDialog.Builder(view.getContext());
         b.setCancelable(false);
-        String title = String.format("Sending sticker to: %s", username);
+        String title = String.format("Send sticker to: %s", username);
         b.setTitle(title);
         View dialogView = LayoutInflater.from(view.getContext()).inflate(R.layout.dialog_send_sticker_w_recycler_view, null);
         TextView stickerSelected = (TextView) dialogView.findViewById(R.id.sticker_selected_text_view);
