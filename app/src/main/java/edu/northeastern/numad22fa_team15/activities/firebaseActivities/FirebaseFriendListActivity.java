@@ -31,6 +31,7 @@ import java.util.List;
 import java.util.Map;
 
 import edu.northeastern.numad22fa_team15.R;
+import edu.northeastern.numad22fa_team15.activities.movieApiActivities.MovieSearchActivityWithRecyclerView;
 import edu.northeastern.numad22fa_team15.firebaseFriendTvRecyclerUtil.FriendTvAdapter;
 import edu.northeastern.numad22fa_team15.model.Friend;
 
@@ -274,6 +275,31 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
         return false;
     }
 
+    /**
+     * This method gets called when the BACK button is pressed. It confirms a user's action to
+     * dismiss the activity.
+     */
+    @Override
+    public void onBackPressed() {
+        android.app.AlertDialog.Builder alertDialog = new android.app.AlertDialog
+                .Builder(FirebaseFriendListActivity.this);
+        alertDialog.setTitle("Confirm Sign Out");
+        alertDialog.setMessage("Are you sure to sign out your account?");
+
+        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        alertDialog.show();
+    }
 
     @Override
     protected void onPause() {
