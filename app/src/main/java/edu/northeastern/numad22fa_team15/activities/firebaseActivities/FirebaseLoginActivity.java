@@ -20,7 +20,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import edu.northeastern.numad22fa_team15.R;
-import edu.northeastern.numad22fa_team15.activities.firebaseActivities.FirebaseFriendListActivity;
 import edu.northeastern.numad22fa_team15.model.User;
 
 public class FirebaseLoginActivity extends AppCompatActivity {

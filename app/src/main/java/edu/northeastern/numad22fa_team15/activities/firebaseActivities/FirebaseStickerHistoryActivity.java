@@ -87,7 +87,7 @@ public class FirebaseStickerHistoryActivity extends AppCompatActivity {
                         String stickerName = (String) stickerRecordMap.get("stickerName");
                         String senderUsername = (String) stickerRecordMap.get("sender");
                         String receiverUsername = (String) stickerRecordMap.get("receiver");
-                        String timeStamp = (String) stickerRecordMap.get("timestamp");
+                        long timeStamp = (long) stickerRecordMap.get("timestamp");
                         StickerRecord record = new StickerRecord(stickerResourceID, stickerName, senderUsername, receiverUsername, timeStamp);
                         stickerRecordResults.add(record);
                     } catch (Exception e) {

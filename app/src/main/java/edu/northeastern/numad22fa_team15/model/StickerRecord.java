@@ -2,45 +2,38 @@ package edu.northeastern.numad22fa_team15.model;
 
 import androidx.annotation.NonNull;
 
+import java.util.Calendar;
+
 public class StickerRecord {
 
     private int stickerID;
     private int stickerResourceID;
     private String stickerName;
-    private String senderUsername;
-    private String receiverUsername;
-    private String timestamp;
+    private String sender;
+    private String receiver;
+    private long timestamp;
 
     /**
      * An empty constructor is required when using Firebase Realtime Database.
      */
     public StickerRecord() {}
 
-    public StickerRecord(int stickerResourceID, String stickerName, String senderUsername, String receiverUsername) {
+    public StickerRecord(int stickerResourceID, String stickerName, String sender, String receiver) {
         this.stickerID = 0;
         this.stickerResourceID = stickerResourceID;
         this.stickerName = stickerName;
-        this.senderUsername = senderUsername;
-        this.receiverUsername = receiverUsername;
-        this.timestamp = null;
+        this.sender = sender;
+        this.receiver = receiver;
+        this.timestamp = Calendar.getInstance().getTime().getTime();
     }
 
-    public StickerRecord(int stickerResourceID, String stickerName, String senderUsername, String receiverUsername, String timestamp) {
+    public StickerRecord(int stickerResourceID, String stickerName, String sender, String receiver, long timestamp) {
         this.stickerID = 0;
         this.stickerResourceID = stickerResourceID;
         this.stickerName = stickerName;
-        this.senderUsername = senderUsername;
-        this.receiverUsername = receiverUsername;
+        this.sender = sender;
+        this.receiver = receiver;
         this.timestamp = timestamp;
-    }
-
-    public StickerRecord(int stickerID, int stickerResourceID, String stickerName, String senderUsername, String receiverUsername) {
-        this.stickerID = stickerID;
-        this.stickerResourceID = stickerResourceID;
-        this.stickerName = stickerName;
-        this.senderUsername = senderUsername;
-        this.receiverUsername = receiverUsername;
-        this.timestamp = null;
     }
 
     public int getStickerID() {
@@ -59,19 +52,19 @@ public class StickerRecord {
         return this.stickerName;
     }
 
-    public String getSenderUsername() {
-        return this.senderUsername;
+    public String getSender() {
+        return this.sender;
     }
 
-    public String getReceiverUsername() {
-        return this.receiverUsername;
+    public String getReceiver() {
+        return this.receiver;
     }
 
-    public String getTimestamp() {
+    public long getTimestamp() {
         return this.timestamp;
     }
 
-    public void setTimestamp(@NonNull String timestamp) {
+    public void setTimestamp(@NonNull long timestamp) {
         this.timestamp = timestamp;
     }
 

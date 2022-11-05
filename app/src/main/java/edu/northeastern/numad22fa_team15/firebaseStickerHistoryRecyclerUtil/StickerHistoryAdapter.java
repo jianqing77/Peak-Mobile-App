@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Date;
 import java.util.List;
 
 import edu.northeastern.numad22fa_team15.R;
@@ -34,8 +35,12 @@ public class StickerHistoryAdapter  extends RecyclerView.Adapter<StickerHistoryV
     public void onBindViewHolder(@NonNull StickerHistoryViewHolder holder, int position) {
         holder.itemStickerImage.setImageResource(results.get(position).getStickerResourceID());
         holder.itemStickerID.setText(String.valueOf(results.get(position).getStickerResourceID()));
-        holder.itemSenderUsername.setText(results.get(position).getSenderUsername());
-        holder.itemTimestamp.setText(results.get(position).getTimestamp());
+        holder.itemSenderUsername.setText(results.get(position).getSender());
+        // Convert timestamp long value to Date to String
+        long timestampLong = results.get(position).getTimestamp();
+        String timestamp = new Date(timestampLong).toString();
+        System.out.println(timestamp);
+        holder.itemTimestamp.setText(timestamp);
     }
 
     /**
