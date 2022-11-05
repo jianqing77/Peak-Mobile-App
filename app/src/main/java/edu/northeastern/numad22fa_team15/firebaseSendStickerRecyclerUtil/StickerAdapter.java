@@ -1,13 +1,10 @@
 package edu.northeastern.numad22fa_team15.firebaseSendStickerRecyclerUtil;
 
-import static edu.northeastern.numad22fa_team15.utils.commonUtils.displayMessageInSnackbar;
-import static edu.northeastern.numad22fa_team15.utils.firebaseUtils.checkUserExistenceInFirebase;
+import static edu.northeastern.numad22fa_team15.firebaseFriendTvRecyclerUtil.FriendTvAdapter.sendStickerDialog;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -27,7 +23,6 @@ import java.util.Date;
 import java.util.List;
 
 import edu.northeastern.numad22fa_team15.R;
-import edu.northeastern.numad22fa_team15.activities.firebaseActivities.FirebaseFriendListActivity;
 import edu.northeastern.numad22fa_team15.model.StickerRecord;
 
 public class StickerAdapter extends RecyclerView.Adapter<StickerViewHolder> {
@@ -55,13 +50,17 @@ public class StickerAdapter extends RecyclerView.Adapter<StickerViewHolder> {
         holder.itemStickerResourceID.setText(stickerRecord.getStickerName());
         holder.itemStickerImage.setImageResource(stickerRecord.getStickerResourceID());
 
-        // TODO: Open SendStickerConfirmation dialog
         holder.itemView.setOnClickListener(view -> {
             // Open the dialog that confirms sending a sticker to this friend
             openConfirmSendStickerDialog(stickerRecord, holder.itemView);
         });
     }
 
+    /**
+     * Open a dialog that asks the user to confirm their send sticker action.
+     * @param stickerRecord a sticker record
+     * @param view view
+     */
     private void openConfirmSendStickerDialog(StickerRecord stickerRecord, View view) {
         AlertDialog.Builder b = new AlertDialog.Builder(view.getContext());
         b.setCancelable(false);
@@ -78,6 +77,10 @@ public class StickerAdapter extends RecyclerView.Adapter<StickerViewHolder> {
                 long timestampLong = currentTime.getTime();
                 stickerRecord.setTimestamp(timestampLong);
                 performSendStickerOperation(stickerRecord);
+                // XH Note: I made sendStickerDialog a static variable in the FriendTVAdapter class and
+                // access it here in order to dismiss two dialogs after sending a sticker. Not sure if
+                // this is a good practice, though.
+                sendStickerDialog.dismiss();
             }
         });
         b.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -90,10 +93,15 @@ public class StickerAdapter extends RecyclerView.Adapter<StickerViewHolder> {
         alertDialog.show();
     }
 
+    /**
+     * Perform all the send sticker related operations in this helper method. Operations include:
+     * (1) +1 for friend user's numOfStickersReceived
+     * (2) add stickerRecord to friend user's stickerRecords
+     * (3) +1 for friend user's numOfStickersSent
+     * (4) Undo all the above operations if the send sticker operation fails
+     * @param stickerRecord a sticker record
+     */
     private void performSendStickerOperation(StickerRecord stickerRecord) {
-        // TODO: Implement send sticker operation.
-        // +1 to the numOfStickersReceived in the database (sticker receiver)
-        // Set the updated numOfStickersReceived value as the stickerID of the StickerRecord
         String receiverName = stickerRecord.getReceiver();
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference friendDatabaseReference = firebaseDatabase.getReference().child("users").child(receiverName);

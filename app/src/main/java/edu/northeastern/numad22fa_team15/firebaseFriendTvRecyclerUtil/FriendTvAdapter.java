@@ -24,6 +24,8 @@ import edu.northeastern.numad22fa_team15.model.StickerRecord;
 
 public class FriendTvAdapter extends RecyclerView.Adapter<FriendTvViewHolder> {
 
+    public static AlertDialog sendStickerDialog;
+
     private List<Friend> results;
     private final Context context;
 
@@ -51,6 +53,11 @@ public class FriendTvAdapter extends RecyclerView.Adapter<FriendTvViewHolder> {
 
     }
 
+    /**
+     * Open the send sticker dialog that displays all the available stickers to the user.
+     * @param receiverUsername the username of the receiver
+     * @param view view
+     */
     private void openSendStickerDialog(String receiverUsername, View view) {
         AlertDialog.Builder b = new AlertDialog.Builder(view.getContext());
         b.setCancelable(false);
@@ -72,8 +79,8 @@ public class FriendTvAdapter extends RecyclerView.Adapter<FriendTvViewHolder> {
                 dialogInterface.dismiss();
             }
         });
-        AlertDialog alertDialog = b.create();
-        alertDialog.show();
+        sendStickerDialog = b.create();
+        sendStickerDialog.show();
     }
 
     /**
