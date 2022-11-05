@@ -3,8 +3,14 @@ package edu.northeastern.numad22fa_team15.activities.firebaseActivities;
 import static edu.northeastern.numad22fa_team15.utils.commonUtils.displayMessageInSnackbar;
 import static edu.northeastern.numad22fa_team15.utils.firebaseUtils.checkUserExistenceInFirebase;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,13 +19,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,6 +46,9 @@ import edu.northeastern.numad22fa_team15.model.Friend;
 public class FirebaseFriendListActivity extends AppCompatActivity {
 
     private static final String TAG = "FirebaseFriendListActivity______";
+    private static final String CHANNEL_ID = "channel_one";
+    private static final int NOTIFICATION_UNIQUE_ID = 7;
+    private static int notificationGeneration = 0;
     public static String currentUsername;
 
     private TextView currentUserTextView;
@@ -47,6 +59,7 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
     private DatabaseReference userDatabaseReference;
     private DatabaseReference numOfStickersDatabaseReference;
     private DatabaseReference friendsDatabaseReference;
+    private DatabaseReference stickerRecordsDatabaseReference;
 
     private List<Friend> friendResults;
     private RecyclerView friendsRecyclerView;
@@ -57,6 +70,9 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firebase_friend_list);
+
+        // Call createNotificationChannel before a notification is sent.
+        createNotificationChannel();
 
         // Retrieve current user's username from intent and set it to the currentUserTextView TextView.
         Intent intent = getIntent();
@@ -86,7 +102,112 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
         // Get the "friends" reference for our database and add ValueEventListener to it.
         friendsDatabaseReference = userDatabaseReference.child("friends");
         addEventListenerToFriendsDatabaseReference();
+
+        // Get the "stickerRecords" reference for our database and add ValueEventListener to it.
+        stickerRecordsDatabaseReference = userDatabaseReference.child("stickerRecords");
+        addChildEventListenerToStickerRecordsDatabaseReference();
     }
+
+    /**
+     * Listening for a change to the stickerRecords database reference.
+     */
+    private void addChildEventListenerToStickerRecordsDatabaseReference() {
+        ChildEventListener childEventListener = new ChildEventListener(){
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                // Push a notification when detecting a new sticker record.
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                // No need to implement
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                // No need to implement
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                // No need to implement
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.v(TAG, "Failed to retrieve info from stickerRecords database reference");
+            }
+        };
+        stickerRecordsDatabaseReference.addChildEventListener(childEventListener);
+//        Intent intent = new Intent(getApplicationContext(), FirebaseStickerHistoryActivity.class);
+//        // Add current user's username to the intent.
+//        intent.putExtra("current_user", currentUserTextView.getText().toString());
+//        PendingIntent checkIntent = PendingIntent.getActivity(getApplicationContext(),
+//                (int) System.currentTimeMillis(), intent, 0);
+//
+//        // Build notification
+//        Notification notification = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
+//                .setContentTitle("New sticker received!")
+//                .setSmallIcon(R.drawable.notification_icon)
+//                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.zany))
+//                .setContentText("This is just a dummy notification")
+//                .addAction(R.drawable.notification_icon, "Check", checkIntent)
+//                .setContentIntent(checkIntent).build();
+//
+//        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+//
+//        // Hide notification after it is selected
+//        notification.flags = Notification.FLAG_AUTO_CANCEL;
+//
+//        // Allow multiple notifications
+//        notificationGeneration++;
+//        notificationManager.notify(NOTIFICATION_UNIQUE_ID + notificationGeneration, notification);
+    }
+
+    /**
+     * This helper method creates the notification channel.
+     */
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = getString(R.string.channel_name);
+            String description = getString(R.string.channel_description);
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+//    public void stickerHistoryActivity(View view) {
+//        Intent intent = new Intent(getApplicationContext(), FirebaseStickerHistoryActivity.class);
+//        // Add current user's username to the intent.
+//        intent.putExtra("current_user", currentUserTextView.getText().toString());
+//        PendingIntent checkIntent = PendingIntent.getActivity(getApplicationContext(),
+//                (int) System.currentTimeMillis(), intent, 0);
+//
+//        // Build notification
+//        Notification notification = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
+//                .setContentTitle("New sticker received!")
+//                .setSmallIcon(R.drawable.notification_icon)
+//                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.zany))
+//                .setContentText("This is just a dummy notification")
+//                .addAction(R.drawable.notification_icon, "Check", checkIntent)
+//                .setContentIntent(checkIntent).build();
+//
+//        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+//
+//        // Hide notification after it is selected
+//        notification.flags = Notification.FLAG_AUTO_CANCEL;
+//
+//        // Allow multiple notifications
+//        notificationGeneration++;
+//        notificationManager.notify(NOTIFICATION_UNIQUE_ID + notificationGeneration, notification);
+//    }
 
     /**
      * Listening for a change to the friends database reference.
