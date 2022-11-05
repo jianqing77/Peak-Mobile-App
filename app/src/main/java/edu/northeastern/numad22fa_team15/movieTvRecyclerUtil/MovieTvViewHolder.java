@@ -26,4 +26,5 @@ public class MovieTvViewHolder extends RecyclerView.ViewHolder {
         this.itemID = (TextView) itemView.findViewById(R.id.tv_setImdbID);
         this.itemType = (TextView) itemView.findViewById(R.id.tv_setType);
     }
+
 }

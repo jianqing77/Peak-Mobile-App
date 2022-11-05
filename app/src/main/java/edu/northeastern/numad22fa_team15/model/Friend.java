@@ -11,4 +11,5 @@ public class Friend {
     public String getUsername() {
         return this.username;
     }
+
 }

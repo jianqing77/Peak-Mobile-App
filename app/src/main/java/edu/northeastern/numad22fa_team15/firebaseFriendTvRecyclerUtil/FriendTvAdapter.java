@@ -122,4 +122,5 @@ public class FriendTvAdapter extends RecyclerView.Adapter<FriendTvViewHolder> {
     public int getItemCount() {
         return results.size();
     }
+
 }

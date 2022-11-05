@@ -17,4 +17,5 @@ public class FriendTvViewHolder extends RecyclerView.ViewHolder {
 
         itemFriend = itemView.findViewById(R.id.friend_nameTV);
     }
+
 }

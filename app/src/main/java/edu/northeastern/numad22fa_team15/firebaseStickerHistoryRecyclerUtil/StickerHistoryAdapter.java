@@ -9,17 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Date;
 import java.util.List;
 
 import edu.northeastern.numad22fa_team15.R;
-import edu.northeastern.numad22fa_team15.firebaseSendStickerRecyclerUtil.StickerAdapter;
 import edu.northeastern.numad22fa_team15.model.StickerRecord;
 
-public class StickerHistoryAdapter  extends RecyclerView.Adapter<StickerHistoryViewHolder> {
+public class StickerHistoryAdapter extends RecyclerView.Adapter<StickerHistoryViewHolder> {
 
     private static final String TAG = "StickerHistoryAdapter_________";
 
@@ -90,4 +88,5 @@ public class StickerHistoryAdapter  extends RecyclerView.Adapter<StickerHistoryV
     public int getItemCount() {
         return results.size();
     }
+
 }
