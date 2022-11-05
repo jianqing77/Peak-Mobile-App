@@ -82,11 +82,13 @@ public class FirebaseStickerHistoryActivity extends AppCompatActivity {
                     }
                     Log.v(TAG, "Class type: " + stickerRecord.getClass());
                     try {
-                        Map<String, String> stickerRecordMap = (Map<String, String>) stickerRecord;
-                        String stickerResourceID = stickerRecordMap.get("stickerResourceID");
-                        String senderUsername = stickerRecordMap.get("sender");
-                        String timeStamp = stickerRecordMap.get("timestamp");
-                        StickerRecord record = new StickerRecord(stickerResourceID, senderUsername, timeStamp);
+                        Map<String, Object> stickerRecordMap = (Map<String, Object>) stickerRecord;
+                        int stickerResourceID =  (int) (long) stickerRecordMap.get("stickerResourceID");
+                        String stickerName = (String) stickerRecordMap.get("stickerName");
+                        String senderUsername = (String) stickerRecordMap.get("sender");
+                        String receiverUsername = (String) stickerRecordMap.get("receiver");
+                        String timeStamp = (String) stickerRecordMap.get("timestamp");
+                        StickerRecord record = new StickerRecord(stickerResourceID, stickerName, senderUsername, receiverUsername, timeStamp);
                         stickerRecordResults.add(record);
                     } catch (Exception e) {
                         String errorMessage = "Something is wrong with how the sticker records are stored in database.";

@@ -37,6 +37,7 @@ import edu.northeastern.numad22fa_team15.model.Friend;
 public class FirebaseFriendListActivity extends AppCompatActivity {
 
     private static final String TAG = "FirebaseFriendListActivity______";
+    public static String currentUsername;
 
     private TextView currentUserTextView;
     private TextView numOfStickersSentTextView;
@@ -62,6 +63,7 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
         String username = intent.getStringExtra("current_user");
         currentUserTextView = findViewById(R.id.current_userTV);
         currentUserTextView.setText(username);
+        currentUsername = username;
 
         numOfStickersSentTextView = findViewById(R.id.sticker_numTV);
 

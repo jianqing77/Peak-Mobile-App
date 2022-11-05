@@ -40,7 +40,7 @@
     <string name="sent_by">Sent by:</string>
     <string name="sent_on">Sent on:</string>
     <string name="sticker_image">Sticker Image</string>
-    <string name="selected_sticker">Selected Sticker:</string>
+    <string name="selected_sticker">Select a Sticker</string>
     <string name="nan">-</string>
     <string name="cancel">Cancel</string>
     <string name="send">Send</string>

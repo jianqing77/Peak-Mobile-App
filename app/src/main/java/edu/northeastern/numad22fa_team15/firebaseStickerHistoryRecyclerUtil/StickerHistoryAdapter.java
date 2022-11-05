@@ -32,12 +32,10 @@ public class StickerHistoryAdapter  extends RecyclerView.Adapter<StickerHistoryV
 
     @Override
     public void onBindViewHolder(@NonNull StickerHistoryViewHolder holder, int position) {
-        // TO DO:
-        // Render sticker image based on sticker ID.
-
-        holder.itemStickerID.setText(results.get(position).getStickerResourceID());
+        holder.itemStickerImage.setImageResource(results.get(position).getStickerResourceID());
+        holder.itemStickerID.setText(String.valueOf(results.get(position).getStickerResourceID()));
         holder.itemSenderUsername.setText(results.get(position).getSenderUsername());
-        holder.itemTimestamp.setText(results.get(position).getTimeStamp());
+        holder.itemTimestamp.setText(results.get(position).getTimestamp());
     }
 
     /**
