@@ -39,8 +39,12 @@ public class StickerHistoryAdapter extends RecyclerView.Adapter<StickerHistoryVi
     @Override
     public void onBindViewHolder(@NonNull StickerHistoryViewHolder holder, int position) {
         // Consider the edge case that different versions of the app may contain different stickers.
+        String stickerName = results.get(position).getStickerName();
         try {
-            holder.itemStickerImage.setImageResource(results.get(position).getStickerResourceID());
+            String drawablePath = "@drawable/";
+            Context itemViewContext = holder.itemView.getContext();
+            int drawableResourceID = itemViewContext.getResources().getIdentifier(drawablePath+stickerName, null, itemViewContext.getPackageName());
+            holder.itemStickerImage.setImageResource(drawableResourceID);
         } catch (Exception e) {
             // If setImageResource operation fails, set the image to a "sticker not available" image
             Log.v(TAG, "setImageResource operation failed. ");
@@ -51,7 +55,7 @@ public class StickerHistoryAdapter extends RecyclerView.Adapter<StickerHistoryVi
             });
         }
 
-        holder.itemStickerID.setText(String.valueOf(results.get(position).getStickerResourceID()));
+        holder.itemStickerID.setText(stickerName);
         holder.itemSenderUsername.setText(results.get(position).getSender());
         // Convert timestamp long value to Date to String
         long timestampLong = results.get(position).getTimestamp();

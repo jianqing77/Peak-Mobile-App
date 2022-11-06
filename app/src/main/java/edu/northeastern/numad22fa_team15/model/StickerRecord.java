@@ -1,7 +1,5 @@
 package edu.northeastern.numad22fa_team15.model;
 
-import androidx.annotation.NonNull;
-
 import java.util.Calendar;
 
 public class StickerRecord implements Comparable<StickerRecord>{

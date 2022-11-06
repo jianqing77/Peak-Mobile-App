@@ -163,13 +163,11 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
         stickerRecordsDatabaseReference.addChildEventListener(childEventListener);
     }
 
-    // TODO: Back stack not handling properly.
     /**
      * Build notification based on sticker record.
      * @param stickerRecord sticker record
      */
     private void buildNotification(StickerRecord stickerRecord) {
-//        Intent intent = new Intent(getApplicationContext(), FirebaseStickerHistoryActivity.class);
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         intent.setAction(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_LAUNCHER);
