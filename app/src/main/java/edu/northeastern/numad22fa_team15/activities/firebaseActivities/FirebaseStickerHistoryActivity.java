@@ -16,6 +16,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -49,9 +51,11 @@ public class FirebaseStickerHistoryActivity extends AppCompatActivity {
         Log.v(TAG, "Firebase Database " + firebaseDatabase.toString());
 
         stickerRecordResults = new ArrayList<StickerRecord>();
+
         stickerRecordsRecyclerView = findViewById(R.id.sticker_history_recycler_view);
         stickerRecordsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         stickerRecordsRecyclerView.setAdapter(new StickerHistoryAdapter(stickerRecordResults, this));
+        stickerRecordsRecyclerView.getAdapter().notifyDataSetChanged();
 
         // Get the "stickerRecords" reference for our database and add ValueEventListener to it.
         stickerRecordsDatabaseReference = firebaseDatabase.getReference().child("users").child(username).child("stickerRecords");
@@ -95,6 +99,15 @@ public class FirebaseStickerHistoryActivity extends AppCompatActivity {
                         Log.v(TAG, e.getMessage());
                     }
                 }
+
+                // sort results so the latest sticker shows on the top
+                Collections.sort(stickerRecordResults, new Comparator<StickerRecord>() {
+                    @Override
+                    public int compare(StickerRecord t, StickerRecord t1) {
+                        return t.compareTo(t1);
+                    }
+                });
+
                 stickerRecordsRecyclerView.getAdapter().notifyDataSetChanged();
             }
 

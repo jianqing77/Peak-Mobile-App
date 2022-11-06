@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 import java.util.Calendar;
 
-public class StickerRecord {
+public class StickerRecord implements Comparable<StickerRecord>{
 
     private int stickerID;
     private int stickerResourceID;
@@ -77,6 +77,19 @@ public class StickerRecord {
 
     public void setProcessedByServer(boolean processedByServer) {
         this.processedByServer = processedByServer;
+    }
+
+    public int compareTo(StickerRecord s) {
+        if (this.getTimestamp() > s.getTimestamp()) {
+            System.out.println("-1");
+            return -1;
+        } else if (this.getTimestamp() < s.getTimestamp()) {
+            System.out.println("1");
+            return 1;
+        } else {
+            System.out.println("0");
+            return 0;
+        }
     }
 
 }
