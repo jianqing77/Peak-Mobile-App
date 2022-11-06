@@ -120,7 +120,7 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
                 // Push a notification when detecting a new sticker record.
                 Log.v(TAG, "New sticker record detected.");
                 StickerRecord stickerRecord = snapshot.getValue(StickerRecord.class);
-                if (!stickerRecord.getProcessedByServer()) {
+                if (!stickerRecord.getProcessedByServer() && currentUserTextView.getText().toString().equals(stickerRecord.getReceiver())) {
                     int stickerID = stickerRecord.getStickerID();
                     // Set processedByServer to true.
                     DatabaseReference processedStatusDatabaseReference = stickerRecordsDatabaseReference.child(String.valueOf(stickerID)).child("processedByServer");
@@ -216,32 +216,6 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
             notificationManager.createNotificationChannel(channel);
         }
     }
-
-//    public void stickerHistoryActivity(View view) {
-//        Intent intent = new Intent(getApplicationContext(), FirebaseStickerHistoryActivity.class);
-//        // Add current user's username to the intent.
-//        intent.putExtra("current_user", currentUserTextView.getText().toString());
-//        PendingIntent checkIntent = PendingIntent.getActivity(getApplicationContext(),
-//                (int) System.currentTimeMillis(), intent, 0);
-//
-//        // Build notification
-//        Notification notification = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
-//                .setContentTitle("New sticker received!")
-//                .setSmallIcon(R.drawable.notification_icon)
-//                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.zany))
-//                .setContentText("This is just a dummy notification")
-//                .addAction(R.drawable.notification_icon, "Check", checkIntent)
-//                .setContentIntent(checkIntent).build();
-//
-//        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-//
-//        // Hide notification after it is selected
-//        notification.flags = Notification.FLAG_AUTO_CANCEL;
-//
-//        // Allow multiple notifications
-//        notificationGeneration++;
-//        notificationManager.notify(NOTIFICATION_UNIQUE_ID + notificationGeneration, notification);
-//    }
 
     /**
      * Listening for a change to the friends database reference.
@@ -442,6 +416,7 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
     protected void onDestroy() {
         Log.v(TAG, "onDestroy()");
         super.onDestroy();
+        currentUserTextView.setText("");
     }
 
     @Override
