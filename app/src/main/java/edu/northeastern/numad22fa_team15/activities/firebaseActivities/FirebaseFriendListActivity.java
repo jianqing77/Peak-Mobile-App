@@ -9,6 +9,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
@@ -42,6 +43,7 @@ import java.util.Map;
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.firebaseFriendTvRecyclerUtil.FriendTvAdapter;
 import edu.northeastern.numad22fa_team15.model.Friend;
+import edu.northeastern.numad22fa_team15.model.StickerRecord;
 
 public class FirebaseFriendListActivity extends AppCompatActivity {
 
@@ -116,6 +118,25 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 // Push a notification when detecting a new sticker record.
+                Log.v(TAG, "New sticker record detected.");
+                StickerRecord stickerRecord = snapshot.getValue(StickerRecord.class);
+                if (!stickerRecord.getProcessedByServer()) {
+                    int stickerID = stickerRecord.getStickerID();
+                    // Set processedByServer to true.
+                    DatabaseReference processedStatusDatabaseReference = stickerRecordsDatabaseReference.child(String.valueOf(stickerID)).child("processedByServer");
+                    Task<Void> t = processedStatusDatabaseReference.setValue(true);
+
+                    t.addOnCompleteListener(task -> {
+                        if (!t.isSuccessful()) {
+                            String errorMessage = String.format("Fail to process sticker record %d", stickerID);
+                            Log.v(TAG, errorMessage);
+                        } else {
+                            String message = String.format("Sticker record %d is processed by the server.", stickerID);
+                            Log.v(TAG, message);
+                            buildNotification(stickerRecord);
+                        }
+                    });
+                }
             }
 
             @Override
@@ -135,33 +156,46 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Log.v(TAG, "Failed to retrieve info from stickerRecords database reference");
+                Log.v(TAG, "Failed to retrieve info from stickerRecords database reference.");
             }
         };
         stickerRecordsDatabaseReference.addChildEventListener(childEventListener);
-//        Intent intent = new Intent(getApplicationContext(), FirebaseStickerHistoryActivity.class);
-//        // Add current user's username to the intent.
-//        intent.putExtra("current_user", currentUserTextView.getText().toString());
-//        PendingIntent checkIntent = PendingIntent.getActivity(getApplicationContext(),
-//                (int) System.currentTimeMillis(), intent, 0);
-//
-//        // Build notification
-//        Notification notification = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
-//                .setContentTitle("New sticker received!")
-//                .setSmallIcon(R.drawable.notification_icon)
-//                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.zany))
-//                .setContentText("This is just a dummy notification")
-//                .addAction(R.drawable.notification_icon, "Check", checkIntent)
-//                .setContentIntent(checkIntent).build();
-//
-//        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-//
-//        // Hide notification after it is selected
-//        notification.flags = Notification.FLAG_AUTO_CANCEL;
-//
-//        // Allow multiple notifications
-//        notificationGeneration++;
-//        notificationManager.notify(NOTIFICATION_UNIQUE_ID + notificationGeneration, notification);
+    }
+
+    // TODO: Back stack not handling properly.
+    /**
+     * Build notification based on sticker record.
+     * @param stickerRecord sticker record
+     */
+    private void buildNotification(StickerRecord stickerRecord) {
+        Intent intent = new Intent(getApplicationContext(), FirebaseStickerHistoryActivity.class);
+        // Add current user's username to the intent.
+        intent.putExtra("current_user", currentUserTextView.getText().toString());
+        PendingIntent checkIntent = PendingIntent.getActivity(getApplicationContext(),
+                (int) System.currentTimeMillis(), intent, 0);
+
+        int stickerResourceID = stickerRecord.getStickerResourceID();
+        Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), stickerResourceID);
+        String stickerName = stickerRecord.getStickerName();
+        String friendUsername = stickerRecord.getSender();
+        String contentText = String.format("Sticker %s sent by friend %s", stickerName, friendUsername);
+
+        // Build notification
+        Notification notification = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
+                .setContentTitle("New sticker received!")
+                .setSmallIcon(R.drawable.notification_icon)
+                .setLargeIcon(largeIcon)
+                .setContentText(contentText)
+                .setContentIntent(checkIntent).build();
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+        // Hide notification after it is selected
+        notification.flags = Notification.FLAG_AUTO_CANCEL;
+
+        // Allow multiple notifications
+        notificationGeneration++;
+        notificationManager.notify(NOTIFICATION_UNIQUE_ID + notificationGeneration, notification);
     }
 
     /**

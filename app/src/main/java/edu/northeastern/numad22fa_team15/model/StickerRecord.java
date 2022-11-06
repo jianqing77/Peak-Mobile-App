@@ -12,6 +12,7 @@ public class StickerRecord {
     private String sender;
     private String receiver;
     private long timestamp;
+    private boolean processedByServer;
 
     /**
      * An empty constructor is required when using Firebase Realtime Database.
@@ -25,6 +26,7 @@ public class StickerRecord {
         this.sender = sender;
         this.receiver = receiver;
         this.timestamp = Calendar.getInstance().getTime().getTime();
+        this.processedByServer = false;
     }
 
     public StickerRecord(int stickerResourceID, String stickerName, String sender, String receiver, long timestamp) {
@@ -34,6 +36,7 @@ public class StickerRecord {
         this.sender = sender;
         this.receiver = receiver;
         this.timestamp = timestamp;
+        this.processedByServer = false;
     }
 
     public int getStickerID() {
@@ -64,8 +67,16 @@ public class StickerRecord {
         return this.timestamp;
     }
 
-    public void setTimestamp(@NonNull long timestamp) {
+    public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public boolean getProcessedByServer() {
+        return this.processedByServer;
+    }
+
+    public void setProcessedByServer(boolean processedByServer) {
+        this.processedByServer = processedByServer;
     }
 
 }
