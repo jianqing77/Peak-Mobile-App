@@ -176,7 +176,7 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
         // Add current user's username to the intent.
         intent.putExtra("current_user", currentUserTextView.getText().toString());
         PendingIntent checkIntent = PendingIntent.getActivity(getApplicationContext(),
-                (int) System.currentTimeMillis(), intent, 0);
+                (int) System.currentTimeMillis(), intent, PendingIntent.FLAG_IMMUTABLE);
 
         int stickerResourceID = stickerRecord.getStickerResourceID();
         Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), stickerResourceID);
@@ -192,7 +192,7 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
                 .setContentText(contentText)
                 .setContentIntent(checkIntent)
                 .setStyle(new NotificationCompat.BigPictureStyle()
-                        .bigPicture(largeIcon))
+                        .bigPicture(largeIcon).bigLargeIcon(null))
                 .build();
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
