@@ -81,13 +81,10 @@ public class StickerRecord implements Comparable<StickerRecord>{
 
     public int compareTo(StickerRecord s) {
         if (this.getTimestamp() > s.getTimestamp()) {
-            System.out.println("-1");
             return -1;
         } else if (this.getTimestamp() < s.getTimestamp()) {
-            System.out.println("1");
             return 1;
         } else {
-            System.out.println("0");
             return 0;
         }
     }
