@@ -5,10 +5,12 @@
       <map>
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/notification_icon.xml" value="0.187" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_about_team.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_firebase_friend_list.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_firebase_login.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_full_image.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_main.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_movie_search_w_recycler_view.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_notification.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/item_movie_tv.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/messaging_notification.xml" value="0.1" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/send_sticker_dialog.xml" value="0.27447916666666666" />
