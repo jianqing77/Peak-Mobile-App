@@ -190,7 +190,10 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
                 .setSmallIcon(R.drawable.notification_icon)
                 .setLargeIcon(largeIcon)
                 .setContentText(contentText)
-                .setContentIntent(checkIntent).build();
+                .setContentIntent(checkIntent)
+                .setStyle(new NotificationCompat.BigPictureStyle()
+                        .bigPicture(largeIcon))
+                .build();
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
