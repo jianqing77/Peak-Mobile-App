@@ -3,8 +3,14 @@ package edu.northeastern.numad22fa_team15.activities.firebaseActivities;
 import static edu.northeastern.numad22fa_team15.utils.commonUtils.displayMessageInSnackbar;
 import static edu.northeastern.numad22fa_team15.utils.firebaseUtils.checkUserExistenceInFirebase;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +21,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,9 +36,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import edu.northeastern.numad22fa_team15.R;
-import edu.northeastern.numad22fa_team15.activities.movieApiActivities.MovieSearchActivityWithRecyclerView;
 import edu.northeastern.numad22fa_team15.firebaseFriendTvRecyclerUtil.FriendTvAdapter;
 import edu.northeastern.numad22fa_team15.model.Friend;
 
@@ -85,6 +92,14 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
         // Get the "friends" reference for our database and add ValueEventListener to it.
         friendsDatabaseReference = userDatabaseReference.child("friends");
         addEventListenerToFriendsDatabaseReference();
+
+        // TODO: DELETE THIS AFTER IMPLEMENTING NOTIFICATION!
+        findViewById(R.id.btn_testNotification).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showNotification();
+            }
+        });
     }
 
     /**
@@ -284,7 +299,7 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
         android.app.AlertDialog.Builder alertDialog = new android.app.AlertDialog
                 .Builder(FirebaseFriendListActivity.this);
         alertDialog.setTitle("Confirm Sign Out");
-        alertDialog.setMessage("Are you sure to sign out your account?");
+        alertDialog.setMessage("Are you sure you want to sign out your account?");
 
         alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
@@ -335,6 +350,55 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
     protected void onStop() {
         Log.v(TAG, "onStop()");
         super.onStop();
+    }
+
+    /**
+     * Adding notification code here for now. Will move later.
+     */
+    private void showNotification() {
+        int notificationId = new Random().nextInt(100);
+        String channelId = "notification_channel_1";
+
+        NotificationManager notificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        // TODO: FIX!
+        // Clicking notification should go to FirebaseStickerHistoryActivity but this crashes the app
+        Intent intent = new Intent(getApplicationContext(), FirebaseStickerHistoryActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(),
+        0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(
+                getApplicationContext(), channelId
+        );
+
+        // TODO: ADD STICKER AS PHOTO, RETRIEVE FRIEND USERNAME
+        builder.setSmallIcon(R.drawable.ic_notification);
+        builder.setDefaults(NotificationCompat.DEFAULT_ALL);
+        builder.setContentTitle("You've received a sticker");
+        builder.setContentText("Change this message to the text below");
+        // builder.setContentText("%s sent you a sticker!", friendUsername);
+        builder.setContentIntent(pendingIntent);
+        builder.setAutoCancel(true);
+        builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            if (notificationManager != null && notificationManager.getNotificationChannel(channelId) == null) {
+                NotificationChannel notificationChannel = new NotificationChannel(
+                        channelId, "Notification channel 1",
+                        NotificationManager.IMPORTANCE_HIGH
+                );
+
+                notificationChannel.setDescription("This notification channel is used to notify user");
+                notificationChannel.enableVibration(true);
+                notificationChannel.enableLights(true);
+                notificationManager.createNotificationChannel(notificationChannel);
+            }
+        }
+        Notification notification = builder.build();
+        if (notificationManager != null) {
+            notificationManager.notify(notificationId, notification);
+        }
     }
 
 }
