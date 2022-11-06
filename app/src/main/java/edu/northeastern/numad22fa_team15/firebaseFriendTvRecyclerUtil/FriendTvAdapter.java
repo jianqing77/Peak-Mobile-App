@@ -43,30 +43,7 @@ public class FriendTvAdapter extends RecyclerView.Adapter<FriendTvViewHolder> {
     }
 
     private void openSendStickerDialog(View view) {
-        AlertDialog.Builder b = new AlertDialog.Builder(view.getContext());
-        b.setCancelable(false);
-//        b.setTitle("Add a Friend");
 
-        b.setView(R.layout.dialog_send_sticker_w_recycler_view);
-//        if (!matchResults.isEmpty()) {
-//            alertDialog.setMessage("Are you sure to ignore the search results and close the activity?");
-//        } else {
-//            alertDialog.setMessage("Are you sure to close the activity?");
-//        }
-//        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialogInterface, int i) {
-//                finish();
-//            }
-//        });
-//        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialogInterface, int i) {
-//                dialogInterface.dismiss();
-//            }
-//        });
-        AlertDialog alertDialog = b.create();
-        alertDialog.show();
     }
 
     /**
