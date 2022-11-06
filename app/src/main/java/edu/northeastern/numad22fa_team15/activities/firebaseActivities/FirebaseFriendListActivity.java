@@ -41,6 +41,7 @@ import java.util.List;
 import java.util.Map;
 
 import edu.northeastern.numad22fa_team15.R;
+import edu.northeastern.numad22fa_team15.activities.MainActivity;
 import edu.northeastern.numad22fa_team15.firebaseFriendTvRecyclerUtil.FriendTvAdapter;
 import edu.northeastern.numad22fa_team15.model.Friend;
 import edu.northeastern.numad22fa_team15.model.StickerRecord;
@@ -168,7 +169,10 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
      * @param stickerRecord sticker record
      */
     private void buildNotification(StickerRecord stickerRecord) {
-        Intent intent = new Intent(getApplicationContext(), FirebaseStickerHistoryActivity.class);
+//        Intent intent = new Intent(getApplicationContext(), FirebaseStickerHistoryActivity.class);
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.setAction(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_LAUNCHER);
         // Add current user's username to the intent.
         intent.putExtra("current_user", currentUserTextView.getText().toString());
         PendingIntent checkIntent = PendingIntent.getActivity(getApplicationContext(),
@@ -303,7 +307,6 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
         b.setPositiveButton("Add", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                // TO DO:
                 // (1) Check if the given username is the same as the current username
                 // (1a) [YES] Display message in Snackbar "Cannot add yourself as a friend."
                 // (1b) [NO] Go to step (2)
@@ -395,6 +398,11 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
         alert.show();
     }
 
+    /**
+     * Return true if username exists in the friend list. Otherwise, return false.
+     * @param friendUsername friend username
+     * @return true if username exists in the friend list. Otherwise, return false
+     */
     private boolean usernameExistenceInFriendsList(String friendUsername) {
         for (Friend existingFriend : this.friendResults) {
             String existingFriendUsername = existingFriend.getUsername();
@@ -404,7 +412,6 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
         }
         return false;
     }
-
 
     @Override
     protected void onPause() {
