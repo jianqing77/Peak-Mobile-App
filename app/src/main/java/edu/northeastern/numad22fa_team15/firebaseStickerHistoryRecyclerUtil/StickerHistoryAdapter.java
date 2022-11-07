@@ -47,7 +47,7 @@ public class StickerHistoryAdapter extends RecyclerView.Adapter<StickerHistoryVi
             holder.itemStickerImage.setImageResource(drawableResourceID);
         } catch (Exception e) {
             // If setImageResource operation fails, set the image to a "sticker not available" image
-            Log.v(TAG, "setImageResource operation failed. ");
+            Log.v(TAG, "setImageResource operation failed.");
             holder.itemStickerImage.setImageResource(R.mipmap.ic_launcher);
             holder.itemStickerImage.setOnClickListener(view -> {
                 // Open the dialog that tells user the potential reason why a sticker is not available
