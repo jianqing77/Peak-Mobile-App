@@ -22,49 +22,43 @@ import com.google.firebase.database.FirebaseDatabase;
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.model.User;
 
-public class FirebaseLoginActivity extends AppCompatActivity {
+public class FirebaseSignUpActivity extends AppCompatActivity {
 
-    private static final String TAG = "FirebaseLoginActivity___";
+    private static final String TAG = "FirebaseSignUpActivity___";
 
     private TextInputEditText usernameEditText;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference usersDatabaseReference;
-    private boolean userInFirebase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.v(TAG, "OnCreate()");
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_firebase_login);
+        setContentView(R.layout.activity_firebase_signup);
 
-        usernameEditText = (TextInputEditText) findViewById(R.id.reg_username_input);
-
+        usernameEditText = findViewById(R.id.reg_username_input);
         // Get the instance of the Firebase database.
         firebaseDatabase = FirebaseDatabase.getInstance();
-        Log.v(TAG, "Firebase Database " + firebaseDatabase);
         // Get the "Users" reference for our database.
         usersDatabaseReference = firebaseDatabase.getReference().child("users");
     }
 
     public void openLogin(View view) {
-        Intent intent = new Intent(FirebaseLoginActivity.this, FirebaseSignUpActivity.class);
+        Intent intent = new Intent(FirebaseSignUpActivity.this, FirebaseLoginActivity.class);
         startActivity(intent);
     }
 
-
     /**
-     * This method gets called when the user clicks the LOGIN button. It will try to log in
-     * with the username in the usernameEditText field.
+     * This method gets called when the user clicks the SIGN UP button. It will try to add
+     * a new user to the firebase realtime database.
      * @param view view
      */
-    public void firebaseUsernameLogin(View view) {
+    public void firebaseUsernameSignUp(View view) {
         closeKeyboard(this.getApplicationContext(), view);
         String usernameInput = usernameEditText.getText().toString();
         if (!usernameInputChecker(usernameInput, view)) {
             return;
         }
-        loginUserInFirebase(usernameInput);
+        addUserToFirebase(usernameInput);
     }
 
     /**
@@ -84,76 +78,49 @@ public class FirebaseLoginActivity extends AppCompatActivity {
     }
 
     /**
-     * This helper method checks if the given username exists in the database. If yes, it will
-     * open the FirebaseFriendListActivity activity with this user's info. If not, it will display
-     * a "User does not exist" message in Snackbar.
-     * @param usernameInput username input
+     * This helper method will try to add a User object with the given username to the firebase
+     * realtime database if the given username does not exist in the database yet.
+     * @param username a username
      */
-    private void loginUserInFirebase(String usernameInput) {
-        Log.v(TAG, "Trying to retrieve existing users' info from firebase.");
-        Task<DataSnapshot> t = usersDatabaseReference.get();
+    private void addUserToFirebase(@NonNull String username) {
+        Log.v(TAG, String.format("Checking if user %s exists in the database", username));
+        Task<DataSnapshot> task1 = usersDatabaseReference.get();
 
-        t.addOnCompleteListener(task -> {
-            if(!t.isSuccessful()){
+        task1.addOnCompleteListener(task -> {
+            if (!task1.isSuccessful()) {
                 // A more specific message should be "Failed to retrieve users' info from firebase."
-                String errorMessage = "Login feature is currently unavailable.";
+                String errorMessage = "Sign up feature is currently unavailable.";
                 Log.v(TAG, errorMessage);
                 displayMessageInSnackbar(findViewById(android.R.id.content), errorMessage, Snackbar.LENGTH_SHORT);
             } else {
                 // Check if the given username exists in the firebase realtime database
-                boolean existenceResult = checkUserExistenceInFirebase(TAG, usernameInput, t);
-                // If yes, open the FirebaseFriendListActivity class.
+                boolean existenceResult = checkUserExistenceInFirebase(TAG, username, task1);
+                // If so, display "user already exists" message in a Snackbar.
                 if (existenceResult) {
-                    // Clear the EditText input field.
-                    usernameEditText.setText("");
-                    Intent intent = new Intent(FirebaseLoginActivity.this, FirebaseFriendListActivity.class);
-                    // Add current user's username to the intent.
-                    intent.putExtra("current_user", usernameInput);
-                    startActivity(intent);
-                } else { // If no, display message in a Snackbar.
-                    String errorMessage = "User does not exist.";
+                    String errorMessage = String.format("User %s already exists in the database.", username);
                     Log.v(TAG, errorMessage);
                     displayMessageInSnackbar(findViewById(android.R.id.content), errorMessage, Snackbar.LENGTH_SHORT);
+                } else { // If not, try to add user to the database.
+                    Log.v(TAG, "Trying to add user " + username);
+                    // Construct a User object using the given username
+                    User user = new User(username);
+                    DatabaseReference newUserDatabaseReference = usersDatabaseReference.child(user.getUsername());
+                    // Set this user info at the given location
+                    Task<Void> task2 = newUserDatabaseReference.setValue(user);
+
+                    task2.addOnCompleteListener(anotherTask -> {
+                        if (!task2.isSuccessful()) {
+                            String errorMessage = String.format("Failed to add user %s.", user.getUsername());
+                            Log.v(TAG, errorMessage);
+                            displayMessageInSnackbar(findViewById(android.R.id.content), errorMessage, Snackbar.LENGTH_SHORT);
+                        } else {
+                            String message = String.format("User %s added.", user.getUsername());
+                            Log.v(TAG, message);
+                            displayMessageInSnackbar(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT);
+                        }
+                    });
                 }
             }
         });
     }
-
-
-    @Override
-    protected void onPause() {
-        Log.v(TAG, "onPause()");
-        super.onPause();
-    }
-
-    @Override
-    protected void onDestroy() {
-        Log.v(TAG, "onDestroy()");
-        super.onDestroy();
-    }
-
-    @Override
-    protected void onResume() {
-        Log.v(TAG, "onResume()");
-        super.onResume();
-    }
-
-    @Override
-    protected void onRestart() {
-        Log.v(TAG, "onRestart()");
-        super.onRestart();
-    }
-
-    @Override
-    protected void onStart() {
-        Log.v(TAG, "onStart()");
-        super.onStart();
-    }
-
-    @Override
-    protected void onStop() {
-        Log.v(TAG, "onStop()");
-        super.onStop();
-    }
-
 }
