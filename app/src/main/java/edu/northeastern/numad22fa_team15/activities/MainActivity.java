@@ -1,11 +1,15 @@
-package edu.northeastern.numad22fa_team15;
-
-import androidx.appcompat.app.AppCompatActivity;
+package edu.northeastern.numad22fa_team15.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import edu.northeastern.numad22fa_team15.R;
+import edu.northeastern.numad22fa_team15.activities.firebaseActivities.FirebaseSignUpActivity;
+import edu.northeastern.numad22fa_team15.activities.movieApiActivities.MovieSearchActivityWithRecyclerView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +29,24 @@ public class MainActivity extends AppCompatActivity {
      */
     public void movieSearchActivity(View view) {
         Intent intent = new Intent(getApplicationContext(), MovieSearchActivityWithRecyclerView.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Clicking the FIREBASE button will start the FirebaseLoginActivity activity.
+     * @param view view
+     */
+    public void firebaseLoginActivity(View view) {
+        Intent intent = new Intent(getApplicationContext(), FirebaseSignUpActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Clicking the ABOUT button will start the AboutTeamActivity activity.
+     * @param view view
+     */
+    public void aboutTeamActivity(View view) {
+        Intent intent = new Intent(getApplicationContext(), AboutTeamActivity.class);
         startActivity(intent);
     }
 

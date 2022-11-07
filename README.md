@@ -1,4 +1,49 @@
 # Team 15 Group Project
+
+## A8 Stick It To 'Em
+
+For assignment 8, we implemented a sticker messaging app using Firebase Realtime Database.
+
+### Login/Sign Up
+
+- Input
+  - Username (required)
+    - Users must sign up if the username doesn't exist in the database
+
+INSERT IMAGE HERE!
+
+### Add Friend
+
+- Input
+  - Friend's Username (required)
+    - Users will be prompted if the username does not exist in the database
+
+- Output
+  - An addition to the friends list with the friend's username and icon
+
+INSERT IMAGE HERE!
+
+### View Sticker History
+
+- When users click the "Sticker History" button, they will be shown a list of stickers received by the user:
+  - Sticker Image
+  - Sticker Name
+  - Sent by (username)
+  - Sent on (timestamp)
+
+### Notification
+
+- Users will receive a push notification when they receive a sticker from a friend.
+  - Notifications are pushed when the app is in the foreground or background, but not when the app is not running.
+  - Notifications include:
+    - Sticker Name
+    - Sent by (username)
+    - Sticker Image
+
+### Challenges
+
+-----
+
 ## A7 At Your Service
 
 For assignment 7, we implemented a move/series search service using a publicly available API called [OMDB API](https://www.omdbapi.com/).

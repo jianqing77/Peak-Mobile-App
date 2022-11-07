@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
     <TextView
         android:id="@+id/team_name_text_view"
@@ -23,9 +23,31 @@
         android:layout_height="wrap_content"
         android:onClick="movieSearchActivity"
         android:text="@string/movie_tv_search"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/firebase_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/team_name_text_view" />
+
+    <Button
+        android:id="@+id/firebase_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="firebaseLoginActivity"
+        android:text="@string/firebase"
+        app:layout_constraintBottom_toTopOf="@+id/about_team_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/movie_tv_button" />
+
+    <Button
+        android:id="@+id/about_team_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="aboutTeamActivity"
+        android:text="@string/about"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firebase_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

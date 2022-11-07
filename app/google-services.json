@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "822841949263",
+    "firebase_url": "https://mobilea8firebase-default-rtdb.firebaseio.com",
+    "project_id": "mobilea8firebase",
+    "storage_bucket": "mobilea8firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:822841949263:android:7947a793f50417aa53be3a",
+        "android_client_info": {
+          "package_name": "edu.northeastern.numad22fa_team15"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "822841949263-3a4p04vesugjh8eot0l8n1frfkk12c66.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6oobTHuaF_Qki8PXoqJhgvyejG0TI8xs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "822841949263-3a4p04vesugjh8eot0l8n1frfkk12c66.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

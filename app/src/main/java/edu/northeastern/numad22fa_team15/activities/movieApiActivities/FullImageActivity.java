@@ -1,4 +1,4 @@
-package edu.northeastern.numad22fa_team15;
+package edu.northeastern.numad22fa_team15.activities.movieApiActivities;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.squareup.picasso.Picasso;
+
+import edu.northeastern.numad22fa_team15.R;
 
 public class FullImageActivity extends AppCompatActivity {
 
