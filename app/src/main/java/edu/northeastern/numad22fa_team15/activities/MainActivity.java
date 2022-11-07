@@ -1,15 +1,15 @@
 package edu.northeastern.numad22fa_team15.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import edu.northeastern.numad22fa_team15.activities.firebaseActivities.FirebaseLoginActivity;
-import edu.northeastern.numad22fa_team15.activities.movieApiActivities.MovieSearchActivityWithRecyclerView;
+import androidx.appcompat.app.AppCompatActivity;
+
 import edu.northeastern.numad22fa_team15.R;
+import edu.northeastern.numad22fa_team15.activities.firebaseActivities.FirebaseSignUpActivity;
+import edu.northeastern.numad22fa_team15.activities.movieApiActivities.MovieSearchActivityWithRecyclerView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view view
      */
     public void firebaseLoginActivity(View view) {
-        Intent intent = new Intent(getApplicationContext(), FirebaseLoginActivity.class);
+        Intent intent = new Intent(getApplicationContext(), FirebaseSignUpActivity.class);
         startActivity(intent);
     }
 

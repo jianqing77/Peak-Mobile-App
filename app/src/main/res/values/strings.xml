@@ -26,7 +26,7 @@
     <string name="reset">Reset</string>
     <string name="firebase">Firebase</string>
     <string name="about">About</string>
-    <string name="group_name_team_15_n_ngroup_members_njaime_si_nxiaojin_cai_njianqing_ma_nxinyu_hou_njiazhe_chen">Group Name: Team 15\n\nGroup Members:\nJaime Si\nXiaojin Cai\nJianqing Ma\nXinyu Hou\nJiazhe Chen</string>
+    <string name="group_name_team_15_n_ngroup_members_njaime_si_nxiaojin_cai_njianqing_ma_nxinyu_hou">Group Name: Team 15\n\nGroup Members:\nJaime Si\nXiaojin Cai\nJianqing Ma\nXinyu Hou</string>
     <string name="enter_username">Enter Username</string>
     <string name="sign_up">Sign Up</string>
     <string name="login">Login</string>

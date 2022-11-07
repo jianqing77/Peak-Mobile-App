@@ -9,7 +9,7 @@
         android:id="@+id/about_team_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/group_name_team_15_n_ngroup_members_njaime_si_nxiaojin_cai_njianqing_ma_nxinyu_hou_njiazhe_chen"
+        android:text="@string/group_name_team_15_n_ngroup_members_njaime_si_nxiaojin_cai_njianqing_ma_nxinyu_hou"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

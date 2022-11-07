@@ -2,7 +2,7 @@ package edu.northeastern.numad22fa_team15.model;
 
 import java.util.Calendar;
 
-public class StickerRecord implements Comparable<StickerRecord>{
+public class StickerRecord implements Comparable<StickerRecord> {
 
     private int stickerID;
     private int stickerResourceID;

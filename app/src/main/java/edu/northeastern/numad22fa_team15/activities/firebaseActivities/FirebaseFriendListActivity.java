@@ -39,7 +39,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.activities.MainActivity;
@@ -476,55 +475,6 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
     protected void onStop() {
         Log.v(TAG, "onStop()");
         super.onStop();
-    }
-
-    /**
-     * Adding notification code here for now. Will move later.
-     */
-    private void showNotification() {
-        int notificationId = new Random().nextInt(100);
-        String channelId = "notification_channel_1";
-
-        NotificationManager notificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
-        // TODO: FIX!
-        // Clicking notification should go to FirebaseStickerHistoryActivity but this crashes the app
-        Intent intent = new Intent(getApplicationContext(), FirebaseStickerHistoryActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(),
-        0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(
-                getApplicationContext(), channelId
-        );
-
-        // TODO: ADD STICKER AS PHOTO, RETRIEVE FRIEND USERNAME
-        builder.setSmallIcon(R.drawable.ic_notification);
-        builder.setDefaults(NotificationCompat.DEFAULT_ALL);
-        builder.setContentTitle("You've received a sticker");
-        builder.setContentText("Change this message to the text below");
-        // builder.setContentText("%s sent you a sticker!", friendUsername);
-        builder.setContentIntent(pendingIntent);
-        builder.setAutoCancel(true);
-        builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            if (notificationManager != null && notificationManager.getNotificationChannel(channelId) == null) {
-                NotificationChannel notificationChannel = new NotificationChannel(
-                        channelId, "Notification channel 1",
-                        NotificationManager.IMPORTANCE_HIGH
-                );
-
-                notificationChannel.setDescription("This notification channel is used to notify user");
-                notificationChannel.enableVibration(true);
-                notificationChannel.enableLights(true);
-                notificationManager.createNotificationChannel(notificationChannel);
-            }
-        }
-        Notification notification = builder.build();
-        if (notificationManager != null) {
-            notificationManager.notify(notificationId, notification);
-        }
     }
 
 }

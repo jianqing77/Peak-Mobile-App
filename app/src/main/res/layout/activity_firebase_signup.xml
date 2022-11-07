@@ -39,7 +39,8 @@
             android:id="@+id/reg_username_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColorHint="#757575" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -51,11 +52,13 @@
         android:hint="@string/passwordHint"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:layout_constraintTop_toBottomOf="@id/reg_username">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/reg_password_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:textColorHint="#757575" />
     </com.google.android.material.textfield.TextInputLayout>
 
 

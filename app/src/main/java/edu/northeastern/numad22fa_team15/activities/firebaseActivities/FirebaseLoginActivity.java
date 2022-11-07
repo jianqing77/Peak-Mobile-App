@@ -29,7 +29,6 @@ public class FirebaseLoginActivity extends AppCompatActivity {
     private TextInputEditText usernameEditText;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference usersDatabaseReference;
-    private boolean userInFirebase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +47,8 @@ public class FirebaseLoginActivity extends AppCompatActivity {
     }
 
     public void openLogin(View view) {
-        Intent intent = new Intent(FirebaseLoginActivity.this, FirebaseSignUpActivity.class);
-        startActivity(intent);
+        this.finish();
     }
-
 
     /**
      * This method gets called when the user clicks the LOGIN button. It will try to log in
@@ -118,7 +115,6 @@ public class FirebaseLoginActivity extends AppCompatActivity {
             }
         });
     }
-
 
     @Override
     protected void onPause() {

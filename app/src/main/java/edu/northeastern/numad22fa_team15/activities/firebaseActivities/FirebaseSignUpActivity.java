@@ -27,6 +27,7 @@ public class FirebaseSignUpActivity extends AppCompatActivity {
     private static final String TAG = "FirebaseSignUpActivity___";
 
     private TextInputEditText usernameEditText;
+    private TextInputEditText passwordEditText;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference usersDatabaseReference;
 
@@ -36,6 +37,7 @@ public class FirebaseSignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_firebase_signup);
 
         usernameEditText = findViewById(R.id.reg_username_input);
+        passwordEditText = findViewById(R.id.reg_password_input);
         // Get the instance of the Firebase database.
         firebaseDatabase = FirebaseDatabase.getInstance();
         // Get the "Users" reference for our database.
@@ -44,6 +46,8 @@ public class FirebaseSignUpActivity extends AppCompatActivity {
 
     public void openLogin(View view) {
         Intent intent = new Intent(FirebaseSignUpActivity.this, FirebaseLoginActivity.class);
+        usernameEditText.setText("");
+        passwordEditText.setText("");
         startActivity(intent);
     }
 
@@ -59,6 +63,8 @@ public class FirebaseSignUpActivity extends AppCompatActivity {
             return;
         }
         addUserToFirebase(usernameInput);
+        usernameEditText.setText("");
+        passwordEditText.setText("");
     }
 
     /**
@@ -123,4 +129,5 @@ public class FirebaseSignUpActivity extends AppCompatActivity {
             }
         });
     }
+
 }
