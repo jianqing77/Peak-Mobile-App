@@ -27,7 +27,7 @@ INSERT IMAGE HERE!
 
 - When users click the "Sticker History" button, they will be shown a list of stickers received by the user:
   - Sticker Image
-  - Sticker ID
+  - Sticker Name
   - Sent by (username)
   - Sent on (timestamp)
 
