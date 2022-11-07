@@ -44,4 +44,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    // required to avoid crash on Android 12 API 31
+    implementation 'androidx.work:work-runtime:2.7.1'
 }

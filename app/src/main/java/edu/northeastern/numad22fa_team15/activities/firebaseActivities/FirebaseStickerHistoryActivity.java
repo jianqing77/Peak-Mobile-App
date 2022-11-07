@@ -16,12 +16,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.firebaseStickerHistoryRecyclerUtil.StickerHistoryAdapter;
-import edu.northeastern.numad22fa_team15.model.Friend;
 import edu.northeastern.numad22fa_team15.model.StickerRecord;
 
 public class FirebaseStickerHistoryActivity extends AppCompatActivity {
@@ -50,9 +51,11 @@ public class FirebaseStickerHistoryActivity extends AppCompatActivity {
         Log.v(TAG, "Firebase Database " + firebaseDatabase.toString());
 
         stickerRecordResults = new ArrayList<StickerRecord>();
+
         stickerRecordsRecyclerView = findViewById(R.id.sticker_history_recycler_view);
         stickerRecordsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         stickerRecordsRecyclerView.setAdapter(new StickerHistoryAdapter(stickerRecordResults, this));
+        stickerRecordsRecyclerView.getAdapter().notifyDataSetChanged();
 
         // Get the "stickerRecords" reference for our database and add ValueEventListener to it.
         stickerRecordsDatabaseReference = firebaseDatabase.getReference().child("users").child(username).child("stickerRecords");
@@ -82,11 +85,13 @@ public class FirebaseStickerHistoryActivity extends AppCompatActivity {
                     }
                     Log.v(TAG, "Class type: " + stickerRecord.getClass());
                     try {
-                        Map<String, String> stickerRecordMap = (Map<String, String>) stickerRecord;
-                        String stickerResourceID = stickerRecordMap.get("stickerResourceID");
-                        String senderUsername = stickerRecordMap.get("sender");
-                        String timeStamp = stickerRecordMap.get("timestamp");
-                        StickerRecord record = new StickerRecord(stickerResourceID, senderUsername, timeStamp);
+                        Map<String, Object> stickerRecordMap = (Map<String, Object>) stickerRecord;
+                        int stickerResourceID =  (int) (long) stickerRecordMap.get("stickerResourceID");
+                        String stickerName = (String) stickerRecordMap.get("stickerName");
+                        String senderUsername = (String) stickerRecordMap.get("sender");
+                        String receiverUsername = (String) stickerRecordMap.get("receiver");
+                        long timeStamp = (long) stickerRecordMap.get("timestamp");
+                        StickerRecord record = new StickerRecord(stickerResourceID, stickerName, senderUsername, receiverUsername, timeStamp);
                         stickerRecordResults.add(record);
                     } catch (Exception e) {
                         String errorMessage = "Something is wrong with how the sticker records are stored in database.";
@@ -94,6 +99,15 @@ public class FirebaseStickerHistoryActivity extends AppCompatActivity {
                         Log.v(TAG, e.getMessage());
                     }
                 }
+
+                // sort results so the latest sticker shows on the top
+                Collections.sort(stickerRecordResults, new Comparator<StickerRecord>() {
+                    @Override
+                    public int compare(StickerRecord t, StickerRecord t1) {
+                        return t.compareTo(t1);
+                    }
+                });
+
                 stickerRecordsRecyclerView.getAdapter().notifyDataSetChanged();
             }
 

@@ -7,9 +7,10 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,6 +20,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
@@ -27,6 +29,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,12 +42,18 @@ import java.util.Map;
 import java.util.Random;
 
 import edu.northeastern.numad22fa_team15.R;
+import edu.northeastern.numad22fa_team15.activities.MainActivity;
 import edu.northeastern.numad22fa_team15.firebaseFriendTvRecyclerUtil.FriendTvAdapter;
 import edu.northeastern.numad22fa_team15.model.Friend;
+import edu.northeastern.numad22fa_team15.model.StickerRecord;
 
 public class FirebaseFriendListActivity extends AppCompatActivity {
 
     private static final String TAG = "FirebaseFriendListActivity______";
+    private static final String CHANNEL_ID = "channel_one";
+    private static final int NOTIFICATION_UNIQUE_ID = 7;
+    private static int notificationGeneration = 0;
+    public static String currentUsername;
 
     private TextView currentUserTextView;
     private TextView numOfStickersSentTextView;
@@ -54,6 +63,7 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
     private DatabaseReference userDatabaseReference;
     private DatabaseReference numOfStickersDatabaseReference;
     private DatabaseReference friendsDatabaseReference;
+    private DatabaseReference stickerRecordsDatabaseReference;
 
     private List<Friend> friendResults;
     private RecyclerView friendsRecyclerView;
@@ -65,11 +75,15 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firebase_friend_list);
 
+        // Call createNotificationChannel before a notification is sent.
+        createNotificationChannel();
+
         // Retrieve current user's username from intent and set it to the currentUserTextView TextView.
         Intent intent = getIntent();
         String username = intent.getStringExtra("current_user");
         currentUserTextView = findViewById(R.id.current_userTV);
         currentUserTextView.setText(username);
+        currentUsername = username;
 
         numOfStickersSentTextView = findViewById(R.id.sticker_numTV);
 
@@ -93,13 +107,120 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
         friendsDatabaseReference = userDatabaseReference.child("friends");
         addEventListenerToFriendsDatabaseReference();
 
-        // TODO: DELETE THIS AFTER IMPLEMENTING NOTIFICATION!
-        findViewById(R.id.btn_testNotification).setOnClickListener(new View.OnClickListener() {
+        // Get the "stickerRecords" reference for our database and add ValueEventListener to it.
+        stickerRecordsDatabaseReference = userDatabaseReference.child("stickerRecords");
+        addChildEventListenerToStickerRecordsDatabaseReference();
+    }
+
+    /**
+     * Listening for a change to the stickerRecords database reference.
+     */
+    private void addChildEventListenerToStickerRecordsDatabaseReference() {
+        ChildEventListener childEventListener = new ChildEventListener(){
             @Override
-            public void onClick(View view) {
-                showNotification();
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                // Push a notification when detecting a new sticker record.
+                Log.v(TAG, "New sticker record detected.");
+                StickerRecord stickerRecord = snapshot.getValue(StickerRecord.class);
+                if (!stickerRecord.getProcessedByServer() && currentUserTextView.getText().toString().equals(stickerRecord.getReceiver())) {
+                    int stickerID = stickerRecord.getStickerID();
+                    // Set processedByServer to true.
+                    DatabaseReference processedStatusDatabaseReference = stickerRecordsDatabaseReference.child(String.valueOf(stickerID)).child("processedByServer");
+                    Task<Void> t = processedStatusDatabaseReference.setValue(true);
+
+                    t.addOnCompleteListener(task -> {
+                        if (!t.isSuccessful()) {
+                            String errorMessage = String.format("Fail to process sticker record %d", stickerID);
+                            Log.v(TAG, errorMessage);
+                        } else {
+                            String message = String.format("Sticker record %d is processed by the server.", stickerID);
+                            Log.v(TAG, message);
+                            buildNotification(stickerRecord);
+                        }
+                    });
+                }
             }
-        });
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                // No need to implement
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                // No need to implement
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                // No need to implement
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.v(TAG, "Failed to retrieve info from stickerRecords database reference.");
+            }
+        };
+        stickerRecordsDatabaseReference.addChildEventListener(childEventListener);
+    }
+
+    /**
+     * Build notification based on sticker record.
+     * @param stickerRecord sticker record
+     */
+    private void buildNotification(StickerRecord stickerRecord) {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.setAction(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_LAUNCHER);
+        // Add current user's username to the intent.
+        intent.putExtra("current_user", currentUserTextView.getText().toString());
+        PendingIntent checkIntent = PendingIntent.getActivity(getApplicationContext(),
+                (int) System.currentTimeMillis(), intent, PendingIntent.FLAG_IMMUTABLE);
+
+        int stickerResourceID = stickerRecord.getStickerResourceID();
+        Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), stickerResourceID);
+        String stickerName = stickerRecord.getStickerName();
+        String friendUsername = stickerRecord.getSender();
+        String contentText = String.format("Sticker %s sent by friend %s", stickerName, friendUsername);
+
+        // Build notification
+        Notification notification = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
+                .setContentTitle("New sticker received!")
+                .setSmallIcon(R.drawable.notification_icon)
+                .setLargeIcon(largeIcon)
+                .setContentText(contentText)
+                .setContentIntent(checkIntent)
+                .setStyle(new NotificationCompat.BigPictureStyle()
+                        .bigPicture(largeIcon).bigLargeIcon(null))
+                .build();
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+        // Hide notification after it is selected
+        notification.flags = Notification.FLAG_AUTO_CANCEL;
+
+        // Allow multiple notifications
+        notificationGeneration++;
+        notificationManager.notify(NOTIFICATION_UNIQUE_ID + notificationGeneration, notification);
+    }
+
+    /**
+     * This helper method creates the notification channel.
+     */
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = getString(R.string.channel_name);
+            String description = getString(R.string.channel_description);
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 
     /**
@@ -188,7 +309,6 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
         b.setPositiveButton("Add", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                // TO DO:
                 // (1) Check if the given username is the same as the current username
                 // (1a) [YES] Display message in Snackbar "Cannot add yourself as a friend."
                 // (1b) [NO] Go to step (2)
@@ -280,6 +400,11 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
         alert.show();
     }
 
+    /**
+     * Return true if username exists in the friend list. Otherwise, return false.
+     * @param friendUsername friend username
+     * @return true if username exists in the friend list. Otherwise, return false
+     */
     private boolean usernameExistenceInFriendsList(String friendUsername) {
         for (Friend existingFriend : this.friendResults) {
             String existingFriendUsername = existingFriend.getUsername();
@@ -326,6 +451,7 @@ public class FirebaseFriendListActivity extends AppCompatActivity {
     protected void onDestroy() {
         Log.v(TAG, "onDestroy()");
         super.onDestroy();
+        currentUserTextView.setText("");
     }
 
     @Override
