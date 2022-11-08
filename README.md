@@ -4,13 +4,18 @@
 
 For assignment 8, we implemented a sticker messaging app using Firebase Realtime Database.
 
+### Demo Video
+[demo videos](TO BE CHANGED)
+
 ### Login/Sign Up
 
 - Input
   - Username (required)
     - Users must sign up if the username doesn't exist in the database
-
-INSERT IMAGE HERE!
+  - Password (NOT REQUIRED)
+    - For this assignment, no password needed for users to Login/Signup
+- Output
+  - If user already registered, jump to the main dashboard to add friend and send stickers
 
 ### Add Friend
 
@@ -21,11 +26,10 @@ INSERT IMAGE HERE!
 - Output
   - An addition to the friends list with the friend's username and icon
 
-INSERT IMAGE HERE!
-
 ### View Sticker History
 
-- When users click the "Sticker History" button, they will be shown a list of stickers received by the user:
+- Stickers that user have SENT: on the top of main page after login
+- When users click the "Sticker History" button, they will be shown a list of stickers RECEIVED by the user, including the following information:
   - Sticker Image
   - Sticker Name
   - Sent by (username)
