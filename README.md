@@ -5,7 +5,7 @@
 For assignment 8, we implemented a sticker messaging app using Firebase Realtime Database.
 
 ### Demo Video
-[demo videos](TO BE CHANGED)
+[demo videos](https://drive.google.com/drive/folders/16C-pjb0t0p8WViBVeEyviP4ALY0hjgJH?usp=sharing)
 
 ### Login/Sign Up
 
@@ -43,9 +43,7 @@ For assignment 8, we implemented a sticker messaging app using Firebase Realtime
     - Sticker Name
     - Sent by (username)
     - Sticker Image
-
-### Challenges
-
+    
 -----
 
 ## A7 At Your Service
