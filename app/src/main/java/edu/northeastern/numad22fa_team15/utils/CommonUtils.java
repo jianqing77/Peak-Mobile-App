@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import com.google.android.material.snackbar.Snackbar;
 
-public class commonUtils {
+public class CommonUtils {
 
     /**
      * Display the given message in the given view for a certain duration.

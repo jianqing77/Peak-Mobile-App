@@ -1,4 +1,4 @@
-package edu.northeastern.numad22fa_team15.movieTvRecyclerUtil;
+package edu.northeastern.numad22fa_team15.utils.recyclerUtils.movieTvRecyclerUtil;
 
 import android.view.View;
 import android.widget.ImageView;

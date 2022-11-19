@@ -1,7 +1,7 @@
 package edu.northeastern.numad22fa_team15.activities.firebaseActivities;
 
-import static edu.northeastern.numad22fa_team15.utils.commonUtils.displayMessageInSnackbar;
-import static edu.northeastern.numad22fa_team15.utils.firebaseUtils.checkUserExistenceInFirebase;
+import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessageInSnackbar;
+import static edu.northeastern.numad22fa_team15.utils.FirebaseUtils.checkUserExistenceInFirebase;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -42,9 +42,9 @@ import java.util.Map;
 
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.activities.MainActivity;
-import edu.northeastern.numad22fa_team15.firebaseFriendTvRecyclerUtil.FriendTvAdapter;
-import edu.northeastern.numad22fa_team15.model.Friend;
-import edu.northeastern.numad22fa_team15.model.StickerRecord;
+import edu.northeastern.numad22fa_team15.utils.recyclerUtils.firebaseFriendTvRecyclerUtil.FriendTvAdapter;
+import edu.northeastern.numad22fa_team15.models.firebaseModels.Friend;
+import edu.northeastern.numad22fa_team15.models.firebaseModels.StickerRecord;
 
 public class FirebaseFriendListActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package edu.northeastern.numad22fa_team15.firebaseStickerHistoryRecyclerUtil;
+package edu.northeastern.numad22fa_team15.utils.recyclerUtils.firebaseStickerHistoryRecyclerUtil;
 
 import android.view.View;
 import android.widget.ImageView;

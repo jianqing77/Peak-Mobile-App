@@ -1,4 +1,4 @@
-package edu.northeastern.numad22fa_team15.firebaseSendStickerRecyclerUtil;
+package edu.northeastern.numad22fa_team15.utils.recyclerUtils.firebaseSendStickerRecyclerUtil;
 
 import android.view.View;
 import android.widget.ImageView;

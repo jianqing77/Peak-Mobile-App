@@ -1,4 +1,4 @@
-package edu.northeastern.numad22fa_team15.model;
+package edu.northeastern.numad22fa_team15.models.firebaseModels;
 
 import java.util.ArrayList;
 import java.util.List;
