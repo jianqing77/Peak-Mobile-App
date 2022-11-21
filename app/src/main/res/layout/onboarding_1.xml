@@ -1,104 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Onboarding text -->
-    <TextView
-        android:id="@+id/tv_onboarding1_body"
-        android:layout_width="0dp"
-        android:layout_height="44dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:gravity="center_horizontal|center_vertical"
-        android:lineSpacingExtra="3sp"
-        android:text="@string/allocate_a_"
-        android:textAppearance="@style/onboarding_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_onboarding1_header"
-        android:layout_marginLeft="60dp"
-        android:layout_marginRight="60dp"
-        android:layout_marginTop="18dp"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <!-- Create a budget -->
-    <TextView
-        android:id="@+id/tv_onboarding1_header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:gravity="center_horizontal|center_vertical"
-        android:lineSpacingExtra="1sp"
-        android:text="@string/create_a_bu"
-        android:textAppearance="@style/onboarding_header"
-        android:translationY="-0.48sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/onboarding_1"
-        android:layout_marginTop="-30dp"/>
+        <!-- Onboarding text -->
+        <TextView
+            android:id="@+id/tv_onboarding1_body"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_horizontal|center_vertical"
+            android:lineSpacingExtra="3sp"
+            android:text="@string/allocate_a_"
+            android:textAppearance="@style/onboarding_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_onboarding1_header"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="18dp"/>
 
-    <!-- Skip -->
-    <TextView
-        android:id="@+id/skip"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:clickable="true"
-        android:gravity="center"
-        android:text="@string/skip"
-        android:textAppearance="@style/skip"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="18dp"/>
+        <!-- Create a budget -->
+        <TextView
+            android:id="@+id/tv_onboarding1_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center_horizontal|center_vertical"
+            android:lineSpacingExtra="1sp"
+            android:text="@string/create_a_bu"
+            android:textAppearance="@style/onboarding_header"
+            android:translationY="-0.48sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/onboarding_1"
+            android:layout_marginTop="-30dp"/>
 
-    <!-- Main image -->
-    <ImageView
-        android:id="@+id/onboarding_1"
-        android:layout_width="425dp"
-        android:layout_height="425dp"
-        android:layout_above="@+id/tv_onboarding1_header"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:background="@drawable/ic_onboarding_1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/skip"
-        android:layout_marginTop="-20dp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_onboarding1_header"/>
+        <!-- Skip -->
+        <TextView
+            android:id="@+id/skip"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/skip"
+            android:textAppearance="@style/skip"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="18dp"/>
 
-    <!-- Next button -->
-    <Button
-        android:id="@+id/btn_next"
-        android:layout_width="327dp"
-        android:layout_height="68dp"
-        android:backgroundTint="@color/FinalProj_Light"
-        android:clickable="true"
-        android:text="@string/next"
-        android:textAppearance="@style/button_light"
-        android:textColor="@color/FinalProj_Dark"
-        android:textFontWeight="500"
-        app:cornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_dots"
-        android:layout_marginTop="35dp"/>
+        <!-- Main image -->
+        <ImageView
+            android:id="@+id/onboarding_1"
+            android:layout_width="425dp"
+            android:layout_height="425dp"
+            android:layout_above="@+id/tv_onboarding1_header"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ic_onboarding_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/skip"
+            android:layout_marginTop="-20dp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_onboarding1_header"/>
 
-    <!-- Dots image -->
-    <ImageView
-        android:id="@+id/iv_dots"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/ic_dots1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_onboarding1_body"/>
+        <!-- Next button -->
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="327dp"
+            android:layout_height="68dp"
+            android:backgroundTint="@color/FinalProj_Light"
+            android:clickable="true"
+            android:text="@string/next"
+            android:textAppearance="@style/button_light"
+            android:textColor="@color/FinalProj_Dark"
+            android:textFontWeight="500"
+            app:cornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_dots"
+            android:layout_marginTop="35dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="40dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Dots image -->
+        <ImageView
+            android:id="@+id/iv_dots"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/ic_dots1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_onboarding1_body"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
