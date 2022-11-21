@@ -23,8 +23,13 @@ public class DBHelper extends SQLiteOpenHelper {
     // Table summary
     private static final String SUMMARY_TABLE_NAME = "summary";
 
-    // Table saving
+    // Table saving (for piggy bank)
     private static final String SAVING_TABLE_NAME = "saving";
+    private static final String SAVING_ID_COL = "_savingID";
+    private static final String SAVING_GOAL_COL = "savingGoal";
+    private static final String SAVING_GOAL_DESCRIPTION_COL = "goalDescription";
+    private static final String SAVING_NUM_COL = "savingNum";
+    private static final String SAVING_STATUS_COL = "savingStatus";
 
     // Table transaction
     private static final String TRANSACTION_TABLE_NAME = "transactionEntry";
@@ -46,8 +51,17 @@ public class DBHelper extends SQLiteOpenHelper {
                 + LAST_NAME_COL + " TEXT NOT NULL, "
                 + USERNAME_COL + " TEXT NOT NULL, "
                 + PASSCODE_COL + " TEXT NOT NULL)";
+
+        String createSavingTableQuery =
+                "CREATE TABLE " + SAVING_TABLE_NAME + " ("
+                + SAVING_ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
+                + SAVING_GOAL_COL + " TEXT NOT NULL, "
+                + SAVING_GOAL_DESCRIPTION_COL + " TEXT NOT NULL, "
+                + SAVING_NUM_COL + " FLOAT NOT NULL, "
+                + SAVING_STATUS_COL + "BOOLEAN NOT NULL);";
         // TODO: Execute "create table" queries.
         db.execSQL(createUserTableQuery);
+        db.execSQL(createSavingTableQuery);
     }
 
     @Override
