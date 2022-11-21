@@ -1,66 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".peakPasscodeRecovery.ForgotPasscode">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ic_peak_logo_small"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_peak_logo_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="50dp"/>
 
-    <TextView
-        android:id="@+id/tv_forgot_passcode"
-        style="@style/signup_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Forgot your passcode?"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        android:layout_marginTop="50dp"/>
+        <TextView
+            android:id="@+id/tv_forgot_passcode"
+            style="@style/signup_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forgot your passcode?"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2"
+            android:layout_marginTop="50dp"/>
 
-    <!-- Username TextView -->
-    <TextView
-        android:id="@+id/forgot_passcode_username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="top"
-        android:lineSpacingExtra="5sp"
-        android:text="Username"
-        android:textAppearance="@style/peak_text_input"
-        android:translationY="-2.53sp"
-        app:layout_constraintBottom_toTopOf="@+id/et_forgot_passcode_username"
-        app:layout_constraintStart_toStartOf="@+id/et_forgot_passcode_username"
-        app:layout_constraintTop_toBottomOf="@+id/tv_forgot_passcode"
-        android:layout_marginTop="36dp"/>
+        <!-- Username TextView -->
+        <TextView
+            android:id="@+id/forgot_passcode_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:lineSpacingExtra="5sp"
+            android:text="Username"
+            android:textAppearance="@style/peak_text_input"
+            android:translationY="-2.53sp"
+            app:layout_constraintBottom_toTopOf="@+id/et_forgot_passcode_username"
+            app:layout_constraintStart_toStartOf="@+id/et_forgot_passcode_username"
+            app:layout_constraintTop_toBottomOf="@+id/tv_forgot_passcode"
+            android:layout_marginTop="36dp"/>
 
-    <!-- Username EditText -->
-    <EditText
-        android:id="@+id/et_forgot_passcode_username"
-        android:layout_width="327dp"
-        android:layout_height="48dp"
-        android:background="@drawable/peak_text_input"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forgot_passcode_username"
-        android:padding="10dp"
-        android:layout_marginTop="2dp"
-        android:hint="johndoe"/>
+        <!-- Username EditText -->
+        <EditText
+            android:id="@+id/et_forgot_passcode_username"
+            android:layout_width="327dp"
+            android:layout_height="48dp"
+            android:background="@drawable/peak_text_input"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/forgot_passcode_username"
+            android:padding="10dp"
+            android:layout_marginTop="2dp"
+            android:hint="johndoe"/>
 
+        <!-- Sign Up Button -->
+        <Button
+            android:id="@+id/btn_peak_forgot_passcode"
+            android:layout_width="327dp"
+            android:layout_height="68dp"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="100dp"
+            android:backgroundTint="@color/FinalProj_Dark"
+            android:clickable="true"
+            android:text="Continue"
+            android:textAppearance="@style/button_dark"
+            android:textColor="@color/white"
+            android:textFontWeight="500"
+            app:cornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_forgot_passcode_username"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

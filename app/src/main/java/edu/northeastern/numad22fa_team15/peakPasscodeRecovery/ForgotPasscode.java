@@ -13,7 +13,7 @@ public class ForgotPasscode extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Add back button on ToolBar
+        // Back button on ToolBar to go back one page
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
