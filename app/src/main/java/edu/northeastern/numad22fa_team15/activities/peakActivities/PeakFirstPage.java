@@ -88,7 +88,7 @@ public class PeakFirstPage extends AppCompatActivity {
         displayMessageInSnackbar(view, resultMessage, Snackbar.LENGTH_SHORT);
     }
 
-    public void userUpdate(View view) {
+    public void userResetPasscode(View view) {
         closeKeyboard(this.getApplicationContext(), view);
         String username = usernameTextInputEditText.getText().toString();
         String passcode = passcodeTextInputEditText.getText().toString();
@@ -106,6 +106,24 @@ public class PeakFirstPage extends AppCompatActivity {
         String resultMessage = "Failed to update passcode.";
         if (updateResult) {
             resultMessage = "Passcode was updated.";
+        }
+        displayMessageInSnackbar(view, resultMessage, Snackbar.LENGTH_SHORT);
+    }
+
+    public void userUpdateInfo(View view) {
+        closeKeyboard(this.getApplicationContext(), view);
+        String username = usernameTextInputEditText.getText().toString();
+        String firstName = firstNameTextInputEditText.getText().toString();
+        String lastName = lastNameTextInputEditText.getText().toString();
+        if (nullOrEmptyInputChecker(username, firstName, lastName)) {
+            String message = "Username, first name, and last name inputs are required.";
+            displayMessageInSnackbar(view, message, Snackbar.LENGTH_SHORT);
+            return;
+        }
+        boolean updateResult = dbHelper.updateUserInfoTableUser(username, firstName, lastName);
+        String resultMessage = "Failed to update user info.";
+        if (updateResult) {
+            resultMessage = "User info was updated.";
         }
         displayMessageInSnackbar(view, resultMessage, Snackbar.LENGTH_SHORT);
     }

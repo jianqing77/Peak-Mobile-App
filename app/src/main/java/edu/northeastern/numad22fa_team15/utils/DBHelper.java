@@ -115,6 +115,18 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
 
     @Override
     public boolean updateUserInfoTableUser(String username, String firstName, String lastName) {
-        return false;
+        // This method does not validate user identity and should only be called on the Profile page.
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(USERNAME_COL, username);
+        values.put(FIRST_NAME_COL, firstName);
+        values.put(LAST_NAME_COL, lastName);
+
+        // Number of users should always be 1.
+        String whereClause = String.format("%s = ?", USER_ID_COL);
+        int numOfRowsImpacted = db.update(USER_TABLE_NAME, values, whereClause, new String[]{"1"});
+
+        return (numOfRowsImpacted != 0);
     }
 }
