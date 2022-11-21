@@ -75,9 +75,11 @@
 
     <!-- Next button -->
     <Button
+        android:id="@+id/btn_next"
         android:layout_width="327dp"
-        android:layout_height="65dp"
+        android:layout_height="68dp"
         android:backgroundTint="@color/FinalProj_Light"
+        android:clickable="true"
         android:text="@string/next"
         android:textAppearance="@style/button_light"
         android:textColor="@color/FinalProj_Dark"
@@ -85,20 +87,18 @@
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        android:layout_marginTop="26dp"
-        android:clickable="true"/>
+        app:layout_constraintTop_toBottomOf="@+id/iv_dots"
+        android:layout_marginTop="35dp"/>
 
     <!-- Dots image -->
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/iv_dots"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/ic_dots1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_onboarding1_body" />
-
+        app:layout_constraintTop_toBottomOf="@id/tv_onboarding1_body"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
