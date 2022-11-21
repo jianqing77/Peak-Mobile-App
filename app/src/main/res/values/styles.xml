@@ -55,15 +55,21 @@
         <item name="android:textSize">
             14sp
         </item>
-
         <item name="android:letterSpacing">
             -0.02
         </item>
-
         <item name="android:textColor">
             #667080
         </item>
+    </style>
 
+    <style name="button_dark">
+        <item name="android:textSize">
+            18sp
+        </item>
+        <item name="android:textColor">
+            #FFFFFF
+        </item>
     </style>
 
 </resources>
