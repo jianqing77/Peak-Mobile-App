@@ -56,4 +56,5 @@
     <string name="allocate_a_">Allocate a custom amount of money to each spending category for the week.</string>
     <string name="create_a_bu">Create a budget</string>
     <string name="skip">Skip</string>
+    <string name="next">Next</string>
 </resources>

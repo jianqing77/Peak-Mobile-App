@@ -27,11 +27,10 @@
     <!-- Create a budget -->
     <TextView
         android:id="@+id/tv_onboarding1_header"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
         android:gravity="center_horizontal|center_vertical"
         android:lineSpacingExtra="1sp"
         android:text="@string/create_a_bu"
@@ -39,7 +38,8 @@
         android:translationY="-0.48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/onboarding_1" />
+        app:layout_constraintTop_toBottomOf="@+id/onboarding_1"
+        android:layout_marginTop="-30dp"/>
 
     <!-- Skip -->
     <TextView
@@ -57,10 +57,11 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="18dp"/>
 
+    <!-- Main image -->
     <ImageView
         android:id="@+id/onboarding_1"
-        android:layout_width="350dp"
-        android:layout_height="400dp"
+        android:layout_width="425dp"
+        android:layout_height="425dp"
         android:layout_above="@+id/tv_onboarding1_header"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -69,12 +70,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/skip"
+        android:layout_marginTop="-20dp"
         app:layout_constraintBottom_toTopOf="@+id/tv_onboarding1_header"/>
 
+    <!-- Next button -->
     <Button
         android:layout_width="327dp"
-        android:layout_height="60dp"
-        android:backgroundTint=""/>
+        android:layout_height="65dp"
+        android:backgroundTint="@color/FinalProj_Light"
+        android:text="@string/next"
+        android:textAppearance="@style/button_light"
+        android:textColor="@color/FinalProj_Dark"
+        android:textFontWeight="500"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        android:layout_marginTop="26dp"
+        android:clickable="true"/>
+
+    <!-- Dots image -->
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/ic_dots1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_onboarding1_body" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
