@@ -102,11 +102,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="ACCOUNT"
-            app:layout_constraintStart_toStartOf="@+id/button"
+            app:layout_constraintStart_toStartOf="@+id/btn_edit_profile"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn_edit_profile"
             style="@style/onboarding_text"
             android:layout_width="351dp"
             android:layout_height="56dp"
