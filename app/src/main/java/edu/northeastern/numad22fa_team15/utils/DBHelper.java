@@ -22,6 +22,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
     // Table summary
     private static final String SUMMARY_TABLE_NAME = "summary";
+    private static final String SUMMARY_ID_COL = "_summaryID";
+    private static final String SUMMARY_START_DATE_COL = "startDate";
+    private static final String SUMMARY_END_DATE_COL = "endDate";
+    private static final String SUMMARY_TOTAL_BUDGET_COL = "totalBudget";
+    private static final String SUMMARY_CURRENT_EXPENSE_COL = "currentExpense";
+    private static final String SUMMARY_CURRENT_BALANCE_COL = "currentBalance";
 
     // Table saving (for piggy bank)
     private static final String SAVING_TABLE_NAME = "saving";
@@ -58,10 +64,21 @@ public class DBHelper extends SQLiteOpenHelper {
                 + SAVING_GOAL_COL + " TEXT NOT NULL, "
                 + SAVING_GOAL_DESCRIPTION_COL + " TEXT NOT NULL, "
                 + SAVING_NUM_COL + " FLOAT NOT NULL, "
-                + SAVING_STATUS_COL + "BOOLEAN NOT NULL);";
+                + SAVING_STATUS_COL + "BOOLEAN NOT NULL)";
+
+        String createSummaryTableQuery =
+                "CREATE TABLE " + SUMMARY_TABLE_NAME + " ("
+                + SUMMARY_ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
+                + SUMMARY_START_DATE_COL + " TEXT NOT NULL, "
+                + SUMMARY_END_DATE_COL + " TEXT NOT NULL, "
+                + SUMMARY_TOTAL_BUDGET_COL + " FLOAT NOT NULL, "
+                + SUMMARY_CURRENT_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_CURRENT_BALANCE_COL + " FLOAT NOT NULL)";
+
         // TODO: Execute "create table" queries.
         db.execSQL(createUserTableQuery);
         db.execSQL(createSavingTableQuery);
+        db.execSQL(createSummaryTableQuery);
     }
 
     @Override
@@ -69,6 +86,10 @@ public class DBHelper extends SQLiteOpenHelper {
         // TODO: This method should be updated if we change the database version number in future releases.
         String dropUserTableQuery = "DROP TABLE IF EXISTS " + USER_TABLE_NAME;
         db.execSQL(dropUserTableQuery);
+        String dropSavingTableQuery = "DROP TABLE IF EXISTS " + SAVING_TABLE_NAME;
+        db.execSQL(dropSavingTableQuery);
+        String dropSummaryTableQuery = "DROP TABLE IF EXISTS " + SUMMARY_TABLE_NAME;
+        db.execSQL(dropSummaryTableQuery);
         onCreate(db);
     }
 
