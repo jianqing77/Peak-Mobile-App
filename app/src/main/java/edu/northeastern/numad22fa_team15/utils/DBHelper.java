@@ -47,9 +47,20 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String RECEIPT_PHOTO_COL = "receiptPhoto";
     private static final String TRANSACTION_FK_SUMMARY_ID_COL = "fk_summaryID";
 
-    private static final String CATEGORY_ENUM = "ENUM('DINING', 'GROCERIES', 'SHOPPING', 'LIVING', "
-            + "'ENTERTAINMENT', 'EDUCATION', 'BEAUTY', 'TRANSPORTATION', "
-            + "'HEALTH', 'TRAVEL', 'PET', 'OTHER')";
+    private static final String CATEGORY_ENUM = "Enum('" + Category.DINING.name() + "', '"
+            + Category.GROCERIES.name() + "', '"
+            + Category.SHOPPING.name() + "', '"
+            + Category.LIVING.name() + "', '"
+            + Category.ENTERTAINMENT.name() + "', '"
+            + Category.EDUCATION.name() + "', '"
+            + Category.BEAUTY.name() + "', '"
+            + Category.TRANSPORTATION.name() + "', '"
+            + Category.HEALTH.name() + "', '"
+            + Category.TRAVEL.name() + "', '"
+            + Category.PET.name() + "', '"
+            + Category.OTHER.name() + "')";
+
+
 
     public DBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
