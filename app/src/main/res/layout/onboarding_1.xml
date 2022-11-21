@@ -7,7 +7,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <!-- Onboarding text -->
         <TextView
@@ -66,6 +66,7 @@
             android:id="@+id/onboarding_1"
             android:layout_width="425dp"
             android:layout_height="425dp"
+            android:contentDescription="@string/two_people_budgeting"
             android:layout_above="@+id/tv_onboarding1_header"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
@@ -79,7 +80,7 @@
 
         <!-- Next button -->
         <Button
-            android:id="@+id/btn_next"
+            android:id="@+id/btn_onboarding1"
             android:layout_width="327dp"
             android:layout_height="68dp"
             android:backgroundTint="@color/FinalProj_Light"
@@ -101,6 +102,7 @@
             android:id="@+id/iv_dots"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/dots_1"
             android:layout_marginTop="25dp"
             android:background="@drawable/ic_dots1"
             app:layout_constraintEnd_toEndOf="parent"
