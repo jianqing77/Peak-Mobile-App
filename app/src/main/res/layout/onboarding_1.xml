@@ -47,19 +47,19 @@
 
         <!-- Skip -->
         <TextView
-            android:id="@+id/skip"
+            android:id="@+id/onboarding1_skip"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:clickable="true"
-            android:gravity="center"
+            android:gravity="center_horizontal|center_vertical"
             android:text="@string/skip"
             android:textAppearance="@style/skip"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="18dp"/>
+            android:layout_marginTop="10dp"/>
 
         <!-- Main image -->
         <ImageView
@@ -74,7 +74,7 @@
             android:background="@drawable/ic_onboarding_1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/skip"
+            app:layout_constraintTop_toBottomOf="@id/onboarding1_skip"
             android:layout_marginTop="-20dp"
             app:layout_constraintBottom_toTopOf="@+id/tv_onboarding1_header"/>
 
@@ -92,14 +92,14 @@
             app:cornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_dots"
+            app:layout_constraintTop_toBottomOf="@+id/iv_dots1"
             android:layout_marginTop="35dp"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="40dp"/>
 
         <!-- Dots image -->
         <ImageView
-            android:id="@+id/iv_dots"
+            android:id="@+id/iv_dots1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/dots_1"
