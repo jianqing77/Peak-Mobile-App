@@ -95,6 +95,32 @@
             app:layout_constraintTop_toTopOf="@+id/textView"
             android:layout_marginRight="25dp"/>
 
+        <TextView
+            android:id="@+id/tv_account"
+            style="@style/profile_page_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="ACCOUNT"
+            app:layout_constraintStart_toStartOf="@+id/button"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <Button
+            android:id="@+id/button"
+            style="@style/onboarding_text"
+            android:layout_width="351dp"
+            android:layout_height="56dp"
+            android:backgroundTint="@color/white"
+            android:text="Edit profile"
+            android:textAllCaps="false"
+            android:textColor="@color/FinalProj_Dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_account"
+            android:layout_marginTop="10dp"
+            android:clickable="true"/>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
