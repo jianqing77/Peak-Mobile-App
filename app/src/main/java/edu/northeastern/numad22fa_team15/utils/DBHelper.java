@@ -1,10 +1,14 @@
 package edu.northeastern.numad22fa_team15.utils;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DBHelper extends SQLiteOpenHelper {
+import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
+
+public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
 
     // Database name
     private static final String DB_NAME = "peakDB";
@@ -125,4 +129,71 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    @Override
+    public boolean addUserTableUser(String username, String firstName, String lastName, String passcode) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(USERNAME_COL, username);
+        values.put(FIRST_NAME_COL, firstName);
+        values.put(LAST_NAME_COL, lastName);
+        values.put(PASSCODE_COL, passcode);
+
+        long result = db.insert(USER_TABLE_NAME, null, values);
+        return (result != -1);
+    }
+
+    @Override
+    public boolean confirmUserTableUser(String usernameInput, String passcodeInput) {
+        Cursor cursor = getUserCursor();
+
+        boolean confirmResult = false;
+        if (cursor.moveToFirst()) {
+            String username = cursor.getString(3);
+            String passcode = cursor.getString(4);
+            if (usernameInput.equals(username) && passcodeInput.equals(passcode)) {
+                confirmResult = true;
+            }
+        }
+        cursor.close();
+        return confirmResult;
+    }
+
+    private Cursor getUserCursor() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        // Hardcoded to be 1 because we will only have one user for the local SQLite database.
+        String getUserQuery = String.format("SELECT * FROM %s WHERE %s = 1", USER_TABLE_NAME, USER_ID_COL);
+        Cursor cursor = db.rawQuery(getUserQuery, null);
+        return cursor;
+    }
+
+    @Override
+    public boolean updateUserPasswordTableUser(String usernameInput, String passcodeInput) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(PASSCODE_COL, passcodeInput);
+
+        String whereClause = String.format("%s = ?", USERNAME_COL);
+        int numOfRowsImpacted = db.update(USER_TABLE_NAME, values, whereClause, new String[]{usernameInput});
+
+        return (numOfRowsImpacted != 0);
+    }
+
+    @Override
+    public boolean updateUserInfoTableUser(String username, String firstName, String lastName) {
+        // This method does not validate user identity and should only be called on the Profile page.
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(USERNAME_COL, username);
+        values.put(FIRST_NAME_COL, firstName);
+        values.put(LAST_NAME_COL, lastName);
+
+        // Number of users should always be 1.
+        String whereClause = String.format("%s = ?", USER_ID_COL);
+        int numOfRowsImpacted = db.update(USER_TABLE_NAME, values, whereClause, new String[]{"1"});
+
+        return (numOfRowsImpacted != 0);
+    }
 }
