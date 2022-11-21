@@ -71,5 +71,10 @@
         app:layout_constraintTop_toBottomOf="@id/skip"
         app:layout_constraintBottom_toTopOf="@+id/tv_onboarding1_header"/>
 
+    <Button
+        android:layout_width="327dp"
+        android:layout_height="60dp"
+        android:backgroundTint=""/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
