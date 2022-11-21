@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.peakSignUp.PeakSignUp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="112dp"
+            android:layout_height="124dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/ic_peak_logo_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_sign_up"
+            style="@style/onboarding_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            android:layout_marginTop="25dp"/>
+
+        <View
+            android:id="@+id/sign_up_line"
+            android:layout_width="91dp"
+            android:layout_height="3dp"
+            android:background="@color/FinalProj_Primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_sign_up"
+            android:layout_marginTop="7dp"/>
+
+        <TextView
+            android:id="@+id/sign_up_username"
+            android:layout_width="66dp"
+            android:layout_height="22dp"
+            android:gravity="top"
+            android:lineSpacingExtra="5sp"
+            android:text="Username"
+            android:textAppearance="@style/peak_text_input"
+            android:translationY="-2.53sp"
+            app:layout_constraintBottom_toTopOf="@+id/textInputEditText"
+            app:layout_constraintStart_toStartOf="@+id/textInputEditText"
+            app:layout_constraintTop_toBottomOf="@+id/sign_up_line"
+            android:layout_marginTop="30dp"/>
+
+
+        <EditText
+            android:id="@+id/textInputEditText"
+            android:layout_width="327dp"
+            android:layout_height="48dp"
+            android:background="@drawable/peak_text_input"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sign_up_username"/>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

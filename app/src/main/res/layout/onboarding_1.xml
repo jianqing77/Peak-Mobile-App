@@ -104,7 +104,7 @@
             android:id="@+id/iv_dots1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/dots_1"
+            android:contentDescription="@string/dots"
             android:layout_marginTop="25dp"
             android:background="@drawable/ic_dots1"
             app:layout_constraintEnd_toEndOf="parent"
