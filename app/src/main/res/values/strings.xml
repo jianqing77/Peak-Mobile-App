@@ -53,4 +53,16 @@
     <string name="passwordHint">Password (No need to fill in)</string>
     <string name="already_have_an_account">Already have an account?</string>
     <string name="peak">Peak</string>
+    <string name="allocate_a_">Allocate a custom amount of money to each spending category for the week.</string>
+    <string name="create_a_bu">Create a budget</string>
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
+    <string name="two_people_budgeting">Two people budgetting</string>
+    <string name="dots">Dots</string>
+    <string name="enter_your_">Enter your spendings and capture images of your receipts. We calculate tip, too!</string>
+    <string name="track_your_">Track your expenses</string>
+    <string name="tracking_expenses">Tracking expenses</string>
+    <string name="back">Back</string>
+    <string name="peak_sign_up">Sign Up</string>
+    <string name="thank_you_for_signing_up">Thank you for signing up!</string>
 </resources>
