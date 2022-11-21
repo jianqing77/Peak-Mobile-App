@@ -1,4 +1,4 @@
-package edu.northeastern.numad22fa_team15.activities.peakSignUp;
+package edu.northeastern.numad22fa_team15.peakSignUp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
