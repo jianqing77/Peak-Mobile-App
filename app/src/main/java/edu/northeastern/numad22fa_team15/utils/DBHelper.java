@@ -40,8 +40,16 @@ public class DBHelper extends SQLiteOpenHelper {
     // Table transaction
     private static final String TRANSACTION_TABLE_NAME = "transactionEntry";
     private static final String TRANSACTION_ID_COL = "_transactionId";
-    private static final String COST_COL = "cost";
+    private static final String EXPENSE_COL = "expense";
+    private static final String CATEGORY_COL = "category";
     private static final String DESCRIPTION_COL = "description";
+    private static final String TRANSACTION_DATE_COL = "transactionDate";
+    private static final String RECEIPT_PHOTO_COL = "receiptPhoto";
+    private static final String TRANSACTION_FK_SUMMARY_ID_COL = "fk_summaryID";
+
+    private static final String CATEGORY_ENUM = "ENUM('DINING', 'GROCERIES', 'SHOPPING', 'LIVING', "
+            + "'ENTERTAINMENT', 'EDUCATION', 'BEAUTY', 'TRANSPORTATION', "
+            + "'HEALTH', 'TRAVEL', 'PET', 'OTHER')";
 
     public DBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -75,10 +83,23 @@ public class DBHelper extends SQLiteOpenHelper {
                 + SUMMARY_CURRENT_EXPENSE_COL + " FLOAT NOT NULL, "
                 + SUMMARY_CURRENT_BALANCE_COL + " FLOAT NOT NULL)";
 
+        String createTransactionTableQuert =
+                "CREATE TABLE " + TRANSACTION_TABLE_NAME + " ("
+                + TRANSACTION_ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
+                + EXPENSE_COL + " FLOAT NOT NULL, "
+                + CATEGORY_COL + " " + CATEGORY_ENUM + " NOT NULL, "
+                + DESCRIPTION_COL + " TEXT NOT NULL, "
+                + TRANSACTION_DATE_COL + " TEXT NOT NULL, "
+                + RECEIPT_PHOTO_COL + "BLOB"
+                + TRANSACTION_FK_SUMMARY_ID_COL + "INT NOT NULL, "
+                + " FOREIGN KEY (" + TRANSACTION_FK_SUMMARY_ID_COL + ") INT REFERENCES "
+                        + SUMMARY_TABLE_NAME + "(" + SUMMARY_ID_COL + "))";
+
         // TODO: Execute "create table" queries.
         db.execSQL(createUserTableQuery);
         db.execSQL(createSavingTableQuery);
         db.execSQL(createSummaryTableQuery);
+        db.execSQL(createTransactionTableQuert);
     }
 
     @Override
@@ -90,6 +111,8 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(dropSavingTableQuery);
         String dropSummaryTableQuery = "DROP TABLE IF EXISTS " + SUMMARY_TABLE_NAME;
         db.execSQL(dropSummaryTableQuery);
+        String dropTransactionTableQuery = "DROP TABLE IF EXISTS " + TRANSACTION_TABLE_NAME;
+        db.execSQL(dropTransactionTableQuery);
         onCreate(db);
     }
 
