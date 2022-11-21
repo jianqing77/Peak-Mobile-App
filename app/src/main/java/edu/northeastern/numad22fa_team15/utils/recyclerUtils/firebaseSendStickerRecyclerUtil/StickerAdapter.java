@@ -1,6 +1,6 @@
-package edu.northeastern.numad22fa_team15.firebaseSendStickerRecyclerUtil;
+package edu.northeastern.numad22fa_team15.utils.recyclerUtils.firebaseSendStickerRecyclerUtil;
 
-import static edu.northeastern.numad22fa_team15.firebaseFriendTvRecyclerUtil.FriendTvAdapter.sendStickerDialog;
+import static edu.northeastern.numad22fa_team15.utils.recyclerUtils.firebaseFriendTvRecyclerUtil.FriendTvAdapter.sendStickerDialog;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -23,7 +23,7 @@ import java.util.Date;
 import java.util.List;
 
 import edu.northeastern.numad22fa_team15.R;
-import edu.northeastern.numad22fa_team15.model.StickerRecord;
+import edu.northeastern.numad22fa_team15.models.firebaseModels.StickerRecord;
 
 public class StickerAdapter extends RecyclerView.Adapter<StickerViewHolder> {
 

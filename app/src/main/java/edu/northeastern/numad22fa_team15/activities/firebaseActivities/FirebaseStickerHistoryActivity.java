@@ -22,8 +22,8 @@ import java.util.List;
 import java.util.Map;
 
 import edu.northeastern.numad22fa_team15.R;
-import edu.northeastern.numad22fa_team15.firebaseStickerHistoryRecyclerUtil.StickerHistoryAdapter;
-import edu.northeastern.numad22fa_team15.model.StickerRecord;
+import edu.northeastern.numad22fa_team15.utils.recyclerUtils.firebaseStickerHistoryRecyclerUtil.StickerHistoryAdapter;
+import edu.northeastern.numad22fa_team15.models.firebaseModels.StickerRecord;
 
 public class FirebaseStickerHistoryActivity extends AppCompatActivity {
 

@@ -52,7 +52,7 @@
     <string name="new_user">New User?</string>
     <string name="passwordHint">Password (No need to fill in)</string>
     <string name="already_have_an_account">Already have an account?</string>
-
+    <string name="peak">Peak</string>
     <string name="allocate_a_">Allocate a custom amount of money to each spending category for the week.</string>
     <string name="create_a_bu">Create a budget</string>
     <string name="skip">Skip</string>

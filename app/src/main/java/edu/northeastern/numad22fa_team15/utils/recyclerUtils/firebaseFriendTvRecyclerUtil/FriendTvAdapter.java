@@ -1,4 +1,4 @@
-package edu.northeastern.numad22fa_team15.firebaseFriendTvRecyclerUtil;
+package edu.northeastern.numad22fa_team15.utils.recyclerUtils.firebaseFriendTvRecyclerUtil;
 
 import static edu.northeastern.numad22fa_team15.activities.firebaseActivities.FirebaseFriendListActivity.currentUsername;
 
@@ -18,9 +18,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import edu.northeastern.numad22fa_team15.R;
-import edu.northeastern.numad22fa_team15.firebaseSendStickerRecyclerUtil.StickerAdapter;
-import edu.northeastern.numad22fa_team15.model.Friend;
-import edu.northeastern.numad22fa_team15.model.StickerRecord;
+import edu.northeastern.numad22fa_team15.utils.recyclerUtils.firebaseSendStickerRecyclerUtil.StickerAdapter;
+import edu.northeastern.numad22fa_team15.models.firebaseModels.Friend;
+import edu.northeastern.numad22fa_team15.models.firebaseModels.StickerRecord;
 
 public class FriendTvAdapter extends RecyclerView.Adapter<FriendTvViewHolder> {
 

@@ -62,6 +62,9 @@
             android:name=".activities.firebaseActivities.FirebaseStickerHistoryActivity"
             android:configChanges="orientation|screenSize" />
         <activity
+            android:name=".activities.peakActivities.PeakFirstPage"
+            android:configChanges="orientation|screenSize" />
+        <activity
             android:name=".activities.AboutTeamActivity"
             android:configChanges="orientation|screenSize" />
 
