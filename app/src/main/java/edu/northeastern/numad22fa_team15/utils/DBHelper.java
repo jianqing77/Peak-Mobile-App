@@ -60,8 +60,6 @@ public class DBHelper extends SQLiteOpenHelper {
             + Category.PET.name() + "', '"
             + Category.OTHER.name() + "')";
 
-
-
     public DBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
@@ -94,7 +92,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 + SUMMARY_CURRENT_EXPENSE_COL + " FLOAT NOT NULL, "
                 + SUMMARY_CURRENT_BALANCE_COL + " FLOAT NOT NULL)";
 
-        String createTransactionTableQuert =
+        String createTransactionTableQuery =
                 "CREATE TABLE " + TRANSACTION_TABLE_NAME + " ("
                 + TRANSACTION_ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
                 + EXPENSE_COL + " FLOAT NOT NULL, "
@@ -110,7 +108,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(createUserTableQuery);
         db.execSQL(createSavingTableQuery);
         db.execSQL(createSummaryTableQuery);
-        db.execSQL(createTransactionTableQuert);
+        db.execSQL(createTransactionTableQuery);
     }
 
     @Override
