@@ -64,6 +64,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
 
     @Override
     public boolean addUserTableUser(String username, String firstName, String lastName, String passcode) {
+        // TODO: User table trigger. Add constraint so that user table has only one row.
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
