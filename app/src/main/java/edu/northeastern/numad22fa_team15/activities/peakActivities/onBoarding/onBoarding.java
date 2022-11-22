@@ -14,6 +14,9 @@ import android.widget.TextView;
 
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakFirstPage;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.peakSignUp.PeakSignUp;
+import edu.northeastern.numad22fa_team15.utils.DBHelper;
+import edu.northeastern.numad22fa_team15.utils.IDBHelper;
 
 public class onBoarding extends AppCompatActivity {
 
@@ -24,13 +27,18 @@ public class onBoarding extends AppCompatActivity {
     Button backBtn, nextBtn, skipBtn;
     TextView[] dots;
     ViewPagerAdapter viewPagerAdapter;
+    private IDBHelper dbHelper;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_boarding);
-
+//        dbHelper = new DBHelper(PeakFirstPage.this);
+//        if (dbHelper.retrieveUserInfoTableUser() == null) {
+//            Intent intent = new Intent(PeakFirstPage.this, onBoarding.class);
+//            startActivity(intent);
+//        }
         backBtn = findViewById(R.id.btn_back);
         nextBtn = findViewById(R.id.btn_next);
         skipBtn = findViewById(R.id.btn_skip);
@@ -129,7 +137,7 @@ public class onBoarding extends AppCompatActivity {
         } else {
             // if user scroll to the final page, jump to the sign Up page
             // TODO: change PeakFirstPage.class correspondingly by the signup page
-            Intent i = new Intent(onBoarding.this, PeakFirstPage.class);
+            Intent i = new Intent(onBoarding.this, PeakSignUp.class);
             startActivity(i);
             finish();
         }
@@ -140,7 +148,7 @@ public class onBoarding extends AppCompatActivity {
      */
     public void skipToEnd(View view) {
         // TODO: change  PeakFirstPage.class correspondingly by the signup page
-        Intent i = new Intent(onBoarding.this, PeakFirstPage.class);
+        Intent i = new Intent(onBoarding.this, PeakSignUp.class);
         startActivity(i);
         finish();
 

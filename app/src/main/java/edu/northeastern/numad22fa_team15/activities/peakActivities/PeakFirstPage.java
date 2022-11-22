@@ -29,6 +29,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.io.ByteArrayOutputStream;
 
 import edu.northeastern.numad22fa_team15.R;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.onBoarding.onBoarding;
 import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
@@ -53,7 +54,6 @@ public class PeakFirstPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.v(TAG, "OnCreate()");
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_peak_first_page);
 
@@ -66,7 +66,7 @@ public class PeakFirstPage extends AppCompatActivity {
 
         profilePictureImageView = (ImageView) findViewById(R.id.profile_picture_image_view);
         // TODO: Retrieve profile picture from user table
-        setProfilePicture();
+//        setProfilePicture();
     }
 
     private void setProfilePicture() {

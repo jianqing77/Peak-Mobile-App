@@ -43,10 +43,10 @@
             android:name=".peakPasscodeRecovery.ForgotPasscode"
             android:exported="false" />
         <activity
-            android:name=".peakSignUp.PeakSignUpConfirmation"
+            android:name=".activities.peakActivities.peakSignUp.PeakSignUpConfirmation"
             android:exported="false" />
         <activity
-            android:name=".peakSignUp.PeakSignUp"
+            android:name=".activities.peakActivities.peakSignUp.PeakSignUp"
             android:exported="false" />
         <activity
             android:name=".activities.MainActivity"
@@ -54,7 +54,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

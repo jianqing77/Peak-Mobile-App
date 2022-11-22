@@ -27,12 +27,6 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
 
     // Table summary
     private static final String SUMMARY_TABLE_NAME = "summary";
-
-    // Table saving
-    private static final String SAVING_TABLE_NAME = "saving";
-
-    // Table summary
-    private static final String SUMMARY_TABLE_NAME = "summary";
     private static final String SUMMARY_ID_COL = "_summaryID";
     private static final String SUMMARY_START_DATE_COL = "startDate";
     private static final String SUMMARY_END_DATE_COL = "endDate";
@@ -55,7 +49,6 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
     private static final String DESCRIPTION_COL = "description";
     private static final String EXPENSE_COL = "expense";
     private static final String CATEGORY_COL = "category";
-    private static final String DESCRIPTION_COL = "description";
     private static final String TRANSACTION_DATE_COL = "transactionDate";
     private static final String RECEIPT_PHOTO_COL = "receiptPhoto";
     private static final String TRANSACTION_FK_SUMMARY_ID_COL = "fk_summaryID";
@@ -91,7 +84,6 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
                 + "CHECK (" + USER_ID_COL + " < 2));";
         // TODO: Execute "create table" queries.
         db.execSQL(createUserTableQuery);
-                + PASSCODE_COL + " TEXT NOT NULL)";
 
         String createSavingTableQuery =
                 "CREATE TABLE " + SAVING_TABLE_NAME + " ("
@@ -123,10 +115,10 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
                         + SUMMARY_TABLE_NAME + "(" + SUMMARY_ID_COL + "))";
 
         // TODO: Execute "create table" queries.
-        db.execSQL(createUserTableQuery);
+//        db.execSQL(createUserTableQuery);
         db.execSQL(createSavingTableQuery);
         db.execSQL(createSummaryTableQuery);
-        db.execSQL(createTransactionTableQuery);
+//        db.execSQL(createTransactionTableQuery);
     }
 
     @Override

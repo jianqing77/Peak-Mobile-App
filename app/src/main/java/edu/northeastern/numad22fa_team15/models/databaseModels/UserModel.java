@@ -15,8 +15,6 @@ public class UserModel {
     private byte[] profilePicture;
 
     public UserModel(String firstName, String lastName, String username, String passcode, byte[] profilePicture) {
-
-    public UserModel(String firstName, String lastName, String username, String passcode) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
