@@ -17,6 +17,7 @@ import edu.northeastern.numad22fa_team15.R;
 public class EditProfile extends AppCompatActivity {
 
     ImageView bottomsheet;
+    ImageView profilePicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,8 @@ public class EditProfile extends AppCompatActivity {
         setContentView(R.layout.edit_profile);
 
         bottomsheet = findViewById(R.id.btn_edit_profile_picture);
+        profilePicture = findViewById(R.id.profile_picture);
+
         bottomsheet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,6 +62,7 @@ public class EditProfile extends AppCompatActivity {
 
                 // TODO: access photo album to choose photo
 
+
             }
         });
 
@@ -68,6 +72,7 @@ public class EditProfile extends AppCompatActivity {
 
                 // TODO: delete current photo.
                 //  Should not delete photo if current profile picture is default avatar.
+                profilePicture.setImageResource(R.drawable.ic_anonymous_person_24);
 
             }
         });
