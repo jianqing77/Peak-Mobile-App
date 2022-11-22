@@ -1,210 +1,248 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".peakProfile.ProfilePage">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        tools:context=".peakProfile.ProfilePage">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cv_profile_picture"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_profile_picture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                app:cardCornerRadius="160dp"
+                app:cardPreventCornerOverlap="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/profile_picture"
+                    android:layout_width="77dp"
+                    android:layout_height="77dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_peak_logo_small"/>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tv_profile_full_name"
+                style="@style/default_page_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Full Name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cv_profile_picture"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/tv_profile_username"
+                style="@style/default_page_italicized"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="username"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_profile_full_name"
+                android:layout_marginTop="5dp"/>
+
+            <View
+                android:id="@+id/profile_divider"
+                android:layout_width="315dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="18dp"
+                android:background="@color/FinalProj_Primary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_profile_username" />
+
+            <TextView
+                android:id="@+id/textView"
+                style="@style/onboarding_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Your current budget is "
+                app:layout_constraintEnd_toStartOf="@id/profile_budget"
+                app:layout_constraintStart_toStartOf="@+id/profile_divider"
+                app:layout_constraintTop_toBottomOf="@+id/profile_divider"
+                android:layout_marginLeft="25dp"/>
+
+            <TextView
+                android:id="@+id/profile_budget"
+                style="@style/onboarding_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$2500"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/textView"
+                app:layout_constraintTop_toTopOf="@+id/textView"
+                app:layout_constraintEnd_toStartOf="@id/textView2"/>
+
+            <TextView
+                android:id="@+id/textView2"
+                style="@style/onboarding_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" / month"
+                app:layout_constraintEnd_toEndOf="@+id/profile_divider"
+                app:layout_constraintStart_toEndOf="@+id/profile_budget"
+                app:layout_constraintTop_toTopOf="@+id/textView"
+                android:layout_marginRight="25dp"/>
+
+            <TextView
+                android:id="@+id/tv_account"
+                style="@style/profile_page_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="ACCOUNT"
+                app:layout_constraintStart_toStartOf="@+id/btn_edit_profile"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <Button
+                android:id="@+id/btn_edit_profile"
+                style="@style/onboarding_text"
+                android:layout_width="351dp"
+                android:layout_height="56dp"
+                android:backgroundTint="@color/FinalProj_Light"
+                android:text="Edit profile"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_account"
+                android:layout_marginTop="10dp"
+                android:clickable="true"/>
+
+            <Button
+                android:id="@+id/btn_edit_budget"
+                style="@style/onboarding_text"
+                android:layout_width="351dp"
+                android:layout_height="56dp"
+                android:backgroundTint="@color/FinalProj_Light"
+                android:text="Edit budget"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_edit_profile"
+                android:layout_marginTop="5dp"
+                android:clickable="true"/>
+
+            <Button
+                android:id="@+id/btn_change_passcode"
+                style="@style/onboarding_text"
+                android:layout_width="351dp"
+                android:layout_height="56dp"
+                android:backgroundTint="@color/FinalProj_Light"
+                android:text="Change passcode"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_edit_budget"
+                android:layout_marginTop="5dp"
+                android:clickable="true"/>
+
+            <TextView
+                android:id="@+id/tv_security_privacy"
+                style="@style/profile_page_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="SECURITY AND PRIVACY"
+                app:layout_constraintStart_toStartOf="@+id/btn_edit_profile"
+                app:layout_constraintTop_toBottomOf="@+id/btn_change_passcode" />
+
+            <Button
+                android:id="@+id/btn_security_settings"
+                style="@style/onboarding_text"
+                android:layout_width="351dp"
+                android:layout_height="56dp"
+                android:backgroundTint="@color/FinalProj_Light"
+                android:text="Security settings"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_security_privacy"
+                android:layout_marginTop="10dp"
+                android:clickable="true"/>
+
+            <Button
+                android:id="@+id/btn_terms_conditions"
+                style="@style/onboarding_text"
+                android:layout_width="351dp"
+                android:layout_height="56dp"
+                android:backgroundTint="@color/FinalProj_Light"
+                android:text="Terms and Conditions"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_security_settings"
+                android:layout_marginTop="5dp"
+                android:clickable="true"/>
+
+            <TextView
+                android:id="@+id/btn_reset_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:clickable="true"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:text="Reset account"
+                android:textColor="@color/red"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_terms_conditions"
+                app:layout_goneMarginBottom="20dp"
+                app:layout_goneMarginTop="16dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:id="@+id/bottom_app_bar"
+            app:fabCradleMargin="10dp"
+            app:fabCradleRoundedCornerRadius="10dp"
+            app:fabCradleVerticalOffset="10dp">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/bottom_navigation_id"
+                android:layout_marginRight="16dp"
+                app:menu="@menu/bottom_nav_menu"
+                android:background="@drawable/nav_transparent_background"/>
+
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            app:cardCornerRadius="160dp"
-            app:cardPreventCornerOverlap="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:id="@+id/nav_fab"
+            android:src="@drawable/ic_nav_add"
+            app:layout_anchor="@id/bottom_app_bar"
+            android:backgroundTint="@color/FinalProj_Primary"/>
 
-            <ImageView
-                android:id="@+id/profile_picture"
-                android:layout_width="77dp"
-                android:layout_height="77dp"
-                android:layout_gravity="center"
-                android:background="@drawable/ic_peak_logo_small"/>
-        </androidx.cardview.widget.CardView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-        <TextView
-            android:id="@+id/tv_profile_full_name"
-            style="@style/default_page_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Full Name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cv_profile_picture"
-            android:layout_marginTop="10dp"/>
-
-        <TextView
-            android:id="@+id/tv_profile_username"
-            style="@style/default_page_italicized"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="username"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_profile_full_name"
-            android:layout_marginTop="5dp"/>
-
-        <View
-            android:id="@+id/profile_divider"
-            android:layout_width="315dp"
-            android:layout_height="2dp"
-            android:layout_marginTop="18dp"
-            android:background="@color/FinalProj_Primary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_profile_username" />
-
-        <TextView
-            android:id="@+id/textView"
-            style="@style/onboarding_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Your current budget is "
-            app:layout_constraintEnd_toStartOf="@id/profile_budget"
-            app:layout_constraintStart_toStartOf="@+id/profile_divider"
-            app:layout_constraintTop_toBottomOf="@+id/profile_divider"
-            android:layout_marginLeft="25dp"/>
-
-        <TextView
-            android:id="@+id/profile_budget"
-            style="@style/onboarding_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="$2500"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/textView"
-            app:layout_constraintTop_toTopOf="@+id/textView"
-            app:layout_constraintEnd_toStartOf="@id/textView2"/>
-
-        <TextView
-            android:id="@+id/textView2"
-            style="@style/onboarding_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" / month"
-            app:layout_constraintEnd_toEndOf="@+id/profile_divider"
-            app:layout_constraintStart_toEndOf="@+id/profile_budget"
-            app:layout_constraintTop_toTopOf="@+id/textView"
-            android:layout_marginRight="25dp"/>
-
-        <TextView
-            android:id="@+id/tv_account"
-            style="@style/profile_page_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="ACCOUNT"
-            app:layout_constraintStart_toStartOf="@+id/btn_edit_profile"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-        <Button
-            android:id="@+id/btn_edit_profile"
-            style="@style/onboarding_text"
-            android:layout_width="351dp"
-            android:layout_height="56dp"
-            android:backgroundTint="@color/FinalProj_Light"
-            android:text="Edit profile"
-            android:textAllCaps="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_account"
-            android:layout_marginTop="10dp"
-            android:clickable="true"/>
-
-        <Button
-            android:id="@+id/btn_edit_budget"
-            style="@style/onboarding_text"
-            android:layout_width="351dp"
-            android:layout_height="56dp"
-            android:backgroundTint="@color/FinalProj_Light"
-            android:text="Edit budget"
-            android:textAllCaps="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_edit_profile"
-            android:layout_marginTop="5dp"
-            android:clickable="true"/>
-
-        <Button
-            android:id="@+id/btn_change_passcode"
-            style="@style/onboarding_text"
-            android:layout_width="351dp"
-            android:layout_height="56dp"
-            android:backgroundTint="@color/FinalProj_Light"
-            android:text="Change passcode"
-            android:textAllCaps="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_edit_budget"
-            android:layout_marginTop="5dp"
-            android:clickable="true"/>
-
-        <TextView
-            android:id="@+id/tv_security_privacy"
-            style="@style/profile_page_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="SECURITY AND PRIVACY"
-            app:layout_constraintStart_toStartOf="@+id/btn_edit_profile"
-            app:layout_constraintTop_toBottomOf="@+id/btn_change_passcode" />
-
-        <Button
-            android:id="@+id/btn_security_settings"
-            style="@style/onboarding_text"
-            android:layout_width="351dp"
-            android:layout_height="56dp"
-            android:backgroundTint="@color/FinalProj_Light"
-            android:text="Security settings"
-            android:textAllCaps="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_security_privacy"
-            android:layout_marginTop="10dp"
-            android:clickable="true"/>
-
-        <Button
-            android:id="@+id/btn_terms_conditions"
-            style="@style/onboarding_text"
-            android:layout_width="351dp"
-            android:layout_height="56dp"
-            android:backgroundTint="@color/FinalProj_Light"
-            android:text="Terms and Conditions"
-            android:textAllCaps="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_security_settings"
-            android:layout_marginTop="5dp"
-            android:clickable="true"/>
-
-        <TextView
-            android:id="@+id/btn_reset_account"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:clickable="true"
-            android:minHeight="48dp"
-            android:gravity="center"
-            android:text="Reset account"
-            android:textColor="@color/red"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_terms_conditions"
-            app:layout_goneMarginTop="16dp"
-            app:layout_goneMarginBottom="20dp"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

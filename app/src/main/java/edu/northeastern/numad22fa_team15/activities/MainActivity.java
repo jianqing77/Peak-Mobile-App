@@ -13,6 +13,7 @@ import edu.northeastern.numad22fa_team15.activities.movieApiActivities.MovieSear
 import edu.northeastern.numad22fa_team15.peakProfile.ChangeProfilePicture;
 import edu.northeastern.numad22fa_team15.peakProfile.EditProfile;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakFirstPage;
+import edu.northeastern.numad22fa_team15.peakProfile.ProfilePage;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view view
      */
     public void changeProfilePictureActivity(View view) {
-        Intent intent = new Intent(getApplicationContext(), EditProfile.class);
+        Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
         startActivity(intent);
     }
 
