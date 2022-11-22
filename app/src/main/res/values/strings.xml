@@ -71,6 +71,7 @@
     <string name="back">Back</string>
     <string name="peak_sign_up">Sign Up</string>
     <string name="thank_you_for_signing_up">Thank you for signing up!</string>
+    <string name="peak">Peak</string>
     <string name="on_boarding">On Boarding</string>
     <string name="get_started">Get Started!</string>
 </resources>

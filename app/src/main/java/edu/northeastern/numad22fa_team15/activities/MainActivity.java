@@ -10,6 +10,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.activities.firebaseActivities.FirebaseSignUpActivity;
 import edu.northeastern.numad22fa_team15.activities.movieApiActivities.MovieSearchActivityWithRecyclerView;
+import edu.northeastern.numad22fa_team15.peakProfile.ChangeProfilePicture;
+import edu.northeastern.numad22fa_team15.peakProfile.EditProfile;
+
+import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakFirstPage;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakFirstPage;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.onBoarding.onBoarding;
 
@@ -69,6 +73,15 @@ public class MainActivity extends AppCompatActivity {
      */
     public void aboutTeamActivity(View view) {
         Intent intent = new Intent(getApplicationContext(), AboutTeamActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Clicking the BUTTON button will start the EditProfile activity.
+     * @param view view
+     */
+    public void changeProfilePictureActivity(View view) {
+        Intent intent = new Intent(getApplicationContext(), EditProfile.class);
         startActivity(intent);
     }
 

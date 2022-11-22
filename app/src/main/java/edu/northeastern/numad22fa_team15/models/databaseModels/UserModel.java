@@ -12,12 +12,16 @@ public class UserModel {
     private String lastName;
     private String username;
     private String passcode;
+    private byte[] profilePicture;
+
+    public UserModel(String firstName, String lastName, String username, String passcode, byte[] profilePicture) {
 
     public UserModel(String firstName, String lastName, String username, String passcode) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.passcode = passcode;
+        this.profilePicture = profilePicture;
     }
 
     public int getUserId() {
@@ -58,6 +62,14 @@ public class UserModel {
 
     public void setPasscode(String passcode) {
         this.passcode = passcode;
+    }
+
+    public byte[] getProfilePicture() {
+        return this.profilePicture;
+    }
+
+    public void setProfilePicture(byte[] profilePicture) {
+        this.profilePicture = profilePicture;
     }
 
 }
