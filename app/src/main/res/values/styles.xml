@@ -127,7 +127,7 @@
 
     <style name="profile_page_title">
         <item name="android:textSize">
-            24sp
+            28sp
         </item>
         <item name="android:letterSpacing">
             -0.02
