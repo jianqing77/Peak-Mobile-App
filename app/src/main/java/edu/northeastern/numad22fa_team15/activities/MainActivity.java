@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.activities.firebaseActivities.FirebaseSignUpActivity;
 import edu.northeastern.numad22fa_team15.activities.movieApiActivities.MovieSearchActivityWithRecyclerView;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakAddTransaction;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakFirstPage;
 
 public class MainActivity extends AppCompatActivity {
@@ -49,6 +50,16 @@ public class MainActivity extends AppCompatActivity {
     public void peakProjectActivity(View view) {
         // TODO: It will be changed to the actual first page of the Peak app.
         Intent intent = new Intent(getApplicationContext(), PeakFirstPage.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Clicking the TEST button will start PeakFirstPage activity.
+     * @param view view
+     */
+    public void testActivity(View view) {
+        // TODO: Test for now, will be deleted
+        Intent intent = new Intent(getApplicationContext(), PeakAddTransaction.class);
         startActivity(intent);
     }
 
