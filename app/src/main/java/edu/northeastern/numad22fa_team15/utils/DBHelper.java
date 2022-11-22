@@ -23,6 +23,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
     private static final String LAST_NAME_COL = "lastName";
     private static final String USERNAME_COL = "username";
     private static final String PASSCODE_COL = "passcode";
+    private static final String PROFILE_PICTURE_COL = "profilePicture";
 
     // Table summary
     private static final String SUMMARY_TABLE_NAME = "summary";
@@ -49,7 +50,8 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
                 + FIRST_NAME_COL + " TEXT NOT NULL, "
                 + LAST_NAME_COL + " TEXT NOT NULL, "
                 + USERNAME_COL + " TEXT NOT NULL, "
-                + PASSCODE_COL + " TEXT NOT NULL,"
+                + PASSCODE_COL + " TEXT NOT NULL, "
+                + PROFILE_PICTURE_COL + " BLOB, "
                 + "CHECK (" + USER_ID_COL + " < 2));";
         // TODO: Execute "create table" queries.
         db.execSQL(createUserTableQuery);
@@ -117,7 +119,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
 
     @Override
     public boolean updateUserInfoTableUser(String username, String firstName, String lastName) {
-        // This method does not validate user identity and should only be called on the Profile page.
+        // This method does not validate user identity and should only be called on the Edit Profile page.
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -130,5 +132,37 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         int numOfRowsImpacted = db.update(USER_TABLE_NAME, values, whereClause, new String[]{"1"});
 
         return (numOfRowsImpacted != 0);
+    }
+
+    @Override
+    public boolean updateUserProfilePictureTableUser(byte[] profilePictureBlob) {
+        // This method does not validate user identity and should only be called on the Edit Profile page.
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(PROFILE_PICTURE_COL, profilePictureBlob);
+
+        // Number of users should always be 1.
+        String whereClause = String.format("%s = ?", USER_ID_COL);
+        int numOfRowsImpacted = db.update(USER_TABLE_NAME, values, whereClause, new String[]{"1"});
+
+        return (numOfRowsImpacted != 0);
+    }
+
+    @Override
+    public UserModel retrieveUserInfoTableUser() {
+        Cursor cursor = getUserCursor();
+
+        UserModel user = null;
+        if (cursor.moveToFirst()) {
+            String firstName = cursor.getString(1);
+            String lastName = cursor.getString(2);
+            String username = cursor.getString(3);
+            String passcode = cursor.getString(4);
+            byte[] profilePicture = cursor.getBlob(5);
+            user = new UserModel(firstName, lastName, username, passcode, profilePicture);
+        }
+        cursor.close();
+        return user;
     }
 }

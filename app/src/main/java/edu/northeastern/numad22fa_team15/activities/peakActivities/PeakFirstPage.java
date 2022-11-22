@@ -5,17 +5,26 @@ import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessage
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.fourDigitPasscodeChecker;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.nullOrEmptyInputChecker;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.io.ByteArrayOutputStream;
+
 import edu.northeastern.numad22fa_team15.R;
+import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
 import edu.northeastern.numad22fa_team15.utils.IDBHelper;
 
@@ -32,6 +41,9 @@ public class PeakFirstPage extends AppCompatActivity {
 
     private IDBHelper dbHelper;
 
+    private static final int CAMERA_ACTION_CODE = 1;
+    private ImageView profilePictureImageView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.v(TAG, "OnCreate()");
@@ -45,6 +57,17 @@ public class PeakFirstPage extends AppCompatActivity {
         passcodeTextInputEditText = (TextInputEditText) findViewById(R.id.passcode_text_input_edit_text);
 
         dbHelper = new DBHelper(PeakFirstPage.this);
+
+        profilePictureImageView = (ImageView) findViewById(R.id.profile_picture_image_view);
+        // TODO: Retrieve profile picture from user table
+        setProfilePicture();
+    }
+
+    private void setProfilePicture() {
+        UserModel user = dbHelper.retrieveUserInfoTableUser();
+        byte[] profilePictureByteArray = user.getProfilePicture();
+        Bitmap compressedBitmap = BitmapFactory.decodeByteArray(profilePictureByteArray,0,profilePictureByteArray.length);
+        profilePictureImageView.setImageBitmap(compressedBitmap);
     }
 
     public void userSignUp(View view) {
@@ -126,6 +149,48 @@ public class PeakFirstPage extends AppCompatActivity {
             resultMessage = "User info was updated.";
         }
         displayMessageInSnackbar(view, resultMessage, Snackbar.LENGTH_SHORT);
+    }
+
+    public void takeProfilePicture(View view) {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        // Check if a camera application exists on the device.
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(intent, CAMERA_ACTION_CODE);
+        } else {
+            String errorMessage = "No app supports this action.";
+            displayMessageInSnackbar(view, errorMessage, Snackbar.LENGTH_SHORT);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+
+        if (requestCode == CAMERA_ACTION_CODE && resultCode == RESULT_OK && intent != null) {
+            Log.v(TAG, "onActivityResult");
+            Bundle bundle = intent.getExtras();
+            Bitmap photoTaken = (Bitmap) bundle.get("data");
+            profilePictureImageView.setImageBitmap(photoTaken);
+//            InputStream inputStream = getAssets().open("image.png");
+//            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+//            ivSource.setImageBitmap(bitmap);
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            photoTaken.compress(Bitmap.CompressFormat.JPEG,80,stream);
+            byte[] profilePictureByteArray = stream.toByteArray();
+            boolean updateProfilePicResult = dbHelper.updateUserProfilePictureTableUser(profilePictureByteArray);
+            String message = "Failed to update profile picture.";
+            if (updateProfilePicResult) {
+                message = "Profile picture was updated successfully.";
+            }
+            displayMessageInSnackbar(profilePictureImageView.getRootView(), message, Snackbar.LENGTH_SHORT);
+//            Bitmap compressedBitmap = BitmapFactory.decodeByteArray(byteArray,0,byteArray.length);
+//            ivCompressed.setImageBitmap(compressedBitmap);
+        }
+    }
+
+    public void pickFromPhotos(View view) {
+
     }
 
     @Override

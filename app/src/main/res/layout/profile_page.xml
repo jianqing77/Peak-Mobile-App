@@ -78,11 +78,11 @@
             style="@style/onboarding_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$2500"
+            android:text="$2500000"
             android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/textView2"
             app:layout_constraintStart_toEndOf="@+id/textView"
-            app:layout_constraintTop_toTopOf="@+id/textView"
-            app:layout_constraintEnd_toStartOf="@id/textView2"/>
+            app:layout_constraintTop_toTopOf="@+id/textView" />
 
         <TextView
             android:id="@+id/textView2"
