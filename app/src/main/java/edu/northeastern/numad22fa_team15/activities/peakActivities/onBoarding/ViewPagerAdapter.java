@@ -1,7 +1,6 @@
 package edu.northeastern.numad22fa_team15.activities.peakActivities.onBoarding;
 
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,28 +11,32 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
-import org.w3c.dom.Text;
-
 import edu.northeastern.numad22fa_team15.R;
 
+/**
+ * This is the viewPagerAdapter designed for the ViewPager layout for the OnBoarding activity.
+ */
 public class ViewPagerAdapter extends PagerAdapter {
 
     Context context;
-    int images[] = {
+
+    // list of images to be changed
+    int[] images = {
             R.drawable.ic_onboarding_1,
             R.drawable.ic_onboarding_2,
             R.drawable.ic_onboarding_3,
             R.drawable.ic_onboarding_4
     };
 
-    int headings[] = {
+    // list of headings to be changed
+    int[] headings = {
             R.string.heading_one,
             R.string.heading_two,
             R.string.heading_three,
             R.string.heading_four
     };
-
-    int descption[] = {
+    // list of description to be changed
+    int[] description = {
             R.string.desc_one,
             R.string.desc_two,
             R.string.desc_three,
@@ -67,7 +70,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 
         slideTitleImage.setImageResource(images[position]);
         slideHeading.setText(headings[position]);
-        slideDescription.setText(descption[position]);
+        slideDescription.setText(description[position]);
 
         container.addView(view);
         return view;

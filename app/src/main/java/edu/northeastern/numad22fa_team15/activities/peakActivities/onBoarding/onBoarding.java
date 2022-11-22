@@ -50,8 +50,7 @@ public class onBoarding extends AppCompatActivity {
     }
 
     /**
-     * Change the bottom dots indicator correspondingly with the positon
-     * @param position
+     * Change the bottom dots indicator correspondingly with the position.
      */
     public void setUpIndicator(int position) {
         dots = new TextView[4];
@@ -108,6 +107,9 @@ public class onBoarding extends AppCompatActivity {
         return slideViewPager.getCurrentItem() + i;
     }
 
+    /**
+     * Linked with the back button on the onBoarding page.
+     */
     public void backToPrevious(View view) {
         // if the user is NOT on the first page
         if (getItem(0) > 0) {
@@ -116,6 +118,9 @@ public class onBoarding extends AppCompatActivity {
         }
     }
 
+    /**
+     * Linked with the Get Started Button(used to be the next button) on the onBoarding page.
+     */
     public void moveToNext(View view) {
         // if the user is not on the final page
         if (getItem(0) < 3) {
@@ -123,13 +128,16 @@ public class onBoarding extends AppCompatActivity {
             slideViewPager.setCurrentItem(getItem(1), true);
         } else {
             // if user scroll to the final page, jump to the sign Up page
-            // TODO: change  PeakFirstPage.class correspondingly by the signup page
+            // TODO: change PeakFirstPage.class correspondingly by the signup page
             Intent i = new Intent(onBoarding.this, PeakFirstPage.class);
             startActivity(i);
             finish();
         }
     }
 
+    /**
+     * Link with the skip button on the onBoarding page.
+     */
     public void skipToEnd(View view) {
         // TODO: change  PeakFirstPage.class correspondingly by the signup page
         Intent i = new Intent(onBoarding.this, PeakFirstPage.class);
