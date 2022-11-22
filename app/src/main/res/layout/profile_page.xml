@@ -119,6 +119,91 @@
             android:layout_marginTop="10dp"
             android:clickable="true"/>
 
+        <Button
+            android:id="@+id/btn_edit_budget"
+            style="@style/onboarding_text"
+            android:layout_width="351dp"
+            android:layout_height="56dp"
+            android:backgroundTint="@color/FinalProj_Light"
+            android:text="Edit budget"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_edit_profile"
+            android:layout_marginTop="5dp"
+            android:clickable="true"/>
+
+        <Button
+            android:id="@+id/btn_change_passcode"
+            style="@style/onboarding_text"
+            android:layout_width="351dp"
+            android:layout_height="56dp"
+            android:backgroundTint="@color/FinalProj_Light"
+            android:text="Change passcode"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_edit_budget"
+            android:layout_marginTop="5dp"
+            android:clickable="true"/>
+
+        <TextView
+            android:id="@+id/tv_security_privacy"
+            style="@style/profile_page_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="SECURITY AND PRIVACY"
+            app:layout_constraintStart_toStartOf="@+id/btn_edit_profile"
+            app:layout_constraintTop_toBottomOf="@+id/btn_change_passcode" />
+
+        <Button
+            android:id="@+id/btn_security_settings"
+            style="@style/onboarding_text"
+            android:layout_width="351dp"
+            android:layout_height="56dp"
+            android:backgroundTint="@color/FinalProj_Light"
+            android:text="Security settings"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_security_privacy"
+            android:layout_marginTop="10dp"
+            android:clickable="true"/>
+
+        <Button
+            android:id="@+id/btn_terms_conditions"
+            style="@style/onboarding_text"
+            android:layout_width="351dp"
+            android:layout_height="56dp"
+            android:backgroundTint="@color/FinalProj_Light"
+            android:text="Terms and Conditions"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_security_settings"
+            android:layout_marginTop="5dp"
+            android:clickable="true"/>
+
+        <TextView
+            android:id="@+id/btn_reset_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:minHeight="48dp"
+            android:gravity="center"
+            android:text="Reset account"
+            android:textColor="@color/red"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_terms_conditions"
+            app:layout_goneMarginTop="16dp"
+            app:layout_goneMarginBottom="20dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
