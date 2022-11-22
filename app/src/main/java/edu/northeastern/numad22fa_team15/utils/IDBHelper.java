@@ -12,4 +12,5 @@ public interface IDBHelper {
     boolean updateUserProfilePictureTableUser(byte[] profilePictureBlob);
     UserModel retrieveUserInfoTableUser();
 
+
 }

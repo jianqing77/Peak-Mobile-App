@@ -34,22 +34,19 @@
             android:name=".peakProfile.ProfilePage"
             android:exported="false" />
         <activity
-            android:name=".ResetPasscodeConfirmation"
+            android:name=".peakPasscodeRecovery.ResetPasscodeConfirmation"
             android:exported="false" />
         <activity
-            android:name=".RecoverPasscode"
+            android:name=".peakPasscodeRecovery.RecoverPasscode"
             android:exported="false" />
         <activity
-            android:name=".ForgotPasscode"
+            android:name=".peakPasscodeRecovery.ForgotPasscode"
             android:exported="false" />
         <activity
-            android:name=".PeakSignUpConfirmation"
+            android:name=".peakSignUp.PeakSignUpConfirmation"
             android:exported="false" />
         <activity
-            android:name=".PeakSignUp"
-            android:exported="false" />
-        <activity
-            android:name=".onboarding_1"
+            android:name=".peakSignUp.PeakSignUp"
             android:exported="false" />
         <activity
             android:name=".activities.MainActivity"
@@ -77,6 +74,9 @@
             android:configChanges="orientation|screenSize" />
         <activity
             android:name=".activities.peakActivities.PeakFirstPage"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".activities.peakActivities.onBoarding.onBoarding"
             android:configChanges="orientation|screenSize" />
         <activity
             android:name=".activities.AboutTeamActivity"

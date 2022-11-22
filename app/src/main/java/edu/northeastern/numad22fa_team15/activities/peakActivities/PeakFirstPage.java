@@ -16,6 +16,11 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -25,6 +30,7 @@ import java.io.ByteArrayOutputStream;
 
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
+import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
 import edu.northeastern.numad22fa_team15.utils.IDBHelper;
 
@@ -68,6 +74,7 @@ public class PeakFirstPage extends AppCompatActivity {
         byte[] profilePictureByteArray = user.getProfilePicture();
         Bitmap compressedBitmap = BitmapFactory.decodeByteArray(profilePictureByteArray,0,profilePictureByteArray.length);
         profilePictureImageView.setImageBitmap(compressedBitmap);
+
     }
 
     public void userSignUp(View view) {
