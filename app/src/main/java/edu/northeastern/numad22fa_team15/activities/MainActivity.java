@@ -11,6 +11,7 @@ import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.activities.firebaseActivities.FirebaseSignUpActivity;
 import edu.northeastern.numad22fa_team15.activities.movieApiActivities.MovieSearchActivityWithRecyclerView;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakFirstPage;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.onBoarding.onBoarding;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,6 +50,16 @@ public class MainActivity extends AppCompatActivity {
     public void peakProjectActivity(View view) {
         // TODO: It will be changed to the actual first page of the Peak app.
         Intent intent = new Intent(getApplicationContext(), PeakFirstPage.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Clicking the onBoarding button will start the onBoarding activity.
+     * @param view view
+     */
+    public void onBoardingActivity(View view) {
+        // TODO: this should be the page shown up when user first open the app.
+        Intent intent = new Intent(getApplicationContext(), onBoarding.class);
         startActivity(intent);
     }
 
