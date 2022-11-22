@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".peakProfile.EditProfile">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_your_profile"
+            style="@style/profile_page_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your Profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="50dp"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_edit_profile_picture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="160dp"
+            app:cardPreventCornerOverlap="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_your_profile">
+
+            <ImageView
+                android:id="@+id/profile_picture"
+                android:layout_width="108dp"
+                android:layout_height="108dp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_peak_logo_small"
+                android:foreground="#80000000"/>
+
+            <ImageView
+                android:id="@+id/btn_edit_profile_picture"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_baseline_edit_24"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:contentDescription="Edit button"/>
+        </androidx.cardview.widget.CardView>
+
+        <View
+            android:id="@+id/edit_profile_divider"
+            android:layout_width="315dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="30dp"
+            android:background="@color/FinalProj_Primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cv_edit_profile_picture"/>
+
+        <!-- First Name TextView -->
+        <TextView
+            android:id="@+id/tv_edit_first_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:gravity="top"
+            android:lineSpacingExtra="5sp"
+            android:text="First Name"
+            android:textAppearance="@style/peak_text_input"
+            android:translationY="-2.53sp"
+            app:layout_constraintBottom_toTopOf="@+id/et_edit_first_name"
+            app:layout_constraintStart_toStartOf="@+id/et_edit_first_name"
+            app:layout_constraintTop_toBottomOf="@id/edit_profile_divider" />
+
+        <!-- First Name EditText -->
+        <EditText
+            android:id="@+id/et_edit_first_name"
+            android:layout_width="327dp"
+            android:layout_height="48dp"
+            android:background="@drawable/peak_text_input"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_edit_first_name"
+            app:layout_constraintBottom_toTopOf="@+id/tv_edit_last_name"
+            android:padding="10dp"
+            android:layout_marginTop="2dp"
+            android:hint="John"/>
+
+        <!-- Last Name TextView -->
+        <TextView
+            android:id="@+id/tv_edit_last_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:gravity="top"
+            android:lineSpacingExtra="5sp"
+            android:text="Last Name"
+            android:textAppearance="@style/peak_text_input"
+            android:translationY="-2.53sp"
+            app:layout_constraintBottom_toTopOf="@id/et_edit_last_name"
+            app:layout_constraintStart_toStartOf="@+id/et_edit_last_name"
+            app:layout_constraintTop_toBottomOf="@+id/et_edit_first_name" />
+
+        <!-- Last Name EditText -->
+        <EditText
+            android:id="@+id/et_edit_last_name"
+            android:layout_width="327dp"
+            android:layout_height="48dp"
+            android:background="@drawable/peak_text_input"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_edit_last_name"
+            app:layout_constraintBottom_toTopOf="@+id/tv_edit_username"
+            android:padding="10dp"
+            android:layout_marginTop="2dp"
+            android:hint="Doe"/>
+
+        <!-- Username TextView -->
+        <TextView
+            android:id="@+id/tv_edit_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:gravity="top"
+            android:lineSpacingExtra="5sp"
+            android:text="Username"
+            android:textAppearance="@style/peak_text_input"
+            android:translationY="-2.53sp"
+            app:layout_constraintStart_toStartOf="@+id/et_edit_username"
+            app:layout_constraintTop_toBottomOf="@+id/et_edit_last_name"
+            app:layout_constraintBottom_toTopOf="@+id/et_edit_username"/>
+
+        <!-- Username EditText -->
+        <EditText
+            android:id="@+id/et_edit_username"
+            android:layout_width="327dp"
+            android:layout_height="48dp"
+            android:background="@drawable/peak_text_input"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_edit_username"
+            app:layout_constraintBottom_toTopOf="@+id/btn_edit_profile_confirm"
+            android:hint="johndoe"/>
+
+        <!-- Confirm Changes button -->
+        <Button
+            android:id="@+id/btn_edit_profile_confirm"
+            android:layout_width="327dp"
+            android:layout_height="68dp"
+            android:backgroundTint="@color/FinalProj_Light"
+            android:clickable="true"
+            android:text="Confirm Changes"
+            android:textAppearance="@style/button_light"
+            android:textColor="@color/FinalProj_Dark"
+            android:textFontWeight="500"
+            app:cornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_edit_username"
+            android:layout_marginTop="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="40dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

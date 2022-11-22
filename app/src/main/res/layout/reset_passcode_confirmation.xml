@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".peakPasscodeRecovery.ResetPasscodeConfirmation">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_peak_logo_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="50dp"/>
+
+        <TextView
+            android:id="@+id/tv_thank_you_reset_passcode"
+            style="@style/onboarding_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thank you!"
+            app:layout_constraintBottom_toTopOf="@+id/tv_reset_passcode_confirmation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/tv_reset_passcode_confirmation"
+            style="@style/signup_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your passcode has been reset."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_thank_you_reset_passcode"
+            android:layout_marginTop="50dp"/>
+
+        <!-- Return to Home Button -->
+        <Button
+            android:id="@+id/btn_peak_return_to_home"
+            android:layout_width="327dp"
+            android:layout_height="68dp"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="100dp"
+            android:backgroundTint="@color/FinalProj_Dark"
+            android:clickable="true"
+            android:text="Return to Home"
+            android:textAppearance="@style/button_dark"
+            android:textColor="@color/white"
+            android:textFontWeight="500"
+            app:cornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_reset_passcode_confirmation"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

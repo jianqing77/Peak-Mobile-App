@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".peakPasscodeRecovery.RecoverPasscode">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_peak_logo_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="50dp"/>
+
+        <TextView
+            android:id="@+id/tv_reset_passcode"
+            style="@style/signup_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Please reset your passcode"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            android:layout_marginTop="50dp"/>
+
+        <!-- New 4-Digit Passcode TextView -->
+        <TextView
+            android:id="@+id/reset_passcode_new"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:lineSpacingExtra="5sp"
+            android:text="New 4-Digit Passcode"
+            android:textAppearance="@style/peak_text_input"
+            android:translationY="-2.53sp"
+            app:layout_constraintBottom_toTopOf="@+id/et_reset_passcode_new"
+            app:layout_constraintStart_toStartOf="@+id/et_reset_passcode_new"
+            app:layout_constraintTop_toBottomOf="@+id/tv_reset_passcode"
+            android:layout_marginTop="36dp"/>
+
+        <!-- New 4-Digit Passcode EditText -->
+        <EditText
+            android:id="@+id/et_reset_passcode_new"
+            android:layout_width="327dp"
+            android:layout_height="48dp"
+            android:inputType="number"
+            android:background="@drawable/peak_text_input"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reset_passcode_new"
+            android:padding="10dp"
+            android:layout_marginTop="2dp"
+            android:hint="4321"/>
+
+        <!-- Confirm New Passcode TextView -->
+        <TextView
+            android:id="@+id/reset_passcode_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:lineSpacingExtra="5sp"
+            android:text="Confirm New Passcode"
+            android:textAppearance="@style/peak_text_input"
+            android:translationY="-2.53sp"
+            app:layout_constraintBottom_toTopOf="@+id/et_reset_passcode_confirm"
+            app:layout_constraintStart_toStartOf="@+id/et_reset_passcode_confirm"
+            app:layout_constraintTop_toBottomOf="@+id/et_reset_passcode_new"
+            android:layout_marginTop="26dp"/>
+
+        <!-- Confirm New Passcode EditText -->
+        <EditText
+            android:id="@+id/et_reset_passcode_confirm"
+            android:layout_width="327dp"
+            android:layout_height="48dp"
+            android:inputType="number"
+            android:background="@drawable/peak_text_input"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reset_passcode_confirm"
+            android:padding="10dp"
+            android:layout_marginTop="2dp"
+            android:hint="4321"/>
+
+        <!-- Reset Passcode Button -->
+        <Button
+            android:id="@+id/btn_peak_reset_passcode"
+            android:layout_width="327dp"
+            android:layout_height="68dp"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="100dp"
+            android:backgroundTint="@color/FinalProj_Dark"
+            android:clickable="true"
+            android:text="Reset Passcode"
+            android:textAppearance="@style/button_dark"
+            android:textColor="@color/white"
+            android:textFontWeight="500"
+            app:cornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_reset_passcode_confirm"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

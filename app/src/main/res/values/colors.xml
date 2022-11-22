@@ -7,4 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#FF0000</color>
+    <color name="FinalProj_Light">#F0F2F5</color>
+    <color name="FinalProj_Dark">#1E2933</color>
+    <color name="FinalProj_Primary">#F6CA56</color>
+    <color name="FinalProj_Secondary">#F1A817</color>
 </resources>
