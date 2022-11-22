@@ -1,4 +1,4 @@
-package edu.northeastern.numad22fa_team15.firebaseStickerHistoryRecyclerUtil;
+package edu.northeastern.numad22fa_team15.utils.recyclerUtils.firebaseStickerHistoryRecyclerUtil;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 import edu.northeastern.numad22fa_team15.R;
-import edu.northeastern.numad22fa_team15.model.StickerRecord;
+import edu.northeastern.numad22fa_team15.models.firebaseModels.StickerRecord;
 
 public class StickerHistoryAdapter extends RecyclerView.Adapter<StickerHistoryViewHolder> {
 

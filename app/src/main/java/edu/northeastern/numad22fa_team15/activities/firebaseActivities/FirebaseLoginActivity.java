@@ -1,15 +1,14 @@
 package edu.northeastern.numad22fa_team15.activities.firebaseActivities;
 
-import static edu.northeastern.numad22fa_team15.utils.commonUtils.closeKeyboard;
-import static edu.northeastern.numad22fa_team15.utils.commonUtils.displayMessageInSnackbar;
-import static edu.northeastern.numad22fa_team15.utils.firebaseUtils.checkUserExistenceInFirebase;
+import static edu.northeastern.numad22fa_team15.utils.CommonUtils.closeKeyboard;
+import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessageInSnackbar;
+import static edu.northeastern.numad22fa_team15.utils.FirebaseUtils.checkUserExistenceInFirebase;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.Task;
@@ -20,7 +19,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import edu.northeastern.numad22fa_team15.R;
-import edu.northeastern.numad22fa_team15.model.User;
 
 public class FirebaseLoginActivity extends AppCompatActivity {
 

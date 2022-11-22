@@ -1,4 +1,4 @@
-package edu.northeastern.numad22fa_team15.movieTvRecyclerUtil;
+package edu.northeastern.numad22fa_team15.utils.recyclerUtils.movieTvRecyclerUtil;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,7 +18,7 @@ import java.util.List;
 
 import edu.northeastern.numad22fa_team15.activities.movieApiActivities.FullImageActivity;
 import edu.northeastern.numad22fa_team15.R;
-import edu.northeastern.numad22fa_team15.model.MovieTv;
+import edu.northeastern.numad22fa_team15.models.movieApiModels.MovieTv;
 
 public class MovieTvAdapter extends RecyclerView.Adapter<MovieTvViewHolder> {
 

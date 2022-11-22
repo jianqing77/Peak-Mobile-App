@@ -1,6 +1,6 @@
 package edu.northeastern.numad22fa_team15.network;
 
-import edu.northeastern.numad22fa_team15.model.Result;
+import edu.northeastern.numad22fa_team15.models.movieApiModels.Result;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;

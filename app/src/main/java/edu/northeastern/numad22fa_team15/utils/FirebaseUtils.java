@@ -7,7 +7,7 @@ import com.google.firebase.database.DataSnapshot;
 
 import java.util.Map;
 
-public class firebaseUtils {
+public class FirebaseUtils {
 
     /**
      * Return true if the given username exists in the database. Otherwise, return false.
