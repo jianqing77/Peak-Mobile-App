@@ -46,7 +46,8 @@
                 android:layout_height="50dp"
                 android:background="@drawable/ic_baseline_edit_24"
                 android:layout_gravity="center"
-                android:clickable="true"/>
+                android:clickable="true"
+                android:contentDescription="Edit button"/>
         </androidx.cardview.widget.CardView>
 
         <View
@@ -83,8 +84,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_edit_first_name"
+            app:layout_constraintBottom_toTopOf="@+id/tv_edit_last_name"
             android:padding="10dp"
-            android:layout_marginTop="2dp"/>
+            android:layout_marginTop="2dp"
+            android:hint="John"/>
 
         <!-- Last Name TextView -->
         <TextView
@@ -97,9 +100,9 @@
             android:text="Last Name"
             android:textAppearance="@style/peak_text_input"
             android:translationY="-2.53sp"
-            app:layout_constraintBottom_toTopOf="et_edit_last_name"
+            app:layout_constraintBottom_toTopOf="@id/et_edit_last_name"
             app:layout_constraintStart_toStartOf="@+id/et_edit_last_name"
-            app:layout_constraintTop_toBottomOf="@+id/et_edit_first_name"/>
+            app:layout_constraintTop_toBottomOf="@+id/et_edit_first_name" />
 
         <!-- Last Name EditText -->
         <EditText
@@ -110,8 +113,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_edit_last_name"
+            app:layout_constraintBottom_toTopOf="@+id/tv_edit_username"
             android:padding="10dp"
-            android:layout_marginTop="2dp"/>
+            android:layout_marginTop="2dp"
+            android:hint="Doe"/>
 
         <!-- Username TextView -->
         <TextView
@@ -137,7 +142,9 @@
             android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_edit_username"/>
+            app:layout_constraintTop_toBottomOf="@+id/tv_edit_username"
+            app:layout_constraintBottom_toTopOf="@+id/btn_edit_profile_confirm"
+            android:hint="johndoe"/>
 
         <!-- Confirm Changes button -->
         <Button
