@@ -40,7 +40,6 @@ public class EditProfile extends AppCompatActivity {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(getWindow().FEATURE_NO_TITLE);
 
-        // This might cause issues since it's already declared in onCreate. Have not tested yet
         dialog.setContentView(R.layout.change_profile_picture_bottomsheet);
 
         ImageButton takePhoto = dialog.findViewById(R.id.btn_take_profile_picture);

@@ -47,4 +47,5 @@ dependencies {
 
     // required to avoid crash on Android 12 API 31
     implementation 'androidx.work:work-runtime:2.7.1'
+
 }
