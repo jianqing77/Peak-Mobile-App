@@ -213,7 +213,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
     }
 
     @Override
-    public boolean addTranTableTransaction(Float expense, String description, String category, String transactionDate, int summaryID) {
+    public boolean addTranTableTransaction(float expense, String description, String category, String transactionDate, int summaryID) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -225,5 +225,21 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
 
         long result = db.insert(TRANSACTION_TABLE_NAME, null, values);
         return (result != -1);
+    }
+
+    @Override
+    public boolean updateTranTableTransaction(float expense, String description, String category, int transactionID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(EXPENSE_COL, expense);
+        values.put(DESCRIPTION_COL, description);
+        values.put(CATEGORY_COL, category);
+
+        String whereClause = String.format("%s = ?", TRANSACTION_ID_COL);
+        int numOfRowsImpacted = db.update(TRANSACTION_TABLE_NAME, values, whereClause, new String[]{String.valueOf(transactionID)});
+
+        return (numOfRowsImpacted != 0);
+
     }
 }

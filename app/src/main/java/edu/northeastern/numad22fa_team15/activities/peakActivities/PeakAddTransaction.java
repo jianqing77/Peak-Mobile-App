@@ -27,6 +27,7 @@ public class PeakAddTransaction extends AppCompatActivity {
     private TextInputEditText expenseTextInputEditText;
     private TextInputEditText descriptionTextInputEditText;
     private TextInputEditText categoryTextInputEditText;
+    private TextInputEditText transactionIdInputEdittext;
 
     private IDBHelper dbHelper;
 
@@ -41,6 +42,7 @@ public class PeakAddTransaction extends AppCompatActivity {
         expenseTextInputEditText = findViewById(R.id.expense_textinput_edittext);
         descriptionTextInputEditText = findViewById(R.id.description_textinput_edittext);
         categoryTextInputEditText = findViewById(R.id.category_textinput_edittext);
+        transactionIdInputEdittext = findViewById(R.id.transactionID_textinput_edittext);
     }
 
     public void addTransaction(View view) {
@@ -98,6 +100,38 @@ public class PeakAddTransaction extends AppCompatActivity {
             return false;
         }
         return true;
+
+    }
+
+    public void updateTransaction(View view) {
+        closeKeyboard(this.getApplicationContext(), view);
+
+        String expenseString = expenseTextInputEditText.getText().toString();
+        String description = descriptionTextInputEditText.getText().toString();
+        String category = categoryTextInputEditText.getText().toString();
+        String idString = transactionIdInputEdittext.getText().toString();
+
+        if (nullOrEmptyInputChecker(expenseString, description, category)) {
+            String message = "All fields are required.";
+            displayMessageInSnackbar(view, message, Snackbar.LENGTH_SHORT);
+            return;
+        }
+
+        float expense = Float.parseFloat(expenseString);
+        int transactionID = Integer.parseInt(idString);
+
+        if (invalidCategoryChecker(category)) {
+            String message = "Invalid Category.";
+            displayMessageInSnackbar(view, message, Snackbar.LENGTH_SHORT);
+            return;
+        }
+
+        boolean updateResult = dbHelper.updateTranTableTransaction(expense, description, category, transactionID);
+        String resultMessage = "Failed to update transaction";
+        if (updateResult) {
+            resultMessage = "Successfully updated transaction";
+        }
+        displayMessageInSnackbar(view, resultMessage, Snackbar.LENGTH_SHORT);
 
     }
 }

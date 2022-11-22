@@ -8,7 +8,8 @@ public interface IDBHelper {
     boolean updateUserPasswordTableUser(String usernameInput, String passcodeInput);
     boolean updateUserInfoTableUser(String username, String firstName, String lastName);
     boolean addSummaryTableSummary(String startDate, String endDate, float totalBudget, float currentExpense, float currentBalance);
-    // TODO: set category as string for testing, should be change to enum
-    boolean addTranTableTransaction(Float expense, String description, String category, String transactionDate, int summaryID);
+    // TODO: set category as string for testing, change to enum?
+    boolean addTranTableTransaction(float expense, String description, String category, String transactionDate, int summaryID);
+    boolean updateTranTableTransaction(float expense, String description, String category, int transactionID);
 
 }

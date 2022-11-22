@@ -62,4 +62,31 @@
         android:text="add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/category_textinput_layout" />
+
+    <Button
+        android:id="@+id/button_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:onClick="updateTransaction"
+        android:text="update"
+        app:layout_constraintEnd_toEndOf="@+id/button_addTransaction"
+        app:layout_constraintTop_toBottomOf="@+id/button_addTransaction" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/transactionID_textinput_layout"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/category_textinput_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/transactionID_textinput_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="transactionID" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
