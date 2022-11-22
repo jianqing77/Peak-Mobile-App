@@ -49,7 +49,8 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
                 + FIRST_NAME_COL + " TEXT NOT NULL, "
                 + LAST_NAME_COL + " TEXT NOT NULL, "
                 + USERNAME_COL + " TEXT NOT NULL, "
-                + PASSCODE_COL + " TEXT NOT NULL)";
+                + PASSCODE_COL + " TEXT NOT NULL,"
+                + "CHECK (" + USER_ID_COL + " < 2));";
         // TODO: Execute "create table" queries.
         db.execSQL(createUserTableQuery);
     }
