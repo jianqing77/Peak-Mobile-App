@@ -43,7 +43,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/passcode_text_intput_layout"
+        app:layout_constraintBottom_toTopOf="@id/passcode_text_input_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/first_name_text_input">
@@ -56,7 +56,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/passcode_text_intput_layout"
+        android:id="@+id/passcode_text_input_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
         android:onClick="userSignUp"
         android:text="Sign up"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passcode_text_intput_layout" />
+        app:layout_constraintTop_toBottomOf="@+id/passcode_text_input_layout" />
 
     <Button
         android:id="@+id/user_login_button"

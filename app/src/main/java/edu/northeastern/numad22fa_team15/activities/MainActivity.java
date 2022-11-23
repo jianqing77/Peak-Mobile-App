@@ -10,12 +10,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.activities.firebaseActivities.FirebaseSignUpActivity;
 import edu.northeastern.numad22fa_team15.activities.movieApiActivities.MovieSearchActivityWithRecyclerView;
-import edu.northeastern.numad22fa_team15.peakProfile.ChangeProfilePicture;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakEntrance;
 import edu.northeastern.numad22fa_team15.peakProfile.EditProfile;
 
 import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakFirstPage;
-import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakFirstPage;
-import edu.northeastern.numad22fa_team15.activities.peakActivities.onBoarding.onBoarding;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -63,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void onBoardingActivity(View view) {
         // TODO: this should be the page shown up when user first open the app.
-        Intent intent = new Intent(getApplicationContext(), onBoarding.class);
+        Intent intent = new Intent(getApplicationContext(), PeakEntrance.class);
         startActivity(intent);
     }
 
