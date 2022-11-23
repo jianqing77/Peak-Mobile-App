@@ -8,13 +8,13 @@ import static edu.northeastern.numad22fa_team15.utils.CommonUtils.nullOrEmptyInp
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +22,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
@@ -29,7 +31,7 @@ import edu.northeastern.numad22fa_team15.utils.DBHelper;
 import edu.northeastern.numad22fa_team15.utils.IDBHelper;
 
 /**
- * TODO: This activity is just a dummy activity to test out the signup, login, and reset password functionalities.
+ * TODO: This activity is just a dummy activity to test out the signup, login, reset password, and set profile pic functionalities.
  */
 public class PeakFirstPage extends AppCompatActivity {
 
@@ -42,6 +44,7 @@ public class PeakFirstPage extends AppCompatActivity {
     private IDBHelper dbHelper;
 
     private static final int CAMERA_ACTION_CODE = 1;
+    private static final int PICK_IMAGE_CODE = 11;
     private ImageView profilePictureImageView;
 
     @Override
@@ -167,29 +170,85 @@ public class PeakFirstPage extends AppCompatActivity {
         }
     }
 
+    public void pickFromPhotos(View view) {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+
+        // Check if a image gallery exists on the device.
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(intent, PICK_IMAGE_CODE);
+        } else {
+            String errorMessage = "No image gallery found.";
+            displayMessageInSnackbar(view, errorMessage, Snackbar.LENGTH_SHORT);
+        }
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
 
+        String profilePictureMessage = "Failed to update profile picture.";
         if (requestCode == CAMERA_ACTION_CODE && resultCode == RESULT_OK && intent != null) {
-            Log.v(TAG, "onActivityResult");
-            Bundle bundle = intent.getExtras();
-            Bitmap photoTaken = (Bitmap) bundle.get("data");
-            profilePictureImageView.setImageBitmap(photoTaken);
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            photoTaken.compress(Bitmap.CompressFormat.JPEG,80,stream);
-            byte[] profilePictureByteArray = stream.toByteArray();
-            boolean updateProfilePicResult = dbHelper.updateUserProfilePictureTableUser(profilePictureByteArray);
-            String message = "Failed to update profile picture.";
-            if (updateProfilePicResult) {
-                message = "Profile picture was updated successfully.";
+            Log.d(TAG, "CAMERA_ACTION onActivityResult()");
+            try {
+                Bundle bundle = intent.getExtras();
+                Bitmap photoTaken = (Bitmap) bundle.get("data");
+                profilePictureImageView.setImageBitmap(photoTaken);
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                photoTaken.compress(Bitmap.CompressFormat.JPEG,80,stream);
+                byte[] profilePictureByteArray = stream.toByteArray();
+                updateProfilePicInDatabase(profilePictureByteArray,profilePictureMessage);
+            } catch (Exception e) {
+                Log.d(TAG, "Fail to set profile picture using image taken by device camera.");
+                Log.d(TAG, e.getMessage());
+                displayMessageInSnackbar(profilePictureImageView.getRootView(), profilePictureMessage, Snackbar.LENGTH_SHORT);
             }
-            displayMessageInSnackbar(profilePictureImageView.getRootView(), message, Snackbar.LENGTH_SHORT);
+        }
+        if (requestCode == PICK_IMAGE_CODE && resultCode == RESULT_OK && intent != null) {
+            Log.d(TAG, "PICK_IMAGE onActivityResult()");
+            try {
+                Uri imageUri = intent.getData();
+                profilePictureImageView.setImageURI(imageUri);
+                InputStream inputStream = getContentResolver().openInputStream(imageUri);
+                byte[] profilePictureByteArray = getByteArrayFromInputStream(inputStream);
+                updateProfilePicInDatabase(profilePictureByteArray,profilePictureMessage);
+            } catch (Exception e) {
+                Log.d(TAG, "Fail to set profile picture using image picked from photo library.");
+                Log.d(TAG, e.getMessage());
+                displayMessageInSnackbar(profilePictureImageView.getRootView(), profilePictureMessage, Snackbar.LENGTH_SHORT);
+            }
         }
     }
 
-    public void pickFromPhotos(View view) {
+    /**
+     * Update profile picture of the user in the database and display result in a Snackbar
+     * @param profilePictureByteArray byte array representing the profile picture
+     * @param profilePictureMessage message regarding the profile picture update operation
+     */
+    private void updateProfilePicInDatabase(byte[] profilePictureByteArray, String profilePictureMessage) {
+        boolean updateProfilePicResult = dbHelper.updateUserProfilePictureTableUser(profilePictureByteArray);
+        if (updateProfilePicResult) {
+            profilePictureMessage = "Profile picture was updated successfully.";
+        }
+        displayMessageInSnackbar(profilePictureImageView.getRootView(), profilePictureMessage, Snackbar.LENGTH_SHORT);
+    }
 
+    /**
+     * Convert an InputStream object into a byte array.
+     * @param inputStream input stream
+     * @return byte array
+     * @throws IOException if input stream read() method fails
+     */
+    private byte[] getByteArrayFromInputStream(InputStream inputStream) throws IOException {
+        // REF: https://stackoverflow.com/questions/10296734/image-uri-to-bytesarray
+        ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+        int bufferSize = 1024;
+        byte[] buffer = new byte[bufferSize];
+
+        int len = 0;
+        while ((len = inputStream.read(buffer)) != -1) {
+            byteBuffer.write(buffer, 0, len);
+        }
+        return byteBuffer.toByteArray();
     }
 
     @Override
