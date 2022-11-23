@@ -111,7 +111,7 @@ public class PeakAddTransaction extends AppCompatActivity {
         String category = categoryTextInputEditText.getText().toString();
         String idString = transactionIdInputEdittext.getText().toString();
 
-        if (nullOrEmptyInputChecker(expenseString, description, category)) {
+        if (nullOrEmptyInputChecker(expenseString, description, category, idString)) {
             String message = "All fields are required.";
             displayMessageInSnackbar(view, message, Snackbar.LENGTH_SHORT);
             return;
