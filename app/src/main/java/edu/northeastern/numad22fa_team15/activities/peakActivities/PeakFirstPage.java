@@ -59,14 +59,18 @@ public class PeakFirstPage extends AppCompatActivity {
         dbHelper = new DBHelper(PeakFirstPage.this);
 
         profilePictureImageView = (ImageView) findViewById(R.id.profile_picture_image_view);
-        // TODO: Retrieve profile picture from user table
+        // Retrieve profile picture from user table
         setProfilePicture();
     }
 
     private void setProfilePicture() {
         UserModel user = dbHelper.retrieveUserInfoTableUser();
         byte[] profilePictureByteArray = user.getProfilePicture();
-        Bitmap compressedBitmap = BitmapFactory.decodeByteArray(profilePictureByteArray,0,profilePictureByteArray.length);
+        if (profilePictureByteArray == null || profilePictureByteArray.length == 0) {
+            // TODO: XH - Need to merge Jaime's branch to get default profile picture.
+            return;
+        }
+        Bitmap compressedBitmap = BitmapFactory.decodeByteArray(profilePictureByteArray,0, profilePictureByteArray.length);
         profilePictureImageView.setImageBitmap(compressedBitmap);
     }
 
@@ -172,9 +176,6 @@ public class PeakFirstPage extends AppCompatActivity {
             Bundle bundle = intent.getExtras();
             Bitmap photoTaken = (Bitmap) bundle.get("data");
             profilePictureImageView.setImageBitmap(photoTaken);
-//            InputStream inputStream = getAssets().open("image.png");
-//            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-//            ivSource.setImageBitmap(bitmap);
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             photoTaken.compress(Bitmap.CompressFormat.JPEG,80,stream);
             byte[] profilePictureByteArray = stream.toByteArray();
@@ -184,8 +185,6 @@ public class PeakFirstPage extends AppCompatActivity {
                 message = "Profile picture was updated successfully.";
             }
             displayMessageInSnackbar(profilePictureImageView.getRootView(), message, Snackbar.LENGTH_SHORT);
-//            Bitmap compressedBitmap = BitmapFactory.decodeByteArray(byteArray,0,byteArray.length);
-//            ivCompressed.setImageBitmap(compressedBitmap);
         }
     }
 
