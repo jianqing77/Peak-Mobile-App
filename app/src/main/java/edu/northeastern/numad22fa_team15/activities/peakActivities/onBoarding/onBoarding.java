@@ -13,9 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import edu.northeastern.numad22fa_team15.R;
-import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakFirstPage;
-import edu.northeastern.numad22fa_team15.activities.peakActivities.peakSignUp.PeakSignUp;
-import edu.northeastern.numad22fa_team15.utils.DBHelper;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.userRegister.PeakSignUp;
 import edu.northeastern.numad22fa_team15.utils.IDBHelper;
 
 public class onBoarding extends AppCompatActivity {
