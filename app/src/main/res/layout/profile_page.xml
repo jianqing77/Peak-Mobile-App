@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical">
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/coordinatorLayout"
         tools:context=".peakProfile.ProfilePage">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,7 +33,7 @@
                     android:layout_width="77dp"
                     android:layout_height="77dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/ic_peak_logo_small"/>
+                    android:background="@drawable/ic_peak_logo_small" />
             </androidx.cardview.widget.CardView>
 
             <TextView
@@ -38,22 +41,22 @@
                 style="@style/default_page_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="Full Name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cv_profile_picture"
-                android:layout_marginTop="10dp"/>
+                app:layout_constraintTop_toBottomOf="@+id/cv_profile_picture" />
 
             <TextView
                 android:id="@+id/tv_profile_username"
                 style="@style/default_page_italicized"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:text="username"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_profile_full_name"
-                android:layout_marginTop="5dp"/>
+                app:layout_constraintTop_toBottomOf="@+id/tv_profile_full_name" />
 
             <View
                 android:id="@+id/profile_divider"
@@ -70,12 +73,12 @@
                 style="@style/onboarding_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
                 android:layout_marginTop="12dp"
                 android:text="Your current budget is "
                 app:layout_constraintEnd_toStartOf="@id/profile_budget"
                 app:layout_constraintStart_toStartOf="@+id/profile_divider"
-                app:layout_constraintTop_toBottomOf="@+id/profile_divider"
-                android:layout_marginLeft="25dp"/>
+                app:layout_constraintTop_toBottomOf="@+id/profile_divider" />
 
             <TextView
                 android:id="@+id/profile_budget"
@@ -84,20 +87,20 @@
                 android:layout_height="wrap_content"
                 android:text="$2500"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@id/textView2"
                 app:layout_constraintStart_toEndOf="@+id/textView"
-                app:layout_constraintTop_toTopOf="@+id/textView"
-                app:layout_constraintEnd_toStartOf="@id/textView2"/>
+                app:layout_constraintTop_toTopOf="@+id/textView" />
 
             <TextView
                 android:id="@+id/textView2"
                 style="@style/onboarding_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="25dp"
                 android:text=" / month"
                 app:layout_constraintEnd_toEndOf="@+id/profile_divider"
                 app:layout_constraintStart_toEndOf="@+id/profile_budget"
-                app:layout_constraintTop_toTopOf="@+id/textView"
-                android:layout_marginRight="25dp"/>
+                app:layout_constraintTop_toTopOf="@+id/textView" />
 
             <TextView
                 android:id="@+id/tv_account"
@@ -114,42 +117,42 @@
                 style="@style/onboarding_text"
                 android:layout_width="351dp"
                 android:layout_height="56dp"
+                android:layout_marginTop="10dp"
                 android:backgroundTint="@color/FinalProj_Light"
+                android:clickable="true"
                 android:text="Edit profile"
                 android:textAllCaps="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_account"
-                android:layout_marginTop="10dp"
-                android:clickable="true"/>
+                app:layout_constraintTop_toBottomOf="@+id/tv_account" />
 
             <Button
                 android:id="@+id/btn_edit_budget"
                 style="@style/onboarding_text"
                 android:layout_width="351dp"
                 android:layout_height="56dp"
+                android:layout_marginTop="5dp"
                 android:backgroundTint="@color/FinalProj_Light"
+                android:clickable="true"
                 android:text="Edit budget"
                 android:textAllCaps="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_edit_profile"
-                android:layout_marginTop="5dp"
-                android:clickable="true"/>
+                app:layout_constraintTop_toBottomOf="@+id/btn_edit_profile" />
 
             <Button
                 android:id="@+id/btn_change_passcode"
                 style="@style/onboarding_text"
                 android:layout_width="351dp"
                 android:layout_height="56dp"
+                android:layout_marginTop="5dp"
                 android:backgroundTint="@color/FinalProj_Light"
+                android:clickable="true"
                 android:text="Change passcode"
                 android:textAllCaps="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_edit_budget"
-                android:layout_marginTop="5dp"
-                android:clickable="true"/>
+                app:layout_constraintTop_toBottomOf="@+id/btn_edit_budget" />
 
             <TextView
                 android:id="@+id/tv_security_privacy"
@@ -166,34 +169,35 @@
                 style="@style/onboarding_text"
                 android:layout_width="351dp"
                 android:layout_height="56dp"
+                android:layout_marginTop="10dp"
                 android:backgroundTint="@color/FinalProj_Light"
+                android:clickable="true"
                 android:text="Security settings"
                 android:textAllCaps="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_security_privacy"
-                android:layout_marginTop="10dp"
-                android:clickable="true"/>
+                app:layout_constraintTop_toBottomOf="@+id/tv_security_privacy" />
 
             <Button
                 android:id="@+id/btn_terms_conditions"
                 style="@style/onboarding_text"
                 android:layout_width="351dp"
                 android:layout_height="56dp"
+                android:layout_marginTop="5dp"
                 android:backgroundTint="@color/FinalProj_Light"
+                android:clickable="true"
                 android:text="Terms and Conditions"
                 android:textAllCaps="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_security_settings"
-                android:layout_marginTop="5dp"
-                android:clickable="true"/>
+                app:layout_constraintTop_toBottomOf="@+id/btn_security_settings" />
 
             <TextView
                 android:id="@+id/btn_reset_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="20dp"
                 android:clickable="true"
                 android:gravity="center"
                 android:minHeight="48dp"
@@ -204,45 +208,50 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_terms_conditions"
-                app:layout_goneMarginBottom="20dp"
-                app:layout_goneMarginTop="16dp" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_terms_conditions" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
 
         <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottom_app_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:id="@+id/bottom_app_bar"
             app:fabCradleMargin="10dp"
             app:fabCradleRoundedCornerRadius="10dp"
             app:fabCradleVerticalOffset="10dp">
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navigation_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/bottom_navigation_id"
                 android:layout_marginRight="16dp"
-                app:menu="@menu/bottom_nav_menu"
-                android:background="@drawable/nav_transparent_background"/>
+                android:background="@drawable/nav_transparent_background"
+                app:menu="@menu/bottom_nav_menu" />
 
         </com.google.android.material.bottomappbar.BottomAppBar>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/nav_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/nav_fab"
+            android:backgroundTint="@color/FinalProj_Primary"
             android:src="@drawable/ic_nav_add"
-            app:layout_anchor="@id/bottom_app_bar"
-            android:backgroundTint="@color/FinalProj_Primary"/>
+            app:layout_anchor="@id/bottom_app_bar" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
