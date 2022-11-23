@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_test_peak_first_page.xml" value="0.24166666666666667" />
+        <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/edit_profile.xml" value="0.25" />
+        <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/profile_page.xml" value="0.18" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/ic_nav_home.xml" value="0.2105" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/ic_onboarding_1.xml" value="0.242" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/ic_onboarding_3.xml" value="0.2105" />
@@ -51,5 +54,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.18" />
+      </ProjectState>
+    </option>
   </component>
 </project>

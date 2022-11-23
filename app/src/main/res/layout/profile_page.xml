@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Scrollable Main Section -->
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/coordinatorLayout"
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/coordinatorLayout"
         tools:context=".peakProfile.ProfilePage">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -115,7 +116,9 @@
             <Button
                 android:id="@+id/btn_edit_profile"
                 style="@style/onboarding_text"
-                android:layout_width="351dp"
+                android:layout_width="0dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
                 android:layout_height="56dp"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="@color/FinalProj_Light"
@@ -129,7 +132,9 @@
             <Button
                 android:id="@+id/btn_edit_budget"
                 style="@style/onboarding_text"
-                android:layout_width="351dp"
+                android:layout_width="0dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
                 android:layout_height="56dp"
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/FinalProj_Light"
@@ -143,7 +148,9 @@
             <Button
                 android:id="@+id/btn_change_passcode"
                 style="@style/onboarding_text"
-                android:layout_width="351dp"
+                android:layout_width="0dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
                 android:layout_height="56dp"
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/FinalProj_Light"
@@ -167,7 +174,9 @@
             <Button
                 android:id="@+id/btn_security_settings"
                 style="@style/onboarding_text"
-                android:layout_width="351dp"
+                android:layout_width="0dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
                 android:layout_height="56dp"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="@color/FinalProj_Light"
@@ -181,7 +190,9 @@
             <Button
                 android:id="@+id/btn_terms_conditions"
                 style="@style/onboarding_text"
-                android:layout_width="351dp"
+                android:layout_width="0dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
                 android:layout_height="56dp"
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/FinalProj_Light"
@@ -214,16 +225,12 @@
 
     </ScrollView>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Static Navigation Bar -->
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinatorLayout"
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true">
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottom_app_bar"
@@ -254,4 +261,4 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-</LinearLayout>
+</RelativeLayout>
