@@ -49,6 +49,11 @@ public class CommonUtils {
      * @return true if the passcode is a 4 digit number. Otherwise, return false
      */
     public static boolean fourDigitPasscodeChecker(@NonNull String passcodeInput) {
+        try {
+            Integer passcode = Integer.valueOf(passcodeInput);
+        } catch (NumberFormatException e) {
+            return false;
+        }
         return passcodeInput.length() == 4;
     }
 

@@ -68,7 +68,7 @@ public class PeakSignUp extends AppCompatActivity {
         }
         if (!fourDigitPasscodeChecker(passcode)) {
             Log.v(TAG, "Wrong passcode format.");
-            String message = "Passcode needs to have 4 digits.";
+            String message = "Passcode needs to be a 4-digit number.";
             displayMessageInSnackbar(view, message, Snackbar.LENGTH_SHORT);
             return;
         }

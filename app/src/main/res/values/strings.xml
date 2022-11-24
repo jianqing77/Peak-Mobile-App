@@ -73,4 +73,9 @@
     <string name="thank_you_for_signing_up">Thank you for signing up!</string>
     <string name="on_boarding">On Boarding</string>
     <string name="get_started">Get Started!</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="passcode">Passcode</string>
+    <string name="confirm_passcode">Confirm Passcode</string>
+    <string name="piggy_bank_image">Piggy Bank Image</string>
 </resources>
