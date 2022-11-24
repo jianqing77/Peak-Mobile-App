@@ -25,6 +25,7 @@
         android:text="@string/movie_tv_search"
         app:layout_constraintBottom_toTopOf="@+id/firebase_button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/team_name_text_view" />
 
@@ -48,7 +49,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/peak_project_button" />
+        app:layout_constraintTop_toBottomOf="@id/peak_onBoarding_bt" />
 
     <Button
         android:id="@+id/peak_project_button"
@@ -56,21 +57,25 @@
         android:layout_height="wrap_content"
         android:onClick="peakProjectActivity"
         android:text="@string/peak"
-        app:layout_constraintBottom_toTopOf="@+id/about_team_button"
+        app:layout_constraintBottom_toTopOf="@+id/peak_onBoarding_bt"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/firebase_button"
         app:layout_constraintVertical_chainStyle="spread" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/peak_onBoarding_bt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="changeProfilePictureActivity"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:onClick="onBoardingActivity"
+        android:text="Peak Entrance Testing"
+        app:layout_constraintBottom_toTopOf="@+id/about_team_button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/about_team_button" />
+        app:layout_constraintTop_toBottomOf="@id/peak_project_button"
+        app:layout_constraintVertical_bias="0.869"
+        app:layout_constraintVertical_chainStyle="spread" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

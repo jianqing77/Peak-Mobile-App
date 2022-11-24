@@ -23,18 +23,48 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
     private static final String LAST_NAME_COL = "lastName";
     private static final String USERNAME_COL = "username";
     private static final String PASSCODE_COL = "passcode";
+    private static final String PROFILE_PICTURE_COL = "profilePicture";
 
     // Table summary
     private static final String SUMMARY_TABLE_NAME = "summary";
+    private static final String SUMMARY_ID_COL = "_summaryID";
+    private static final String SUMMARY_START_DATE_COL = "startDate";
+    private static final String SUMMARY_END_DATE_COL = "endDate";
+    private static final String SUMMARY_TOTAL_BUDGET_COL = "totalBudget";
+    private static final String SUMMARY_CURRENT_EXPENSE_COL = "currentExpense";
+    private static final String SUMMARY_CURRENT_BALANCE_COL = "currentBalance";
 
-    // Table saving
+    // Table saving (for piggy bank)
     private static final String SAVING_TABLE_NAME = "saving";
+    private static final String SAVING_ID_COL = "_savingID";
+    private static final String SAVING_GOAL_COL = "savingGoal";
+    private static final String SAVING_GOAL_DESCRIPTION_COL = "goalDescription";
+    private static final String SAVING_NUM_COL = "savingNum";
+    private static final String SAVING_STATUS_COL = "savingStatus";
 
     // Table transaction
     private static final String TRANSACTION_TABLE_NAME = "transactionEntry";
     private static final String TRANSACTION_ID_COL = "_transactionId";
     private static final String COST_COL = "cost";
     private static final String DESCRIPTION_COL = "description";
+    private static final String EXPENSE_COL = "expense";
+    private static final String CATEGORY_COL = "category";
+    private static final String TRANSACTION_DATE_COL = "transactionDate";
+    private static final String RECEIPT_PHOTO_COL = "receiptPhoto";
+    private static final String TRANSACTION_FK_SUMMARY_ID_COL = "fk_summaryID";
+
+    private static final String CATEGORY_ENUM = "Enum('" + Category.DINING.name() + "', '"
+            + Category.GROCERIES.name() + "', '"
+            + Category.SHOPPING.name() + "', '"
+            + Category.LIVING.name() + "', '"
+            + Category.ENTERTAINMENT.name() + "', '"
+            + Category.EDUCATION.name() + "', '"
+            + Category.BEAUTY.name() + "', '"
+            + Category.TRANSPORTATION.name() + "', '"
+            + Category.HEALTH.name() + "', '"
+            + Category.TRAVEL.name() + "', '"
+            + Category.PET.name() + "', '"
+            + Category.OTHER.name() + "')";
 
     public DBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -42,24 +72,65 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // TODO: Create table queries.
+        // Create table queries.
         String createUserTableQuery =
-                "CREATE TABLE " + USER_TABLE_NAME + " ("
+                "CREATE TABLE IF NOT EXISTS " + USER_TABLE_NAME + " ("
                 + USER_ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
                 + FIRST_NAME_COL + " TEXT NOT NULL, "
                 + LAST_NAME_COL + " TEXT NOT NULL, "
                 + USERNAME_COL + " TEXT NOT NULL, "
-                + PASSCODE_COL + " TEXT NOT NULL,"
+                + PASSCODE_COL + " TEXT NOT NULL, "
+                + PROFILE_PICTURE_COL + " BLOB, "
                 + "CHECK (" + USER_ID_COL + " < 2));";
-        // TODO: Execute "create table" queries.
         db.execSQL(createUserTableQuery);
+
+        String createSavingTableQuery =
+                "CREATE TABLE IF NOT EXISTS " + SAVING_TABLE_NAME + " ("
+                + SAVING_ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
+                + SAVING_GOAL_COL + " TEXT NOT NULL, "
+                + SAVING_GOAL_DESCRIPTION_COL + " TEXT NOT NULL, "
+                + SAVING_NUM_COL + " FLOAT NOT NULL, "
+                + SAVING_STATUS_COL + "BOOLEAN NOT NULL)";
+
+        String createSummaryTableQuery =
+                "CREATE TABLE IF NOT EXISTS " + SUMMARY_TABLE_NAME + " ("
+                + SUMMARY_ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
+                + SUMMARY_START_DATE_COL + " TEXT NOT NULL, "
+                + SUMMARY_END_DATE_COL + " TEXT NOT NULL, "
+                + SUMMARY_TOTAL_BUDGET_COL + " FLOAT NOT NULL, "
+                + SUMMARY_CURRENT_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_CURRENT_BALANCE_COL + " FLOAT NOT NULL)";
+
+        String createTransactionTableQuery =
+                "CREATE TABLE IF NOT EXISTS " + TRANSACTION_TABLE_NAME + " ("
+                + TRANSACTION_ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
+                + EXPENSE_COL + " FLOAT NOT NULL, "
+                + CATEGORY_COL + " " + CATEGORY_ENUM + " NOT NULL, "
+                + DESCRIPTION_COL + " TEXT NOT NULL, "
+                + TRANSACTION_DATE_COL + " TEXT NOT NULL, "
+                + RECEIPT_PHOTO_COL + "BLOB"
+                + TRANSACTION_FK_SUMMARY_ID_COL + "INT NOT NULL, "
+                + " FOREIGN KEY (" + TRANSACTION_FK_SUMMARY_ID_COL + ") INT REFERENCES "
+                        + SUMMARY_TABLE_NAME + "(" + SUMMARY_ID_COL + "))";
+
+        // Execute "create table" queries.
+        db.execSQL(createUserTableQuery);
+        db.execSQL(createSavingTableQuery);
+        db.execSQL(createSummaryTableQuery);
+//        db.execSQL(createTransactionTableQuery);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // TODO: This method should be updated if we change the database version number in future releases.
-        String dropUserTableQuery = "DROP TABLE IF EXISTS " + USER_TABLE_NAME;
+        String dropUserTableQuery = "DROP TABLE IF EXISTS " + USER_TABLE_NAME + ";";
         db.execSQL(dropUserTableQuery);
+        String dropSavingTableQuery = "DROP TABLE IF EXISTS " + SAVING_TABLE_NAME + ";";
+        db.execSQL(dropSavingTableQuery);
+        String dropSummaryTableQuery = "DROP TABLE IF EXISTS " + SUMMARY_TABLE_NAME + ";";
+        db.execSQL(dropSummaryTableQuery);
+        String dropTransactionTableQuery = "DROP TABLE IF EXISTS " + TRANSACTION_TABLE_NAME + ";";
+        db.execSQL(dropTransactionTableQuery);
         onCreate(db);
     }
 
@@ -117,7 +188,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
 
     @Override
     public boolean updateUserInfoTableUser(String username, String firstName, String lastName) {
-        // This method does not validate user identity and should only be called on the Profile page.
+        // This method does not validate user identity and should only be called on the Edit Profile page.
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -131,4 +202,37 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
 
         return (numOfRowsImpacted != 0);
     }
+
+    @Override
+    public boolean updateUserProfilePictureTableUser(byte[] profilePictureBlob) {
+        // This method does not validate user identity and should only be called on the Edit Profile page.
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(PROFILE_PICTURE_COL, profilePictureBlob);
+
+        // Number of users should always be 1.
+        String whereClause = String.format("%s = ?", USER_ID_COL);
+        int numOfRowsImpacted = db.update(USER_TABLE_NAME, values, whereClause, new String[]{"1"});
+
+        return (numOfRowsImpacted != 0);
+    }
+
+    @Override
+    public UserModel retrieveUserInfoTableUser() {
+        Cursor cursor = getUserCursor();
+
+        UserModel user = null;
+        if (cursor.moveToFirst()) {
+            String firstName = cursor.getString(1);
+            String lastName = cursor.getString(2);
+            String username = cursor.getString(3);
+            String passcode = cursor.getString(4);
+            byte[] profilePicture = cursor.getBlob(5);
+            user = new UserModel(firstName, lastName, username, passcode, profilePicture);
+        }
+        cursor.close();
+        return user;
+    }
+
 }
