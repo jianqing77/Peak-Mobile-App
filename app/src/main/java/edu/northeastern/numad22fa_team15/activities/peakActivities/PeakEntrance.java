@@ -32,4 +32,13 @@ public class PeakEntrance extends AppCompatActivity {
         }
     }
 
+    /**
+     * Make sure the page will not show up after created, so that open the PEAK will directly jump
+     * to lock screen
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        finish();
+    }
 }

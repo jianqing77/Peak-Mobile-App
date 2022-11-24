@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.userRegister.PeakSignUp;
-import edu.northeastern.numad22fa_team15.utils.IDBHelper;
 
 public class onBoarding extends AppCompatActivity {
 
@@ -60,11 +59,13 @@ public class onBoarding extends AppCompatActivity {
           dots[i] = new TextView(this);
           dots[i].setText(Html.fromHtml("&#8226"));
           dots[i].setTextSize(35);
-          dots[i].setTextColor(getResources().getColor(R.color.FinalProj_Light, getApplicationContext().getTheme()));
+          dots[i].setTextColor(getResources().getColor(R.color.FinalProj_Light,
+                  getApplicationContext().getTheme()));
           // add the view to the linear layout
           dotLinearLayout.addView(dots[i]);
         }
-        dots[position].setTextColor(getResources().getColor(R.color.FinalProj_Dark, getApplicationContext().getTheme()));
+        dots[position].setTextColor(getResources().getColor(R.color.FinalProj_Dark,
+                getApplicationContext().getTheme()));
     }
 
     // when user scroll the page, call the listener
@@ -129,7 +130,6 @@ public class onBoarding extends AppCompatActivity {
             slideViewPager.setCurrentItem(getItem(1), true);
         } else {
             // if user scroll to the final page, jump to the sign Up page
-            // TODO: change PeakFirstPage.class correspondingly by the signup page
             Intent i = new Intent(onBoarding.this, PeakSignUp.class);
             startActivity(i);
             finish();
@@ -140,11 +140,9 @@ public class onBoarding extends AppCompatActivity {
      * Link with the skip button on the onBoarding page.
      */
     public void skipToEnd(View view) {
-        // TODO: change  PeakFirstPage.class correspondingly by the signup page
         Intent i = new Intent(onBoarding.this, PeakSignUp.class);
         startActivity(i);
         finish();
-
     }
 
     @Override
