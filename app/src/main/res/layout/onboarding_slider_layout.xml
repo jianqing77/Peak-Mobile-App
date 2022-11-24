@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Main image -->
+    <ImageView
+        android:id="@+id/onboarding_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/two_people_budgeting"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_onboarding_1" />
+
+    <!-- OnBoarding Header -->
+    <TextView
+        android:id="@+id/tv_onboarding_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/heading_one"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:textAppearance="@style/onboarding_header"
+        android:layout_marginTop="-60dp"/>
+
+    <!-- OnBoarding text -->
+    <TextView
+        android:id="@+id/tv_onboarding_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|center_vertical"
+        android:lineSpacingExtra="3sp"
+        android:text="@string/desc_one"
+        android:textAppearance="@style/onboarding_text"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="18dp"/>
+
+</LinearLayout>

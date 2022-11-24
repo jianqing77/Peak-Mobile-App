@@ -16,6 +16,11 @@ import android.view.View;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -26,7 +31,9 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import edu.northeastern.numad22fa_team15.R;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.onBoarding.onBoarding;
 import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
+import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
 import edu.northeastern.numad22fa_team15.utils.IDBHelper;
 
@@ -50,7 +57,6 @@ public class PeakFirstPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.v(TAG, "OnCreate()");
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_peak_first_page);
 
@@ -75,6 +81,7 @@ public class PeakFirstPage extends AppCompatActivity {
         }
         Bitmap compressedBitmap = BitmapFactory.decodeByteArray(profilePictureByteArray,0, profilePictureByteArray.length);
         profilePictureImageView.setImageBitmap(compressedBitmap);
+
     }
 
     public void userSignUp(View view) {
