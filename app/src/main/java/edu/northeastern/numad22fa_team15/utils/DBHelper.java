@@ -105,12 +105,12 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
                 "CREATE TABLE IF NOT EXISTS " + TRANSACTION_TABLE_NAME + " ("
                 + TRANSACTION_ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
                 + EXPENSE_COL + " FLOAT NOT NULL, "
-                + CATEGORY_COL + " " + CATEGORY_ENUM + " NOT NULL, "
+                + CATEGORY_COL + " TEXT NOT NULL, "
                 + DESCRIPTION_COL + " TEXT NOT NULL, "
                 + TRANSACTION_DATE_COL + " TEXT NOT NULL, "
-                + RECEIPT_PHOTO_COL + "BLOB"
-                + TRANSACTION_FK_SUMMARY_ID_COL + "INT NOT NULL, "
-                + " FOREIGN KEY (" + TRANSACTION_FK_SUMMARY_ID_COL + ") INT REFERENCES "
+                + RECEIPT_PHOTO_COL + " BLOB, "
+                + TRANSACTION_FK_SUMMARY_ID_COL + " INT NOT NULL, "
+                + "FOREIGN KEY (" + TRANSACTION_FK_SUMMARY_ID_COL + ") REFERENCES "
                         + SUMMARY_TABLE_NAME + "(" + SUMMARY_ID_COL + "))";
 
         // Execute "create table" queries.
@@ -204,6 +204,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
     }
 
     @Override
+<<<<<<< HEAD
     public boolean updateUserProfilePictureTableUser(byte[] profilePictureBlob) {
         // This method does not validate user identity and should only be called on the Edit Profile page.
         SQLiteDatabase db = this.getWritableDatabase();
@@ -235,4 +236,50 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         return user;
     }
 
+=======
+    public boolean addSummaryTableSummary(String startDate, String endDate, float totalBudget, float currentExpense, float currentBalance) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(SUMMARY_START_DATE_COL, startDate);
+        values.put(SUMMARY_END_DATE_COL, endDate);
+        values.put(SUMMARY_TOTAL_BUDGET_COL, totalBudget);
+        values.put(SUMMARY_CURRENT_EXPENSE_COL, currentExpense);
+        values.put(SUMMARY_CURRENT_BALANCE_COL, currentBalance);
+
+        long result = db.insert(SUMMARY_TABLE_NAME, null, values);
+        return (result != -1);
+    }
+
+    @Override
+    public boolean addTranTableTransaction(float expense, String description, String category, String transactionDate, int summaryID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(EXPENSE_COL, expense);
+        values.put(DESCRIPTION_COL, description);
+        values.put(CATEGORY_COL, category);
+        values.put(TRANSACTION_DATE_COL, transactionDate);
+        values.put(TRANSACTION_FK_SUMMARY_ID_COL, summaryID);
+
+        long result = db.insert(TRANSACTION_TABLE_NAME, null, values);
+        return (result != -1);
+    }
+
+    @Override
+    public boolean updateTranTableTransaction(float expense, String description, String category, int transactionID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(EXPENSE_COL, expense);
+        values.put(DESCRIPTION_COL, description);
+        values.put(CATEGORY_COL, category);
+
+        String whereClause = String.format("%s = ?", TRANSACTION_ID_COL);
+        int numOfRowsImpacted = db.update(TRANSACTION_TABLE_NAME, values, whereClause, new String[]{String.valueOf(transactionID)});
+
+        return (numOfRowsImpacted != 0);
+
+    }
+>>>>>>> xc_project_piggydata
 }

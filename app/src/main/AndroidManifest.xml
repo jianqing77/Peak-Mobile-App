@@ -30,6 +30,9 @@
             android:name=".peakProfile.ChangeProfilePicture"
             android:exported="false" />
         <activity
+            android:name=".activities.peakActivities.PeakAddTransaction"
+            android:exported="false" />
+        <activity
             android:name=".peakProfile.EditProfile"
             android:exported="false" />
         <activity
@@ -44,12 +47,12 @@
         <activity
             android:name=".peakPasscodeRecovery.ForgotPasscode"
             android:exported="false" />
-        <activity
-            android:name=".peakSignUp.PeakSignUpConfirmation"
-            android:exported="false" />
-        <activity
-            android:name=".peakSignUp.PeakSignUp"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".peakSignUp.PeakSignUpConfirmation"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".peakSignUp.PeakSignUp"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".activities.MainActivity"
             android:configChanges="orientation|screenSize"
