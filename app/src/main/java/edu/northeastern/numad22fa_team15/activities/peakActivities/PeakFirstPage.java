@@ -74,6 +74,10 @@ public class PeakFirstPage extends AppCompatActivity {
 
     private void setProfilePicture() {
         UserModel user = dbHelper.retrieveUserInfoTableUser();
+        // TODO: This following if statement will be removed when moving this method to the EditProfile page.
+        if (user == null) {
+            return;
+        }
         byte[] profilePictureByteArray = user.getProfilePicture();
         if (profilePictureByteArray == null || profilePictureByteArray.length == 0) {
             // TODO: XH - Need to merge Jaime's branch to get default profile picture.

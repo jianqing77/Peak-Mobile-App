@@ -72,9 +72,9 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // TODO: Create table queries.
+        // Create table queries.
         String createUserTableQuery =
-                "CREATE TABLE " + USER_TABLE_NAME + " ("
+                "CREATE TABLE IF NOT EXISTS " + USER_TABLE_NAME + " ("
                 + USER_ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
                 + FIRST_NAME_COL + " TEXT NOT NULL, "
                 + LAST_NAME_COL + " TEXT NOT NULL, "
@@ -82,11 +82,10 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
                 + PASSCODE_COL + " TEXT NOT NULL, "
                 + PROFILE_PICTURE_COL + " BLOB, "
                 + "CHECK (" + USER_ID_COL + " < 2));";
-        // TODO: Execute "create table" queries.
         db.execSQL(createUserTableQuery);
 
         String createSavingTableQuery =
-                "CREATE TABLE " + SAVING_TABLE_NAME + " ("
+                "CREATE TABLE IF NOT EXISTS " + SAVING_TABLE_NAME + " ("
                 + SAVING_ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
                 + SAVING_GOAL_COL + " TEXT NOT NULL, "
                 + SAVING_GOAL_DESCRIPTION_COL + " TEXT NOT NULL, "
@@ -94,7 +93,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
                 + SAVING_STATUS_COL + "BOOLEAN NOT NULL)";
 
         String createSummaryTableQuery =
-                "CREATE TABLE " + SUMMARY_TABLE_NAME + " ("
+                "CREATE TABLE IF NOT EXISTS " + SUMMARY_TABLE_NAME + " ("
                 + SUMMARY_ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
                 + SUMMARY_START_DATE_COL + " TEXT NOT NULL, "
                 + SUMMARY_END_DATE_COL + " TEXT NOT NULL, "
@@ -103,7 +102,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
                 + SUMMARY_CURRENT_BALANCE_COL + " FLOAT NOT NULL)";
 
         String createTransactionTableQuery =
-                "CREATE TABLE " + TRANSACTION_TABLE_NAME + " ("
+                "CREATE TABLE IF NOT EXISTS " + TRANSACTION_TABLE_NAME + " ("
                 + TRANSACTION_ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
                 + EXPENSE_COL + " FLOAT NOT NULL, "
                 + CATEGORY_COL + " " + CATEGORY_ENUM + " NOT NULL, "
@@ -114,8 +113,8 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
                 + " FOREIGN KEY (" + TRANSACTION_FK_SUMMARY_ID_COL + ") INT REFERENCES "
                         + SUMMARY_TABLE_NAME + "(" + SUMMARY_ID_COL + "))";
 
-        // TODO: Execute "create table" queries.
-//        db.execSQL(createUserTableQuery);
+        // Execute "create table" queries.
+        db.execSQL(createUserTableQuery);
         db.execSQL(createSavingTableQuery);
         db.execSQL(createSummaryTableQuery);
 //        db.execSQL(createTransactionTableQuery);
@@ -124,13 +123,13 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // TODO: This method should be updated if we change the database version number in future releases.
-        String dropUserTableQuery = "DROP TABLE IF EXISTS " + USER_TABLE_NAME;
+        String dropUserTableQuery = "DROP TABLE IF EXISTS " + USER_TABLE_NAME + ";";
         db.execSQL(dropUserTableQuery);
-        String dropSavingTableQuery = "DROP TABLE IF EXISTS " + SAVING_TABLE_NAME;
+        String dropSavingTableQuery = "DROP TABLE IF EXISTS " + SAVING_TABLE_NAME + ";";
         db.execSQL(dropSavingTableQuery);
-        String dropSummaryTableQuery = "DROP TABLE IF EXISTS " + SUMMARY_TABLE_NAME;
+        String dropSummaryTableQuery = "DROP TABLE IF EXISTS " + SUMMARY_TABLE_NAME + ";";
         db.execSQL(dropSummaryTableQuery);
-        String dropTransactionTableQuery = "DROP TABLE IF EXISTS " + TRANSACTION_TABLE_NAME;
+        String dropTransactionTableQuery = "DROP TABLE IF EXISTS " + TRANSACTION_TABLE_NAME + ";";
         db.execSQL(dropTransactionTableQuery);
         onCreate(db);
     }
