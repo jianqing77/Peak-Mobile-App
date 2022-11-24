@@ -27,6 +27,8 @@ public class PeakSignUp extends AppCompatActivity {
     private TextInputEditText firstNameTextInputEditText;
     private TextInputEditText lastNameTextInputEditText;
     private TextInputEditText passcodeTextInputEditText;
+    private TextInputEditText confirmPasscodeTextInputEditText;
+
 
     private IDBHelper dbHelper;
 
@@ -40,6 +42,7 @@ public class PeakSignUp extends AppCompatActivity {
         firstNameTextInputEditText = (TextInputEditText) findViewById(R.id.first_name_text_input_edit_text);
         lastNameTextInputEditText = (TextInputEditText) findViewById(R.id.last_name_text_input_edit_text);
         passcodeTextInputEditText = (TextInputEditText) findViewById(R.id.passcode_text_input_edit_text);
+        confirmPasscodeTextInputEditText = (TextInputEditText) findViewById(R.id.confirm_passcode_text_input_edit_text);
 
         dbHelper = new DBHelper(this);
     }
@@ -52,19 +55,25 @@ public class PeakSignUp extends AppCompatActivity {
         String firstName = firstNameTextInputEditText.getText().toString();
         String lastName = lastNameTextInputEditText.getText().toString();
         String passcode = passcodeTextInputEditText.getText().toString();
+        String confirmPasscode = confirmPasscodeTextInputEditText.getText().toString();
         if (nullOrEmptyInputChecker(username, firstName, lastName, passcode)) {
             String message = "Username, first name, last name, and passcode inputs are all required.";
             displayMessageInSnackbar(view, message, Snackbar.LENGTH_SHORT);
             return; // Terminate the method
         }
+        if (!passcode.equals(confirmPasscode)) {
+            String message = "Passcodes do not match.";
+            displayMessageInSnackbar(view, message, Snackbar.LENGTH_SHORT);
+            return;
+        }
         if (!fourDigitPasscodeChecker(passcode)) {
-            Log.v(TAG, "Wrong passcode format");
+            Log.v(TAG, "Wrong passcode format.");
             String message = "Passcode needs to have 4 digits.";
             displayMessageInSnackbar(view, message, Snackbar.LENGTH_SHORT);
             return;
         }
         boolean addResult = dbHelper.addUserTableUser(username, firstName, lastName, passcode);
-        // String resultMessage = "Failed to add user"; // Default message
+         String resultMessage = "Failed to add user"; // Default message
         if (addResult) {
             // ---> OPTION 1: JUMP TO LOGIN PAGE
             // Intent intent = new Intent(PeakSignUp.this, PeakLogin.class);
@@ -73,6 +82,6 @@ public class PeakSignUp extends AppCompatActivity {
             startActivity(intent);
             // resultMessage = "User was added successfully.";
         }
-        // displayMessageInSnackbar(view, resultMessage, Snackbar.LENGTH_SHORT);
+         displayMessageInSnackbar(view, resultMessage, Snackbar.LENGTH_SHORT);
     }
 }

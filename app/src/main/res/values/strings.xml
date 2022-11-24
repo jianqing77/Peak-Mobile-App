@@ -56,13 +56,13 @@
 
     // On Boarding Page
     <string name="heading_one">Create a budget</string>
-    <string name="desc_one">Allocate a custom amount of money to each spending category for the week.</string>
+    <string name="desc_one">Allocate a custom amount of money to each spending category for the month.</string>
     <string name="heading_two">Track your expenses</string>
     <string name="desc_two">Enter your spendings and capture images of your receipts. We calculate tip, too!</string>
     <string name="heading_three">Reach your goals faster</string>
     <string name="desc_three">Each month, your unspent budget will automatically be added to your virtual piggy bank. Add a savings goal and watch your piggy bank grow!</string>
     <string name="heading_four">Add without unlocking</string>
-    <string name="desc_four">After two minutes of inactivity, the app will lock. Don’t worry! You can still add spendings right from the lock screen with the passcode.</string>
+    <string name="desc_four">After two minutes of inactivity, the app will lock. Don’t worry! You can still add spendings right from the lock screen.</string>
     <string name="skip">Skip</string>
     <string name="next">Next</string>
     <string name="two_people_budgeting">Two people budgetting</string>

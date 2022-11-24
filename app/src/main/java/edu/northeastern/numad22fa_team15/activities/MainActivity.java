@@ -10,17 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.activities.firebaseActivities.FirebaseSignUpActivity;
 import edu.northeastern.numad22fa_team15.activities.movieApiActivities.MovieSearchActivityWithRecyclerView;
-
-import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakEntrance;
-import edu.northeastern.numad22fa_team15.peakProfile.EditProfile;
-import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakFirstPage;
-import edu.northeastern.numad22fa_team15.peakProfile.ProfilePage;
-
-
-
 import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakAddTransaction;
-
-import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakFirstPage;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakEntrance;
+import edu.northeastern.numad22fa_team15.peakProfile.ProfilePage;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,27 +45,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Clicking the PEAK button will start the PeakFirstPage activity.
+     * Clicking the PEAK button will start the PeakEntrance activity.
      * @param view view
      */
     public void peakProjectActivity(View view) {
         // TODO: It will be changed to the actual first page of the Peak app.
-        Intent intent = new Intent(getApplicationContext(), PeakFirstPage.class);
-        startActivity(intent);
-    }
-
-    /**
-     * Clicking the onBoarding button will start the onBoarding activity.
-     * @param view view
-     */
-    public void onBoardingActivity(View view) {
-        // TODO: this should be the page shown up when user first open the app.
+//        Intent intent = new Intent(getApplicationContext(), PeakFirstPage.class);
         Intent intent = new Intent(getApplicationContext(), PeakEntrance.class);
         startActivity(intent);
     }
 
+//    /**
+//     * Clicking the onBoarding button will start the onBoarding activity.
+//     * @param view view
+//     */
+//    public void onBoardingActivity(View view) {
+//        // TODO: this should be the page shown up when user first open the app.
+//        Intent intent = new Intent(getApplicationContext(), PeakEntrance.class);
+//        startActivity(intent);
+//    }
+
     /*
-     * Clicking the TEST button will start PeakFirstPage activity.
+     * Clicking the TEST button will start PeakAddTransaction activity.
      * @param view view
      */
     public void testActivity(View view) {

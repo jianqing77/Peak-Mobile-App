@@ -14,6 +14,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import edu.northeastern.numad22fa_team15.R;
@@ -90,17 +91,14 @@ public class PeakAddTransaction extends AppCompatActivity {
 
     }
 
-    private boolean invalidCategoryChecker(String category) {
+    private boolean invalidCategoryChecker(String categoryInput) {
         Category[] categories = Category.values();
-        List<String> category_lst = new ArrayList<>();
-        for (Category c : categories) {
-            category_lst.add(c.toString());
+        for (Category category : categories) {
+            if (categoryInput.equals(category)) {
+                return true;
+            }
         }
-        if (category_lst.contains(category)) {
-            return false;
-        }
-        return true;
-
+        return false;
     }
 
     public void updateTransaction(View view) {

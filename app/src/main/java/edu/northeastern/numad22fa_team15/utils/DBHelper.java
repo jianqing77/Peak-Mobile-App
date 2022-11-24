@@ -82,7 +82,6 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
                 + PASSCODE_COL + " TEXT NOT NULL, "
                 + PROFILE_PICTURE_COL + " BLOB, "
                 + "CHECK (" + USER_ID_COL + " < 2));";
-        db.execSQL(createUserTableQuery);
 
         String createSavingTableQuery =
                 "CREATE TABLE IF NOT EXISTS " + SAVING_TABLE_NAME + " ("
@@ -117,7 +116,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         db.execSQL(createUserTableQuery);
         db.execSQL(createSavingTableQuery);
         db.execSQL(createSummaryTableQuery);
-//        db.execSQL(createTransactionTableQuery);
+        db.execSQL(createTransactionTableQuery);
     }
 
     @Override
@@ -136,7 +135,6 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
 
     @Override
     public boolean addUserTableUser(String username, String firstName, String lastName, String passcode) {
-        // TODO: User table trigger. Add constraint so that user table has only one row.
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -277,7 +275,6 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         int numOfRowsImpacted = db.update(TRANSACTION_TABLE_NAME, values, whereClause, new String[]{String.valueOf(transactionID)});
 
         return (numOfRowsImpacted != 0);
-
     }
 
 }

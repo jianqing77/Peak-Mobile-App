@@ -20,23 +20,18 @@ public class onBoarding extends AppCompatActivity {
 
     private static final String TAG = "OnBoardingPage___";
 
-    ViewPager slideViewPager;
-    LinearLayout dotLinearLayout;
-    Button backBtn, nextBtn, skipBtn;
-    TextView[] dots;
-    ViewPagerAdapter viewPagerAdapter;
-    private IDBHelper dbHelper;
+    private ViewPager slideViewPager;
+    private LinearLayout dotLinearLayout;
+    private Button backBtn, nextBtn, skipBtn;
+    private TextView[] dots;
+    private ViewPagerAdapter viewPagerAdapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_boarding);
-//        dbHelper = new DBHelper(PeakFirstPage.this);
-//        if (dbHelper.retrieveUserInfoTableUser() == null) {
-//            Intent intent = new Intent(PeakFirstPage.this, onBoarding.class);
-//            startActivity(intent);
-//        }
+
         backBtn = findViewById(R.id.btn_back);
         nextBtn = findViewById(R.id.btn_next);
         skipBtn = findViewById(R.id.btn_skip);
