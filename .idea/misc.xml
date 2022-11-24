@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/bg_view_dark_oval.xml" value="0.3515" />
+        <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/bg_view_grey_oval.xml" value="0.3515" />
+        <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout-land/change_profile_picture_bottomsheet.xml" value="0.5438221462163317" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_main.xml" value="0.22894736842105262" />
+        <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_peak_lock_screen.xml" value="0.2975630611372381" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_test_peak_first_page.xml" value="0.24166666666666667" />
+        <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/change_profile_picture_bottomsheet.xml" value="0.22894736842105262" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/edit_profile.xml" value="0.25" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/profile_page.xml" value="0.22894736842105262" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/ic_nav_home.xml" value="0.2105" />

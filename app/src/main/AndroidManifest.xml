@@ -100,7 +100,7 @@
         <!-- Lock Screen -->
         <activity
             android:name=".activities.peakActivities.lockScreen.PeakLockScreen"
-            android:configChanges="orientation|screenSize" />
+            android:configChanges="orientation|screenSize"/>
         <activity
             android:name=".activities.peakActivities.homePage.PeakHomePage"
             android:configChanges="orientation|screenSize" />
