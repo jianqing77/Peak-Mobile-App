@@ -17,6 +17,7 @@ import edu.northeastern.numad22fa_team15.R;
 public class EditProfile extends AppCompatActivity {
 
     ImageView bottomsheet;
+    ImageView profilePicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,8 @@ public class EditProfile extends AppCompatActivity {
         setContentView(R.layout.edit_profile);
 
         bottomsheet = findViewById(R.id.btn_edit_profile_picture);
+        profilePicture = findViewById(R.id.profile_picture);
+
         bottomsheet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -37,7 +40,6 @@ public class EditProfile extends AppCompatActivity {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(getWindow().FEATURE_NO_TITLE);
 
-        // This might cause issues since it's already declared in onCreate. Have not tested yet
         dialog.setContentView(R.layout.change_profile_picture_bottomsheet);
 
         ImageButton takePhoto = dialog.findViewById(R.id.btn_take_profile_picture);
@@ -59,6 +61,7 @@ public class EditProfile extends AppCompatActivity {
 
                 // TODO: access photo album to choose photo
 
+
             }
         });
 
@@ -68,6 +71,7 @@ public class EditProfile extends AppCompatActivity {
 
                 // TODO: delete current photo.
                 //  Should not delete photo if current profile picture is default avatar.
+                profilePicture.setImageResource(R.drawable.ic_anonymous_person_24);
 
             }
         });

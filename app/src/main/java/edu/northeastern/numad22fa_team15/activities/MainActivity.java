@@ -12,6 +12,9 @@ import edu.northeastern.numad22fa_team15.activities.firebaseActivities.FirebaseS
 import edu.northeastern.numad22fa_team15.activities.movieApiActivities.MovieSearchActivityWithRecyclerView;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakEntrance;
 import edu.northeastern.numad22fa_team15.peakProfile.EditProfile;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakFirstPage;
+import edu.northeastern.numad22fa_team15.peakProfile.ProfilePage;
+
 
 import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakFirstPage;
 
@@ -79,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view view
      */
     public void changeProfilePictureActivity(View view) {
-        Intent intent = new Intent(getApplicationContext(), EditProfile.class);
+        Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
         startActivity(intent);
     }
 
