@@ -204,7 +204,6 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
     }
 
     @Override
-<<<<<<< HEAD
     public boolean updateUserProfilePictureTableUser(byte[] profilePictureBlob) {
         // This method does not validate user identity and should only be called on the Edit Profile page.
         SQLiteDatabase db = this.getWritableDatabase();
@@ -236,7 +235,6 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         return user;
     }
 
-=======
     public boolean addSummaryTableSummary(String startDate, String endDate, float totalBudget, float currentExpense, float currentBalance) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -281,5 +279,5 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         return (numOfRowsImpacted != 0);
 
     }
->>>>>>> xc_project_piggydata
+
 }
