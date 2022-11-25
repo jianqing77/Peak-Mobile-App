@@ -140,4 +140,19 @@
         </item>
     </style>
 
+    <style name="peak_logo">
+        <item name="android:textSize">
+            48sp
+        </item>
+        <item name="android:letterSpacing">
+            -0.01
+        </item>
+        <item name="android:textColor">
+            #F6CA56
+        </item>
+        <item name="android:textFontWeight">
+            600
+        </item>
+    </style>
+
 </resources>

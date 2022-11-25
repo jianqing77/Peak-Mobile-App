@@ -52,7 +52,9 @@
 
         <View
             android:id="@+id/edit_profile_divider"
-            android:layout_width="315dp"
+            android:layout_width="0dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
             android:layout_height="2dp"
             android:layout_marginTop="30dp"
             android:background="@color/FinalProj_Primary"
@@ -78,7 +80,9 @@
         <!-- First Name EditText -->
         <EditText
             android:id="@+id/et_edit_first_name"
-            android:layout_width="327dp"
+            android:layout_width="0dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginLeft="45dp"
             android:layout_height="48dp"
             android:background="@drawable/peak_text_input"
             app:layout_constraintEnd_toEndOf="parent"
@@ -107,7 +111,9 @@
         <!-- Last Name EditText -->
         <EditText
             android:id="@+id/et_edit_last_name"
-            android:layout_width="327dp"
+            android:layout_width="0dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginLeft="45dp"
             android:layout_height="48dp"
             android:background="@drawable/peak_text_input"
             app:layout_constraintEnd_toEndOf="parent"
@@ -136,7 +142,9 @@
         <!-- Username EditText -->
         <EditText
             android:id="@+id/et_edit_username"
-            android:layout_width="327dp"
+            android:layout_width="0dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginLeft="45dp"
             android:layout_height="48dp"
             android:background="@drawable/peak_text_input"
             android:padding="10dp"
@@ -149,7 +157,9 @@
         <!-- Confirm Changes button -->
         <Button
             android:id="@+id/btn_edit_profile_confirm"
-            android:layout_width="327dp"
+            android:layout_width="0dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginLeft="45dp"
             android:layout_height="68dp"
             android:backgroundTint="@color/FinalProj_Light"
             android:clickable="true"

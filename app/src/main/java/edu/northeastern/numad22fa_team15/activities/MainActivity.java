@@ -12,6 +12,7 @@ import edu.northeastern.numad22fa_team15.activities.firebaseActivities.FirebaseS
 import edu.northeastern.numad22fa_team15.activities.movieApiActivities.MovieSearchActivityWithRecyclerView;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakAddTransaction;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakEntrance;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.lockScreen.PeakLockScreen;
 import edu.northeastern.numad22fa_team15.peakProfile.ProfilePage;
 
 public class MainActivity extends AppCompatActivity {
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void testActivity(View view) {
         // TODO: Test for now, will be deleted
-        Intent intent = new Intent(getApplicationContext(), PeakAddTransaction.class);
+        Intent intent = new Intent(getApplicationContext(), PeakLockScreen.class);
         startActivity(intent);
     }
 
