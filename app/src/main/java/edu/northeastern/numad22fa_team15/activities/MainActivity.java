@@ -10,9 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.activities.firebaseActivities.FirebaseSignUpActivity;
 import edu.northeastern.numad22fa_team15.activities.movieApiActivities.MovieSearchActivityWithRecyclerView;
-import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakAddTransaction;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakEntrance;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.lockScreen.PeakLockScreen;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.profilePage.ProfileActivity;
 import edu.northeastern.numad22fa_team15.peakProfile.ProfilePage;
 
 public class MainActivity extends AppCompatActivity {
@@ -89,8 +89,8 @@ public class MainActivity extends AppCompatActivity {
      * Clicking the BUTTON button will start the EditProfile activity.
      * @param view view
      */
-    public void changeProfilePictureActivity(View view) {
-        Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
+    public void profileTestActivity(View view) {
+        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
         startActivity(intent);
     }
 

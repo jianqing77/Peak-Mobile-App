@@ -78,4 +78,19 @@
     <string name="passcode">Passcode</string>
     <string name="confirm_passcode">Confirm Passcode</string>
     <string name="piggy_bank_image">Piggy Bank Image</string>
+    <string name="user_profile_picture">User profile picture</string>
+    <string name="your_current_budget_is">Your current budget is</string>
+    <string name="month">/ month</string>
+    <string name="full_name">Full Name</string>
+    <string name="username">username</string>
+    <string name="_2500">$2500</string>
+    <string name="account">ACCOUNT</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="edit_budget">Edit budget</string>
+    <string name="change_passcode">Change passcode</string>
+    <string name="security_and_privacy">SECURITY AND PRIVACY</string>
+    <string name="security_settings">Security settings</string>
+    <string name="terms_and_conditions">Terms and Conditions</string>
+    <string name="reset_account">Reset account</string>
+    <string name="add_spending_floating_action_button">Add Spending Floating Action Button</string>
 </resources>

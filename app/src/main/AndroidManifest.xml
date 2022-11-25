@@ -33,10 +33,12 @@
             android:name=".activities.peakActivities.PeakAddTransaction"
             android:exported="false" />
         <activity
-            android:name=".peakProfile.EditProfile"
+            android:name=".activities.peakActivities.profilePage.EditProfileActivity"
+            android:configChanges="orientation|screenSize"
             android:exported="false" />
         <activity
-            android:name=".peakProfile.ProfilePage"
+            android:name=".activities.peakActivities.profilePage.ProfileActivity"
+            android:configChanges="orientation|screenSize"
             android:exported="false" />
         <activity
             android:name=".peakPasscodeRecovery.ResetPasscodeConfirmation"

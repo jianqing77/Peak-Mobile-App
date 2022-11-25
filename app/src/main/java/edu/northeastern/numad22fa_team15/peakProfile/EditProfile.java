@@ -22,7 +22,7 @@ public class EditProfile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.edit_profile);
+        setContentView(R.layout.activity_edit_profile);
 
         bottomsheet = findViewById(R.id.btn_edit_profile_picture);
         profilePicture = findViewById(R.id.profile_picture);
