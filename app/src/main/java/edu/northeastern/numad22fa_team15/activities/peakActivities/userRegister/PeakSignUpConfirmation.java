@@ -21,4 +21,12 @@ public class PeakSignUpConfirmation extends AppCompatActivity {
         Intent intent = new Intent(PeakSignUpConfirmation.this, PeakHomePage.class);
         startActivity(intent);
     }
+
+    /**
+     * Avoid back to the signup page again.
+     */
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
 }

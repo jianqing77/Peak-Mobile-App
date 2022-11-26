@@ -87,13 +87,11 @@
             android:name=".activities.peakActivities.PeakEntrance"
             android:configChanges="orientation|screenSize" /> <!-- New User -->
         <activity
-            android:name=".activities.peakActivities.onBoarding.onBoarding"
-            android:configChanges="orientation|screenSize" />
+            android:name=".activities.peakActivities.onBoarding.onBoarding" />
         <activity
             android:name=".activities.peakActivities.userRegister.PeakSignUp" />
         <activity
-            android:name=".activities.peakActivities.userRegister.PeakSignUpConfirmation"
-            android:configChanges="orientation|screenSize" />
+            android:name=".activities.peakActivities.userRegister.PeakSignUpConfirmation" />
         <activity
             android:name=".activities.peakActivities.userRegister.PeakLogin"
             android:configChanges="orientation|screenSize" />
