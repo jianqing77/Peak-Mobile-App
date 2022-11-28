@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            app:cardCornerRadius="160dp"
+            app:cardCornerRadius="54dp"
             app:cardPreventCornerOverlap="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,16 +38,18 @@
                 android:layout_height="108dp"
                 android:layout_gravity="center"
                 android:background="@drawable/ic_anonymous_person_24"
-                android:foreground="#80000000"/>
+                android:contentDescription="@string/user_profile_picture"
+                android:foreground="#80000000" />
 
             <ImageView
                 android:id="@+id/btn_edit_profile_picture"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@drawable/ic_baseline_edit_24"
                 android:layout_gravity="center"
+                android:background="@drawable/ic_baseline_edit_24"
                 android:clickable="true"
-                android:contentDescription="Edit button"/>
+                android:contentDescription="@string/edit_button"
+                tools:ignore="RedundantDescriptionCheck" />
         </androidx.cardview.widget.CardView>
 
         <View
@@ -70,7 +72,7 @@
             android:layout_marginTop="26dp"
             android:gravity="top"
             android:lineSpacingExtra="5sp"
-            android:text="First Name"
+            android:text="@string/first_name"
             android:textAppearance="@style/peak_text_input"
             android:translationY="-2.53sp"
             app:layout_constraintBottom_toTopOf="@+id/et_edit_first_name"
@@ -81,17 +83,20 @@
         <EditText
             android:id="@+id/et_edit_first_name"
             android:layout_width="0dp"
-            android:layout_marginRight="45dp"
-            android:layout_marginLeft="45dp"
             android:layout_height="48dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="45dp"
+            android:autofillHints=""
             android:background="@drawable/peak_text_input"
+            android:hint="@string/nan"
+            android:inputType="text"
+            android:padding="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_edit_last_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_edit_first_name"
-            app:layout_constraintBottom_toTopOf="@+id/tv_edit_last_name"
-            android:padding="10dp"
-            android:layout_marginTop="2dp"
-            android:hint="John"/>
+            tools:ignore="DuplicateSpeakableTextCheck" />
 
         <!-- Last Name TextView -->
         <TextView
@@ -101,7 +106,7 @@
             android:layout_marginTop="26dp"
             android:gravity="top"
             android:lineSpacingExtra="5sp"
-            android:text="Last Name"
+            android:text="@string/last_name"
             android:textAppearance="@style/peak_text_input"
             android:translationY="-2.53sp"
             app:layout_constraintBottom_toTopOf="@id/et_edit_last_name"
@@ -112,17 +117,19 @@
         <EditText
             android:id="@+id/et_edit_last_name"
             android:layout_width="0dp"
-            android:layout_marginRight="45dp"
-            android:layout_marginLeft="45dp"
             android:layout_height="48dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="45dp"
+            android:autofillHints=""
             android:background="@drawable/peak_text_input"
+            android:hint="@string/nan"
+            android:inputType="text"
+            android:padding="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_edit_username"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_edit_last_name"
-            app:layout_constraintBottom_toTopOf="@+id/tv_edit_username"
-            android:padding="10dp"
-            android:layout_marginTop="2dp"
-            android:hint="Doe"/>
+            app:layout_constraintTop_toBottomOf="@+id/tv_edit_last_name" />
 
         <!-- Username TextView -->
         <TextView
@@ -132,48 +139,53 @@
             android:layout_marginTop="26dp"
             android:gravity="top"
             android:lineSpacingExtra="5sp"
-            android:text="Username"
+            android:text="@string/username"
             android:textAppearance="@style/peak_text_input"
             android:translationY="-2.53sp"
+            app:layout_constraintBottom_toTopOf="@+id/et_edit_username"
             app:layout_constraintStart_toStartOf="@+id/et_edit_username"
-            app:layout_constraintTop_toBottomOf="@+id/et_edit_last_name"
-            app:layout_constraintBottom_toTopOf="@+id/et_edit_username"/>
+            app:layout_constraintTop_toBottomOf="@+id/et_edit_last_name" />
 
         <!-- Username EditText -->
         <EditText
             android:id="@+id/et_edit_username"
             android:layout_width="0dp"
-            android:layout_marginRight="45dp"
-            android:layout_marginLeft="45dp"
             android:layout_height="48dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:autofillHints=""
             android:background="@drawable/peak_text_input"
+            android:hint="@string/nan"
+            android:inputType="text"
             android:padding="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_edit_profile_confirm"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_edit_username"
-            app:layout_constraintBottom_toTopOf="@+id/btn_edit_profile_confirm"
-            android:hint="johndoe"/>
+            app:layout_constraintTop_toBottomOf="@+id/tv_edit_username" />
 
         <!-- Confirm Changes button -->
         <Button
             android:id="@+id/btn_edit_profile_confirm"
             android:layout_width="0dp"
-            android:layout_marginRight="45dp"
-            android:layout_marginLeft="45dp"
             android:layout_height="68dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginBottom="40dp"
             android:backgroundTint="@color/FinalProj_Light"
             android:clickable="true"
-            android:text="Confirm Changes"
+            android:onClick="confirmUserInfoChanges"
+            android:text="@string/confirm_changes"
             android:textAppearance="@style/button_light"
-            android:textColor="@color/FinalProj_Dark"
+            android:textColor="#546E7A"
             android:textFontWeight="500"
             app:cornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/et_edit_username"
-            android:layout_marginTop="50dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="40dp"/>
+            tools:ignore="TextContrastCheck"
+            tools:targetApi="p" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

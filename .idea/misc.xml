@@ -36,7 +36,7 @@
         <entry key="app/src/main/res/drawable/ic_nav_profile.xml" value="0.226" />
         <entry key="app/src/main/res/layout-land/activity_firebase_login.xml" value="0.263668430335097" />
         <entry key="app/src/main/res/layout/activity_about_team.xml" value="0.25679347826086957" />
-        <entry key="app/src/main/res/layout/activity_edit_profile.xml" value="0.2015625" />
+        <entry key="app/src/main/res/layout/activity_edit_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_firebase_friend_list.xml" value="0.2586050724637681" />
         <entry key="app/src/main/res/layout/activity_firebase_login.xml" value="0.32563405797101447" />
         <entry key="app/src/main/res/layout/activity_firebase_signup.xml" value="0.23020833333333332" />
