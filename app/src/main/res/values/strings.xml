@@ -93,4 +93,5 @@
     <string name="terms_and_conditions">Terms and Conditions</string>
     <string name="reset_account">Reset account</string>
     <string name="add_spending_floating_action_button">Add Spending Floating Action Button</string>
+    <string name="your_profile">Your Profile</string>
 </resources>

@@ -14,11 +14,11 @@ import edu.northeastern.numad22fa_team15.utils.IDBHelper;
 public class EditProfileActivity extends AppCompatActivity {
 
     private static final String TAG = "EditProfileActivity______";
-//
-//    private ImageView profilePictureImageView;
-//    private TextView fullNameTextView;
-//    private TextView usernameTextView;
-//    private TextView profileBudgetTextView;
+
+    private ImageView profilePictureImageView;
+    private TextView firstNameTextView;
+    private TextView lastNameTextView;
+    private TextView usernameTextView;
 
     private IDBHelper dbHelper;
 

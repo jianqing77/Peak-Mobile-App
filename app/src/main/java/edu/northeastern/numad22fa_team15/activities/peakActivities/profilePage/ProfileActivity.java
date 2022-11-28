@@ -1,5 +1,7 @@
 package edu.northeastern.numad22fa_team15.activities.peakActivities.profilePage;
 
+import static edu.northeastern.numad22fa_team15.utils.CommonUtils.setProfilePictureToGivenImageView;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,8 +12,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import edu.northeastern.numad22fa_team15.R;
-import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakFirstPage;
-import edu.northeastern.numad22fa_team15.peakProfile.ProfilePage;
+import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
 import edu.northeastern.numad22fa_team15.utils.IDBHelper;
 
@@ -36,19 +37,30 @@ public class ProfileActivity extends AppCompatActivity {
         dbHelper = new DBHelper(ProfileActivity.this);
 
         profilePictureImageView = (ImageView) findViewById(R.id.profile_picture);
-        fullNameTextView = (TextView) findViewById(R.id.tv_profile_username);
-        usernameTextView = (TextView) findViewById(R.id.profile_budget);
+        fullNameTextView = (TextView) findViewById(R.id.tv_profile_full_name);
+        usernameTextView = (TextView) findViewById(R.id.tv_profile_username);
         profileBudgetTextView = (TextView) findViewById(R.id.profile_budget);
 
         retrieveUserAndBudgetInfoFromDatabase();
     }
 
     private void retrieveUserAndBudgetInfoFromDatabase() {
-        // TODO: Retrieve user info from user table and budget info from saving table
+        // Set profile picture. If none found, use default profile picture.
+        setProfilePictureToGivenImageView(dbHelper, profilePictureImageView);
+
+        // Set full name and username.
+        UserModel user = dbHelper.retrieveUserInfoTableUser();
+        String firstName = user.getFirstName();
+        String lastName = user.getLastName();
+        String fullName = firstName + " " + lastName;
+        fullNameTextView.setText(fullName);
+        String username = user.getUsername();
+        usernameTextView.setText(username);
+
+        // TODO: Retrieve budget info from saving table
     }
 
     public void editProfileActivity(View view) {
-        // TODO
         Intent intent = new Intent(getApplicationContext(), EditProfileActivity.class);
         startActivity(intent);
     }

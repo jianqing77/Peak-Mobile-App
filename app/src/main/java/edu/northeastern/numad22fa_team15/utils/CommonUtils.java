@@ -1,12 +1,17 @@
 package edu.northeastern.numad22fa_team15.utils;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 
 import com.google.android.material.snackbar.Snackbar;
+
+import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
 
 public class CommonUtils {
 
@@ -55,6 +60,20 @@ public class CommonUtils {
             return false;
         }
         return passcodeInput.length() == 4;
+    }
+
+    public static void setProfilePictureToGivenImageView(@NonNull IDBHelper dbHelper, @NonNull ImageView imageView) {
+        UserModel user = dbHelper.retrieveUserInfoTableUser();
+        if (user == null) {
+            return;
+        }
+        byte[] profilePictureByteArray = user.getProfilePicture();
+        if (profilePictureByteArray == null || profilePictureByteArray.length == 0) {
+            // Default profile picture.
+            return;
+        }
+        Bitmap bitmap = BitmapFactory.decodeByteArray(profilePictureByteArray,0, profilePictureByteArray.length);
+        imageView.setImageBitmap(bitmap);
     }
 
 }

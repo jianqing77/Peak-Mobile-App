@@ -15,7 +15,7 @@
             style="@style/profile_page_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your Profile"
+            android:text="@string/your_profile"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
