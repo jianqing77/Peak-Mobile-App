@@ -11,10 +11,8 @@ import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.activities.firebaseActivities.FirebaseSignUpActivity;
 import edu.northeastern.numad22fa_team15.activities.movieApiActivities.MovieSearchActivityWithRecyclerView;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakEntrance;
-import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakFirstPage;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.lockScreen.PeakLockScreen;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.profilePage.ProfileActivity;
-import edu.northeastern.numad22fa_team15.peakProfile.ProfilePage;
 
 public class MainActivity extends AppCompatActivity {
 

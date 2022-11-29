@@ -11,8 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/coordinatorLayout"
-        android:layout_alignParentTop="true"
-        tools:context=".peakProfile.ProfilePage">
+        android:layout_alignParentTop="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
