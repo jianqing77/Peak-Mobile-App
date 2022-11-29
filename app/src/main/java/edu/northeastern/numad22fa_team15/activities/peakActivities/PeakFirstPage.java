@@ -161,12 +161,12 @@ public class PeakFirstPage extends AppCompatActivity {
             displayMessageInSnackbar(view, message, Snackbar.LENGTH_SHORT);
             return;
         }
-        boolean updateResult = dbHelper.updateUserInfoTableUser(username, firstName, lastName);
-        String resultMessage = "Failed to update user info.";
-        if (updateResult) {
-            resultMessage = "User info was updated.";
-        }
-        displayMessageInSnackbar(view, resultMessage, Snackbar.LENGTH_SHORT);
+//        boolean updateResult = dbHelper.updateUserInfoTableUser(username, firstName, lastName);
+//        String resultMessage = "Failed to update user info.";
+//        if (updateResult) {
+//            resultMessage = "User info was updated.";
+//        }
+//        displayMessageInSnackbar(view, resultMessage, Snackbar.LENGTH_SHORT);
     }
 
     public void takeProfilePicture(View view) {

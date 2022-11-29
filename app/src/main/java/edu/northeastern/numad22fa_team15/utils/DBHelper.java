@@ -185,7 +185,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
     }
 
     @Override
-    public boolean updateUserInfoTableUser(String username, String firstName, String lastName) {
+    public boolean updateUserInfoTableUser(String username, String firstName, String lastName, byte[] profilePicture) {
         // This method does not validate user identity and should only be called on the Edit Profile page.
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -193,6 +193,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         values.put(USERNAME_COL, username);
         values.put(FIRST_NAME_COL, firstName);
         values.put(LAST_NAME_COL, lastName);
+        values.put(PROFILE_PICTURE_COL, profilePicture);
 
         // Number of users should always be 1.
         String whereClause = String.format("%s = ?", USER_ID_COL);

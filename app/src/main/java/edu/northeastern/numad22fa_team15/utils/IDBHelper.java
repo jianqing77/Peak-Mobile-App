@@ -8,7 +8,7 @@ public interface IDBHelper {
     boolean addUserTableUser(String username, String firstName, String lastName, String passcode);
     boolean confirmUserTableUser(String usernameInput, String passcodeInput);
     boolean updateUserPasswordTableUser(String usernameInput, String passcodeInput);
-    boolean updateUserInfoTableUser(String username, String firstName, String lastName);
+    boolean updateUserInfoTableUser(String username, String firstName, String lastName, byte[] profilePicture);
     boolean updateUserProfilePictureTableUser(byte[] profilePictureBlob);
     UserModel retrieveUserInfoTableUser();
 

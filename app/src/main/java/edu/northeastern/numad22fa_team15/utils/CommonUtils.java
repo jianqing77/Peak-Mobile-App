@@ -11,6 +11,10 @@ import androidx.annotation.NonNull;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
 
 public class CommonUtils {
@@ -62,6 +66,12 @@ public class CommonUtils {
         return passcodeInput.length() == 4;
     }
 
+    /**
+     * Retrieve user's profile picture from the database and set it to the provided image view if
+     * there exists a profile picture.
+     * @param dbHelper database helper
+     * @param imageView image view
+     */
     public static void setProfilePictureToGivenImageView(@NonNull IDBHelper dbHelper, @NonNull ImageView imageView) {
         UserModel user = dbHelper.retrieveUserInfoTableUser();
         if (user == null) {
@@ -74,6 +84,25 @@ public class CommonUtils {
         }
         Bitmap bitmap = BitmapFactory.decodeByteArray(profilePictureByteArray,0, profilePictureByteArray.length);
         imageView.setImageBitmap(bitmap);
+    }
+
+    /**
+     * Convert an InputStream object into a byte array.
+     * @param inputStream input stream
+     * @return byte array
+     * @throws IOException if input stream read() method fails
+     */
+    public static byte[] getByteArrayFromInputStream(InputStream inputStream) throws IOException {
+        // REF: https://stackoverflow.com/questions/10296734/image-uri-to-bytesarray
+        ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+        int bufferSize = 1024;
+        byte[] buffer = new byte[bufferSize];
+
+        int len = 0;
+        while ((len = inputStream.read(buffer)) != -1) {
+            byteBuffer.write(buffer, 0, len);
+        }
+        return byteBuffer.toByteArray();
     }
 
 }

@@ -1,5 +1,6 @@
 package edu.northeastern.numad22fa_team15.activities.peakActivities.profilePage;
 
+import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessageInSnackbar;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.setProfilePictureToGivenImageView;
 
 import android.content.Intent;
@@ -10,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
@@ -42,6 +45,13 @@ public class ProfileActivity extends AppCompatActivity {
         profileBudgetTextView = (TextView) findViewById(R.id.profile_budget);
 
         retrieveUserAndBudgetInfoFromDatabase();
+
+        // Display message if intent carries a message.
+        String potentialMessage = getIntent().getStringExtra("message");
+        if (potentialMessage != null) {
+            displayMessageInSnackbar(findViewById(android.R.id.content).getRootView(),
+                    potentialMessage, Snackbar.LENGTH_SHORT);
+        }
     }
 
     private void retrieveUserAndBudgetInfoFromDatabase() {
@@ -63,6 +73,7 @@ public class ProfileActivity extends AppCompatActivity {
     public void editProfileActivity(View view) {
         Intent intent = new Intent(getApplicationContext(), EditProfileActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void editBudgetActivity(View view) {
