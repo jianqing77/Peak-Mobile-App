@@ -68,6 +68,34 @@ public class EditProfileActivity extends AppCompatActivity {
 
         // TODO: Implement button functions.
         ImageButton takePictureButton = (ImageButton) bottomSheetDialog.findViewById(R.id.btn_take_profile_picture);
+        ImageButton uploadPictureButton = (ImageButton) bottomSheetDialog.findViewById(R.id.btn_upload_profile_picture);
+        ImageButton deletePictureButton = (ImageButton) bottomSheetDialog.findViewById(R.id.btn_delete_profile_picture);
+
+        // Add onClickListener to the buttons
+        takePictureButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO
+                Log.d(TAG, "Take picture button clicked.");
+                bottomSheetDialog.dismiss();
+            }
+        });
+        uploadPictureButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO
+                Log.d(TAG, "Upload picture button clicked.");
+                bottomSheetDialog.dismiss();
+            }
+        });
+        deletePictureButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO
+                Log.d(TAG, "Delete picture button clicked.");
+                bottomSheetDialog.dismiss();
+            }
+        });
 
         bottomSheetDialog.show();
     }
