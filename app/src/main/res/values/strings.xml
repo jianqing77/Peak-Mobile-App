@@ -96,4 +96,8 @@
     <string name="your_profile">Your Profile</string>
     <string name="edit_button">Edit button</string>
     <string name="confirm_changes">Confirm Changes</string>
+    <string name="change_profile_picture">Change profile picture:</string>
+    <string name="take_photo_button">take photo button</string>
+    <string name="delete_profile_picture_button">delete profile picture button</string>
+    <string name="select_photo_button">select photo button</string>
 </resources>

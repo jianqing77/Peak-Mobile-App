@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -69,7 +71,7 @@ public class EditProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Open a dialog that uses change_profile_picture_bottomsheet
                 // REF: https://www.section.io/engineering-education/bottom-sheet-dialogs-using-android-studio/
-                showBottomSheetDialog();
+                showBottomSheetDialog(v);
             }
         });
     }
@@ -78,9 +80,18 @@ public class EditProfileActivity extends AppCompatActivity {
      * Display bottom sheet dialog that contains 3 buttons: (1) take picture, (2) select photo,
      * and (3) delete profile picture.
      */
-    private void showBottomSheetDialog() {
+    private void showBottomSheetDialog(View view) {
         final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
-        bottomSheetDialog.setContentView(R.layout.change_profile_picture_bottomsheet);
+        View bottomSheetView = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.change_profile_picture_bottomsheet, null);
+        bottomSheetDialog.setContentView(bottomSheetView);
+
+        BottomSheetBehavior mBehavior = BottomSheetBehavior.from((View) bottomSheetView.getParent());
+
+        // REF: https://stackoverflow.com/questions/41591733/bottom-sheet-landscape-issue
+        bottomSheetDialog.setOnShowListener(dialogInterface -> {
+            mBehavior.setPeekHeight(500);
+        });
 
         ImageButton takePictureButton = (ImageButton) bottomSheetDialog.findViewById(R.id.btn_take_profile_picture);
         ImageButton uploadPictureButton = (ImageButton) bottomSheetDialog.findViewById(R.id.btn_upload_profile_picture);
