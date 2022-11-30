@@ -82,7 +82,7 @@
     <string name="your_current_budget_is">Your current budget is $</string>
     <string name="month">/ month</string>
     <string name="full_name">Full Name</string>
-    <string name="username">username</string>
+    <string name="username">Username</string>
     <string name="_2500">2500</string>
     <string name="account">ACCOUNT</string>
     <string name="edit_profile">Edit profile</string>
@@ -100,4 +100,9 @@
     <string name="take_photo_button">take photo button</string>
     <string name="delete_profile_picture_button">delete profile picture button</string>
     <string name="select_photo_button">select photo button</string>
+    <string name="please_reset_your_passcode">Please reset your passcode</string>
+    <string name="new_4_digit_passcode">New 4-Digit Passcode</string>
+    <string name="confirm_new_passcode">Confirm New Passcode</string>
+    <string name="reset_passcode">Reset Passcode</string>
+    <string name="_1234">1234</string>
 </resources>

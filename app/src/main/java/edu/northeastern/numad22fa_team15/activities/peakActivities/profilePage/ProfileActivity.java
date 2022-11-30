@@ -81,7 +81,9 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void changePasscodeActivity(View view) {
-        // TODO
+        Intent intent = new Intent(getApplicationContext(), ChangePasscodeActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     public void securitySettingsActivity(View view) {

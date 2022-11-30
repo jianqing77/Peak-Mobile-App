@@ -172,6 +172,20 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
     }
 
     @Override
+    public boolean resetUserPasswordTableUser(String passcodeInput) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(PASSCODE_COL, passcodeInput);
+
+        // Number of users should always be 1.
+        String whereClause = String.format("%s = ?", USER_ID_COL);
+        int numOfRowsImpacted = db.update(USER_TABLE_NAME, values, whereClause, new String[]{"1"});
+
+        return (numOfRowsImpacted != 0);
+    }
+
+    @Override
     public boolean updateUserPasswordTableUser(String usernameInput, String passcodeInput) {
         SQLiteDatabase db = this.getWritableDatabase();
 

@@ -11,24 +11,25 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/piggy_bank_image_view_activity_reset_passcode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
             android:background="@drawable/ic_peak_logo_small"
+            android:contentDescription="@string/piggy_bank_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="50dp"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_reset_passcode"
             style="@style/signup_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Please reset your passcode"
+            android:text="@string/please_reset_your_passcode"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/piggy_bank_image_view_activity_reset_passcode"
             android:layout_marginTop="50dp"/>
 
         <!-- New 4-Digit Passcode TextView -->
@@ -38,7 +39,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:lineSpacingExtra="5sp"
-            android:text="New 4-Digit Passcode"
+            android:text="@string/new_4_digit_passcode"
             android:textAppearance="@style/peak_text_input"
             android:translationY="-2.53sp"
             app:layout_constraintBottom_toTopOf="@+id/et_reset_passcode_new"
@@ -51,14 +52,17 @@
             android:id="@+id/et_reset_passcode_new"
             android:layout_width="327dp"
             android:layout_height="48dp"
-            android:inputType="number"
+            android:layout_marginTop="2dp"
             android:background="@drawable/peak_text_input"
+            android:hint="@string/_1234"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:maxLength="4"
+            android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/reset_passcode_new"
-            android:padding="10dp"
-            android:layout_marginTop="2dp"
-            android:hint="4321"/>
+            tools:ignore="DuplicateSpeakableTextCheck,SpeakableTextPresentCheck" />
 
         <!-- Confirm New Passcode TextView -->
         <TextView
@@ -67,7 +71,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:lineSpacingExtra="5sp"
-            android:text="Confirm New Passcode"
+            android:text="@string/confirm_new_passcode"
             android:textAppearance="@style/peak_text_input"
             android:translationY="-2.53sp"
             app:layout_constraintBottom_toTopOf="@+id/et_reset_passcode_confirm"
@@ -80,25 +84,29 @@
             android:id="@+id/et_reset_passcode_confirm"
             android:layout_width="327dp"
             android:layout_height="48dp"
-            android:inputType="number"
+            android:layout_marginTop="2dp"
             android:background="@drawable/peak_text_input"
+            android:hint="@string/_1234"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:maxLength="4"
+            android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/reset_passcode_confirm"
-            android:padding="10dp"
-            android:layout_marginTop="2dp"
-            android:hint="4321"/>
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <!-- Reset Passcode Button -->
         <Button
             android:id="@+id/btn_peak_reset_passcode"
             android:layout_width="327dp"
             android:layout_height="68dp"
-            android:layout_marginBottom="40dp"
             android:layout_marginTop="100dp"
+            android:layout_marginBottom="40dp"
             android:backgroundTint="@color/FinalProj_Dark"
             android:clickable="true"
-            android:text="Reset Passcode"
+            android:onClick="resetPasscode"
+            android:text="@string/reset_passcode"
             android:textAppearance="@style/button_dark"
             android:textColor="@color/white"
             android:textFontWeight="500"
@@ -106,7 +114,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_reset_passcode_confirm"/>
+            app:layout_constraintTop_toBottomOf="@+id/et_reset_passcode_confirm"
+            tools:targetApi="p" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
