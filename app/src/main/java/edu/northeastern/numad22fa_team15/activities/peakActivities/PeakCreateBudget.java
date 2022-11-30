@@ -2,10 +2,15 @@ package edu.northeastern.numad22fa_team15.activities.peakActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessageInSnackbar;
+
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.utils.CommonUtils;
@@ -20,10 +25,36 @@ public class PeakCreateBudget extends AppCompatActivity {
     EditText et_entertainment, et_education, et_beauty, et_transportation;
     EditText et_health, et_travel, et_pet, et_other;
 
+    Button confirm, cancel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_budget);
+
+        /**
+         * TODO: get current budget amount for each category from the database and set
+         *      seekbar progress to that amount. If it is the user's first time on
+         *      this page (if the budget table is empty), set all progress to 0.
+         */
+
+        // Setting functions for buttons - Cancel Button
+        cancel = (Button) findViewById(R.id.btn_cancel_new_budget);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cancelEditBudget(view);
+            }
+        });
+
+        // TODO: Setting functions for buttons - Confirm Button
+        confirm = (Button) findViewById(R.id.btn_confirm_new_budget);
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO: alter database with new budget amounts
+            }
+        });
 
         // Dining SeekBar
         sb_dining = (SeekBar) findViewById(R.id.seekbar_dining);
@@ -496,8 +527,18 @@ public class PeakCreateBudget extends AppCompatActivity {
 
     // Helper function to set progress of seekbar
     private void setProgressValue(EditText et, SeekBar seekBar) {
+        seekBar.setProgress(Integer.parseInt(et.getText().toString()));
+    }
 
-        seekBar.setProgress(Integer.valueOf(et.getText().toString()));
+    // Function to ensure the user creates a budget when the budget table is empty
+    private void cancelEditBudget(View view) {
+
+        // TODO: if statement to check if the summary table is empty. If it is, then:
+        String message = "You must set a budget for at least one category.";
+        displayMessageInSnackbar(view, message, Snackbar.LENGTH_SHORT);
+
+        // TODO: else, bring the user back to the home screen.
 
     }
+
 }
