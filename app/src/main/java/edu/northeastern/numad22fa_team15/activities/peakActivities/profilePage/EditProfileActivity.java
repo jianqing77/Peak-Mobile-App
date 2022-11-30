@@ -76,6 +76,16 @@ public class EditProfileActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+
+        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     /**
      * Display bottom sheet dialog that contains 3 buttons: (1) take picture, (2) select photo,
      * and (3) delete profile picture.
