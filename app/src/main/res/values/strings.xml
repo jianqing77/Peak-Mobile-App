@@ -75,7 +75,7 @@
     <string name="get_started">Get Started!</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
-    <string name="passcode">Passcode</string>
+    <string name="passcode">4-digit-Passcode</string>
     <string name="confirm_passcode">Confirm Passcode</string>
     <string name="piggy_bank_image">Piggy Bank Image</string>
     <string name="user_profile_picture">User profile picture</string>
@@ -85,13 +85,13 @@
     <string name="username">Username</string>
     <string name="_2500">2500</string>
     <string name="account">ACCOUNT</string>
-    <string name="edit_profile">Edit profile</string>
-    <string name="edit_budget">Edit budget</string>
-    <string name="change_passcode">Change passcode</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="edit_budget">Edit Budget</string>
+    <string name="change_passcode">Change Passcode</string>
     <string name="security_and_privacy">SECURITY AND PRIVACY</string>
-    <string name="security_settings">Security settings</string>
+    <string name="security_settings">Security Settings</string>
     <string name="terms_and_conditions">Terms and Conditions</string>
-    <string name="reset_account">Reset account</string>
+    <string name="reset_account">Reset Account</string>
     <string name="add_spending_floating_action_button">Add Spending Floating Action Button</string>
     <string name="your_profile">Your Profile</string>
     <string name="edit_button">Edit button</string>
