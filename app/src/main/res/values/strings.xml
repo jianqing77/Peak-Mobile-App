@@ -78,5 +78,6 @@
     <string name="passcode">Passcode</string>
     <string name="confirm_passcode">Confirm Passcode</string>
     <string name="piggy_bank_image">Piggy Bank Image</string>
+    <string name="dollar_sign">$</string>
 
 </resources>
