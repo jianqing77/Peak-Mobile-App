@@ -50,8 +50,7 @@ public class PeakAddTransaction extends AppCompatActivity {
         closeKeyboard(this.getApplicationContext(), view);
 
         // TODO: hardcoded for testing
-        boolean addSummary = dbHelper.addSummaryTableSummary("2022/11/01 00:00:00", "2022/11/30 23:59:59",
-                2000, 0, 2000);
+        boolean addSummary = dbHelper.addSummaryTableSummary(2022, 11, 2000);
         String summaryMessage = "Fail to add Summary";
         if (addSummary) {
             summaryMessage = "Successfully added summary";

@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import edu.northeastern.numad22fa_team15.models.databaseModels.SummaryModel;
 import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
 
 public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
@@ -28,11 +29,36 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
     // Table summary
     private static final String SUMMARY_TABLE_NAME = "summary";
     private static final String SUMMARY_ID_COL = "_summaryID";
-    private static final String SUMMARY_START_DATE_COL = "startDate";
-    private static final String SUMMARY_END_DATE_COL = "endDate";
+    private static final String SUMMARY_YEAR_COL = "year";
+    private static final String SUMMARY_MONTH_COL = "month";
     private static final String SUMMARY_TOTAL_BUDGET_COL = "totalBudget";
     private static final String SUMMARY_CURRENT_EXPENSE_COL = "currentExpense";
     private static final String SUMMARY_CURRENT_BALANCE_COL = "currentBalance";
+
+    private static final String SUMMARY_DINING_BUDGET_COL = "diningBudget";
+    private static final String SUMMARY_DINING_EXPENSE_COL = "diningExpense";
+    private static final String SUMMARY_GROCERIES_BUDGET_COL = "groceriesBudget";
+    private static final String SUMMARY_GROCERIES_EXPENSE_COL = "groceriesExpense";
+    private static final String SUMMARY_SHOPPING_BUDGET_COL = "shoppingBudget";
+    private static final String SUMMARY_SHOPPING_EXPENSE_COL = "shoppingExpense";
+    private static final String SUMMARY_LIVING_BUDGET_COL = "livingBudget";
+    private static final String SUMMARY_LIVING_EXPENSE_COL = "livingExpense";
+    private static final String SUMMARY_ENTERTAINMENT_BUDGET_COL = "entertainmentBudget";
+    private static final String SUMMARY_ENTERTAINMENT_EXPENSE_COL = "entertainmentExpense";
+    private static final String SUMMARY_EDUCATION_BUDGET_COL = "educationBudget";
+    private static final String SUMMARY_EDUCATION_EXPENSE_COL = "educationExpense";
+    private static final String SUMMARY_BEAUTY_BUDGET_COL = "beautyBudget";
+    private static final String SUMMARY_BEAUTY_EXPENSE_COL = "beautyExpense";
+    private static final String SUMMARY_TRANSPORTATION_BUDGET_COL = "transportationBudget";
+    private static final String SUMMARY_TRANSPORTATION_EXPENSE_COL = "transportationExpense";
+    private static final String SUMMARY_HEALTH_BUDGET_COL = "healthBudget";
+    private static final String SUMMARY_HEALTH_EXPENSE_COL = "healthExpense";
+    private static final String SUMMARY_TRAVEL_BUDGET_COL = "travelBudget";
+    private static final String SUMMARY_TRAVEL_EXPENSE_COL = "travelExpense";
+    private static final String SUMMARY_PET_BUDGET_COL = "petBudget";
+    private static final String SUMMARY_PET_EXPENSE_COL = "petExpense";
+    private static final String SUMMARY_OTHER_BUDGET_COL = "otherBudget";
+    private static final String SUMMARY_OTHER_EXPENSE_COL = "otherExpense";
 
     // Table saving (for piggy bank)
     private static final String SAVING_TABLE_NAME = "saving";
@@ -93,11 +119,35 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         String createSummaryTableQuery =
                 "CREATE TABLE IF NOT EXISTS " + SUMMARY_TABLE_NAME + " ("
                 + SUMMARY_ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
-                + SUMMARY_START_DATE_COL + " TEXT NOT NULL, "
-                + SUMMARY_END_DATE_COL + " TEXT NOT NULL, "
+                + SUMMARY_YEAR_COL + " INTEGER NOT NULL, "
+                + SUMMARY_MONTH_COL + " INTEGER NOT NULL, "
                 + SUMMARY_TOTAL_BUDGET_COL + " FLOAT NOT NULL, "
-                + SUMMARY_CURRENT_EXPENSE_COL + " FLOAT NOT NULL, "
-                + SUMMARY_CURRENT_BALANCE_COL + " FLOAT NOT NULL)";
+                + SUMMARY_CURRENT_EXPENSE_COL + " FLOAT DEFAULT 0, "
+                + SUMMARY_CURRENT_BALANCE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_DINING_BUDGET_COL + " FLOAT NOT NULL, "
+                + SUMMARY_DINING_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_GROCERIES_BUDGET_COL + " FLOAT NOT NULL, "
+                + SUMMARY_GROCERIES_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_SHOPPING_BUDGET_COL + " FLOAT NOT NULL, "
+                + SUMMARY_SHOPPING_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_LIVING_BUDGET_COL + " FLOAT NOT NULL, "
+                + SUMMARY_LIVING_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_ENTERTAINMENT_BUDGET_COL + " FLOAT NOT NULL, "
+                + SUMMARY_ENTERTAINMENT_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_EDUCATION_BUDGET_COL + " FLOAT NOT NULL, "
+                + SUMMARY_EDUCATION_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_BEAUTY_BUDGET_COL + " FLOAT NOT NULL, "
+                + SUMMARY_BEAUTY_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_TRANSPORTATION_BUDGET_COL + " FLOAT NOT NULL, "
+                + SUMMARY_TRANSPORTATION_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_HEALTH_BUDGET_COL + " FLOAT NOT NULL, "
+                + SUMMARY_HEALTH_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_TRAVEL_BUDGET_COL + " FLOAT NOT NULL, "
+                + SUMMARY_TRAVEL_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_PET_BUDGET_COL + " FLOAT NOT NULL, "
+                + SUMMARY_PET_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_OTHER_BUDGET_COL + " FLOAT NOT NULL, "
+                + SUMMARY_OTHER_EXPENSE_COL + " FLOAT NOT NULL)";
 
         String createTransactionTableQuery =
                 "CREATE TABLE IF NOT EXISTS " + TRANSACTION_TABLE_NAME + " ("
@@ -247,19 +297,82 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         return user;
     }
 
-    public boolean addSummaryTableSummary(String startDate, String endDate, float totalBudget, float currentExpense, float currentBalance) {
+    @Override
+    public boolean addSummaryTableSummary(Integer year, Integer month, float totalBudget) {
         SQLiteDatabase db = this.getWritableDatabase();
 
+        float currentBalance = totalBudget;
+
         ContentValues values = new ContentValues();
-        values.put(SUMMARY_START_DATE_COL, startDate);
-        values.put(SUMMARY_END_DATE_COL, endDate);
+        values.put(SUMMARY_YEAR_COL, year);
+        values.put(SUMMARY_MONTH_COL, month);
         values.put(SUMMARY_TOTAL_BUDGET_COL, totalBudget);
-        values.put(SUMMARY_CURRENT_EXPENSE_COL, currentExpense);
         values.put(SUMMARY_CURRENT_BALANCE_COL, currentBalance);
 
         long result = db.insert(SUMMARY_TABLE_NAME, null, values);
         return (result != -1);
     }
+
+    @Override
+    public SummaryModel retrieveLatestSummaryInfoTableUser() {
+        Cursor cursor = getSummaryCursor();
+
+        SummaryModel summary = null;
+        if (cursor.moveToLast()) {
+            int year = cursor.getInt(1);
+            int month = cursor.getInt(2);
+            float totalBudget = cursor.getFloat(3);
+            float currentExpense = cursor.getFloat(4);
+            float diningBudget = cursor.getFloat(5);
+            float diningExpense = cursor.getFloat(6);
+            float groceriesBudget = cursor.getFloat(7);
+            float groceriesExpense = cursor.getFloat(8);
+            float shoppingBudget = cursor.getFloat(9);
+            float shoppingExpense = cursor.getFloat(10);
+            float livingBudget = cursor.getFloat(11);
+            float livingExpense = cursor.getFloat(12);
+            float entertainmentBudget = cursor.getFloat(13);
+            float entertainmentExpense = cursor.getFloat(14);
+            float educationBudget = cursor.getFloat(15);
+            float educationExpense = cursor.getFloat(16);
+            float beautyBudget = cursor.getFloat(17);
+            float beautyExpense = cursor.getFloat(18);
+            float transportationBudget = cursor.getFloat(19);
+            float transportationExpense = cursor.getFloat(20);
+            float healthBudget = cursor.getFloat(21);
+            float healthExpense = cursor.getFloat(22);
+            float travelBudget = cursor.getFloat(23);
+            float travelExpense = cursor.getFloat(24);
+            float petBudget = cursor.getFloat(25);
+            float petExpense = cursor.getFloat(26);
+            float otherBudget = cursor.getFloat(27);
+            float otherExpense = cursor.getFloat(28);
+
+            summary = new SummaryModel(year, month, totalBudget, currentExpense,
+            diningBudget, diningExpense,
+            groceriesBudget, groceriesExpense,
+            shoppingBudget, shoppingExpense,
+            livingBudget, livingExpense,
+            entertainmentBudget, entertainmentExpense,
+            educationBudget, educationExpense,
+            beautyBudget, beautyExpense,
+            transportationBudget, transportationExpense,
+            healthBudget, healthExpense,
+            travelBudget, travelExpense,
+            petBudget, petExpense,
+            otherBudget, otherExpense);
+        }
+        cursor.close();
+        return summary;
+    }
+
+    private Cursor getSummaryCursor() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String getUserQuery = String.format("SELECT * FROM %s", SUMMARY_TABLE_NAME);
+        Cursor cursor = db.rawQuery(getUserQuery, null);
+        return cursor;
+    }
+
 
     @Override
     public boolean addTranTableTransaction(float expense, String description, String category, String transactionDate, int summaryID) {
