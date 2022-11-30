@@ -45,7 +45,6 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
     // Table transaction
     private static final String TRANSACTION_TABLE_NAME = "transactionEntry";
     private static final String TRANSACTION_ID_COL = "_transactionId";
-    private static final String COST_COL = "cost";
     private static final String DESCRIPTION_COL = "description";
     private static final String EXPENSE_COL = "expense";
     private static final String CATEGORY_COL = "category";
