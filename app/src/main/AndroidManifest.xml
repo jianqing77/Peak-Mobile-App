@@ -34,6 +34,7 @@
             android:exported="false" />
         <activity
             android:name=".activities.peakActivities.PeakCreateBudget"
+            android:windowSoftInputMode="stateHidden"
             android:exported="false" />
         <activity
             android:name=".activities.peakActivities.profilePage.EditProfileActivity"
@@ -93,10 +94,6 @@
             android:name=".activities.peakActivities.onBoarding.onBoarding"
             android:configChanges="orientation|screenSize" />
         <activity android:name=".activities.peakActivities.userRegister.PeakSignUp" />
-        <activity
-            android:name=".activities.peakActivities.onBoarding.onBoarding"
-            android:configChanges="orientation|screenSize" />
-        <activity
             android:name=".activities.peakActivities.userRegister.PeakSignUpConfirmation" />
         <activity
             android:name=".activities.peakActivities.userRegister.PeakLogin"

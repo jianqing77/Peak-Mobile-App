@@ -406,8 +406,13 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
 
     @Override
     public boolean truncateTablesTransactionSummaryAndSaving() {
-        // TODO
-        return false;
+        SQLiteDatabase db = this.getWritableDatabase();
+        int rowsAffected = db.delete(TRANSACTION_TABLE_NAME, null, null);
+        rowsAffected += db.delete(SUMMARY_TABLE_NAME, null, null);
+        rowsAffected += db.delete(SAVING_TABLE_NAME, null, null);
+
+        // Return true if at least 1 row was affected since we cannot guarantee every table has rows.
+        return (rowsAffected != 0);
     }
 
 }

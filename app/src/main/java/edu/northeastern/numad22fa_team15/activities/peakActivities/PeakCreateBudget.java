@@ -32,6 +32,13 @@ public class PeakCreateBudget extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_budget);
 
+        // Display message if intent carries a message.
+        String potentialMessage = getIntent().getStringExtra("message");
+        if (potentialMessage != null) {
+            displayMessageInSnackbar(findViewById(android.R.id.content).getRootView(),
+                    potentialMessage, Snackbar.LENGTH_SHORT);
+        }
+
         /**
          * TODO: get current budget amount for each category from the database and set
          *      seekbar progress to that amount. If it is the user's first time on

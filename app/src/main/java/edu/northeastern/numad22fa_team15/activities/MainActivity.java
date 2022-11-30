@@ -73,7 +73,9 @@ public class MainActivity extends AppCompatActivity {
      */
     public void testActivity(View view) {
         // TODO: Test for now, will be deleted
-        Intent intent = new Intent(getApplicationContext(), PeakCreateBudget.class);
+//        Intent intent = new Intent(getApplicationContext(), PeakCreateBudget.class);
+        Intent intent = new Intent(getApplicationContext(), PeakAddTransaction.class);
+
         startActivity(intent);
     }
 

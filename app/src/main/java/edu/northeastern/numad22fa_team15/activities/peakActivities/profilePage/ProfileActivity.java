@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.snackbar.Snackbar;
 
 import edu.northeastern.numad22fa_team15.R;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakCreateBudget;
 import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
 import edu.northeastern.numad22fa_team15.utils.IDBHelper;
@@ -117,11 +118,20 @@ public class ProfileActivity extends AppCompatActivity {
                 // TODO
                 // Truncate the following tables:
                 // (1) TransactionEntry (2) Summary (3) Saving
-                dbHelper.truncateTablesTransactionSummaryAndSaving();
+                boolean truncateResult = dbHelper.truncateTablesTransactionSummaryAndSaving();
                 // If delete action failed, display "fail" message.
-
+                if (!truncateResult) {
+                    String message = "Failed to reset account. Please try again later";
+                    displayMessageInSnackbar(view, message, Snackbar.LENGTH_SHORT);
+                    dialogInterface.dismiss();
+                    return;
+                }
                 // If delete action succeeded, bring user to the create budge page.
-
+                String message = "Account reset. Start fresh with a new budget plan.";
+                Intent intent = new Intent(getApplicationContext(), PeakCreateBudget.class);
+                intent.putExtra("message", message);
+                startActivity(intent);
+                finish();
             }
         });
         // Clicking the Cancel button will simply dismiss the dialog.

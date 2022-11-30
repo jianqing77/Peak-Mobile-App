@@ -184,7 +184,6 @@ public class PeakLockScreen extends AppCompatActivity implements View.OnClickLis
             }
         }
     }
-}
 
     private void matchPasscode(String passcodeInput) {
         if (getPasscode().equals(passcodeInput)) {
