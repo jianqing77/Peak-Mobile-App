@@ -18,6 +18,10 @@ import java.util.ArrayList;
 
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.homePage.PeakHomePage;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.profilePage.ProfileActivity;
+import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
+import edu.northeastern.numad22fa_team15.utils.DBHelper;
+import edu.northeastern.numad22fa_team15.utils.IDBHelper;
 
 public class PeakLockScreen extends AppCompatActivity implements View.OnClickListener {
 
@@ -25,13 +29,18 @@ public class PeakLockScreen extends AppCompatActivity implements View.OnClickLis
     Button btn_01, btn_02, btn_03, btn_04, btn_05, btn_06, btn_07, btn_08, btn_09, btn_00, btn_clear;
 
     ArrayList<String> numbers_list = new ArrayList<>();
-    String passcode = "";
+    String passcodeInput = "";
     String num_01, num_02, num_03, num_04;
+
+    private IDBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_peak_lock_screen);
+
+        dbHelper = new DBHelper(PeakLockScreen.this);
+
         initializeComponents();
     }
 
@@ -143,26 +152,34 @@ public class PeakLockScreen extends AppCompatActivity implements View.OnClickLis
                 case 4:
                     num_04 = numbers_list.get(3);
                     view_04.setBackgroundResource(R.drawable.bg_view_dark_oval);
-                    passcode = num_01 + num_02 + num_03 + num_04;
+                    passcodeInput = num_01 + num_02 + num_03 + num_04;
+                    matchPasscode(passcodeInput);
                     break;
             }
         }
     }
 
-    /* private void matchPasscode(View view) {
-        if (getPasscode().equals(passcode)) {
+    private void matchPasscode(String passcodeInput) {
+        if (getPasscode().equals(passcodeInput)) {
             startActivity(new Intent(this, PeakHomePage.class));
         } else {
+
             String message = "Wrong passcode. Please try again.";
-            displayMessageInSnackbar(view, message, Snackbar.LENGTH_SHORT);
+            displayMessageInSnackbar(view_01.getRootView(), message, Snackbar.LENGTH_SHORT);
+
+            // clear the current password input
+            numbers_list.clear();
+            passNumber(numbers_list);
         }
     }
 
     private String getPasscode() {
 
         // TODO: retrieve passcode from database and return as string
+        UserModel user = dbHelper.retrieveUserInfoTableUser();
+        String passcode = user.getPasscode();
 
-        return;
+        return passcode;
     }
-     */
+
 }

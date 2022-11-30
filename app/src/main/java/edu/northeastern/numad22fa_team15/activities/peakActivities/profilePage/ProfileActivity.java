@@ -80,9 +80,9 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void editBudgetActivity(View view) {
         // TODO: testing for now, change to actual edit budget activity
-        Intent intent = new Intent(getApplicationContext(), TestBudgetActivity.class);
-        startActivity(intent);
-        finish();
+        // Intent intent = new Intent(getApplicationContext(), TestBudgetActivity.class);
+        // startActivity(intent);
+        // finish();
     }
 
     public void changePasscodeActivity(View view) {
