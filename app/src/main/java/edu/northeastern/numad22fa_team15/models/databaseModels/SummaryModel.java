@@ -41,11 +41,49 @@ public class SummaryModel {
     private float otherExpense;
 
 
-    public SummaryModel(Integer year, Integer month, float totalBudget, float currentExpense) {
+    public SummaryModel(Integer year, Integer month, float totalBudget, float currentExpense,
+                        float diningBudget, float diningExpense,
+                        float groceriesBudget, float groceriesExpense,
+                        float shoppingBudget, float shoppingExpense,
+                        float livingBudget, float livingExpense,
+                        float entertainmentBudget, float entertainmentExpense,
+                        float educationBudget, float educationExpense,
+                        float beautyBudget, float beautyExpense,
+                        float transportationBudget, float transportationExpense,
+                        float healthBudget, float healthExpense,
+                        float travelBudget, float travelExpense,
+                        float petBudget, float petExpense,
+                        float otherBudget, float otherExpense) {
+
         this.year = year;
         this.month = month;
         this.totalBudget = totalBudget;
         this.currentExpense = currentExpense;
+
+        this.diningBudget = diningBudget;
+        this.diningExpense = diningExpense;
+        this.groceriesBudget = groceriesBudget;
+        this.groceriesExpense = groceriesExpense;
+        this.shoppingBudget = shoppingBudget;
+        this.shoppingExpense = shoppingExpense;
+        this.livingBudget = livingBudget;
+        this.livingExpense = livingExpense;
+        this.entertainmentBudget = entertainmentBudget;
+        this.entertainmentExpense = entertainmentExpense;
+        this.educationBudget = educationBudget;
+        this.educationExpense = educationExpense;
+        this.beautyBudget = beautyBudget;
+        this.beautyExpense = beautyExpense;
+        this.transportationBudget = transportationBudget;
+        this.transportationExpense = transportationExpense;
+        this.healthBudget = healthBudget;
+        this.healthExpense = healthExpense;
+        this.travelBudget = travelBudget;
+        this.travelExpense = travelExpense;
+        this.petBudget = petBudget;
+        this.petExpense = petExpense;
+        this.otherBudget = otherBudget;
+        this.otherExpense = otherExpense;
     }
 
     public int getSummaryID() {
