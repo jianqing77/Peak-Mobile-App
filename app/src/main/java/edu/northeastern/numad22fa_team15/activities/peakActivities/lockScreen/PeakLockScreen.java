@@ -184,6 +184,7 @@ public class PeakLockScreen extends AppCompatActivity implements View.OnClickLis
             }
         }
     }
+}
 
     private void matchPasscode(String passcodeInput) {
         if (getPasscode().equals(passcodeInput)) {
@@ -208,4 +209,8 @@ public class PeakLockScreen extends AppCompatActivity implements View.OnClickLis
         return passcode;
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
 }

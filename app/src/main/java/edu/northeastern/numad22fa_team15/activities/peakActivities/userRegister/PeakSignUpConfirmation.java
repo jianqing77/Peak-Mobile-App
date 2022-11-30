@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import edu.northeastern.numad22fa_team15.R;
+import edu.northeastern.numad22fa_team15.activities.MainActivity;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakFirstPage;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.homePage.PeakHomePage;
 
 public class PeakSignUpConfirmation extends AppCompatActivity {
@@ -19,6 +21,15 @@ public class PeakSignUpConfirmation extends AppCompatActivity {
 
     public void openHomePage(View view) {
         Intent intent = new Intent(PeakSignUpConfirmation.this, PeakHomePage.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Press Back button on the signup confirmation page, should back to the MainActivity.
+     */
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(PeakSignUpConfirmation.this, MainActivity.class);
         startActivity(intent);
     }
 }

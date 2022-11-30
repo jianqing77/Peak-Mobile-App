@@ -33,11 +33,18 @@
             android:name=".activities.peakActivities.PeakAddTransaction"
             android:exported="false" />
         <activity
+            android:name=".activities.peakActivities.PeakCreateBudget"
+            android:exported="false" />
+        <activity
             android:name=".activities.peakActivities.profilePage.EditProfileActivity"
             android:configChanges="orientation|screenSize"
             android:exported="false" />
         <activity
             android:name=".activities.peakActivities.profilePage.ProfileActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
+        <activity
+            android:name=".activities.peakActivities.profilePage.ChangePasscodeActivity"
             android:configChanges="orientation|screenSize"
             android:exported="false" />
         <activity
@@ -48,12 +55,7 @@
             android:exported="false" />
         <activity
             android:name=".peakPasscodeRecovery.ForgotPasscode"
-            android:exported="false" /> <!-- <activity -->
-        <!-- android:name=".peakSignUp.PeakSignUpConfirmation" -->
-        <!-- android:exported="false" /> -->
-        <!-- <activity -->
-        <!-- android:name=".peakSignUp.PeakSignUp" -->
-        <!-- android:exported="false" /> -->
+            android:exported="false" /> 
         <activity
             android:name=".activities.MainActivity"
             android:configChanges="orientation|screenSize"
@@ -92,8 +94,10 @@
             android:configChanges="orientation|screenSize" />
         <activity android:name=".activities.peakActivities.userRegister.PeakSignUp" />
         <activity
-            android:name=".activities.peakActivities.userRegister.PeakSignUpConfirmation"
+            android:name=".activities.peakActivities.onBoarding.onBoarding"
             android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".activities.peakActivities.userRegister.PeakSignUpConfirmation" />
         <activity
             android:name=".activities.peakActivities.userRegister.PeakLogin"
             android:configChanges="orientation|screenSize" /> <!-- Lock Screen -->

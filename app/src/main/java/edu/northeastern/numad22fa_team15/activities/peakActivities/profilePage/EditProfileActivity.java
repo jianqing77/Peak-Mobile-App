@@ -1,5 +1,6 @@
 package edu.northeastern.numad22fa_team15.activities.peakActivities.profilePage;
 
+import static edu.northeastern.numad22fa_team15.utils.CommonUtils.closeKeyboard;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessageInSnackbar;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.getByteArrayFromInputStream;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.setProfilePictureToGivenImageView;
@@ -65,7 +66,6 @@ public class EditProfileActivity extends AppCompatActivity {
         // Retrieve user info from database and set the hints
         retrieveUserInfoFromDatabase();
 
-        // TODO: Add onClickListener to edit profile picture image view.
         editProfileImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,6 +74,16 @@ public class EditProfileActivity extends AppCompatActivity {
                 showBottomSheetDialog(v);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+
+        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     /**
@@ -181,6 +191,7 @@ public class EditProfileActivity extends AppCompatActivity {
      * @param view view
      */
     public void confirmUserInfoChanges(View view) {
+        closeKeyboard(getApplicationContext(), view);
         // Check if any value gets changed. Updated or Default.
         String firstNameInput = firstNameTextView.getText().toString();
         if (firstNameInput == null || firstNameInput.isEmpty()) {
