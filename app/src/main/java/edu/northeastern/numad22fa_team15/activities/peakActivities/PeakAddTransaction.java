@@ -49,14 +49,6 @@ public class PeakAddTransaction extends AppCompatActivity {
     public void addTransaction(View view) {
         closeKeyboard(this.getApplicationContext(), view);
 
-        // TODO: hardcoded for testing
-        boolean addSummary = dbHelper.addSummaryTableSummary(2022, 11, 2000);
-        String summaryMessage = "Fail to add Summary";
-        if (addSummary) {
-            summaryMessage = "Successfully added summary";
-        }
-        displayMessageInSnackbar(view, summaryMessage, Snackbar.LENGTH_SHORT);
-
         String expenseString = expenseTextInputEditText.getText().toString();
         String description = descriptionTextInputEditText.getText().toString();
         String category = categoryTextInputEditText.getText().toString();

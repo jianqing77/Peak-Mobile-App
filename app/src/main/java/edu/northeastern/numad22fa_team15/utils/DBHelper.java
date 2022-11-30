@@ -125,29 +125,29 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
                 + SUMMARY_CURRENT_EXPENSE_COL + " FLOAT DEFAULT 0, "
                 + SUMMARY_CURRENT_BALANCE_COL + " FLOAT NOT NULL, "
                 + SUMMARY_DINING_BUDGET_COL + " FLOAT NOT NULL, "
-                + SUMMARY_DINING_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_DINING_EXPENSE_COL + " FLOAT DEFAULT 0, "
                 + SUMMARY_GROCERIES_BUDGET_COL + " FLOAT NOT NULL, "
-                + SUMMARY_GROCERIES_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_GROCERIES_EXPENSE_COL + " FLOAT DEFAULT 0, "
                 + SUMMARY_SHOPPING_BUDGET_COL + " FLOAT NOT NULL, "
-                + SUMMARY_SHOPPING_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_SHOPPING_EXPENSE_COL + " FLOAT DEFAULT 0, "
                 + SUMMARY_LIVING_BUDGET_COL + " FLOAT NOT NULL, "
-                + SUMMARY_LIVING_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_LIVING_EXPENSE_COL + " FLOAT DEFAULT 0, "
                 + SUMMARY_ENTERTAINMENT_BUDGET_COL + " FLOAT NOT NULL, "
-                + SUMMARY_ENTERTAINMENT_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_ENTERTAINMENT_EXPENSE_COL + " FLOAT DEFAULT 0, "
                 + SUMMARY_EDUCATION_BUDGET_COL + " FLOAT NOT NULL, "
-                + SUMMARY_EDUCATION_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_EDUCATION_EXPENSE_COL + " FLOAT DEFAULT 0, "
                 + SUMMARY_BEAUTY_BUDGET_COL + " FLOAT NOT NULL, "
-                + SUMMARY_BEAUTY_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_BEAUTY_EXPENSE_COL + " FLOAT DEFAULT 0, "
                 + SUMMARY_TRANSPORTATION_BUDGET_COL + " FLOAT NOT NULL, "
-                + SUMMARY_TRANSPORTATION_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_TRANSPORTATION_EXPENSE_COL + " FLOAT DEFAULT 0, "
                 + SUMMARY_HEALTH_BUDGET_COL + " FLOAT NOT NULL, "
-                + SUMMARY_HEALTH_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_HEALTH_EXPENSE_COL + " FLOAT DEFAULT 0, "
                 + SUMMARY_TRAVEL_BUDGET_COL + " FLOAT NOT NULL, "
-                + SUMMARY_TRAVEL_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_TRAVEL_EXPENSE_COL + " FLOAT DEFAULT 0, "
                 + SUMMARY_PET_BUDGET_COL + " FLOAT NOT NULL, "
-                + SUMMARY_PET_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_PET_EXPENSE_COL + " FLOAT DEFAULT 0, "
                 + SUMMARY_OTHER_BUDGET_COL + " FLOAT NOT NULL, "
-                + SUMMARY_OTHER_EXPENSE_COL + " FLOAT NOT NULL)";
+                + SUMMARY_OTHER_EXPENSE_COL + " FLOAT DEFAULT 0)";
 
         String createTransactionTableQuery =
                 "CREATE TABLE IF NOT EXISTS " + TRANSACTION_TABLE_NAME + " ("
@@ -298,7 +298,11 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
     }
 
     @Override
-    public boolean addSummaryTableSummary(Integer year, Integer month, float totalBudget) {
+    public boolean addSummaryTableSummary(Integer year, Integer month, float totalBudget,
+                                          float diningBudget, float groceriesBudget, float shoppingBudget,
+                                          float livingBudget, float entertainmentBudget, float educationBudget,
+                                          float beautyBudget, float transportationBudget, float healthBudget,
+                                          float travelBudget, float petBudget, float otherBudget) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         float currentBalance = totalBudget;
@@ -308,6 +312,18 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         values.put(SUMMARY_MONTH_COL, month);
         values.put(SUMMARY_TOTAL_BUDGET_COL, totalBudget);
         values.put(SUMMARY_CURRENT_BALANCE_COL, currentBalance);
+        values.put(SUMMARY_DINING_BUDGET_COL, diningBudget);
+        values.put(SUMMARY_GROCERIES_BUDGET_COL, groceriesBudget);
+        values.put(SUMMARY_SHOPPING_BUDGET_COL, shoppingBudget);
+        values.put(SUMMARY_LIVING_BUDGET_COL, livingBudget);
+        values.put(SUMMARY_ENTERTAINMENT_BUDGET_COL, entertainmentBudget);
+        values.put(SUMMARY_EDUCATION_BUDGET_COL, educationBudget);
+        values.put(SUMMARY_BEAUTY_BUDGET_COL, beautyBudget);
+        values.put(SUMMARY_TRANSPORTATION_BUDGET_COL, transportationBudget);
+        values.put(SUMMARY_HEALTH_BUDGET_COL, healthBudget);
+        values.put(SUMMARY_TRAVEL_BUDGET_COL, travelBudget);
+        values.put(SUMMARY_PET_BUDGET_COL, petBudget);
+        values.put(SUMMARY_OTHER_BUDGET_COL, otherBudget);
 
         long result = db.insert(SUMMARY_TABLE_NAME, null, values);
         return (result != -1);

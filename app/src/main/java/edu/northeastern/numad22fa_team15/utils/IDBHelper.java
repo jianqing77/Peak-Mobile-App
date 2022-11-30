@@ -14,7 +14,11 @@ public interface IDBHelper {
     boolean updateUserProfilePictureTableUser(byte[] profilePictureBlob);
     UserModel retrieveUserInfoTableUser();
 
-    boolean addSummaryTableSummary(Integer year, Integer month, float totalBudget);
+    boolean addSummaryTableSummary(Integer year, Integer month, float totalBudget,
+                                   float diningBudget, float groceriesBudget, float shoppingBudget,
+                                   float livingBudget, float entertainmentBudget, float educationBudget,
+                                   float beautyBudget, float transportationBudget, float healthBudget,
+                                   float travelBudget, float petBudget, float otherBudget);
     SummaryModel retrieveLatestSummaryInfoTableUser();
     // TODO: set category as string for testing, change to enum?
     boolean addTranTableTransaction(float expense, String description, String category, String transactionDate, int summaryID);

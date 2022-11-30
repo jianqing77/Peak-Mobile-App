@@ -41,7 +41,7 @@
         android:backgroundTint="@color/FinalProj_Dark"
         android:clickable="true"
         android:onClick="openHomePage"
-        android:text="Create Your First Budget!"
+        android:text="Edit your Budget!"
         android:textAppearance="@style/button_dark"
         android:textColor="@color/white"
         android:textStyle="bold"

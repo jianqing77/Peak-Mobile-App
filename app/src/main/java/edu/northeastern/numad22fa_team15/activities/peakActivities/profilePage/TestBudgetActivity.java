@@ -48,6 +48,7 @@ public class TestBudgetActivity extends AppCompatActivity {
         }
 
         float budget = Float.parseFloat(budgetString);
+        float category_budget = budget / 12;
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
@@ -56,7 +57,11 @@ public class TestBudgetActivity extends AppCompatActivity {
         Integer currentYear = Integer.parseInt(currentDate.substring(0,4));
         Integer currentMonth = Integer.parseInt(currentDate.substring(5,7));
 
-        boolean addSummary = dbHelper.addSummaryTableSummary(currentYear, currentMonth, budget);
+        boolean addSummary = dbHelper.addSummaryTableSummary(currentYear, currentMonth, budget,
+                category_budget, category_budget, category_budget, category_budget, category_budget,
+                category_budget, category_budget, category_budget, category_budget, category_budget,
+                category_budget, category_budget);
+
         String budgetMessage = "Fail to add Summary";
         if (addSummary) {
             budgetMessage = "Successfully added summary";
