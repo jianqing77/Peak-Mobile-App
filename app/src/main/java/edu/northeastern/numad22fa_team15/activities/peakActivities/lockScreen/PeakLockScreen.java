@@ -14,11 +14,14 @@ import android.widget.Button;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.homePage.PeakHomePage;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.profilePage.ProfileActivity;
+import edu.northeastern.numad22fa_team15.models.databaseModels.SummaryModel;
 import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
 import edu.northeastern.numad22fa_team15.utils.IDBHelper;
@@ -41,6 +44,29 @@ public class PeakLockScreen extends AppCompatActivity implements View.OnClickLis
 
         dbHelper = new DBHelper(PeakLockScreen.this);
 
+
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String currentDate = String.valueOf(now);
+
+        Integer currentYear = Integer.parseInt(currentDate.substring(0,4));
+        Integer currentMonth = Integer.parseInt(currentDate.substring(5,7));
+
+        SummaryModel lastSummary = dbHelper.retrieveLatestSummaryInfoTableUser();
+        if (!(lastSummary.getYear() == currentYear && lastSummary.getMonth() == currentMonth)) {
+            float budget = lastSummary.getTotalBudget();
+            boolean addSummary = dbHelper.addSummaryTableSummary(currentYear, currentMonth, budget);
+            // TODO: snackbar for debug, need to be removed
+            String budgetMessage = "Fail to add Summary";
+            if (addSummary) {
+                budgetMessage = "Successfully added summary";
+            }
+            displayMessageInSnackbar(view_01.getRootView(), budgetMessage, Snackbar.LENGTH_SHORT);
+
+        } else {
+            return;
+        }
         initializeComponents();
     }
 

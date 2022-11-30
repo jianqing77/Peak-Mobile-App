@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import edu.northeastern.numad22fa_team15.models.databaseModels.SummaryModel;
 import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
 
 public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
@@ -121,7 +122,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
                 + SUMMARY_YEAR_COL + " INTEGER NOT NULL, "
                 + SUMMARY_MONTH_COL + " INTEGER NOT NULL, "
                 + SUMMARY_TOTAL_BUDGET_COL + " FLOAT NOT NULL, "
-                + SUMMARY_CURRENT_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_CURRENT_EXPENSE_COL + " FLOAT DEFAULT 0, "
                 + SUMMARY_CURRENT_BALANCE_COL + " FLOAT NOT NULL, "
                 + SUMMARY_DINING_BUDGET_COL + " FLOAT NOT NULL, "
                 + SUMMARY_DINING_EXPENSE_COL + " FLOAT NOT NULL, "
@@ -283,20 +284,80 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
     }
 
     @Override
-    public boolean addSummaryTableSummary(Integer year, Integer month, float totalBudget, float currentExpense, float currentBalance) {
+    public boolean addSummaryTableSummary(Integer year, Integer month, float totalBudget) {
         SQLiteDatabase db = this.getWritableDatabase();
+
+        float currentBalance = totalBudget;
 
         ContentValues values = new ContentValues();
         values.put(SUMMARY_YEAR_COL, year);
         values.put(SUMMARY_MONTH_COL, month);
         values.put(SUMMARY_TOTAL_BUDGET_COL, totalBudget);
-        values.put(SUMMARY_CURRENT_EXPENSE_COL, currentExpense);
         values.put(SUMMARY_CURRENT_BALANCE_COL, currentBalance);
 
         long result = db.insert(SUMMARY_TABLE_NAME, null, values);
         return (result != -1);
     }
 
+    @Override
+    public SummaryModel retrieveLatestSummaryInfoTableUser() {
+        Cursor cursor = getSummaryCursor();
+
+        SummaryModel summary = null;
+        if (cursor.moveToLast()) {
+            int year = cursor.getInt(1);
+            int month = cursor.getInt(2);
+            float totalBudget = cursor.getFloat(3);
+            float currentExpense = cursor.getFloat(4);
+            float diningBudget = cursor.getFloat(5);
+            float diningExpense = cursor.getFloat(6);
+            float groceriesBudget = cursor.getFloat(7);
+            float groceriesExpense = cursor.getFloat(8);
+            float shoppingBudget = cursor.getFloat(9);
+            float shoppingExpense = cursor.getFloat(10);
+            float livingBudget = cursor.getFloat(11);
+            float livingExpense = cursor.getFloat(12);
+            float entertainmentBudget = cursor.getFloat(13);
+            float entertainmentExpense = cursor.getFloat(14);
+            float educationBudget = cursor.getFloat(15);
+            float educationExpense = cursor.getFloat(16);
+            float beautyBudget = cursor.getFloat(17);
+            float beautyExpense = cursor.getFloat(18);
+            float transportationBudget = cursor.getFloat(19);
+            float transportationExpense = cursor.getFloat(20);
+            float healthBudget = cursor.getFloat(21);
+            float healthExpense = cursor.getFloat(22);
+            float travelBudget = cursor.getFloat(23);
+            float travelExpense = cursor.getFloat(24);
+            float petBudget = cursor.getFloat(25);
+            float petExpense = cursor.getFloat(26);
+            float otherBudget = cursor.getFloat(27);
+            float otherExpense = cursor.getFloat(28);
+
+            summary = new SummaryModel(year, month, totalBudget, currentExpense,
+            diningBudget, diningExpense,
+            groceriesBudget, groceriesExpense,
+            shoppingBudget, shoppingExpense,
+            livingBudget, livingExpense,
+            entertainmentBudget, entertainmentExpense,
+            educationBudget, educationExpense,
+            beautyBudget, beautyExpense,
+            transportationBudget, transportationExpense,
+            healthBudget, healthExpense,
+            travelBudget, travelExpense,
+            petBudget, petExpense,
+            otherBudget, otherExpense);
+        }
+        cursor.close();
+        return summary;
+    }
+
+    private Cursor getSummaryCursor() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String getUserQuery = String.format("SELECT * FROM %s", SUMMARY_TABLE_NAME);
+        Cursor cursor = db.rawQuery(getUserQuery, null);
+        return cursor;
+    }
 
 
     @Override

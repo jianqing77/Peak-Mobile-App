@@ -56,8 +56,7 @@ public class TestBudgetActivity extends AppCompatActivity {
         Integer currentYear = Integer.parseInt(currentDate.substring(0,4));
         Integer currentMonth = Integer.parseInt(currentDate.substring(5,7));
 
-        boolean addSummary = dbHelper.addSummaryTableSummary(currentYear, currentMonth,
-                budget, 0, budget);
+        boolean addSummary = dbHelper.addSummaryTableSummary(currentYear, currentMonth, budget);
         String budgetMessage = "Fail to add Summary";
         if (addSummary) {
             budgetMessage = "Successfully added summary";

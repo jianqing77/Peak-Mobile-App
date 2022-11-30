@@ -130,8 +130,8 @@ public class SummaryModel {
         return this.currentBalance;
     }
 
-    public void setCurrentBalance() {
-        this.currentBalance = this.totalBudget - this.currentExpense;
+    public void setCurrentBalance(float currentBalance) {
+        this.currentBalance = currentBalance;
     }
 
     public float getDiningBudget() {

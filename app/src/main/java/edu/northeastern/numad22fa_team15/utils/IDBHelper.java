@@ -1,5 +1,6 @@
 package edu.northeastern.numad22fa_team15.utils;
 
+import edu.northeastern.numad22fa_team15.models.databaseModels.SummaryModel;
 import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
 
 public interface IDBHelper {
@@ -12,7 +13,8 @@ public interface IDBHelper {
     boolean updateUserProfilePictureTableUser(byte[] profilePictureBlob);
     UserModel retrieveUserInfoTableUser();
 
-    boolean addSummaryTableSummary(Integer year, Integer month, float totalBudget, float currentExpense, float currentBalance);
+    boolean addSummaryTableSummary(Integer year, Integer month, float totalBudget);
+    SummaryModel retrieveLatestSummaryInfoTableUser();
     // TODO: set category as string for testing, change to enum?
     boolean addTranTableTransaction(float expense, String description, String category, String transactionDate, int summaryID);
     boolean updateTranTableTransaction(float expense, String description, String category, int transactionID);
