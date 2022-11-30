@@ -116,15 +116,18 @@
                 app:layout_constraintTop_toBottomOf="@id/textView" />
 
             <EditText
-                android:id="@+id/tv_seekbar_dining"
+                android:id="@+id/et_seekbar_dining"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
                 android:background="@null"
-                android:text="$0"
+                android:text="0"
+                android:maxLines="1"
+                android:maxLength="4"
+                android:inputType="number"
                 app:layout_constraintBottom_toBottomOf="@id/tv_dining"
                 app:layout_constraintEnd_toEndOf="@id/seekbar_dining"
-                app:layout_constraintTop_toTopOf="@id/tv_dining" />
+                app:layout_constraintTop_toTopOf="@id/tv_dining"/>
 
             <SeekBar
                 android:id="@+id/seekbar_dining"
@@ -133,7 +136,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="10dp"
-                android:max="10000"
+                android:max="5000"
                 android:progressDrawable="@drawable/seekbar_style"
                 android:splitTrack="false"
                 android:thumb="@drawable/seekbar_thumb_style"
@@ -152,12 +155,15 @@
                 app:layout_constraintTop_toBottomOf="@id/seekbar_dining" />
 
             <EditText
-                android:id="@+id/tv_seekbar_groceries"
+                android:id="@+id/et_seekbar_groceries"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
                 android:background="@null"
-                android:text="$0"
+                android:text="0"
+                android:maxLines="1"
+                android:maxLength="4"
+                android:inputType="number"
                 app:layout_constraintBottom_toBottomOf="@id/tv_groceries"
                 app:layout_constraintEnd_toEndOf="@id/seekbar_groceries"
                 app:layout_constraintTop_toTopOf="@id/tv_groceries" />
@@ -169,7 +175,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="10dp"
-                android:max="10000"
+                android:max="5000"
                 android:progressDrawable="@drawable/seekbar_style"
                 android:splitTrack="false"
                 android:thumb="@drawable/seekbar_thumb_style"
@@ -188,12 +194,15 @@
                 app:layout_constraintTop_toBottomOf="@id/seekbar_groceries" />
 
             <EditText
-                android:id="@+id/tv_seekbar_shopping"
+                android:id="@+id/et_seekbar_shopping"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
                 android:background="@null"
-                android:text="$0"
+                android:text="0"
+                android:maxLines="1"
+                android:maxLength="4"
+                android:inputType="number"
                 app:layout_constraintBottom_toBottomOf="@id/tv_shopping"
                 app:layout_constraintEnd_toEndOf="@id/seekbar_shopping"
                 app:layout_constraintTop_toTopOf="@id/tv_shopping" />
@@ -205,7 +214,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="10dp"
-                android:max="10000"
+                android:max="5000"
                 android:progressDrawable="@drawable/seekbar_style"
                 android:splitTrack="false"
                 android:thumb="@drawable/seekbar_thumb_style"
@@ -224,12 +233,15 @@
                 app:layout_constraintTop_toBottomOf="@id/seekbar_shopping" />
 
             <EditText
-                android:id="@+id/tv_seekbar_living"
+                android:id="@+id/et_seekbar_living"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
                 android:background="@null"
-                android:text="$0"
+                android:text="0"
+                android:maxLines="1"
+                android:maxLength="4"
+                android:inputType="number"
                 app:layout_constraintBottom_toBottomOf="@id/tv_living"
                 app:layout_constraintEnd_toEndOf="@id/seekbar_living"
                 app:layout_constraintTop_toTopOf="@id/tv_living" />
@@ -241,7 +253,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="10dp"
-                android:max="10000"
+                android:max="5000"
                 android:progressDrawable="@drawable/seekbar_style"
                 android:splitTrack="false"
                 android:thumb="@drawable/seekbar_thumb_style"
@@ -260,12 +272,15 @@
                 app:layout_constraintTop_toBottomOf="@id/seekbar_living" />
 
             <EditText
-                android:id="@+id/tv_seekbar_entertainment"
+                android:id="@+id/et_seekbar_entertainment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
                 android:background="@null"
-                android:text="$0"
+                android:text="0"
+                android:maxLines="1"
+                android:maxLength="4"
+                android:inputType="number"
                 app:layout_constraintBottom_toBottomOf="@id/tv_entertainment"
                 app:layout_constraintEnd_toEndOf="@id/seekbar_entertainment"
                 app:layout_constraintTop_toTopOf="@id/tv_entertainment" />
@@ -277,7 +292,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="10dp"
-                android:max="10000"
+                android:max="5000"
                 android:progressDrawable="@drawable/seekbar_style"
                 android:splitTrack="false"
                 android:thumb="@drawable/seekbar_thumb_style"
@@ -296,12 +311,15 @@
                 app:layout_constraintTop_toBottomOf="@id/seekbar_entertainment" />
 
             <EditText
-                android:id="@+id/tv_seekbar_education"
+                android:id="@+id/et_seekbar_education"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
                 android:background="@null"
-                android:text="$0"
+                android:text="0"
+                android:maxLines="1"
+                android:maxLength="4"
+                android:inputType="number"
                 app:layout_constraintBottom_toBottomOf="@id/tv_education"
                 app:layout_constraintEnd_toEndOf="@id/seekbar_education"
                 app:layout_constraintTop_toTopOf="@id/tv_education" />
@@ -313,7 +331,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="10dp"
-                android:max="10000"
+                android:max="5000"
                 android:progressDrawable="@drawable/seekbar_style"
                 android:splitTrack="false"
                 android:thumb="@drawable/seekbar_thumb_style"
@@ -332,12 +350,15 @@
                 app:layout_constraintTop_toBottomOf="@id/seekbar_education" />
 
             <EditText
-                android:id="@+id/tv_seekbar_beauty"
+                android:id="@+id/et_seekbar_beauty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
                 android:background="@null"
-                android:text="$0"
+                android:text="0"
+                android:maxLines="1"
+                android:maxLength="4"
+                android:inputType="number"
                 app:layout_constraintBottom_toBottomOf="@id/tv_beauty"
                 app:layout_constraintEnd_toEndOf="@id/seekbar_beauty"
                 app:layout_constraintTop_toTopOf="@id/tv_beauty" />
@@ -349,7 +370,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="10dp"
-                android:max="10000"
+                android:max="5000"
                 android:progressDrawable="@drawable/seekbar_style"
                 android:splitTrack="false"
                 android:thumb="@drawable/seekbar_thumb_style"
@@ -368,12 +389,15 @@
                 app:layout_constraintTop_toBottomOf="@id/seekbar_beauty" />
 
             <EditText
-                android:id="@+id/tv_seekbar_transportation"
+                android:id="@+id/et_seekbar_transportation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
                 android:background="@null"
-                android:text="$0"
+                android:text="0"
+                android:maxLines="1"
+                android:maxLength="4"
+                android:inputType="number"
                 app:layout_constraintBottom_toBottomOf="@id/tv_transportation"
                 app:layout_constraintEnd_toEndOf="@id/seekbar_transportation"
                 app:layout_constraintTop_toTopOf="@id/tv_transportation" />
@@ -385,7 +409,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="10dp"
-                android:max="10000"
+                android:max="5000"
                 android:progressDrawable="@drawable/seekbar_style"
                 android:splitTrack="false"
                 android:thumb="@drawable/seekbar_thumb_style"
@@ -404,12 +428,15 @@
                 app:layout_constraintTop_toBottomOf="@id/seekbar_transportation" />
 
             <EditText
-                android:id="@+id/tv_seekbar_health"
+                android:id="@+id/et_seekbar_health"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
                 android:background="@null"
-                android:text="$0"
+                android:text="0"
+                android:maxLines="1"
+                android:maxLength="4"
+                android:inputType="number"
                 app:layout_constraintBottom_toBottomOf="@id/tv_health"
                 app:layout_constraintEnd_toEndOf="@id/seekbar_health"
                 app:layout_constraintTop_toTopOf="@id/tv_health" />
@@ -421,7 +448,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="10dp"
-                android:max="10000"
+                android:max="5000"
                 android:progressDrawable="@drawable/seekbar_style"
                 android:splitTrack="false"
                 android:thumb="@drawable/seekbar_thumb_style"
@@ -440,12 +467,15 @@
                 app:layout_constraintTop_toBottomOf="@id/seekbar_health" />
 
             <EditText
-                android:id="@+id/tv_seekbar_travel"
+                android:id="@+id/et_seekbar_travel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
                 android:background="@null"
-                android:text="$0"
+                android:text="0"
+                android:maxLines="1"
+                android:maxLength="4"
+                android:inputType="number"
                 app:layout_constraintBottom_toBottomOf="@id/tv_travel"
                 app:layout_constraintEnd_toEndOf="@id/seekbar_travel"
                 app:layout_constraintTop_toTopOf="@id/tv_travel" />
@@ -457,7 +487,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="10dp"
-                android:max="10000"
+                android:max="5000"
                 android:progressDrawable="@drawable/seekbar_style"
                 android:splitTrack="false"
                 android:thumb="@drawable/seekbar_thumb_style"
@@ -476,11 +506,14 @@
                 app:layout_constraintTop_toBottomOf="@id/seekbar_travel" />
 
             <EditText
-                android:id="@+id/tv_seekbar_pet"
+                android:id="@+id/et_seekbar_pet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
-                android:text="$0"
+                android:text="0"
+                android:maxLines="1"
+                android:maxLength="4"
+                android:inputType="number"
                 app:layout_constraintBottom_toBottomOf="@id/tv_pet"
                 app:layout_constraintEnd_toEndOf="@id/seekbar_pet"
                 app:layout_constraintTop_toTopOf="@id/tv_pet"
@@ -493,7 +526,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="10dp"
-                android:max="10000"
+                android:max="5000"
                 android:progressDrawable="@drawable/seekbar_style"
                 android:splitTrack="false"
                 android:thumb="@drawable/seekbar_thumb_style"
@@ -512,11 +545,14 @@
                 app:layout_constraintTop_toBottomOf="@id/seekbar_pet" />
 
             <EditText
-                android:id="@+id/tv_seekbar_other"
+                android:id="@+id/et_seekbar_other"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
-                android:text="$0"
+                android:text="0"
+                android:maxLines="1"
+                android:maxLength="4"
+                android:inputType="number"
                 app:layout_constraintBottom_toBottomOf="@id/tv_other"
                 app:layout_constraintEnd_toEndOf="@id/seekbar_other"
                 app:layout_constraintTop_toTopOf="@id/tv_other"
@@ -529,7 +565,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="10dp"
-                android:max="10000"
+                android:max="5000"
                 android:progressDrawable="@drawable/seekbar_style"
                 android:splitTrack="false"
                 android:thumb="@drawable/seekbar_thumb_style"
