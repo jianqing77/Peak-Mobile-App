@@ -22,7 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
-                app:cardCornerRadius="160dp"
+                app:cardCornerRadius="39dp"
                 app:cardPreventCornerOverlap="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -30,8 +30,8 @@
 
                 <ImageView
                     android:id="@+id/profile_picture"
-                    android:layout_width="77dp"
-                    android:layout_height="77dp"
+                    android:layout_width="78dp"
+                    android:layout_height="78dp"
                     android:layout_gravity="center"
                     android:background="@drawable/ic_anonymous_person_24"
                     android:contentDescription="User profile picture"/>
