@@ -3,16 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/bg_view_dark_oval.xml" value="0.3515" />
-        <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/bg_view_grey_oval.xml" value="0.3515" />
-        <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout-land/change_profile_picture_bottomsheet.xml" value="0.5438221462163317" />
-        <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_main.xml" value="0.22894736842105262" />
-        <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_peak_home_page.xml" value="0.2975630611372381" />
-        <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_peak_lock_screen.xml" value="0.2975630611372381" />
-        <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_test_peak_first_page.xml" value="0.24166666666666667" />
-        <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/change_profile_picture_bottomsheet.xml" value="0.22894736842105262" />
-        <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/edit_profile.xml" value="0.25" />
-        <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/profile_page.xml" value="0.22894736842105262" />
+        <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/border_shadow.xml" value="0.2" />
+        <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/custom_thumb.xml" value="0.2" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/ic_nav_home.xml" value="0.2105" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/ic_onboarding_1.xml" value="0.242" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/ic_onboarding_3.xml" value="0.2105" />
@@ -20,8 +12,17 @@
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/nav_transparent_background.xml" value="0.2105" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/next_btn.xml" value="0.2225" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/onboarding_1.xml" value="0.2225" />
+        <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/seekbar_border_shadow.xml" value="0.2" />
+        <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/seekbar_custom.xml" value="0.2" />
+        <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/seekbar_progress.xml" value="0.2" />
+        <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/seekbar_progress_style.xml" value="0.2" />
+        <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/seekbar_style.xml" value="0.2" />
+        <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_create_budget.xml" value="0.165" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_main.xml" value="0.17401315789473684" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_onboarding1.xml" value="0.25" />
+        <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_peak_entrance.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_peak_home_page.xml" value="0.2261650277896537" />
+        <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_peak_lock_screen.xml" value="0.2261650277896537" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/edit_profile.xml" value="0.165" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/onboarding_1.xml" value="0.17152777777777778" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/onboarding_2.xml" value="0.17401315789473684" />
@@ -71,12 +72,5 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="VisualizationToolProject">
-    <option name="state">
-      <ProjectState>
-        <option name="scale" value="0.18" />
-      </ProjectState>
-    </option>
   </component>
 </project>

@@ -105,4 +105,5 @@
     <string name="confirm_new_passcode">Confirm New Passcode</string>
     <string name="reset_passcode">Reset Passcode</string>
     <string name="_1234">1234</string>
+    <string name="dollar_sign">$</string>
 </resources>
