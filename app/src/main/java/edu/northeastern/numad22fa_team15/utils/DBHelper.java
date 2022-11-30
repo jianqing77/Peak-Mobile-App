@@ -34,6 +34,31 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
     private static final String SUMMARY_CURRENT_EXPENSE_COL = "currentExpense";
     private static final String SUMMARY_CURRENT_BALANCE_COL = "currentBalance";
 
+    private static final String SUMMARY_DINING_BUDGET_COL = "diningBudget";
+    private static final String SUMMARY_DINING_EXPENSE_COL = "diningExpense";
+    private static final String SUMMARY_GROCERIES_BUDGET_COL = "groceriesBudget";
+    private static final String SUMMARY_GROCERIES_EXPENSE_COL = "groceriesExpense";
+    private static final String SUMMARY_SHOPPING_BUDGET_COL = "shoppingBudget";
+    private static final String SUMMARY_SHOPPING_EXPENSE_COL = "shoppingExpense";
+    private static final String SUMMARY_LIVING_BUDGET_COL = "livingBudget";
+    private static final String SUMMARY_LIVING_EXPENSE_COL = "livingExpense";
+    private static final String SUMMARY_ENTERTAINMENT_BUDGET_COL = "entertainmentBudget";
+    private static final String SUMMARY_ENTERTAINMENT_EXPENSE_COL = "entertainmentExpense";
+    private static final String SUMMARY_EDUCATION_BUDGET_COL = "educationBudget";
+    private static final String SUMMARY_EDUCATION_EXPENSE_COL = "educationExpense";
+    private static final String SUMMARY_BEAUTY_BUDGET_COL = "beautyBudget";
+    private static final String SUMMARY_BEAUTY_EXPENSE_COL = "beautyExpense";
+    private static final String SUMMARY_TRANSPORTATION_BUDGET_COL = "transportationBudget";
+    private static final String SUMMARY_TRANSPORTATION_EXPENSE_COL = "transportationExpense";
+    private static final String SUMMARY_HEALTH_BUDGET_COL = "healthBudget";
+    private static final String SUMMARY_HEALTH_EXPENSE_COL = "healthExpense";
+    private static final String SUMMARY_TRAVEL_BUDGET_COL = "travelBudget";
+    private static final String SUMMARY_TRAVEL_EXPENSE_COL = "travelExpense";
+    private static final String SUMMARY_PET_BUDGET_COL = "petBudget";
+    private static final String SUMMARY_PET_EXPENSE_COL = "petExpense";
+    private static final String SUMMARY_OTHER_BUDGET_COL = "otherBudget";
+    private static final String SUMMARY_OTHER_EXPENSE_COL = "otherExpense";
+
     // Table saving (for piggy bank)
     private static final String SAVING_TABLE_NAME = "saving";
     private static final String SAVING_ID_COL = "_savingID";
@@ -97,7 +122,31 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
                 + SUMMARY_MONTH_COL + " INTEGER NOT NULL, "
                 + SUMMARY_TOTAL_BUDGET_COL + " FLOAT NOT NULL, "
                 + SUMMARY_CURRENT_EXPENSE_COL + " FLOAT NOT NULL, "
-                + SUMMARY_CURRENT_BALANCE_COL + " FLOAT NOT NULL)";
+                + SUMMARY_CURRENT_BALANCE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_DINING_BUDGET_COL + " FLOAT NOT NULL, "
+                + SUMMARY_DINING_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_GROCERIES_BUDGET_COL + " FLOAT NOT NULL, "
+                + SUMMARY_GROCERIES_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_SHOPPING_BUDGET_COL + " FLOAT NOT NULL, "
+                + SUMMARY_SHOPPING_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_LIVING_BUDGET_COL + " FLOAT NOT NULL, "
+                + SUMMARY_LIVING_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_ENTERTAINMENT_BUDGET_COL + " FLOAT NOT NULL, "
+                + SUMMARY_ENTERTAINMENT_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_EDUCATION_BUDGET_COL + " FLOAT NOT NULL, "
+                + SUMMARY_EDUCATION_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_BEAUTY_BUDGET_COL + " FLOAT NOT NULL, "
+                + SUMMARY_BEAUTY_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_TRANSPORTATION_BUDGET_COL + " FLOAT NOT NULL, "
+                + SUMMARY_TRANSPORTATION_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_HEALTH_BUDGET_COL + " FLOAT NOT NULL, "
+                + SUMMARY_HEALTH_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_TRAVEL_BUDGET_COL + " FLOAT NOT NULL, "
+                + SUMMARY_TRAVEL_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_PET_BUDGET_COL + " FLOAT NOT NULL, "
+                + SUMMARY_PET_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_OTHER_BUDGET_COL + " FLOAT NOT NULL, "
+                + SUMMARY_OTHER_EXPENSE_COL + " FLOAT NOT NULL)";
 
         String createTransactionTableQuery =
                 "CREATE TABLE IF NOT EXISTS " + TRANSACTION_TABLE_NAME + " ("
