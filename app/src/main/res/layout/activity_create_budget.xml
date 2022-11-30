@@ -33,7 +33,7 @@
                     android:layout_height="78dp"
                     android:layout_gravity="center"
                     android:background="@drawable/ic_anonymous_person_24"
-                    android:contentDescription="User profile picture"/>
+                    android:contentDescription="User profile picture" />
 
             </androidx.cardview.widget.CardView>
 
@@ -62,10 +62,10 @@
             <View
                 android:id="@+id/edit_budget_divider"
                 android:layout_width="0dp"
-                android:layout_marginRight="50dp"
-                android:layout_marginLeft="50dp"
                 android:layout_height="2dp"
+                android:layout_marginLeft="50dp"
                 android:layout_marginTop="18dp"
+                android:layout_marginRight="50dp"
                 android:background="@color/FinalProj_Primary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -109,448 +109,460 @@
                 android:id="@+id/tv_dining"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="DINING"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/textView"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="@id/seekbar_dining"/>
+                app:layout_constraintStart_toStartOf="@id/seekbar_dining"
+                app:layout_constraintTop_toBottomOf="@id/textView" />
 
-            <TextView
+            <EditText
                 android:id="@+id/tv_seekbar_dining"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="$0"
-                app:layout_constraintEnd_toEndOf="@id/seekbar_dining"
-                app:layout_constraintTop_toTopOf="@id/tv_dining"
                 android:layout_marginRight="20dp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_dining"/>
+                android:background="@null"
+                android:text="$0"
+                app:layout_constraintBottom_toBottomOf="@id/tv_dining"
+                app:layout_constraintEnd_toEndOf="@id/seekbar_dining"
+                app:layout_constraintTop_toTopOf="@id/tv_dining" />
 
             <SeekBar
                 android:id="@+id/seekbar_dining"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginRight="10dp"
                 android:max="10000"
-                app:layout_constraintStart_toStartOf="@id/tv_dining"
-                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
-                app:layout_constraintTop_toBottomOf="@id/tv_dining"
-                android:layout_marginTop="8dp"
                 android:progressDrawable="@drawable/seekbar_style"
+                android:splitTrack="false"
                 android:thumb="@drawable/seekbar_thumb_style"
-                android:splitTrack="false"/>
+                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
+                app:layout_constraintStart_toStartOf="@id/tv_dining"
+                app:layout_constraintTop_toBottomOf="@id/tv_dining" />
 
             <TextView
                 android:id="@+id/tv_groceries"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="GROCERIES"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/seekbar_dining"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="@id/seekbar_groceries"/>
+                app:layout_constraintStart_toStartOf="@id/seekbar_groceries"
+                app:layout_constraintTop_toBottomOf="@id/seekbar_dining" />
 
-            <TextView
+            <EditText
                 android:id="@+id/tv_seekbar_groceries"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="$0"
-                app:layout_constraintEnd_toEndOf="@id/seekbar_groceries"
-                app:layout_constraintTop_toTopOf="@id/tv_groceries"
                 android:layout_marginRight="20dp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_groceries"/>
+                android:background="@null"
+                android:text="$0"
+                app:layout_constraintBottom_toBottomOf="@id/tv_groceries"
+                app:layout_constraintEnd_toEndOf="@id/seekbar_groceries"
+                app:layout_constraintTop_toTopOf="@id/tv_groceries" />
 
             <SeekBar
                 android:id="@+id/seekbar_groceries"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginRight="10dp"
                 android:max="10000"
-                app:layout_constraintStart_toStartOf="@id/tv_groceries"
-                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
-                app:layout_constraintTop_toBottomOf="@id/tv_groceries"
-                android:layout_marginTop="8dp"
                 android:progressDrawable="@drawable/seekbar_style"
+                android:splitTrack="false"
                 android:thumb="@drawable/seekbar_thumb_style"
-                android:splitTrack="false"/>
+                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
+                app:layout_constraintStart_toStartOf="@id/tv_groceries"
+                app:layout_constraintTop_toBottomOf="@id/tv_groceries" />
 
             <TextView
                 android:id="@+id/tv_shopping"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="SHOPPING"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/seekbar_groceries"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="@id/seekbar_shopping"/>
+                app:layout_constraintStart_toStartOf="@id/seekbar_shopping"
+                app:layout_constraintTop_toBottomOf="@id/seekbar_groceries" />
 
-            <TextView
+            <EditText
                 android:id="@+id/tv_seekbar_shopping"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="$0"
-                app:layout_constraintEnd_toEndOf="@id/seekbar_shopping"
-                app:layout_constraintTop_toTopOf="@id/tv_shopping"
                 android:layout_marginRight="20dp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_shopping"/>
+                android:background="@null"
+                android:text="$0"
+                app:layout_constraintBottom_toBottomOf="@id/tv_shopping"
+                app:layout_constraintEnd_toEndOf="@id/seekbar_shopping"
+                app:layout_constraintTop_toTopOf="@id/tv_shopping" />
 
             <SeekBar
                 android:id="@+id/seekbar_shopping"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginRight="10dp"
                 android:max="10000"
-                app:layout_constraintStart_toStartOf="@id/tv_shopping"
-                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
-                app:layout_constraintTop_toBottomOf="@id/tv_shopping"
-                android:layout_marginTop="8dp"
                 android:progressDrawable="@drawable/seekbar_style"
+                android:splitTrack="false"
                 android:thumb="@drawable/seekbar_thumb_style"
-                android:splitTrack="false"/>
+                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
+                app:layout_constraintStart_toStartOf="@id/tv_shopping"
+                app:layout_constraintTop_toBottomOf="@id/tv_shopping" />
 
             <TextView
                 android:id="@+id/tv_living"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="LIVING"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/seekbar_shopping"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="@id/seekbar_living"/>
+                app:layout_constraintStart_toStartOf="@id/seekbar_living"
+                app:layout_constraintTop_toBottomOf="@id/seekbar_shopping" />
 
-            <TextView
+            <EditText
                 android:id="@+id/tv_seekbar_living"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="$0"
-                app:layout_constraintEnd_toEndOf="@id/seekbar_living"
-                app:layout_constraintTop_toTopOf="@id/tv_living"
                 android:layout_marginRight="20dp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_living"/>
+                android:background="@null"
+                android:text="$0"
+                app:layout_constraintBottom_toBottomOf="@id/tv_living"
+                app:layout_constraintEnd_toEndOf="@id/seekbar_living"
+                app:layout_constraintTop_toTopOf="@id/tv_living" />
 
             <SeekBar
                 android:id="@+id/seekbar_living"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginRight="10dp"
                 android:max="10000"
-                app:layout_constraintStart_toStartOf="@id/tv_living"
-                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
-                app:layout_constraintTop_toBottomOf="@id/tv_living"
-                android:layout_marginTop="8dp"
                 android:progressDrawable="@drawable/seekbar_style"
+                android:splitTrack="false"
                 android:thumb="@drawable/seekbar_thumb_style"
-                android:splitTrack="false"/>
+                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
+                app:layout_constraintStart_toStartOf="@id/tv_living"
+                app:layout_constraintTop_toBottomOf="@id/tv_living" />
 
             <TextView
                 android:id="@+id/tv_entertainment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="ENTERTAINMENT"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/seekbar_living"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="@id/seekbar_entertainment"/>
+                app:layout_constraintStart_toStartOf="@id/seekbar_entertainment"
+                app:layout_constraintTop_toBottomOf="@id/seekbar_living" />
 
-            <TextView
+            <EditText
                 android:id="@+id/tv_seekbar_entertainment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="$0"
-                app:layout_constraintEnd_toEndOf="@id/seekbar_entertainment"
-                app:layout_constraintTop_toTopOf="@id/tv_entertainment"
                 android:layout_marginRight="20dp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_entertainment"/>
+                android:background="@null"
+                android:text="$0"
+                app:layout_constraintBottom_toBottomOf="@id/tv_entertainment"
+                app:layout_constraintEnd_toEndOf="@id/seekbar_entertainment"
+                app:layout_constraintTop_toTopOf="@id/tv_entertainment" />
 
             <SeekBar
                 android:id="@+id/seekbar_entertainment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginRight="10dp"
                 android:max="10000"
-                app:layout_constraintStart_toStartOf="@id/tv_entertainment"
-                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
-                app:layout_constraintTop_toBottomOf="@id/tv_entertainment"
-                android:layout_marginTop="8dp"
                 android:progressDrawable="@drawable/seekbar_style"
+                android:splitTrack="false"
                 android:thumb="@drawable/seekbar_thumb_style"
-                android:splitTrack="false"/>
+                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
+                app:layout_constraintStart_toStartOf="@id/tv_entertainment"
+                app:layout_constraintTop_toBottomOf="@id/tv_entertainment" />
 
             <TextView
                 android:id="@+id/tv_education"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="EDUCATION"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/seekbar_entertainment"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="@id/seekbar_education"/>
+                app:layout_constraintStart_toStartOf="@id/seekbar_education"
+                app:layout_constraintTop_toBottomOf="@id/seekbar_entertainment" />
 
-            <TextView
+            <EditText
                 android:id="@+id/tv_seekbar_education"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="$0"
-                app:layout_constraintEnd_toEndOf="@id/seekbar_education"
-                app:layout_constraintTop_toTopOf="@id/tv_education"
                 android:layout_marginRight="20dp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_education"/>
+                android:background="@null"
+                android:text="$0"
+                app:layout_constraintBottom_toBottomOf="@id/tv_education"
+                app:layout_constraintEnd_toEndOf="@id/seekbar_education"
+                app:layout_constraintTop_toTopOf="@id/tv_education" />
 
             <SeekBar
                 android:id="@+id/seekbar_education"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginRight="10dp"
                 android:max="10000"
-                app:layout_constraintStart_toStartOf="@id/tv_education"
-                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
-                app:layout_constraintTop_toBottomOf="@id/tv_education"
-                android:layout_marginTop="8dp"
                 android:progressDrawable="@drawable/seekbar_style"
+                android:splitTrack="false"
                 android:thumb="@drawable/seekbar_thumb_style"
-                android:splitTrack="false"/>
+                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
+                app:layout_constraintStart_toStartOf="@id/tv_education"
+                app:layout_constraintTop_toBottomOf="@id/tv_education" />
 
             <TextView
                 android:id="@+id/tv_beauty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="BEAUTY"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/seekbar_education"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="@id/seekbar_beauty"/>
+                app:layout_constraintStart_toStartOf="@id/seekbar_beauty"
+                app:layout_constraintTop_toBottomOf="@id/seekbar_education" />
 
-            <TextView
+            <EditText
                 android:id="@+id/tv_seekbar_beauty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="$0"
-                app:layout_constraintEnd_toEndOf="@id/seekbar_beauty"
-                app:layout_constraintTop_toTopOf="@id/tv_beauty"
                 android:layout_marginRight="20dp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_beauty"/>
+                android:background="@null"
+                android:text="$0"
+                app:layout_constraintBottom_toBottomOf="@id/tv_beauty"
+                app:layout_constraintEnd_toEndOf="@id/seekbar_beauty"
+                app:layout_constraintTop_toTopOf="@id/tv_beauty" />
 
             <SeekBar
                 android:id="@+id/seekbar_beauty"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginRight="10dp"
                 android:max="10000"
-                app:layout_constraintStart_toStartOf="@id/tv_beauty"
-                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
-                app:layout_constraintTop_toBottomOf="@id/tv_beauty"
-                android:layout_marginTop="8dp"
                 android:progressDrawable="@drawable/seekbar_style"
+                android:splitTrack="false"
                 android:thumb="@drawable/seekbar_thumb_style"
-                android:splitTrack="false"/>
+                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
+                app:layout_constraintStart_toStartOf="@id/tv_beauty"
+                app:layout_constraintTop_toBottomOf="@id/tv_beauty" />
 
             <TextView
                 android:id="@+id/tv_transportation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="TRANSPORTATION"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/seekbar_beauty"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="@id/seekbar_transportation"/>
+                app:layout_constraintStart_toStartOf="@id/seekbar_transportation"
+                app:layout_constraintTop_toBottomOf="@id/seekbar_beauty" />
 
-            <TextView
+            <EditText
                 android:id="@+id/tv_seekbar_transportation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="$0"
-                app:layout_constraintEnd_toEndOf="@id/seekbar_transportation"
-                app:layout_constraintTop_toTopOf="@id/tv_transportation"
                 android:layout_marginRight="20dp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_transportation"/>
+                android:background="@null"
+                android:text="$0"
+                app:layout_constraintBottom_toBottomOf="@id/tv_transportation"
+                app:layout_constraintEnd_toEndOf="@id/seekbar_transportation"
+                app:layout_constraintTop_toTopOf="@id/tv_transportation" />
 
             <SeekBar
                 android:id="@+id/seekbar_transportation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginRight="10dp"
                 android:max="10000"
-                app:layout_constraintStart_toStartOf="@id/tv_transportation"
-                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
-                app:layout_constraintTop_toBottomOf="@id/tv_transportation"
-                android:layout_marginTop="8dp"
                 android:progressDrawable="@drawable/seekbar_style"
+                android:splitTrack="false"
                 android:thumb="@drawable/seekbar_thumb_style"
-                android:splitTrack="false"/>
+                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
+                app:layout_constraintStart_toStartOf="@id/tv_transportation"
+                app:layout_constraintTop_toBottomOf="@id/tv_transportation" />
 
             <TextView
                 android:id="@+id/tv_health"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="HEALTH"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/seekbar_transportation"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="@id/seekbar_health"/>
+                app:layout_constraintStart_toStartOf="@id/seekbar_health"
+                app:layout_constraintTop_toBottomOf="@id/seekbar_transportation" />
 
-            <TextView
+            <EditText
                 android:id="@+id/tv_seekbar_health"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="$0"
-                app:layout_constraintEnd_toEndOf="@id/seekbar_health"
-                app:layout_constraintTop_toTopOf="@id/tv_health"
                 android:layout_marginRight="20dp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_health"/>
+                android:background="@null"
+                android:text="$0"
+                app:layout_constraintBottom_toBottomOf="@id/tv_health"
+                app:layout_constraintEnd_toEndOf="@id/seekbar_health"
+                app:layout_constraintTop_toTopOf="@id/tv_health" />
 
             <SeekBar
                 android:id="@+id/seekbar_health"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginRight="10dp"
                 android:max="10000"
-                app:layout_constraintStart_toStartOf="@id/tv_health"
-                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
-                app:layout_constraintTop_toBottomOf="@id/tv_health"
-                android:layout_marginTop="8dp"
                 android:progressDrawable="@drawable/seekbar_style"
+                android:splitTrack="false"
                 android:thumb="@drawable/seekbar_thumb_style"
-                android:splitTrack="false"/>
+                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
+                app:layout_constraintStart_toStartOf="@id/tv_health"
+                app:layout_constraintTop_toBottomOf="@id/tv_health" />
 
             <TextView
                 android:id="@+id/tv_travel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="TRAVEL"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/seekbar_health"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="@id/seekbar_travel"/>
+                app:layout_constraintStart_toStartOf="@id/seekbar_travel"
+                app:layout_constraintTop_toBottomOf="@id/seekbar_health" />
 
-            <TextView
+            <EditText
                 android:id="@+id/tv_seekbar_travel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="$0"
-                app:layout_constraintEnd_toEndOf="@id/seekbar_travel"
-                app:layout_constraintTop_toTopOf="@id/tv_travel"
                 android:layout_marginRight="20dp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_travel"/>
+                android:background="@null"
+                android:text="$0"
+                app:layout_constraintBottom_toBottomOf="@id/tv_travel"
+                app:layout_constraintEnd_toEndOf="@id/seekbar_travel"
+                app:layout_constraintTop_toTopOf="@id/tv_travel" />
 
             <SeekBar
                 android:id="@+id/seekbar_travel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginRight="10dp"
                 android:max="10000"
-                app:layout_constraintStart_toStartOf="@id/tv_travel"
-                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
-                app:layout_constraintTop_toBottomOf="@id/tv_travel"
-                android:layout_marginTop="8dp"
                 android:progressDrawable="@drawable/seekbar_style"
+                android:splitTrack="false"
                 android:thumb="@drawable/seekbar_thumb_style"
-                android:splitTrack="false"/>
+                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
+                app:layout_constraintStart_toStartOf="@id/tv_travel"
+                app:layout_constraintTop_toBottomOf="@id/tv_travel" />
 
             <TextView
                 android:id="@+id/tv_pet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="PET"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/seekbar_travel"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="@id/seekbar_pet"/>
+                app:layout_constraintStart_toStartOf="@id/seekbar_pet"
+                app:layout_constraintTop_toBottomOf="@id/seekbar_travel" />
 
-            <TextView
+            <EditText
                 android:id="@+id/tv_seekbar_pet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
                 android:text="$0"
+                app:layout_constraintBottom_toBottomOf="@id/tv_pet"
                 app:layout_constraintEnd_toEndOf="@id/seekbar_pet"
                 app:layout_constraintTop_toTopOf="@id/tv_pet"
-                android:layout_marginRight="20dp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_pet"/>
+                android:background="@null"/>
 
             <SeekBar
                 android:id="@+id/seekbar_pet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginRight="10dp"
                 android:max="10000"
-                app:layout_constraintStart_toStartOf="@id/tv_pet"
-                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
-                app:layout_constraintTop_toBottomOf="@id/tv_pet"
-                android:layout_marginTop="8dp"
                 android:progressDrawable="@drawable/seekbar_style"
+                android:splitTrack="false"
                 android:thumb="@drawable/seekbar_thumb_style"
-                android:splitTrack="false"/>
+                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
+                app:layout_constraintStart_toStartOf="@id/tv_pet"
+                app:layout_constraintTop_toBottomOf="@id/tv_pet" />
 
             <TextView
                 android:id="@+id/tv_other"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="OTHER"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/seekbar_pet"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="@id/seekbar_other"/>
+                app:layout_constraintStart_toStartOf="@id/seekbar_other"
+                app:layout_constraintTop_toBottomOf="@id/seekbar_pet" />
 
-            <TextView
+            <EditText
                 android:id="@+id/tv_seekbar_other"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
                 android:text="$0"
+                app:layout_constraintBottom_toBottomOf="@id/tv_other"
                 app:layout_constraintEnd_toEndOf="@id/seekbar_other"
                 app:layout_constraintTop_toTopOf="@id/tv_other"
-                android:layout_marginRight="20dp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_other"/>
+                android:background="@null"/>
 
             <SeekBar
                 android:id="@+id/seekbar_other"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginRight="10dp"
                 android:max="10000"
-                app:layout_constraintStart_toStartOf="@id/tv_other"
-                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
-                app:layout_constraintTop_toBottomOf="@id/tv_other"
-                android:layout_marginTop="8dp"
                 android:progressDrawable="@drawable/seekbar_style"
+                android:splitTrack="false"
                 android:thumb="@drawable/seekbar_thumb_style"
-                android:splitTrack="false"/>
+                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
+                app:layout_constraintStart_toStartOf="@id/tv_other"
+                app:layout_constraintTop_toBottomOf="@id/tv_other" />
 
             <Button
                 android:id="@+id/btn_confirm_new_budget"
+                style="@style/button_light"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="40dp"
                 android:backgroundTint="@color/FinalProj_Light"
                 android:text="Confirm"
-                style="@style/button_light"
-                app:layout_constraintTop_toBottomOf="@id/seekbar_other"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/btn_cancel_new_budget"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginBottom="40dp"
-                android:layout_marginTop="30dp"/>
+                app:layout_constraintEnd_toStartOf="@id/btn_cancel_new_budget"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/seekbar_other" />
 
             <Button
                 android:id="@+id/btn_cancel_new_budget"
+                style="@style/button_light"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
                 android:backgroundTint="@color/FinalProj_Light"
                 android:text="Cancel"
-                style="@style/button_light"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/btn_confirm_new_budget"
-                app:layout_constraintTop_toTopOf="@id/btn_confirm_new_budget"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginBottom="40dp" />
+                app:layout_constraintTop_toTopOf="@id/btn_confirm_new_budget" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
