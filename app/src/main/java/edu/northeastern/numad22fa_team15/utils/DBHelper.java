@@ -28,8 +28,8 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
     // Table summary
     private static final String SUMMARY_TABLE_NAME = "summary";
     private static final String SUMMARY_ID_COL = "_summaryID";
-    private static final String SUMMARY_START_DATE_COL = "startDate";
-    private static final String SUMMARY_END_DATE_COL = "endDate";
+    private static final String SUMMARY_YEAR_COL = "year";
+    private static final String SUMMARY_MONTH_COL = "month";
     private static final String SUMMARY_TOTAL_BUDGET_COL = "totalBudget";
     private static final String SUMMARY_CURRENT_EXPENSE_COL = "currentExpense";
     private static final String SUMMARY_CURRENT_BALANCE_COL = "currentBalance";
@@ -45,7 +45,6 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
     // Table transaction
     private static final String TRANSACTION_TABLE_NAME = "transactionEntry";
     private static final String TRANSACTION_ID_COL = "_transactionId";
-    private static final String COST_COL = "cost";
     private static final String DESCRIPTION_COL = "description";
     private static final String EXPENSE_COL = "expense";
     private static final String CATEGORY_COL = "category";
@@ -94,8 +93,8 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         String createSummaryTableQuery =
                 "CREATE TABLE IF NOT EXISTS " + SUMMARY_TABLE_NAME + " ("
                 + SUMMARY_ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
-                + SUMMARY_START_DATE_COL + " TEXT NOT NULL, "
-                + SUMMARY_END_DATE_COL + " TEXT NOT NULL, "
+                + SUMMARY_YEAR_COL + " INTEGER NOT NULL, "
+                + SUMMARY_MONTH_COL + " INTEGER NOT NULL, "
                 + SUMMARY_TOTAL_BUDGET_COL + " FLOAT NOT NULL, "
                 + SUMMARY_CURRENT_EXPENSE_COL + " FLOAT NOT NULL, "
                 + SUMMARY_CURRENT_BALANCE_COL + " FLOAT NOT NULL)";
@@ -234,12 +233,12 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         return user;
     }
 
-    public boolean addSummaryTableSummary(String startDate, String endDate, float totalBudget, float currentExpense, float currentBalance) {
+    public boolean addSummaryTableSummary(Integer year, Integer month, float totalBudget, float currentExpense, float currentBalance) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(SUMMARY_START_DATE_COL, startDate);
-        values.put(SUMMARY_END_DATE_COL, endDate);
+        values.put(SUMMARY_YEAR_COL, year);
+        values.put(SUMMARY_MONTH_COL, month);
         values.put(SUMMARY_TOTAL_BUDGET_COL, totalBudget);
         values.put(SUMMARY_CURRENT_EXPENSE_COL, currentExpense);
         values.put(SUMMARY_CURRENT_BALANCE_COL, currentBalance);

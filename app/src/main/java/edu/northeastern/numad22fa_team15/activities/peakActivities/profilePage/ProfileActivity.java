@@ -52,6 +52,8 @@ public class ProfileActivity extends AppCompatActivity {
             displayMessageInSnackbar(findViewById(android.R.id.content).getRootView(),
                     potentialMessage, Snackbar.LENGTH_SHORT);
         }
+
+
     }
 
     private void retrieveUserAndBudgetInfoFromDatabase() {
@@ -78,6 +80,9 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void editBudgetActivity(View view) {
         // TODO
+        Intent intent = new Intent(getApplicationContext(), TestBudgetActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     public void changePasscodeActivity(View view) {

@@ -46,6 +46,8 @@
         <entry key="app/src/main/res/layout/activity_movie_search_w_recycler_view.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_profile_page.xml" value="0.18333333333333332" />
         <entry key="app/src/main/res/layout/activity_sticker_history.xml" value="0.13518518518518519" />
+        <entry key="app/src/main/res/layout/activity_test_budget.xml" value="0.21920289855072464" />
+        <entry key="app/src/main/res/layout/activity_test_peak_add_transaction.xml" value="0.16210739614994935" />
         <entry key="app/src/main/res/layout/change_profile_picture_bottomsheet.xml" value="0.2515625" />
         <entry key="app/src/main/res/layout/dialog_add_friend.xml" value="0.335" />
         <entry key="app/src/main/res/layout/dialog_send_sticker_w_recycler_view.xml" value="0.30027173913043476" />

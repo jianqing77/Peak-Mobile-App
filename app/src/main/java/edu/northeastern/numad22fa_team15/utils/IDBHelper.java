@@ -12,10 +12,12 @@ public interface IDBHelper {
     boolean updateUserProfilePictureTableUser(byte[] profilePictureBlob);
     UserModel retrieveUserInfoTableUser();
 
-    boolean addSummaryTableSummary(String startDate, String endDate, float totalBudget, float currentExpense, float currentBalance);
+    boolean addSummaryTableSummary(Integer year, Integer month, float totalBudget, float currentExpense, float currentBalance);
     // TODO: set category as string for testing, change to enum?
     boolean addTranTableTransaction(float expense, String description, String category, String transactionDate, int summaryID);
     boolean updateTranTableTransaction(float expense, String description, String category, int transactionID);
+
+
 
 
 }
