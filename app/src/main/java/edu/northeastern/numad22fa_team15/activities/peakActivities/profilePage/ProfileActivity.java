@@ -97,7 +97,9 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void termsAndConditionsActivity(View view) {
-        // TODO
+        // open terms and conditions Activity
+        Intent intent = new Intent(getApplicationContext(), TermsAndConditionActivity.class);
+        startActivity(intent);
     }
 
     public void resetAccount(View view) {

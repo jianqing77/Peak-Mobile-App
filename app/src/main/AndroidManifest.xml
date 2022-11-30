@@ -5,7 +5,7 @@
     <!-- Internet Permission -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <queries>
@@ -83,23 +83,21 @@
         <activity
             android:name=".activities.peakActivities.PeakEntrance"
             android:configChanges="orientation|screenSize" /> <!-- New User -->
-        <activity
-            android:name=".activities.peakActivities.onBoarding.onBoarding" />
-        <activity
-            android:name=".activities.peakActivities.userRegister.PeakSignUp" />
-        <activity
-            android:name=".activities.peakActivities.userRegister.PeakSignUpConfirmation" />
+        <activity android:name=".activities.peakActivities.onBoarding.onBoarding" />
+        <activity android:name=".activities.peakActivities.userRegister.PeakSignUp" />
+        <activity android:name=".activities.peakActivities.userRegister.PeakSignUpConfirmation" />
         <activity
             android:name=".activities.peakActivities.userRegister.PeakLogin"
-            android:configChanges="orientation|screenSize" />
-        <!-- Lock Screen -->
+            android:configChanges="orientation|screenSize" /> <!-- Lock Screen -->
         <activity
             android:name=".activities.peakActivities.lockScreen.PeakLockScreen"
-            android:configChanges="orientation|screenSize"/>
+            android:configChanges="orientation|screenSize" />
         <activity
             android:name=".activities.peakActivities.homePage.PeakHomePage"
             android:configChanges="orientation|screenSize" />
-
+        <activity
+            android:name=".activities.peakActivities.profilePage.TermsAndConditionActivity"
+            android:configChanges="orientation|screenSize" />
         <meta-data
             android:name="API_KEY"
             android:value="${API_KEY}" />
