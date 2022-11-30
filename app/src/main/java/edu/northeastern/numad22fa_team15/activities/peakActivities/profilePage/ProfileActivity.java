@@ -3,13 +3,16 @@ package edu.northeastern.numad22fa_team15.activities.peakActivities.profilePage;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessageInSnackbar;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.setProfilePictureToGivenImageView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -95,7 +98,36 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void resetAccount(View view) {
-        // TODO: Ask user to confirm reset account action.
+        // Dialog that asks user to confirm reset account action.
+        AlertDialog.Builder b = new AlertDialog.Builder(this);
+        b.setCancelable(false);
+        b.setTitle("Confirm Reset Account");
+        b.setMessage("Are you sure you want to reset your account? All the transaction history, " +
+                "budget plan, and saving goal will be deleted.");
+
+        // Clicking the Confirm button will erase everything from the database except the user info.
+        b.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // TODO
+                // Truncate the following tables:
+                // (1) TransactionEntry (2) Summary (3) Saving
+                dbHelper.truncateTablesTransactionSummaryAndSaving();
+                // If delete action failed, display "fail" message.
+
+                // If delete action succeeded, bring user to the create budge page.
+
+            }
+        });
+        // Clicking the Cancel button will simply dismiss the dialog.
+        b.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        AlertDialog alert = b.create();
+        alert.show();
     }
 
     @Override

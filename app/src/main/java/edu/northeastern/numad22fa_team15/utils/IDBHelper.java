@@ -18,5 +18,8 @@ public interface IDBHelper {
     boolean addTranTableTransaction(float expense, String description, String category, String transactionDate, int summaryID);
     boolean updateTranTableTransaction(float expense, String description, String category, int transactionID);
 
+    // Methods that interact with multiple tables in the database
+    boolean truncateTablesTransactionSummaryAndSaving();
+
 
 }

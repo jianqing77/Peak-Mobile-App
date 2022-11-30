@@ -291,4 +291,10 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         return (numOfRowsImpacted != 0);
     }
 
+    @Override
+    public boolean truncateTablesTransactionSummaryAndSaving() {
+        // TODO
+        return false;
+    }
+
 }
