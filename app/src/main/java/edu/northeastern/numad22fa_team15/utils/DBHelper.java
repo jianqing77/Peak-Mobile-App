@@ -233,6 +233,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         return user;
     }
 
+    @Override
     public boolean addSummaryTableSummary(Integer year, Integer month, float totalBudget, float currentExpense, float currentBalance) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -246,6 +247,8 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         long result = db.insert(SUMMARY_TABLE_NAME, null, values);
         return (result != -1);
     }
+
+
 
     @Override
     public boolean addTranTableTransaction(float expense, String description, String category, String transactionDate, int summaryID) {

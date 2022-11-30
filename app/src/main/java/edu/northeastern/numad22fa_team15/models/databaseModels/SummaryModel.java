@@ -8,15 +8,15 @@ package edu.northeastern.numad22fa_team15.models.databaseModels;
 
 public class SummaryModel {
     private int summaryID;
-    private String startDate;
-    private String endDate;
+    private Integer year;
+    private Integer month;
     private float totalBudget;
     private float currentExpense;
     private float currentBalance;
 
-    public SummaryModel(String startDate, String endDate, float totalBudget, float currentExpense) {
-        this.startDate = startDate;
-        this.endDate = endDate;
+    public SummaryModel(Integer year, Integer month, float totalBudget, float currentExpense) {
+        this.year = year;
+        this.month = month;
         this.totalBudget = totalBudget;
         this.currentExpense = currentExpense;
     }
@@ -29,20 +29,20 @@ public class SummaryModel {
         this.summaryID = summaryID;
     }
 
-    public String getStartDate() {
-        return this.startDate;
+    public Integer getYear() {
+        return this.year;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    public void setYear(Integer year) {
+        this.year = year;
     }
 
-    public String getEndDate() {
-        return this.endDate;
+    public Integer getMonth() {
+        return this.month;
     }
 
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
+    public void setMonth(Integer month) {
+        this.month = month;
     }
 
     public float getTotalBudget() {
