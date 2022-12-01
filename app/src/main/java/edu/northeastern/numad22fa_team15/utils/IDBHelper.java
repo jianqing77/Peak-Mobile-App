@@ -1,7 +1,10 @@
 package edu.northeastern.numad22fa_team15.utils;
 
+import java.util.List;
+
 import edu.northeastern.numad22fa_team15.models.databaseModels.SavingModel;
 import edu.northeastern.numad22fa_team15.models.databaseModels.SummaryModel;
+import edu.northeastern.numad22fa_team15.models.databaseModels.TransactionModel;
 import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
 
 public interface IDBHelper {
@@ -31,12 +34,13 @@ public interface IDBHelper {
     // Methods that interact with the transactionEntry table
     boolean addTranTableTransaction(float expense, String description, String category, String transactionDate, int summaryID);
     boolean updateTranTableTransaction(float expense, String description, String category, int transactionID);
+    List<TransactionModel> retrieveTransactionsByYearMonthTableTransaction(int yearInput, int monthInput);
+    List<TransactionModel> retrieveTransactionsByDateTableTransaction(int yearInput, int monthInput, int dayInput);
 
     // Methods that interact with the saving table
     boolean addSavingTableSaving(float savingGoal, String goalDescription, float savingSoFar, boolean savingStatus);
     boolean updateLatestSavingTableSaving(float savingGoal, String goalDescription, float savingSoFar, boolean savingStatus);
     SavingModel retrieveLatestSavingTableSaving();
-
 
     // Methods that interact with multiple tables in the database
     boolean truncateTablesTransactionSummaryAndSaving();

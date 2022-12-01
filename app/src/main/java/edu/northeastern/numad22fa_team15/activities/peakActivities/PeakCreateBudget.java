@@ -28,23 +28,23 @@ import edu.northeastern.numad22fa_team15.utils.DBHelper;
 
 public class PeakCreateBudget extends AppCompatActivity {
 
-    SeekBar sb_dining, sb_groceries, sb_shopping, sb_living;
-    SeekBar sb_entertainment, sb_education, sb_beauty, sb_transportation;
-    SeekBar sb_health, sb_travel, sb_pet, sb_other;
+    private SeekBar sb_dining, sb_groceries, sb_shopping, sb_living;
+    private SeekBar sb_entertainment, sb_education, sb_beauty, sb_transportation;
+    private SeekBar sb_health, sb_travel, sb_pet, sb_other;
 
-    EditText et_dining, et_groceries, et_shopping, et_living;
-    EditText et_entertainment, et_education, et_beauty, et_transportation;
-    EditText et_health, et_travel, et_pet, et_other;
+    private EditText et_dining, et_groceries, et_shopping, et_living;
+    private EditText et_entertainment, et_education, et_beauty, et_transportation;
+    private EditText et_health, et_travel, et_pet, et_other;
 
-    TextView totalBudget_tv;
-    TextView fullName_tv;
-    TextView username_tv;
+    private TextView totalBudget_tv;
+    private TextView fullName_tv;
+    private TextView username_tv;
 
-    ImageView profile_pic_iv;
+    private ImageView profile_pic_iv;
 
-    Button confirm, cancel;
+    private Button confirm, cancel;
 
-    DBHelper dbhelper;
+    private DBHelper dbhelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

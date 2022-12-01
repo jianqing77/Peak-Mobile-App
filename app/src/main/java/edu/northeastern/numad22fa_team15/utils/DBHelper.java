@@ -1,13 +1,20 @@
 package edu.northeastern.numad22fa_team15.utils;
 
+import static edu.northeastern.numad22fa_team15.utils.CommonUtils.getYearAndMonthFromDateString;
+import static edu.northeastern.numad22fa_team15.utils.CommonUtils.getYearMonthAndDayFromDateString;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import edu.northeastern.numad22fa_team15.models.databaseModels.SavingModel;
 import edu.northeastern.numad22fa_team15.models.databaseModels.SummaryModel;
+import edu.northeastern.numad22fa_team15.models.databaseModels.TransactionModel;
 import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
 
 public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
@@ -457,6 +464,65 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         int numOfRowsImpacted = db.update(TRANSACTION_TABLE_NAME, values, whereClause, new String[]{String.valueOf(transactionID)});
 
         return (numOfRowsImpacted != 0);
+    }
+
+    @Override
+    public List<TransactionModel> retrieveTransactionsByYearMonthTableTransaction(int yearInput, int monthInput) {
+        List<TransactionModel> transactionList = new ArrayList<TransactionModel>();
+        Cursor cursor = getTransactionCursor();
+
+        if (cursor.moveToFirst()) {
+            do {
+                // Retrieve TRANSACTION_DATE_COL from database
+                String transactionDate = cursor.getString(4);
+                // Retrieve year and month from transactionDate String
+                int[] yearAndMonth = getYearAndMonthFromDateString(transactionDate);
+                // Check if year and month match
+                if (yearInput == yearAndMonth[0] && monthInput == yearAndMonth[1]) {
+                    // If yes, add to transactionList
+                    float expense = cursor.getFloat(1);
+                    Category category = Category.valueOf(cursor.getString(2));
+                    String description = cursor.getString(3);
+                    TransactionModel transactionModel = new TransactionModel(expense, category, description, transactionDate);
+                    transactionList.add(transactionModel);
+                }
+            } while (cursor.moveToNext());
+            // moving our cursor to next.
+        }
+        return transactionList;
+    }
+
+    @Override
+    public List<TransactionModel> retrieveTransactionsByDateTableTransaction(int yearInput, int monthInput, int dayInput) {
+        List<TransactionModel> transactionList = new ArrayList<TransactionModel>();
+        Cursor cursor = getTransactionCursor();
+
+        if (cursor.moveToFirst()) {
+            do {
+                // Retrieve TRANSACTION_DATE_COL from database
+                String transactionDate = cursor.getString(4);
+                // Retrieve year, month, and day from transactionDate String
+                int[] yearMonthAndDay = getYearMonthAndDayFromDateString(transactionDate);
+                // Check if year, month, and day match
+                if (yearInput == yearMonthAndDay[0] && monthInput == yearMonthAndDay[1] && dayInput == yearMonthAndDay[2]) {
+                    // If yes, add to transactionList
+                    float expense = cursor.getFloat(1);
+                    Category category = Category.valueOf(cursor.getString(2));
+                    String description = cursor.getString(3);
+                    TransactionModel transactionModel = new TransactionModel(expense, category, description, transactionDate);
+                    transactionList.add(transactionModel);
+                }
+            } while (cursor.moveToNext());
+            // moving our cursor to next.
+        }
+        return transactionList;
+    }
+
+    private Cursor getTransactionCursor() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String getTransactionQuery = String.format("SELECT * FROM %s", TRANSACTION_TABLE_NAME);
+        Cursor cursor = db.rawQuery(getTransactionQuery, null);
+        return cursor;
     }
 
     @Override

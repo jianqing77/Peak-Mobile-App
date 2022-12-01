@@ -61,6 +61,8 @@ public class ProfileActivity extends AppCompatActivity {
                     potentialMessage, Snackbar.LENGTH_SHORT);
         }
 
+        // TODO; Delete testing lines
+        dbHelper.retrieveTransactionsByYearMonthTableTransaction(2022, 11);
 
     }
 

@@ -19,7 +19,7 @@ public class TransactionModel {
     private Blob receiptPhoto;
     private int summaryID;
 
-    public TransactionModel(float expense, Category category,String description, String transactionDate) {
+    public TransactionModel(float expense, Category category, String description, String transactionDate) {
         this.expense = expense;
         this.category = category;
         this.description = description;

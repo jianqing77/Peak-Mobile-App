@@ -89,4 +89,32 @@
             android:hint="transactionID" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <Button
+        android:id="@+id/viewButtonTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/monthEditTextTest" />
+
+    <EditText
+        android:id="@+id/yearEditTextTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="year"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/monthEditTextTest"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/transactionID_textinput_layout" />
+
+    <EditText
+        android:id="@+id/monthEditTextTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="month"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/yearEditTextTest"
+        app:layout_constraintTop_toBottomOf="@+id/transactionID_textinput_layout" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

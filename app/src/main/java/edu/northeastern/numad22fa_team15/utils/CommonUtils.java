@@ -14,6 +14,9 @@ import com.google.android.material.snackbar.Snackbar;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
 
@@ -103,6 +106,31 @@ public class CommonUtils {
             byteBuffer.write(buffer, 0, len);
         }
         return byteBuffer.toByteArray();
+    }
+
+    /**
+     * Retrieve year and month value from a date String.
+     * @param date date in String format
+     * @return year and month
+     */
+    public static int[] getYearAndMonthFromDateString(String date) {
+        int year = Integer.parseInt(date.substring(0, 4));
+        int month = Integer.parseInt(date.substring(5, 7));
+        int[] yearAndMonth = new int[]{year, month};
+        return yearAndMonth;
+    }
+
+    /**
+     * Retrieve year, month, and day value from a date String.
+     * @param date date in String format
+     * @return year, month, and day
+     */
+    public static int[] getYearMonthAndDayFromDateString(String date) {
+        int year = Integer.parseInt(date.substring(0, 4));
+        int month = Integer.parseInt(date.substring(5, 7));
+        int day = Integer.parseInt(date.substring(8, 10));
+        int[] yearMonthAndDay = new int[]{year, month, day};
+        return yearMonthAndDay;
     }
 
 }
