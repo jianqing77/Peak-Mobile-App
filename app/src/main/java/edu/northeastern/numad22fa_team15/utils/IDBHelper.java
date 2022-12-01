@@ -19,7 +19,12 @@ public interface IDBHelper {
                                    float livingBudget, float entertainmentBudget, float educationBudget,
                                    float beautyBudget, float transportationBudget, float healthBudget,
                                    float travelBudget, float petBudget, float otherBudget);
-    SummaryModel retrieveLatestSummaryInfoTableUser();
+    boolean updateSummaryTableSummary(Integer year, Integer month, float totalBudget,
+                                      float diningBudget, float groceriesBudget, float shoppingBudget,
+                                      float livingBudget, float entertainmentBudget, float educationBudget,
+                                      float beautyBudget, float transportationBudget, float healthBudget,
+                                      float travelBudget, float petBudget, float otherBudget);
+    SummaryModel retrieveLatestSummaryInfoTableSummary();
     // TODO: set category as string for testing, change to enum?
     boolean addTranTableTransaction(float expense, String description, String category, String transactionDate, int summaryID);
     boolean updateTranTableTransaction(float expense, String description, String category, int transactionID);

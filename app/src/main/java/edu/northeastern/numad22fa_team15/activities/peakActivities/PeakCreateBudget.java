@@ -2,17 +2,28 @@ package edu.northeastern.numad22fa_team15.activities.peakActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import static edu.northeastern.numad22fa_team15.utils.CommonUtils.closeKeyboard;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessageInSnackbar;
+import static edu.northeastern.numad22fa_team15.utils.CommonUtils.setProfilePictureToGivenImageView;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import org.w3c.dom.Text;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import edu.northeastern.numad22fa_team15.R;
+import edu.northeastern.numad22fa_team15.models.databaseModels.SummaryModel;
+import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
 import edu.northeastern.numad22fa_team15.utils.CommonUtils;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
 
@@ -26,6 +37,12 @@ public class PeakCreateBudget extends AppCompatActivity {
     EditText et_entertainment, et_education, et_beauty, et_transportation;
     EditText et_health, et_travel, et_pet, et_other;
 
+    TextView totalBudget_tv;
+    TextView fullName_tv;
+    TextView username_tv;
+
+    ImageView profile_pic_iv;
+
     Button confirm, cancel;
 
     DBHelper dbhelper;
@@ -36,6 +53,7 @@ public class PeakCreateBudget extends AppCompatActivity {
         setContentView(R.layout.activity_create_budget);
 
         dbhelper = new DBHelper(PeakCreateBudget.this);
+        SummaryModel currentSummary = dbhelper.retrieveLatestSummaryInfoTableSummary();
 
         /**
          * TODO: get current budget amount for each category from the database and set
@@ -43,61 +61,99 @@ public class PeakCreateBudget extends AppCompatActivity {
          *      this page (if the budget table is empty), set all progress to 0.
          */
 
+        totalBudget_tv = (TextView) findViewById(R.id.edit_budget_amount);
+        totalBudget_tv.setText("$ " + currentSummary.getTotalBudget());
+
+        UserModel user = dbhelper.retrieveUserInfoTableUser();
+
+        fullName_tv = (TextView) findViewById(R.id.tv_edit_budget_full_name);
+        username_tv = (TextView) findViewById(R.id.tv_edit_budget_username);
+        String fullName = user.getFirstName() + " " + user.getLastName();
+        String username = user.getUsername();
+        fullName_tv.setText(fullName);
+        username_tv.setText(username);
+
+        profile_pic_iv = (ImageView) findViewById(R.id.edit_budget_profile_picture);
+        setProfilePictureToGivenImageView(dbhelper, profile_pic_iv);
+
         // Setting functions for buttons - Cancel Button
         cancel = (Button) findViewById(R.id.btn_cancel_new_budget);
 
 
-        // TODO: Setting functions for buttons - Confirm Button
         confirm = (Button) findViewById(R.id.btn_confirm_new_budget);
 
 
         // Dining SeekBar
         sb_dining = (SeekBar) findViewById(R.id.seekbar_dining);
         et_dining = (EditText) findViewById(R.id.et_seekbar_dining);
+        et_dining.setText("" + currentSummary.getDiningBudget());
+        sb_dining.setProgress((int) currentSummary.getDiningBudget());
 
         // Groceries SeekBar
         sb_groceries = (SeekBar) findViewById(R.id.seekbar_groceries);
         et_groceries = (EditText) findViewById(R.id.et_seekbar_groceries);
+        et_groceries.setText("" + currentSummary.getGroceriesBudget());
+        sb_groceries.setProgress((int) currentSummary.getGroceriesBudget());
 
         // Shopping SeekBar
         sb_shopping = (SeekBar) findViewById(R.id.seekbar_shopping);
         et_shopping = (EditText) findViewById(R.id.et_seekbar_shopping);
+        sb_shopping.setProgress((int) currentSummary.getShoppingBudget());
+        et_shopping.setText("" + currentSummary.getShoppingBudget());
 
         // Living SeekBar
         sb_living = (SeekBar) findViewById(R.id.seekbar_living);
         et_living = (EditText) findViewById(R.id.et_seekbar_living);
+        sb_living.setProgress((int) currentSummary.getLivingBudget());
+        et_living.setText("" + currentSummary.getLivingBudget());
 
         // Entertainment SeekBar
         sb_entertainment = (SeekBar) findViewById(R.id.seekbar_entertainment);
         et_entertainment = (EditText) findViewById(R.id.et_seekbar_entertainment);
+        sb_entertainment.setProgress((int) currentSummary.getEntertainmentBudget());
+        et_entertainment.setText("" + currentSummary.getEntertainmentBudget());
 
         // Education SeekBar
         sb_education = (SeekBar) findViewById(R.id.seekbar_education);
         et_education = (EditText) findViewById(R.id.et_seekbar_education);
+        sb_education.setProgress((int) currentSummary.getEducationBudget());
+        et_education.setText("" + currentSummary.getEducationBudget());
 
         // Beauty SeekBar
         sb_beauty = (SeekBar) findViewById(R.id.seekbar_beauty);
         et_beauty = (EditText) findViewById(R.id.et_seekbar_beauty);
+        sb_beauty.setProgress((int) currentSummary.getBeautyBudget());
+        et_beauty.setText("" + currentSummary.getBeautyBudget());
 
         // Transportation SeekBar
         sb_transportation = (SeekBar) findViewById(R.id.seekbar_transportation);
         et_transportation = (EditText) findViewById(R.id.et_seekbar_transportation);
+        sb_transportation.setProgress((int) currentSummary.getTransportationBudget());
+        et_transportation.setText("" + currentSummary.getTransportationBudget());
 
         // Health SeekBar
         sb_health = (SeekBar) findViewById(R.id.seekbar_health);
         et_health = (EditText) findViewById(R.id.et_seekbar_health);
+        sb_health.setProgress((int) currentSummary.getHealthBudget());
+        et_health.setText("" + currentSummary.getHealthBudget());
 
         // Travel SeekBar
         sb_travel = (SeekBar) findViewById(R.id.seekbar_travel);
         et_travel = (EditText) findViewById(R.id.et_seekbar_travel);
+        sb_health.setProgress((int) currentSummary.getTravelBudget());
+        et_health.setText("" + currentSummary.getTravelBudget());
 
         // Pet SeekBar
         sb_pet = (SeekBar) findViewById(R.id.seekbar_pet);
         et_pet = (EditText) findViewById(R.id.et_seekbar_pet);
+        sb_pet.setProgress((int) currentSummary.getPetBudget());
+        et_health.setText("" + currentSummary.getTotalBudget());
 
         // Other SeekBar
         sb_other = (SeekBar) findViewById(R.id.seekbar_other);
         et_other = (EditText) findViewById(R.id.et_seekbar_other);
+        sb_other.setProgress((int) currentSummary.getOtherBudget());
+        et_other.setText("" + currentSummary.getOtherBudget());
 
         setOnClickListenerHelper();
     }
@@ -113,8 +169,8 @@ public class PeakCreateBudget extends AppCompatActivity {
     private void cancelEditBudget(View view) {
 
         // TODO: if statement to check if the summary table is empty. If it is, then:
-        String message = "You must set a budget for at least one category.";
-        displayMessageInSnackbar(view, message, Snackbar.LENGTH_SHORT);
+        // String message = "You must set a budget for at least one category.";
+        // displayMessageInSnackbar(view, message, Snackbar.LENGTH_SHORT);
 
         // TODO: else, bring the user back to the home screen.
 
@@ -131,6 +187,40 @@ public class PeakCreateBudget extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // TODO: alter database with new budget amounts
+                float diningBudget = Float.parseFloat(et_dining.getText().toString());
+                float groceriesBudget = Float.parseFloat(et_groceries.getText().toString());
+                float shoppingBudget = Float.parseFloat(et_shopping.getText().toString());
+                float livingBudget = Float.parseFloat(et_living.getText().toString());
+                float entertainmentBudget = Float.parseFloat(et_entertainment.getText().toString());
+                float educationBudget = Float.parseFloat(et_education.getText().toString());
+                float beautyBudget = Float.parseFloat(et_beauty.getText().toString());
+                float transportationBudget = Float.parseFloat(et_transportation.getText().toString());
+                float healthBudget = Float.parseFloat(et_health.getText().toString());
+                float travelBudget = Float.parseFloat(et_travel.getText().toString());
+                float petBudget = Float.parseFloat(et_pet.getText().toString());
+                float otherBudget = Float.parseFloat(et_other.getText().toString());
+                float totalBudget = diningBudget + groceriesBudget + shoppingBudget + livingBudget + entertainmentBudget
+                        + educationBudget + beautyBudget + transportationBudget + healthBudget + travelBudget
+                        + petBudget + otherBudget;
+
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                LocalDateTime now = LocalDateTime.now();
+                String currentDate = String.valueOf(now);
+
+                Integer currentYear = Integer.parseInt(currentDate.substring(0,4));
+                Integer currentMonth = Integer.parseInt(currentDate.substring(5,7));
+
+                dbhelper = new DBHelper(PeakCreateBudget.this);
+
+                boolean updateSummary = dbhelper.updateSummaryTableSummary(currentYear, currentMonth, totalBudget,
+                        diningBudget, groceriesBudget, shoppingBudget, livingBudget, entertainmentBudget, educationBudget,
+                        beautyBudget, transportationBudget, healthBudget, travelBudget, petBudget, otherBudget);
+
+                String budgetMessage = "Fail to update Summary";
+                if (updateSummary) {
+                    budgetMessage = "Successfully updated summary";
+                }
+                displayMessageInSnackbar(view, budgetMessage, Snackbar.LENGTH_SHORT);
             }
         });
         sb_dining.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
@@ -139,6 +229,7 @@ public class PeakCreateBudget extends AppCompatActivity {
             public void onProgressChanged(SeekBar sb_dining, int progress,
                                           boolean b) {
                 et_dining.setText(String.valueOf(progress));
+                updateTotalBudget();
             }
 
             @Override
@@ -172,6 +263,7 @@ public class PeakCreateBudget extends AppCompatActivity {
             public void onProgressChanged(SeekBar sb_groceries, int progress,
                                           boolean b) {
                 et_groceries.setText(String.valueOf(progress));
+                updateTotalBudget();
             }
 
             @Override
@@ -205,6 +297,7 @@ public class PeakCreateBudget extends AppCompatActivity {
             public void onProgressChanged(SeekBar sb_shopping, int progress,
                                           boolean b) {
                 et_shopping.setText(String.valueOf(progress));
+                updateTotalBudget();
             }
 
             @Override
@@ -238,6 +331,7 @@ public class PeakCreateBudget extends AppCompatActivity {
             public void onProgressChanged(SeekBar sb_living, int progress,
                                           boolean b) {
                 et_living.setText(String.valueOf(progress));
+                updateTotalBudget();
             }
 
             @Override
@@ -271,6 +365,7 @@ public class PeakCreateBudget extends AppCompatActivity {
             public void onProgressChanged(SeekBar sb_entertainment, int progress,
                                           boolean b) {
                 et_entertainment.setText(String.valueOf(progress));
+                updateTotalBudget();
             }
 
             @Override
@@ -304,6 +399,8 @@ public class PeakCreateBudget extends AppCompatActivity {
             public void onProgressChanged(SeekBar sb_education, int progress,
                                           boolean b) {
                 et_education.setText(String.valueOf(progress));
+                updateTotalBudget();
+
             }
 
             @Override
@@ -337,6 +434,7 @@ public class PeakCreateBudget extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress,
                                           boolean b) {
                 et_beauty.setText(String.valueOf(progress));
+                updateTotalBudget();
             }
 
             @Override
@@ -370,6 +468,7 @@ public class PeakCreateBudget extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress,
                                           boolean b) {
                 et_transportation.setText(String.valueOf(progress));
+                updateTotalBudget();
             }
 
             @Override
@@ -403,6 +502,7 @@ public class PeakCreateBudget extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress,
                                           boolean b) {
                 et_health.setText(String.valueOf(progress));
+                updateTotalBudget();
             }
 
             @Override
@@ -436,6 +536,7 @@ public class PeakCreateBudget extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress,
                                           boolean b) {
                 et_travel.setText(String.valueOf(progress));
+                updateTotalBudget();
             }
 
             @Override
@@ -470,6 +571,7 @@ public class PeakCreateBudget extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress,
                                           boolean b) {
                 et_pet.setText(String.valueOf(progress));
+                updateTotalBudget();
             }
 
             @Override
@@ -504,6 +606,7 @@ public class PeakCreateBudget extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress,
                                           boolean b) {
                 et_other.setText(String.valueOf(progress));
+                updateTotalBudget();
             }
 
             @Override
@@ -532,6 +635,25 @@ public class PeakCreateBudget extends AppCompatActivity {
                 CommonUtils.closeKeyboard(view.getContext(), view);
             }
         });
+    }
+
+    private void updateTotalBudget() {
+        float diningBudget = Float.parseFloat(et_dining.getText().toString());
+        float groceriesBudget = Float.parseFloat(et_groceries.getText().toString());
+        float shoppingBudget = Float.parseFloat(et_shopping.getText().toString());
+        float livingBudget = Float.parseFloat(et_living.getText().toString());
+        float entertainmentBudget = Float.parseFloat(et_entertainment.getText().toString());
+        float educationBudget = Float.parseFloat(et_education.getText().toString());
+        float beautyBudget = Float.parseFloat(et_beauty.getText().toString());
+        float transportationBudget = Float.parseFloat(et_transportation.getText().toString());
+        float healthBudget = Float.parseFloat(et_health.getText().toString());
+        float travelBudget = Float.parseFloat(et_travel.getText().toString());
+        float petBudget = Float.parseFloat(et_pet.getText().toString());
+        float otherBudget = Float.parseFloat(et_other.getText().toString());
+        float totalBudget = diningBudget + groceriesBudget + shoppingBudget + livingBudget + entertainmentBudget
+                + educationBudget + beautyBudget + transportationBudget + healthBudget + travelBudget
+                + petBudget + otherBudget;
+        totalBudget_tv.setText("$ " + totalBudget + "0");
     }
 
 }

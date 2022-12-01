@@ -52,7 +52,7 @@ public class PeakLockScreen extends AppCompatActivity implements View.OnClickLis
         Integer currentYear = Integer.parseInt(currentDate.substring(0,4));
         Integer currentMonth = Integer.parseInt(currentDate.substring(5,7));
 
-        SummaryModel lastSummary = dbHelper.retrieveLatestSummaryInfoTableUser();
+        SummaryModel lastSummary = dbHelper.retrieveLatestSummaryInfoTableSummary();
         if (!(lastSummary.getYear() == currentYear && lastSummary.getMonth() == currentMonth)) {
             float budget = lastSummary.getTotalBudget();
             float diningBudget = lastSummary.getDiningBudget();
