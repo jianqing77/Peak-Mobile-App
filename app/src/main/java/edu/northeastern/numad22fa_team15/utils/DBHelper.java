@@ -433,10 +433,8 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
 
     @Override
     public boolean updateLatestSavingTableSaving(float savingGoal, String goalDescription, float savingSoFar, boolean savingStatus) {
-        // TODO
-//        return false;
+        // Retrieve latest saving ID
         Cursor cursor = getSavingCursor();
-
         int savingID = -1;
         if (cursor.moveToLast()) {
             savingID = cursor.getInt(0);
@@ -456,13 +454,10 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         values.put(SAVING_SO_FAR_COL, savingSoFar);
         values.put(SAVING_STATUS_COL, savingStatus);
 
-        return false;
-        // TODO
+        String whereClause = String.format("%s = ?", SAVING_ID_COL);
+        int numOfRowsImpacted = db.update(SAVING_TABLE_NAME, values, whereClause, new String[]{String.valueOf(savingID)});
 
-//        String whereClause = String.format("%s = ?", TRANSACTION_ID_COL);
-//        int numOfRowsImpacted = db.update(TRANSACTION_TABLE_NAME, values, whereClause, new String[]{String.valueOf(transactionID)});
-//
-//        return (numOfRowsImpacted != 0);
+        return (numOfRowsImpacted != 0);
     }
 
     @Override
