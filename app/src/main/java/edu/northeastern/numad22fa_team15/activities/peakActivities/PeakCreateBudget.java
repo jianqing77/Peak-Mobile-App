@@ -6,6 +6,7 @@ import static edu.northeastern.numad22fa_team15.utils.CommonUtils.closeKeyboard;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessageInSnackbar;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.setProfilePictureToGivenImageView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import edu.northeastern.numad22fa_team15.R;
+import edu.northeastern.numad22fa_team15.activities.MainActivity;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.profilePage.ProfileActivity;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.userRegister.PeakSignUpConfirmation;
 import edu.northeastern.numad22fa_team15.models.databaseModels.SummaryModel;
 import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
 import edu.northeastern.numad22fa_team15.utils.CommonUtils;
@@ -654,6 +658,12 @@ public class PeakCreateBudget extends AppCompatActivity {
                 + educationBudget + beautyBudget + transportationBudget + healthBudget + travelBudget
                 + petBudget + otherBudget;
         totalBudget_tv.setText("$ " + totalBudget + "0");
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(PeakCreateBudget.this, ProfileActivity.class);
+        startActivity(intent);
     }
 
 }
