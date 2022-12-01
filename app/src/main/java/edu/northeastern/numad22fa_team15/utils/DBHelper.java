@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import edu.northeastern.numad22fa_team15.models.databaseModels.SavingModel;
 import edu.northeastern.numad22fa_team15.models.databaseModels.SummaryModel;
 import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
 
@@ -65,7 +66,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
     private static final String SAVING_ID_COL = "_savingID";
     private static final String SAVING_GOAL_COL = "savingGoal";
     private static final String SAVING_GOAL_DESCRIPTION_COL = "goalDescription";
-    private static final String SAVING_NUM_COL = "savingNum";
+    private static final String SAVING_SO_FAR_COL = "savingSoFar";
     private static final String SAVING_STATUS_COL = "savingStatus";
 
     // Table transaction
@@ -111,10 +112,10 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         String createSavingTableQuery =
                 "CREATE TABLE IF NOT EXISTS " + SAVING_TABLE_NAME + " ("
                 + SAVING_ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
-                + SAVING_GOAL_COL + " TEXT NOT NULL, "
+                + SAVING_GOAL_COL + " FLOAT NOT NULL, "
                 + SAVING_GOAL_DESCRIPTION_COL + " TEXT NOT NULL, "
-                + SAVING_NUM_COL + " FLOAT NOT NULL, "
-                + SAVING_STATUS_COL + "BOOLEAN NOT NULL)";
+                + SAVING_SO_FAR_COL + " FLOAT NOT NULL, "
+                + SAVING_STATUS_COL + " BOOLEAN NOT NULL)";
 
         String createSummaryTableQuery =
                 "CREATE TABLE IF NOT EXISTS " + SUMMARY_TABLE_NAME + " ("
@@ -368,8 +369,8 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
 
     private Cursor getSummaryCursor() {
         SQLiteDatabase db = this.getReadableDatabase();
-        String getUserQuery = String.format("SELECT * FROM %s", SUMMARY_TABLE_NAME);
-        Cursor cursor = db.rawQuery(getUserQuery, null);
+        String getSummaryQuery = String.format("SELECT * FROM %s", SUMMARY_TABLE_NAME);
+        Cursor cursor = db.rawQuery(getSummaryQuery, null);
         return cursor;
     }
 
@@ -418,7 +419,74 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
     @Override
     public boolean addSavingTableSaving(float savingGoal, String goalDescription, float savingSoFar, boolean savingStatus) {
         // TODO
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(SAVING_GOAL_COL, savingGoal);
+        values.put(SAVING_GOAL_DESCRIPTION_COL, goalDescription);
+        values.put(SAVING_SO_FAR_COL, savingSoFar);
+        values.put(SAVING_STATUS_COL, savingStatus);
+
+        long result = db.insert(SAVING_TABLE_NAME, null, values);
+        return (result != -1);
+    }
+
+    @Override
+    public boolean updateLatestSavingTableSaving(float savingGoal, String goalDescription, float savingSoFar, boolean savingStatus) {
+        // TODO
+//        return false;
+        Cursor cursor = getSavingCursor();
+
+        int savingID = -1;
+        if (cursor.moveToLast()) {
+            savingID = cursor.getInt(0);
+        }
+        cursor.close();
+
+        // Return false when no saving found.
+        if (savingID == -1) {
+            return false;
+        }
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(SAVING_GOAL_COL, savingGoal);
+        values.put(SAVING_GOAL_DESCRIPTION_COL, goalDescription);
+        values.put(SAVING_SO_FAR_COL, savingSoFar);
+        values.put(SAVING_STATUS_COL, savingStatus);
+
         return false;
+        // TODO
+
+//        String whereClause = String.format("%s = ?", TRANSACTION_ID_COL);
+//        int numOfRowsImpacted = db.update(TRANSACTION_TABLE_NAME, values, whereClause, new String[]{String.valueOf(transactionID)});
+//
+//        return (numOfRowsImpacted != 0);
+    }
+
+    @Override
+    public SavingModel retrieveLatestSavingTableSaving() {
+        Cursor cursor = getSavingCursor();
+
+        SavingModel savingModel = null;
+        if (cursor.moveToLast()) {
+            float savingGoal = cursor.getFloat(1);
+            String goalDescription = cursor.getString(2);
+            float savingSoFar = cursor.getFloat(3);
+            boolean savingStatus = Boolean.valueOf(cursor.getString(4));
+            savingModel = new SavingModel(savingGoal, goalDescription, savingSoFar, savingStatus);
+        }
+        cursor.close();
+
+        return savingModel;
+    };
+
+    private Cursor getSavingCursor() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String getSavingQuery = String.format("SELECT * FROM %s", SAVING_TABLE_NAME);
+        Cursor cursor = db.rawQuery(getSavingQuery, null);
+        return cursor;
     }
 
 }
