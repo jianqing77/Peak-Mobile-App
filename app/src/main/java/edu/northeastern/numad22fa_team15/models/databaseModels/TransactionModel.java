@@ -35,7 +35,7 @@ public class TransactionModel {
     }
 
     public float getExpense() {
-        return this.getExpense();
+        return this.expense;
     }
 
     public void setExpense() {

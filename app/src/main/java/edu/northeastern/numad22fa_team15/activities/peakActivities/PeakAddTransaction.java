@@ -2,8 +2,11 @@ package edu.northeastern.numad22fa_team15.activities.peakActivities;
 
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.*;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +21,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import edu.northeastern.numad22fa_team15.R;
+import edu.northeastern.numad22fa_team15.models.databaseModels.TransactionModel;
 import edu.northeastern.numad22fa_team15.utils.Category;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
 import edu.northeastern.numad22fa_team15.utils.IDBHelper;
@@ -44,6 +48,31 @@ public class PeakAddTransaction extends AppCompatActivity {
         descriptionTextInputEditText = findViewById(R.id.description_textinput_edittext);
         categoryTextInputEditText = findViewById(R.id.category_textinput_edittext);
         transactionIdInputEdittext = findViewById(R.id.transactionID_textinput_edittext);
+    }
+
+    public void viewTransactions(View view) {
+        List<TransactionModel> transactions = dbHelper.retrieveTransactionsByDateTableTransaction(2022, 12,1);
+        StringBuilder sb = new StringBuilder();
+        for (TransactionModel transactionModel : transactions) {
+            sb.append(transactionModel.getCategory() + "\n");
+            sb.append(transactionModel.getDescription() + "\n");
+            sb.append(transactionModel.getExpense() + "\n");
+        }
+        String message = sb.toString();
+        AlertDialog.Builder b = new AlertDialog.Builder(this);
+        b.setCancelable(false);
+        b.setTitle("Transactions");
+        b.setMessage(message);
+
+        b.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+
+        AlertDialog alert = b.create();
+        alert.show();
     }
 
     public void addTransaction(View view) {

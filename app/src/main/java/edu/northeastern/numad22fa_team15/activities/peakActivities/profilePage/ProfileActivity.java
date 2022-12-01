@@ -60,10 +60,6 @@ public class ProfileActivity extends AppCompatActivity {
             displayMessageInSnackbar(findViewById(android.R.id.content).getRootView(),
                     potentialMessage, Snackbar.LENGTH_SHORT);
         }
-
-        // TODO; Delete testing lines
-        dbHelper.retrieveTransactionsByYearMonthTableTransaction(2022, 11);
-
     }
 
     private void retrieveUserAndBudgetInfoFromDatabase() {

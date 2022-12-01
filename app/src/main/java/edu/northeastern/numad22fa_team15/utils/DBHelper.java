@@ -481,7 +481,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
                 if (yearInput == yearAndMonth[0] && monthInput == yearAndMonth[1]) {
                     // If yes, add to transactionList
                     float expense = cursor.getFloat(1);
-                    Category category = Category.valueOf(cursor.getString(2));
+                    Category category = Category.valueOf(cursor.getString(2).toUpperCase());
                     String description = cursor.getString(3);
                     TransactionModel transactionModel = new TransactionModel(expense, category, description, transactionDate);
                     transactionList.add(transactionModel);
@@ -507,7 +507,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
                 if (yearInput == yearMonthAndDay[0] && monthInput == yearMonthAndDay[1] && dayInput == yearMonthAndDay[2]) {
                     // If yes, add to transactionList
                     float expense = cursor.getFloat(1);
-                    Category category = Category.valueOf(cursor.getString(2));
+                    Category category = Category.valueOf(cursor.getString(2).toUpperCase());
                     String description = cursor.getString(3);
                     TransactionModel transactionModel = new TransactionModel(expense, category, description, transactionDate);
                     transactionList.add(transactionModel);
