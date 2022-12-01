@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/border_shadow.xml" value="0.2" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/custom_thumb.xml" value="0.2" />
+        <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/ic_dining.xml" value="0.2" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/ic_nav_home.xml" value="0.2105" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/ic_onboarding_1.xml" value="0.242" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/ic_onboarding_3.xml" value="0.2105" />
@@ -12,6 +13,7 @@
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/nav_transparent_background.xml" value="0.2105" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/next_btn.xml" value="0.2225" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/onboarding_1.xml" value="0.2225" />
+        <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/round_corner.xml" value="0.2" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/seekbar_border_shadow.xml" value="0.2" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/seekbar_custom.xml" value="0.2" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/seekbar_progress.xml" value="0.2" />
@@ -23,10 +25,12 @@
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_movie_search_w_recycler_view.xml" value="0.2261650277896537" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_on_boarding.xml" value="0.2261650277896537" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_onboarding1.xml" value="0.25" />
+        <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_peak_add_transaction.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_peak_entrance.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_peak_home_page.xml" value="0.335" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_peak_lock_screen.xml" value="0.2261650277896537" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_sticker_history.xml" value="0.2261650277896537" />
+        <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_test_peak_add_transaction.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/dialog_send_sticker_w_recycler_view.xml" value="0.2261650277896537" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/edit_profile.xml" value="0.165" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/item_send_sticker_cardview.xml" value="0.165" />

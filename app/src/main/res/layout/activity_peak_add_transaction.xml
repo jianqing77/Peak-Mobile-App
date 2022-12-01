@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <GridLayout
+        android:layout_marginTop="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:rowCount="8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:layout_width="83dp"
+            android:layout_height="51dp"
+            android:radius="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="50dp"
+            android:src="@drawable/ic_dining"
+            android:background="@drawable/round_corner"
+            />
+
+        <ImageButton
+            android:layout_width="83dp"
+            android:layout_height="51dp"
+            android:radius="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="50dp"
+            android:src="@drawable/ic_groceries"
+            android:background="@drawable/round_corner"
+            />
+
+        <ImageButton
+            android:layout_width="83dp"
+            android:layout_height="51dp"
+            android:radius="10dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_shopping"
+            android:background="@drawable/round_corner"
+            />
+
+        <TextView
+            android:text="Dining"
+            android:layout_gravity="center"
+            android:layout_marginRight="50dp"
+            />
+
+        <TextView
+            android:text="Groceries"
+            android:layout_gravity="center"
+            android:layout_marginRight="50dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Shopping"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <ImageButton
+            android:layout_width="83dp"
+            android:layout_height="51dp"
+            android:radius="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="50dp"
+            android:src="@drawable/ic_living"
+            android:background="@drawable/round_corner"
+            />
+
+        <ImageButton
+            android:layout_width="83dp"
+            android:layout_height="51dp"
+            android:radius="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="50dp"
+            android:src="@drawable/ic_entertainment"
+            android:background="@drawable/round_corner"
+            />
+
+        <ImageButton
+            android:layout_width="83dp"
+            android:layout_height="51dp"
+            android:radius="10dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_education"
+            android:background="@drawable/round_corner"
+            />
+
+        <TextView
+            android:text="Living"
+            android:layout_gravity="center"
+            android:layout_marginRight="50dp"
+            />
+
+        <TextView
+            android:text="Entertainment"
+            android:layout_gravity="center"
+            android:layout_marginRight="50dp"
+            />
+
+        <TextView
+            android:text="Education"
+            android:layout_gravity="center"
+            />
+
+        <ImageButton
+            android:layout_width="83dp"
+            android:layout_height="51dp"
+            android:radius="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="50dp"
+            android:src="@drawable/ic_beauty"
+            android:background="@drawable/round_corner"
+            />
+
+        <ImageButton
+            android:layout_width="83dp"
+            android:layout_height="51dp"
+            android:radius="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="50dp"
+            android:src="@drawable/ic_transportation"
+            android:background="@drawable/round_corner"
+            />
+
+        <ImageButton
+            android:layout_width="83dp"
+            android:layout_height="51dp"
+            android:radius="10dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_health"
+            android:background="@drawable/round_corner"
+            />
+
+        <TextView
+            android:text="Beauty"
+            android:layout_gravity="center"
+            android:layout_marginRight="50dp"
+            />
+
+        <TextView
+            android:text="Transportation"
+            android:layout_gravity="center"
+            android:layout_marginRight="50dp"
+            />
+
+        <TextView
+            android:text="Health"
+            android:layout_gravity="center"
+            />
+
+        <ImageButton
+            android:layout_width="83dp"
+            android:layout_height="51dp"
+            android:radius="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="50dp"
+            android:src="@drawable/ic_travel"
+            android:background="@drawable/round_corner"
+            />
+
+        <ImageButton
+            android:layout_width="83dp"
+            android:layout_height="51dp"
+            android:radius="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="50dp"
+            android:src="@drawable/ic_pet"
+            android:background="@drawable/round_corner"
+            />
+
+        <ImageButton
+            android:layout_width="83dp"
+            android:layout_height="51dp"
+            android:radius="10dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_other"
+            android:background="@drawable/round_corner"
+            />
+
+        <TextView
+            android:text="Travel"
+            android:layout_gravity="center"
+            android:layout_marginRight="50dp"
+            />
+
+        <TextView
+            android:text="Pet"
+            android:layout_gravity="center"
+            android:layout_marginRight="50dp"
+            />
+
+        <TextView
+            android:text="Other"
+            android:layout_gravity="center"
+            />
+
+    </GridLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
