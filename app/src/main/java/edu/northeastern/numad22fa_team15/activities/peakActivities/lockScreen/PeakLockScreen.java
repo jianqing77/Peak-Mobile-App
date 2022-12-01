@@ -11,6 +11,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -44,8 +45,6 @@ public class PeakLockScreen extends AppCompatActivity implements View.OnClickLis
 
         dbHelper = new DBHelper(PeakLockScreen.this);
 
-
-
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         String currentDate = String.valueOf(now);
@@ -53,16 +52,38 @@ public class PeakLockScreen extends AppCompatActivity implements View.OnClickLis
         Integer currentYear = Integer.parseInt(currentDate.substring(0,4));
         Integer currentMonth = Integer.parseInt(currentDate.substring(5,7));
 
-        SummaryModel lastSummary = dbHelper.retrieveLatestSummaryInfoTableUser();
+        SummaryModel lastSummary = dbHelper.retrieveLatestSummaryInfoTableSummary();
         if (!(lastSummary.getYear() == currentYear && lastSummary.getMonth() == currentMonth)) {
             float budget = lastSummary.getTotalBudget();
-            boolean addSummary = dbHelper.addSummaryTableSummary(currentYear, currentMonth, budget);
+            float diningBudget = lastSummary.getDiningBudget();
+            float groceriesBudget = lastSummary.getGroceriesBudget();
+            float shoppingBudget = lastSummary.getShoppingBudget();
+            float livingBudget = lastSummary.getLivingBudget();
+            float entertainmentBudget = lastSummary.getEntertainmentBudget();
+            float educationBudget = lastSummary.getEducationBudget();
+            float beautyBudget = lastSummary.getBeautyBudget();
+            float transportationBudget = lastSummary.getTransportationBudget();
+            float healthBudget = lastSummary.getHealthBudget();
+            float travelBudget = lastSummary.getTravelBudget();
+            float petBudget = lastSummary.getPetBudget();
+            float otherBudget = lastSummary.getOtherBudget();
+
+            boolean addSummary = dbHelper.addSummaryTableSummary(currentYear, currentMonth, budget,
+                    diningBudget, groceriesBudget, shoppingBudget, livingBudget, entertainmentBudget,
+                    educationBudget, beautyBudget, transportationBudget, healthBudget, travelBudget,
+                    petBudget, otherBudget);
+
             // TODO: snackbar for debug, need to be removed
             String budgetMessage = "Fail to add Summary";
             if (addSummary) {
                 budgetMessage = "Successfully added summary";
             }
-            displayMessageInSnackbar(view_01.getRootView(), budgetMessage, Snackbar.LENGTH_SHORT);
+            Context context = getApplicationContext();
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, budgetMessage, duration);
+            toast.show();
+            // displayMessageInSnackbar((View) view_01.getParent(), budgetMessage, Snackbar.LENGTH_SHORT);
 
         } else {
             return;

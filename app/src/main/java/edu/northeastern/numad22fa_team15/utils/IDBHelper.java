@@ -16,8 +16,17 @@ public interface IDBHelper {
     UserModel retrieveUserInfoTableUser();
 
     // Methods that interact with the summary table
-    boolean addSummaryTableSummary(Integer year, Integer month, float totalBudget);
-    SummaryModel retrieveLatestSummaryInfoTableUser();
+    boolean addSummaryTableSummary(Integer year, Integer month, float totalBudget,
+                                   float diningBudget, float groceriesBudget, float shoppingBudget,
+                                   float livingBudget, float entertainmentBudget, float educationBudget,
+                                   float beautyBudget, float transportationBudget, float healthBudget,
+                                   float travelBudget, float petBudget, float otherBudget);
+    boolean updateSummaryTableSummary(Integer year, Integer month, float totalBudget,
+                                      float diningBudget, float groceriesBudget, float shoppingBudget,
+                                      float livingBudget, float entertainmentBudget, float educationBudget,
+                                      float beautyBudget, float transportationBudget, float healthBudget,
+                                      float travelBudget, float petBudget, float otherBudget);
+    SummaryModel retrieveLatestSummaryInfoTableSummary();
 
     // Methods that interact with the transactionEntry table
     boolean addTranTableTransaction(float expense, String description, String category, String transactionDate, int summaryID);

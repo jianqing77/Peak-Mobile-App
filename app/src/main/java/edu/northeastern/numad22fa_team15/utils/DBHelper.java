@@ -126,29 +126,29 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
                 + SUMMARY_CURRENT_EXPENSE_COL + " FLOAT DEFAULT 0, "
                 + SUMMARY_CURRENT_BALANCE_COL + " FLOAT NOT NULL, "
                 + SUMMARY_DINING_BUDGET_COL + " FLOAT NOT NULL, "
-                + SUMMARY_DINING_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_DINING_EXPENSE_COL + " FLOAT DEFAULT 0, "
                 + SUMMARY_GROCERIES_BUDGET_COL + " FLOAT NOT NULL, "
-                + SUMMARY_GROCERIES_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_GROCERIES_EXPENSE_COL + " FLOAT DEFAULT 0, "
                 + SUMMARY_SHOPPING_BUDGET_COL + " FLOAT NOT NULL, "
-                + SUMMARY_SHOPPING_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_SHOPPING_EXPENSE_COL + " FLOAT DEFAULT 0, "
                 + SUMMARY_LIVING_BUDGET_COL + " FLOAT NOT NULL, "
-                + SUMMARY_LIVING_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_LIVING_EXPENSE_COL + " FLOAT DEFAULT 0, "
                 + SUMMARY_ENTERTAINMENT_BUDGET_COL + " FLOAT NOT NULL, "
-                + SUMMARY_ENTERTAINMENT_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_ENTERTAINMENT_EXPENSE_COL + " FLOAT DEFAULT 0, "
                 + SUMMARY_EDUCATION_BUDGET_COL + " FLOAT NOT NULL, "
-                + SUMMARY_EDUCATION_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_EDUCATION_EXPENSE_COL + " FLOAT DEFAULT 0, "
                 + SUMMARY_BEAUTY_BUDGET_COL + " FLOAT NOT NULL, "
-                + SUMMARY_BEAUTY_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_BEAUTY_EXPENSE_COL + " FLOAT DEFAULT 0, "
                 + SUMMARY_TRANSPORTATION_BUDGET_COL + " FLOAT NOT NULL, "
-                + SUMMARY_TRANSPORTATION_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_TRANSPORTATION_EXPENSE_COL + " FLOAT DEFAULT 0, "
                 + SUMMARY_HEALTH_BUDGET_COL + " FLOAT NOT NULL, "
-                + SUMMARY_HEALTH_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_HEALTH_EXPENSE_COL + " FLOAT DEFAULT 0, "
                 + SUMMARY_TRAVEL_BUDGET_COL + " FLOAT NOT NULL, "
-                + SUMMARY_TRAVEL_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_TRAVEL_EXPENSE_COL + " FLOAT DEFAULT 0, "
                 + SUMMARY_PET_BUDGET_COL + " FLOAT NOT NULL, "
-                + SUMMARY_PET_EXPENSE_COL + " FLOAT NOT NULL, "
+                + SUMMARY_PET_EXPENSE_COL + " FLOAT DEFAULT 0, "
                 + SUMMARY_OTHER_BUDGET_COL + " FLOAT NOT NULL, "
-                + SUMMARY_OTHER_EXPENSE_COL + " FLOAT NOT NULL)";
+                + SUMMARY_OTHER_EXPENSE_COL + " FLOAT DEFAULT 0)";
 
         String createTransactionTableQuery =
                 "CREATE TABLE IF NOT EXISTS " + TRANSACTION_TABLE_NAME + " ("
@@ -299,7 +299,11 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
     }
 
     @Override
-    public boolean addSummaryTableSummary(Integer year, Integer month, float totalBudget) {
+    public boolean addSummaryTableSummary(Integer year, Integer month, float totalBudget,
+                                          float diningBudget, float groceriesBudget, float shoppingBudget,
+                                          float livingBudget, float entertainmentBudget, float educationBudget,
+                                          float beautyBudget, float transportationBudget, float healthBudget,
+                                          float travelBudget, float petBudget, float otherBudget) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         float currentBalance = totalBudget;
@@ -309,13 +313,62 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         values.put(SUMMARY_MONTH_COL, month);
         values.put(SUMMARY_TOTAL_BUDGET_COL, totalBudget);
         values.put(SUMMARY_CURRENT_BALANCE_COL, currentBalance);
+        values.put(SUMMARY_DINING_BUDGET_COL, diningBudget);
+        values.put(SUMMARY_GROCERIES_BUDGET_COL, groceriesBudget);
+        values.put(SUMMARY_SHOPPING_BUDGET_COL, shoppingBudget);
+        values.put(SUMMARY_LIVING_BUDGET_COL, livingBudget);
+        values.put(SUMMARY_ENTERTAINMENT_BUDGET_COL, entertainmentBudget);
+        values.put(SUMMARY_EDUCATION_BUDGET_COL, educationBudget);
+        values.put(SUMMARY_BEAUTY_BUDGET_COL, beautyBudget);
+        values.put(SUMMARY_TRANSPORTATION_BUDGET_COL, transportationBudget);
+        values.put(SUMMARY_HEALTH_BUDGET_COL, healthBudget);
+        values.put(SUMMARY_TRAVEL_BUDGET_COL, travelBudget);
+        values.put(SUMMARY_PET_BUDGET_COL, petBudget);
+        values.put(SUMMARY_OTHER_BUDGET_COL, otherBudget);
 
         long result = db.insert(SUMMARY_TABLE_NAME, null, values);
         return (result != -1);
     }
 
     @Override
-    public SummaryModel retrieveLatestSummaryInfoTableUser() {
+    public boolean updateSummaryTableSummary(Integer year, Integer month, float totalBudget,
+                                             float diningBudget, float groceriesBudget, float shoppingBudget,
+                                             float livingBudget, float entertainmentBudget, float educationBudget,
+                                             float beautyBudget, float transportationBudget, float healthBudget,
+                                             float travelBudget, float petBudget, float otherBudget) {
+        // This method does not validate user identity and should only be called on the Edit Profile page.
+        SQLiteDatabase db = this.getWritableDatabase();
+        SummaryModel currentSummary = this.retrieveLatestSummaryInfoTableSummary();
+        float currentExpense = currentSummary.getCurrentExpense();
+        float currentBalance = totalBudget - currentExpense;
+
+        ContentValues values = new ContentValues();
+        values.put(SUMMARY_YEAR_COL, year);
+        values.put(SUMMARY_MONTH_COL, month);
+        values.put(SUMMARY_TOTAL_BUDGET_COL, totalBudget);
+        values.put(SUMMARY_CURRENT_BALANCE_COL, currentBalance);
+        values.put(SUMMARY_DINING_BUDGET_COL, diningBudget);
+        values.put(SUMMARY_GROCERIES_BUDGET_COL, groceriesBudget);
+        values.put(SUMMARY_SHOPPING_BUDGET_COL, shoppingBudget);
+        values.put(SUMMARY_LIVING_BUDGET_COL, livingBudget);
+        values.put(SUMMARY_ENTERTAINMENT_BUDGET_COL, entertainmentBudget);
+        values.put(SUMMARY_EDUCATION_BUDGET_COL, educationBudget);
+        values.put(SUMMARY_BEAUTY_BUDGET_COL, beautyBudget);
+        values.put(SUMMARY_TRANSPORTATION_BUDGET_COL, transportationBudget);
+        values.put(SUMMARY_HEALTH_BUDGET_COL, healthBudget);
+        values.put(SUMMARY_TRAVEL_BUDGET_COL, travelBudget);
+        values.put(SUMMARY_PET_BUDGET_COL, petBudget);
+        values.put(SUMMARY_OTHER_BUDGET_COL, otherBudget);
+
+        // Number of users should always be 1.
+        String whereClause = String.format("%s = ? and %s = ?", SUMMARY_YEAR_COL, SUMMARY_MONTH_COL);
+        int numOfRowsImpacted = db.update(SUMMARY_TABLE_NAME, values, whereClause, new String[]{year.toString(), month.toString()});
+
+        return (numOfRowsImpacted != 0);
+    }
+
+    @Override
+    public SummaryModel retrieveLatestSummaryInfoTableSummary() {
         Cursor cursor = getSummaryCursor();
 
         SummaryModel summary = null;
@@ -324,30 +377,31 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
             int month = cursor.getInt(2);
             float totalBudget = cursor.getFloat(3);
             float currentExpense = cursor.getFloat(4);
-            float diningBudget = cursor.getFloat(5);
-            float diningExpense = cursor.getFloat(6);
-            float groceriesBudget = cursor.getFloat(7);
-            float groceriesExpense = cursor.getFloat(8);
-            float shoppingBudget = cursor.getFloat(9);
-            float shoppingExpense = cursor.getFloat(10);
-            float livingBudget = cursor.getFloat(11);
-            float livingExpense = cursor.getFloat(12);
-            float entertainmentBudget = cursor.getFloat(13);
-            float entertainmentExpense = cursor.getFloat(14);
-            float educationBudget = cursor.getFloat(15);
-            float educationExpense = cursor.getFloat(16);
-            float beautyBudget = cursor.getFloat(17);
-            float beautyExpense = cursor.getFloat(18);
-            float transportationBudget = cursor.getFloat(19);
-            float transportationExpense = cursor.getFloat(20);
-            float healthBudget = cursor.getFloat(21);
-            float healthExpense = cursor.getFloat(22);
-            float travelBudget = cursor.getFloat(23);
-            float travelExpense = cursor.getFloat(24);
-            float petBudget = cursor.getFloat(25);
-            float petExpense = cursor.getFloat(26);
-            float otherBudget = cursor.getFloat(27);
-            float otherExpense = cursor.getFloat(28);
+            float currentBalance = cursor.getFloat(5);
+            float diningBudget = cursor.getFloat(6);
+            float diningExpense = cursor.getFloat(7);
+            float groceriesBudget = cursor.getFloat(8);
+            float groceriesExpense = cursor.getFloat(9);
+            float shoppingBudget = cursor.getFloat(10);
+            float shoppingExpense = cursor.getFloat(11);
+            float livingBudget = cursor.getFloat(12);
+            float livingExpense = cursor.getFloat(13);
+            float entertainmentBudget = cursor.getFloat(14);
+            float entertainmentExpense = cursor.getFloat(15);
+            float educationBudget = cursor.getFloat(16);
+            float educationExpense = cursor.getFloat(17);
+            float beautyBudget = cursor.getFloat(18);
+            float beautyExpense = cursor.getFloat(19);
+            float transportationBudget = cursor.getFloat(20);
+            float transportationExpense = cursor.getFloat(21);
+            float healthBudget = cursor.getFloat(22);
+            float healthExpense = cursor.getFloat(23);
+            float travelBudget = cursor.getFloat(24);
+            float travelExpense = cursor.getFloat(25);
+            float petBudget = cursor.getFloat(26);
+            float petExpense = cursor.getFloat(27);
+            float otherBudget = cursor.getFloat(28);
+            float otherExpense = cursor.getFloat(29);
 
             summary = new SummaryModel(year, month, totalBudget, currentExpense,
             diningBudget, diningExpense,

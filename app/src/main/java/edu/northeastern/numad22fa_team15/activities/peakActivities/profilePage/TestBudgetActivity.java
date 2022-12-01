@@ -47,7 +47,8 @@ public class TestBudgetActivity extends AppCompatActivity {
             return;
         }
 
-        float budget = Float.parseFloat(budgetString);
+        float totalBudget = Float.parseFloat(budgetString);
+        float category_budget = totalBudget / 12;
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
@@ -56,7 +57,11 @@ public class TestBudgetActivity extends AppCompatActivity {
         Integer currentYear = Integer.parseInt(currentDate.substring(0,4));
         Integer currentMonth = Integer.parseInt(currentDate.substring(5,7));
 
-        boolean addSummary = dbHelper.addSummaryTableSummary(currentYear, currentMonth, budget);
+        boolean addSummary = dbHelper.addSummaryTableSummary(currentYear, currentMonth, totalBudget,
+                category_budget, category_budget, category_budget, category_budget, category_budget,
+                category_budget, category_budget, category_budget, category_budget, category_budget,
+                category_budget, category_budget);
+
         String budgetMessage = "Fail to add Summary";
         if (addSummary) {
             budgetMessage = "Successfully added summary";
@@ -65,6 +70,29 @@ public class TestBudgetActivity extends AppCompatActivity {
     }
 
     public void updateBudget(View view) {
+        closeKeyboard(this.getApplicationContext(), view);
 
+        String budgetString = budgetTextInputEditText.getText().toString();
+
+        float totalBudget = Float.parseFloat(budgetString);
+        float category_budget = totalBudget / 12;
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String currentDate = String.valueOf(now);
+
+        Integer currentYear = Integer.parseInt(currentDate.substring(0,4));
+        Integer currentMonth = Integer.parseInt(currentDate.substring(5,7));
+
+        boolean updateSummary = dbHelper.updateSummaryTableSummary(currentYear, currentMonth, totalBudget,
+                category_budget, category_budget, category_budget, category_budget, category_budget,
+                category_budget, category_budget, category_budget, category_budget, category_budget,
+                category_budget, category_budget);
+
+        String budgetMessage = "Fail to add Summary";
+        if (updateSummary) {
+            budgetMessage = "Successfully added summary";
+        }
+        displayMessageInSnackbar(view, budgetMessage, Snackbar.LENGTH_SHORT);
     }
 }

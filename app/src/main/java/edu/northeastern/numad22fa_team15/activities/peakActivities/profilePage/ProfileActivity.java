@@ -21,6 +21,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakCreateBudget;
+import edu.northeastern.numad22fa_team15.models.databaseModels.SummaryModel;
+
 import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
 import edu.northeastern.numad22fa_team15.utils.IDBHelper;
@@ -66,7 +68,6 @@ public class ProfileActivity extends AppCompatActivity {
         // Set profile picture. If none found, use default profile picture.
         setProfilePictureToGivenImageView(dbHelper, profilePictureImageView);
 
-        // Set full name and username.
         UserModel user = dbHelper.retrieveUserInfoTableUser();
         String firstName = user.getFirstName();
         String lastName = user.getLastName();
@@ -75,7 +76,9 @@ public class ProfileActivity extends AppCompatActivity {
         String username = user.getUsername();
         usernameTextView.setText(username);
 
-        // TODO: Retrieve budget info from saving table
+        SummaryModel summary = dbHelper.retrieveLatestSummaryInfoTableSummary();
+        float currentBudget = summary.getTotalBudget();
+        profileBudgetTextView.setText("" + currentBudget + "0");
     }
 
     public void editProfileActivity(View view) {
@@ -85,10 +88,8 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void editBudgetActivity(View view) {
-        // TODO: testing for now, change to actual edit budget activity
-        // Intent intent = new Intent(getApplicationContext(), TestBudgetActivity.class);
-        // startActivity(intent);
-        // finish();
+        Intent intent = new Intent(ProfileActivity.this, PeakCreateBudget.class);
+        startActivity(intent);
     }
 
     public void changePasscodeActivity(View view) {

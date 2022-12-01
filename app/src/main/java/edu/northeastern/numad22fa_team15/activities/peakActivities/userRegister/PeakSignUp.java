@@ -15,6 +15,9 @@ import android.view.View;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
 import edu.northeastern.numad22fa_team15.utils.IDBHelper;
@@ -83,5 +86,26 @@ public class PeakSignUp extends AppCompatActivity {
             // resultMessage = "User was added successfully.";
         }
          displayMessageInSnackbar(view, resultMessage, Snackbar.LENGTH_SHORT);
+
+        // create a default budget
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String currentDate = String.valueOf(now);
+
+        Integer currentYear = Integer.parseInt(currentDate.substring(0,4));
+        Integer currentMonth = Integer.parseInt(currentDate.substring(5,7));
+
+        float defaultBudget = 500;
+        float totalBudget = defaultBudget * 12;
+
+        boolean addSummary = dbHelper.addSummaryTableSummary(currentYear, currentMonth, totalBudget,
+                defaultBudget, defaultBudget, defaultBudget, defaultBudget, defaultBudget, defaultBudget,
+                defaultBudget, defaultBudget, defaultBudget, defaultBudget, defaultBudget, defaultBudget);
+
+        String budgetMessage = "Fail to add Summary";
+        if (addSummary) {
+            budgetMessage = "Successfully added summary";
+        }
+        displayMessageInSnackbar(view, budgetMessage, Snackbar.LENGTH_SHORT);
     }
 }

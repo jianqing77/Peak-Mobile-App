@@ -8,6 +8,7 @@ import android.view.View;
 
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.activities.MainActivity;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakCreateBudget;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakFirstPage;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.homePage.PeakHomePage;
 
@@ -19,8 +20,8 @@ public class PeakSignUpConfirmation extends AppCompatActivity {
         setContentView(R.layout.activity_peak_sign_up_confirmation);
     }
 
-    public void openHomePage(View view) {
-        Intent intent = new Intent(PeakSignUpConfirmation.this, PeakHomePage.class);
+    public void openEditBudget(View view) {
+        Intent intent = new Intent(PeakSignUpConfirmation.this, PeakCreateBudget.class);
         startActivity(intent);
     }
 
