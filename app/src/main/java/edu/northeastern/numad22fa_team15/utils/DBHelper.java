@@ -415,4 +415,10 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         return (rowsAffected != 0);
     }
 
+    @Override
+    public boolean addSavingTableSaving(float savingGoal, String goalDescription, float savingSoFar, boolean savingStatus) {
+        // TODO
+        return false;
+    }
+
 }

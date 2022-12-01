@@ -14,11 +14,16 @@ public interface IDBHelper {
     boolean updateUserProfilePictureTableUser(byte[] profilePictureBlob);
     UserModel retrieveUserInfoTableUser();
 
+    // Methods that interact with the summary table
     boolean addSummaryTableSummary(Integer year, Integer month, float totalBudget);
     SummaryModel retrieveLatestSummaryInfoTableUser();
-    // TODO: set category as string for testing, change to enum?
+
+    // Methods that interact with the transactionEntry table
     boolean addTranTableTransaction(float expense, String description, String category, String transactionDate, int summaryID);
     boolean updateTranTableTransaction(float expense, String description, String category, int transactionID);
+
+    // Methods that interact with the saving table
+    boolean addSavingTableSaving(float savingGoal, String goalDescription, float savingSoFar, boolean savingStatus);
 
     // Methods that interact with multiple tables in the database
     boolean truncateTablesTransactionSummaryAndSaving();
