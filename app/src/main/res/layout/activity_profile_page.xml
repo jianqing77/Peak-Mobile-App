@@ -37,6 +37,7 @@
                     android:src="@drawable/ic_anonymous_person_24"
                     android:tintMode="src_atop"
                     app:tint="#6F000000" />
+
             </androidx.cardview.widget.CardView>
 
             <TextView

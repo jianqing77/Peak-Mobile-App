@@ -1,22 +1,23 @@
 package edu.northeastern.numad22fa_team15.models.databaseModels;
 
 /**
- * This class represents a savings entry in sqlite database.
+ * This class represents a saving entry in sqlite database.
  * A saving entry contains the following information: (1) savingID, (2) savingGoal, (3) goalDescription,
- * (4) savingNum, (5) savingStatus
+ * (4) savingSoFar, (5) savingStatus
  */
 
 public class SavingModel {
     private int savingID;
-    private String savingGoal;
+    private float savingGoal;
     private String goalDescription;
-    private float savingNum;
+    private float savingSoFar;
     private boolean savingStatus;
 
-    public SavingModel(String savingGoal, String goalDescription, float savingNum) {
+    public SavingModel(float savingGoal, String goalDescription, float savingSoFar, boolean savingStatus) {
         this.savingGoal = savingGoal;
         this.goalDescription = goalDescription;
-        this.savingNum = savingNum;
+        this.savingSoFar = savingSoFar;
+        this.savingStatus = savingStatus;
     }
 
     public int getSavingID() {
@@ -27,11 +28,11 @@ public class SavingModel {
         this.savingID = savingID;
     }
 
-    public String getSavingGoal() {
+    public float getSavingGoal() {
         return this.savingGoal;
     }
 
-    public void setSavingGoal(String savingGoal) {
+    public void setSavingGoal(float savingGoal) {
         this.savingGoal = savingGoal;
     }
 
@@ -43,19 +44,19 @@ public class SavingModel {
         this.goalDescription = goalDescription;
     }
 
-    public float getSavingNum() {
-        return this.savingNum;
+    public float getSavingSoFar() {
+        return this.savingSoFar;
     }
 
-    public void setSavingNum(float savingNum) {
-        this.savingNum = savingNum;
+    public void setSavingSoFar(float savingSoFar) {
+        this.savingSoFar = savingSoFar;
     }
 
     public boolean getSavingStatus() {
         return this.savingStatus;
     }
 
-    public void setSavingStatus(Boolean savingStatus) {
+    public void setSavingStatus(boolean savingStatus) {
         this.savingStatus = savingStatus;
     }
 }

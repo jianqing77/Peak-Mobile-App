@@ -53,8 +53,11 @@ public class ChangePasscodeActivity extends AppCompatActivity {
         finish();
     }
 
+    /**
+     * This method gets called when the user clicks the Reset Passcode button.
+     * @param view view
+     */
     public void resetPasscode(View view) {
-        // TODO
         closeKeyboard(getApplicationContext(), view);
         String newPasscode = newPasscodeEditText.getText().toString();
         String confirmNewPasscode = confirmNewPasscodeEditText.getText().toString();
