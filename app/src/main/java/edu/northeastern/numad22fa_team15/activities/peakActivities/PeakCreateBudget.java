@@ -14,6 +14,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.utils.CommonUtils;
+import edu.northeastern.numad22fa_team15.utils.DBHelper;
 
 public class PeakCreateBudget extends AppCompatActivity {
 
@@ -27,10 +28,14 @@ public class PeakCreateBudget extends AppCompatActivity {
 
     Button confirm, cancel;
 
+    DBHelper dbhelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_budget);
+
+        dbhelper = new DBHelper(PeakCreateBudget.this);
 
         /**
          * TODO: get current budget amount for each category from the database and set
@@ -40,26 +45,94 @@ public class PeakCreateBudget extends AppCompatActivity {
 
         // Setting functions for buttons - Cancel Button
         cancel = (Button) findViewById(R.id.btn_cancel_new_budget);
+
+
+        // TODO: Setting functions for buttons - Confirm Button
+        confirm = (Button) findViewById(R.id.btn_confirm_new_budget);
+
+
+        // Dining SeekBar
+        sb_dining = (SeekBar) findViewById(R.id.seekbar_dining);
+        et_dining = (EditText) findViewById(R.id.et_seekbar_dining);
+
+        // Groceries SeekBar
+        sb_groceries = (SeekBar) findViewById(R.id.seekbar_groceries);
+        et_groceries = (EditText) findViewById(R.id.et_seekbar_groceries);
+
+        // Shopping SeekBar
+        sb_shopping = (SeekBar) findViewById(R.id.seekbar_shopping);
+        et_shopping = (EditText) findViewById(R.id.et_seekbar_shopping);
+
+        // Living SeekBar
+        sb_living = (SeekBar) findViewById(R.id.seekbar_living);
+        et_living = (EditText) findViewById(R.id.et_seekbar_living);
+
+        // Entertainment SeekBar
+        sb_entertainment = (SeekBar) findViewById(R.id.seekbar_entertainment);
+        et_entertainment = (EditText) findViewById(R.id.et_seekbar_entertainment);
+
+        // Education SeekBar
+        sb_education = (SeekBar) findViewById(R.id.seekbar_education);
+        et_education = (EditText) findViewById(R.id.et_seekbar_education);
+
+        // Beauty SeekBar
+        sb_beauty = (SeekBar) findViewById(R.id.seekbar_beauty);
+        et_beauty = (EditText) findViewById(R.id.et_seekbar_beauty);
+
+        // Transportation SeekBar
+        sb_transportation = (SeekBar) findViewById(R.id.seekbar_transportation);
+        et_transportation = (EditText) findViewById(R.id.et_seekbar_transportation);
+
+        // Health SeekBar
+        sb_health = (SeekBar) findViewById(R.id.seekbar_health);
+        et_health = (EditText) findViewById(R.id.et_seekbar_health);
+
+        // Travel SeekBar
+        sb_travel = (SeekBar) findViewById(R.id.seekbar_travel);
+        et_travel = (EditText) findViewById(R.id.et_seekbar_travel);
+
+        // Pet SeekBar
+        sb_pet = (SeekBar) findViewById(R.id.seekbar_pet);
+        et_pet = (EditText) findViewById(R.id.et_seekbar_pet);
+
+        // Other SeekBar
+        sb_other = (SeekBar) findViewById(R.id.seekbar_other);
+        et_other = (EditText) findViewById(R.id.et_seekbar_other);
+
+        setOnClickListenerHelper();
+    }
+
+
+
+    // Helper function to set progress of seekbar
+    private void setProgressValue(EditText et, SeekBar seekBar) {
+        seekBar.setProgress(Integer.parseInt(et.getText().toString()));
+    }
+
+    // Function to ensure the user creates a budget when the budget table is empty
+    private void cancelEditBudget(View view) {
+
+        // TODO: if statement to check if the summary table is empty. If it is, then:
+        String message = "You must set a budget for at least one category.";
+        displayMessageInSnackbar(view, message, Snackbar.LENGTH_SHORT);
+
+        // TODO: else, bring the user back to the home screen.
+
+    }
+
+    private void setOnClickListenerHelper() {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 cancelEditBudget(view);
             }
         });
-
-        // TODO: Setting functions for buttons - Confirm Button
-        confirm = (Button) findViewById(R.id.btn_confirm_new_budget);
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // TODO: alter database with new budget amounts
             }
         });
-
-        // Dining SeekBar
-        sb_dining = (SeekBar) findViewById(R.id.seekbar_dining);
-        et_dining = (EditText) findViewById(R.id.et_seekbar_dining);
-
         sb_dining.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             @Override
@@ -78,7 +151,6 @@ public class PeakCreateBudget extends AppCompatActivity {
 
             }
         });
-
         et_dining.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
@@ -94,11 +166,6 @@ public class PeakCreateBudget extends AppCompatActivity {
                 CommonUtils.closeKeyboard(view.getContext(), view);
             }
         });
-
-        // Groceries SeekBar
-        sb_groceries = (SeekBar) findViewById(R.id.seekbar_groceries);
-        et_groceries = (EditText) findViewById(R.id.et_seekbar_groceries);
-
         sb_groceries.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             @Override
@@ -117,7 +184,6 @@ public class PeakCreateBudget extends AppCompatActivity {
                 // TODO Auto-generated method stub
             }
         });
-
         et_groceries.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
@@ -133,11 +199,6 @@ public class PeakCreateBudget extends AppCompatActivity {
                 CommonUtils.closeKeyboard(view.getContext(), view);
             }
         });
-
-        // Shopping SeekBar
-        sb_shopping = (SeekBar) findViewById(R.id.seekbar_shopping);
-        et_shopping = (EditText) findViewById(R.id.et_seekbar_shopping);
-
         sb_shopping.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             @Override
@@ -156,7 +217,6 @@ public class PeakCreateBudget extends AppCompatActivity {
                 // TODO Auto-generated method stub
             }
         });
-
         et_shopping.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
@@ -172,11 +232,6 @@ public class PeakCreateBudget extends AppCompatActivity {
                 CommonUtils.closeKeyboard(view.getContext(), view);
             }
         });
-
-        // Living SeekBar
-        sb_living = (SeekBar) findViewById(R.id.seekbar_living);
-        et_living = (EditText) findViewById(R.id.et_seekbar_living);
-
         sb_living.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             @Override
@@ -195,7 +250,6 @@ public class PeakCreateBudget extends AppCompatActivity {
                 // TODO Auto-generated method stub
             }
         });
-
         et_living.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
@@ -211,11 +265,6 @@ public class PeakCreateBudget extends AppCompatActivity {
                 CommonUtils.closeKeyboard(view.getContext(), view);
             }
         });
-
-        // Entertainment SeekBar
-        sb_entertainment = (SeekBar) findViewById(R.id.seekbar_entertainment);
-        et_entertainment = (EditText) findViewById(R.id.et_seekbar_entertainment);
-
         sb_entertainment.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             @Override
@@ -234,7 +283,6 @@ public class PeakCreateBudget extends AppCompatActivity {
                 // TODO Auto-generated method stub
             }
         });
-
         et_entertainment.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
@@ -250,11 +298,6 @@ public class PeakCreateBudget extends AppCompatActivity {
                 CommonUtils.closeKeyboard(view.getContext(), view);
             }
         });
-
-        // Education SeekBar
-        sb_education = (SeekBar) findViewById(R.id.seekbar_education);
-        et_education = (EditText) findViewById(R.id.et_seekbar_education);
-
         sb_education.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             @Override
@@ -273,7 +316,6 @@ public class PeakCreateBudget extends AppCompatActivity {
                 // TODO Auto-generated method stub
             }
         });
-
         et_education.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
@@ -289,11 +331,6 @@ public class PeakCreateBudget extends AppCompatActivity {
                 CommonUtils.closeKeyboard(view.getContext(), view);
             }
         });
-
-        // Beauty SeekBar
-        sb_beauty = (SeekBar) findViewById(R.id.seekbar_beauty);
-        et_beauty = (EditText) findViewById(R.id.et_seekbar_beauty);
-
         sb_beauty.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             @Override
@@ -312,7 +349,6 @@ public class PeakCreateBudget extends AppCompatActivity {
                 // TODO Auto-generated method stub
             }
         });
-
         et_beauty.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
@@ -328,11 +364,6 @@ public class PeakCreateBudget extends AppCompatActivity {
                 CommonUtils.closeKeyboard(view.getContext(), view);
             }
         });
-
-        // Transportation SeekBar
-        sb_transportation = (SeekBar) findViewById(R.id.seekbar_transportation);
-        et_transportation = (EditText) findViewById(R.id.et_seekbar_transportation);
-
         sb_transportation.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             @Override
@@ -351,7 +382,6 @@ public class PeakCreateBudget extends AppCompatActivity {
                 // TODO Auto-generated method stub
             }
         });
-
         et_transportation.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
@@ -367,11 +397,6 @@ public class PeakCreateBudget extends AppCompatActivity {
                 CommonUtils.closeKeyboard(view.getContext(), view);
             }
         });
-
-        // Health SeekBar
-        sb_health = (SeekBar) findViewById(R.id.seekbar_health);
-        et_health = (EditText) findViewById(R.id.et_seekbar_health);
-
         sb_health.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             @Override
@@ -390,7 +415,6 @@ public class PeakCreateBudget extends AppCompatActivity {
                 // TODO Auto-generated method stub
             }
         });
-
         et_health.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
@@ -406,11 +430,6 @@ public class PeakCreateBudget extends AppCompatActivity {
                 CommonUtils.closeKeyboard(view.getContext(), view);
             }
         });
-
-        // Travel SeekBar
-        sb_travel = (SeekBar) findViewById(R.id.seekbar_travel);
-        et_travel = (EditText) findViewById(R.id.et_seekbar_travel);
-
         sb_travel.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             @Override
@@ -445,11 +464,6 @@ public class PeakCreateBudget extends AppCompatActivity {
                 CommonUtils.closeKeyboard(view.getContext(), view);
             }
         });
-
-        // Pet SeekBar
-        sb_pet = (SeekBar) findViewById(R.id.seekbar_pet);
-        et_pet = (EditText) findViewById(R.id.et_seekbar_pet);
-
         sb_pet.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             @Override
@@ -484,11 +498,6 @@ public class PeakCreateBudget extends AppCompatActivity {
                 CommonUtils.closeKeyboard(view.getContext(), view);
             }
         });
-
-        // Other SeekBar
-        sb_other = (SeekBar) findViewById(R.id.seekbar_other);
-        et_other = (EditText) findViewById(R.id.et_seekbar_other);
-
         sb_other.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             @Override
@@ -523,22 +532,6 @@ public class PeakCreateBudget extends AppCompatActivity {
                 CommonUtils.closeKeyboard(view.getContext(), view);
             }
         });
-    }
-
-    // Helper function to set progress of seekbar
-    private void setProgressValue(EditText et, SeekBar seekBar) {
-        seekBar.setProgress(Integer.parseInt(et.getText().toString()));
-    }
-
-    // Function to ensure the user creates a budget when the budget table is empty
-    private void cancelEditBudget(View view) {
-
-        // TODO: if statement to check if the summary table is empty. If it is, then:
-        String message = "You must set a budget for at least one category.";
-        displayMessageInSnackbar(view, message, Snackbar.LENGTH_SHORT);
-
-        // TODO: else, bring the user back to the home screen.
-
     }
 
 }
