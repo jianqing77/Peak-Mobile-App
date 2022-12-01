@@ -66,7 +66,7 @@ public class PeakCreateBudget extends AppCompatActivity {
          */
 
         totalBudget_tv = (TextView) findViewById(R.id.edit_budget_amount);
-        totalBudget_tv.setText("$ " + currentSummary.getTotalBudget());
+        totalBudget_tv.setText("$ " + currentSummary.getTotalBudget() + "0");
 
         UserModel user = dbhelper.retrieveUserInfoTableUser();
 
@@ -90,74 +90,74 @@ public class PeakCreateBudget extends AppCompatActivity {
         // Dining SeekBar
         sb_dining = (SeekBar) findViewById(R.id.seekbar_dining);
         et_dining = (EditText) findViewById(R.id.et_seekbar_dining);
-        et_dining.setText("" + currentSummary.getDiningBudget());
+        et_dining.setText("" + (int) currentSummary.getDiningBudget());
         sb_dining.setProgress((int) currentSummary.getDiningBudget());
 
         // Groceries SeekBar
         sb_groceries = (SeekBar) findViewById(R.id.seekbar_groceries);
         et_groceries = (EditText) findViewById(R.id.et_seekbar_groceries);
-        et_groceries.setText("" + currentSummary.getGroceriesBudget());
+        et_groceries.setText("" + (int) currentSummary.getGroceriesBudget());
         sb_groceries.setProgress((int) currentSummary.getGroceriesBudget());
 
         // Shopping SeekBar
         sb_shopping = (SeekBar) findViewById(R.id.seekbar_shopping);
         et_shopping = (EditText) findViewById(R.id.et_seekbar_shopping);
         sb_shopping.setProgress((int) currentSummary.getShoppingBudget());
-        et_shopping.setText("" + currentSummary.getShoppingBudget());
+        et_shopping.setText("" + (int) currentSummary.getShoppingBudget());
 
         // Living SeekBar
         sb_living = (SeekBar) findViewById(R.id.seekbar_living);
         et_living = (EditText) findViewById(R.id.et_seekbar_living);
         sb_living.setProgress((int) currentSummary.getLivingBudget());
-        et_living.setText("" + currentSummary.getLivingBudget());
+        et_living.setText("" + (int) currentSummary.getLivingBudget());
 
         // Entertainment SeekBar
         sb_entertainment = (SeekBar) findViewById(R.id.seekbar_entertainment);
         et_entertainment = (EditText) findViewById(R.id.et_seekbar_entertainment);
         sb_entertainment.setProgress((int) currentSummary.getEntertainmentBudget());
-        et_entertainment.setText("" + currentSummary.getEntertainmentBudget());
+        et_entertainment.setText("" + (int) currentSummary.getEntertainmentBudget());
 
         // Education SeekBar
         sb_education = (SeekBar) findViewById(R.id.seekbar_education);
         et_education = (EditText) findViewById(R.id.et_seekbar_education);
         sb_education.setProgress((int) currentSummary.getEducationBudget());
-        et_education.setText("" + currentSummary.getEducationBudget());
+        et_education.setText("" + (int) currentSummary.getEducationBudget());
 
         // Beauty SeekBar
         sb_beauty = (SeekBar) findViewById(R.id.seekbar_beauty);
         et_beauty = (EditText) findViewById(R.id.et_seekbar_beauty);
         sb_beauty.setProgress((int) currentSummary.getBeautyBudget());
-        et_beauty.setText("" + currentSummary.getBeautyBudget());
+        et_beauty.setText("" + (int) currentSummary.getBeautyBudget());
 
         // Transportation SeekBar
         sb_transportation = (SeekBar) findViewById(R.id.seekbar_transportation);
         et_transportation = (EditText) findViewById(R.id.et_seekbar_transportation);
         sb_transportation.setProgress((int) currentSummary.getTransportationBudget());
-        et_transportation.setText("" + currentSummary.getTransportationBudget());
+        et_transportation.setText("" + (int) currentSummary.getTransportationBudget());
 
         // Health SeekBar
         sb_health = (SeekBar) findViewById(R.id.seekbar_health);
         et_health = (EditText) findViewById(R.id.et_seekbar_health);
         sb_health.setProgress((int) currentSummary.getHealthBudget());
-        et_health.setText("" + currentSummary.getHealthBudget());
+        et_health.setText("" + (int) currentSummary.getHealthBudget());
 
         // Travel SeekBar
         sb_travel = (SeekBar) findViewById(R.id.seekbar_travel);
         et_travel = (EditText) findViewById(R.id.et_seekbar_travel);
-        sb_health.setProgress((int) currentSummary.getTravelBudget());
-        et_health.setText("" + currentSummary.getTravelBudget());
+        sb_travel.setProgress((int) currentSummary.getTravelBudget());
+        et_travel.setText("" + (int) currentSummary.getTravelBudget());
 
         // Pet SeekBar
         sb_pet = (SeekBar) findViewById(R.id.seekbar_pet);
         et_pet = (EditText) findViewById(R.id.et_seekbar_pet);
         sb_pet.setProgress((int) currentSummary.getPetBudget());
-        et_health.setText("" + currentSummary.getTotalBudget());
+        et_pet.setText("" + (int) currentSummary.getPetBudget());
 
         // Other SeekBar
         sb_other = (SeekBar) findViewById(R.id.seekbar_other);
         et_other = (EditText) findViewById(R.id.et_seekbar_other);
         sb_other.setProgress((int) currentSummary.getOtherBudget());
-        et_other.setText("" + currentSummary.getOtherBudget());
+        et_other.setText("" + (int) currentSummary.getOtherBudget());
 
         setOnClickListenerHelper();
     }
