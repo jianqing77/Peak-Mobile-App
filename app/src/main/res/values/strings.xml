@@ -75,7 +75,7 @@
     <string name="get_started">Get Started!</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
-    <string name="passcode">Passcode</string>
+    <string name="passcode">4-digit-Passcode</string>
     <string name="confirm_passcode">Confirm Passcode</string>
     <string name="piggy_bank_image">Piggy Bank Image</string>
     <string name="user_profile_picture">User profile picture</string>
@@ -85,13 +85,13 @@
     <string name="username">Username</string>
     <string name="_2500">2500</string>
     <string name="account">ACCOUNT</string>
-    <string name="edit_profile">Edit profile</string>
-    <string name="edit_budget">Edit budget</string>
-    <string name="change_passcode">Change passcode</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="edit_budget">Edit Budget</string>
+    <string name="change_passcode">Change Passcode</string>
     <string name="security_and_privacy">SECURITY AND PRIVACY</string>
-    <string name="security_settings">Security settings</string>
+    <string name="security_settings">Security Settings</string>
     <string name="terms_and_conditions">Terms and Conditions</string>
-    <string name="reset_account">Reset account</string>
+    <string name="reset_account">Reset Account</string>
     <string name="add_spending_floating_action_button">Add Spending Floating Action Button</string>
     <string name="your_profile">Your Profile</string>
     <string name="edit_button">Edit button</string>
@@ -105,5 +105,6 @@
     <string name="confirm_new_passcode">Confirm New Passcode</string>
     <string name="reset_passcode">Reset Passcode</string>
     <string name="_1234">1234</string>
+    <string name="terms_and_condition_text">\t\t\tPEAK is licensed to You (End-User) by Team 15, located and registered at 360 Huntington Ave, Boston, Massachusetts 02115, United States (“Licensor”), for use only under the terms of this License Agreement.\n\n\t\t\tBy downloading the Licensed Application from Google’s software distribution platform (“Play Store”), and any update thereto (as permitted by this License Agreement), You indicate that You agree to be bound by all of the terms and conditions of this License Agreement, and that You accept this LicenseAgreement. Play Store is referred to in this License Agreement as “Services.”\n\n\t\t\tThe parties of this License Agreement acknowledge that the Services are not a Party to this License Agreement and are not bound by any provisions or obligations with regard to the Licensed Application, such as warranty, liability, maintenance and support thereof. Team 15, not the Services, is solely responsible for the Licensed Application and the content thereof.\n\n\t\t\tThis License Agreement may not provide for usage rules for the Licensed Application that are in conflict with the latest Google Play Terms of Service (“Usage Rules” ). Team 15 acknowledges that it had the opportunity to review the Usage Rules and this License Agreement is not conflicting with them.\n\n\t\t\tPEAK when purchased or downloaded through the Services, is licensed to You for use only under the terms of this License Agreement. The Licensor reserves all rights not expressly granted to You. PEAK is to be used on devices that operate with Google’s operating system (“Android”)</string>
     <string name="dollar_sign">$</string>
 </resources>
