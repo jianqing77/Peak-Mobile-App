@@ -84,13 +84,13 @@ public class PeakCreateBudget extends AppCompatActivity {
         // Dining SeekBar
         sb_dining = (SeekBar) findViewById(R.id.seekbar_dining);
         et_dining = (EditText) findViewById(R.id.et_seekbar_dining);
-        et_dining.setText("" + (int) currentSummary.getDiningBudget());
+        et_dining.setText(String.valueOf(currentSummary.getDiningBudget()));
         sb_dining.setProgress((int) currentSummary.getDiningBudget());
 
         // Groceries SeekBar
         sb_groceries = (SeekBar) findViewById(R.id.seekbar_groceries);
         et_groceries = (EditText) findViewById(R.id.et_seekbar_groceries);
-        et_groceries.setText("" + (int) currentSummary.getGroceriesBudget());
+        et_groceries.setText(String.valueOf(currentSummary.getGroceriesBudget()));
         sb_groceries.setProgress((int) currentSummary.getGroceriesBudget());
 
         // Shopping SeekBar
@@ -173,51 +173,42 @@ public class PeakCreateBudget extends AppCompatActivity {
     }
 
     private void setOnClickListenerHelper() {
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                cancelEditBudget(view);
+        cancel.setOnClickListener(view -> cancelEditBudget(view));
+        confirm.setOnClickListener(view -> {
+            float diningBudget = Float.parseFloat(et_dining.getText().toString());
+            float groceriesBudget = Float.parseFloat(et_groceries.getText().toString());
+            float shoppingBudget = Float.parseFloat(et_shopping.getText().toString());
+            float livingBudget = Float.parseFloat(et_living.getText().toString());
+            float entertainmentBudget = Float.parseFloat(et_entertainment.getText().toString());
+            float educationBudget = Float.parseFloat(et_education.getText().toString());
+            float beautyBudget = Float.parseFloat(et_beauty.getText().toString());
+            float transportationBudget = Float.parseFloat(et_transportation.getText().toString());
+            float healthBudget = Float.parseFloat(et_health.getText().toString());
+            float travelBudget = Float.parseFloat(et_travel.getText().toString());
+            float petBudget = Float.parseFloat(et_pet.getText().toString());
+            float otherBudget = Float.parseFloat(et_other.getText().toString());
+            float totalBudget = diningBudget + groceriesBudget + shoppingBudget + livingBudget + entertainmentBudget
+                    + educationBudget + beautyBudget + transportationBudget + healthBudget + travelBudget
+                    + petBudget + otherBudget;
+
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            LocalDateTime now = LocalDateTime.now();
+            String currentDate = String.valueOf(now);
+
+            Integer currentYear = Integer.parseInt(currentDate.substring(0,4));
+            Integer currentMonth = Integer.parseInt(currentDate.substring(5,7));
+
+            dbhelper = new DBHelper(PeakCreateBudget.this);
+
+            boolean updateSummary = dbhelper.updateSummaryTableSummary(currentYear, currentMonth, totalBudget,
+                    diningBudget, groceriesBudget, shoppingBudget, livingBudget, entertainmentBudget, educationBudget,
+                    beautyBudget, transportationBudget, healthBudget, travelBudget, petBudget, otherBudget);
+
+            String budgetMessage = "Fail to update Summary";
+            if (updateSummary) {
+                budgetMessage = "Successfully updated summary";
             }
-        });
-        confirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // TODO: alter database with new budget amounts
-                float diningBudget = Float.parseFloat(et_dining.getText().toString());
-                float groceriesBudget = Float.parseFloat(et_groceries.getText().toString());
-                float shoppingBudget = Float.parseFloat(et_shopping.getText().toString());
-                float livingBudget = Float.parseFloat(et_living.getText().toString());
-                float entertainmentBudget = Float.parseFloat(et_entertainment.getText().toString());
-                float educationBudget = Float.parseFloat(et_education.getText().toString());
-                float beautyBudget = Float.parseFloat(et_beauty.getText().toString());
-                float transportationBudget = Float.parseFloat(et_transportation.getText().toString());
-                float healthBudget = Float.parseFloat(et_health.getText().toString());
-                float travelBudget = Float.parseFloat(et_travel.getText().toString());
-                float petBudget = Float.parseFloat(et_pet.getText().toString());
-                float otherBudget = Float.parseFloat(et_other.getText().toString());
-                float totalBudget = diningBudget + groceriesBudget + shoppingBudget + livingBudget + entertainmentBudget
-                        + educationBudget + beautyBudget + transportationBudget + healthBudget + travelBudget
-                        + petBudget + otherBudget;
-
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-                LocalDateTime now = LocalDateTime.now();
-                String currentDate = String.valueOf(now);
-
-                Integer currentYear = Integer.parseInt(currentDate.substring(0,4));
-                Integer currentMonth = Integer.parseInt(currentDate.substring(5,7));
-
-                dbhelper = new DBHelper(PeakCreateBudget.this);
-
-                boolean updateSummary = dbhelper.updateSummaryTableSummary(currentYear, currentMonth, totalBudget,
-                        diningBudget, groceriesBudget, shoppingBudget, livingBudget, entertainmentBudget, educationBudget,
-                        beautyBudget, transportationBudget, healthBudget, travelBudget, petBudget, otherBudget);
-
-                String budgetMessage = "Fail to update Summary";
-                if (updateSummary) {
-                    budgetMessage = "Successfully updated summary";
-                }
-                displayMessageInSnackbar(view, budgetMessage, Snackbar.LENGTH_SHORT);
-            }
+            displayMessageInSnackbar(view, budgetMessage, Snackbar.LENGTH_SHORT);
         });
         sb_dining.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
@@ -235,20 +226,17 @@ public class PeakCreateBudget extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar sb_dining) {
             }
         });
-        et_dining.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (et_dining.getText().toString().isEmpty()) {
-                    et_dining.setText("0");
-                    sb_dining.setProgress(0);
-                } else if (Integer.parseInt(et_dining.getText().toString()) > 5000) {
-                    et_dining.setText("5000");
-                    sb_dining.setProgress(5000);
-                } else {
-                    setProgressValue(et_dining, sb_dining);
-                }
-                CommonUtils.closeKeyboard(view.getContext(), view);
+        et_dining.setOnFocusChangeListener((view, b) -> {
+            if (et_dining.getText().toString().isEmpty()) {
+                et_dining.setText("0");
+                sb_dining.setProgress(0);
+            } else if (Integer.parseInt(et_dining.getText().toString()) > 5000) {
+                et_dining.setText("5000");
+                sb_dining.setProgress(5000);
+            } else {
+                setProgressValue(et_dining, sb_dining);
             }
+            CommonUtils.closeKeyboard(view.getContext(), view);
         });
         sb_groceries.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
@@ -267,20 +255,17 @@ public class PeakCreateBudget extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar sb_groceries) {
             }
         });
-        et_groceries.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (et_groceries.getText().toString().isEmpty()) {
-                    et_groceries.setText("0");
-                    sb_groceries.setProgress(0);
-                } else if (Integer.parseInt(et_groceries.getText().toString()) > 5000) {
-                    et_groceries.setText("5000");
-                    sb_groceries.setProgress(5000);
-                } else {
-                    setProgressValue(et_groceries, sb_groceries);
-                }
-                CommonUtils.closeKeyboard(view.getContext(), view);
+        et_groceries.setOnFocusChangeListener((view, b) -> {
+            if (et_groceries.getText().toString().isEmpty()) {
+                et_groceries.setText("0");
+                sb_groceries.setProgress(0);
+            } else if (Integer.parseInt(et_groceries.getText().toString()) > 5000) {
+                et_groceries.setText("5000");
+                sb_groceries.setProgress(5000);
+            } else {
+                setProgressValue(et_groceries, sb_groceries);
             }
+            CommonUtils.closeKeyboard(view.getContext(), view);
         });
         sb_shopping.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
@@ -299,20 +284,17 @@ public class PeakCreateBudget extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar sb_shopping) {
             }
         });
-        et_shopping.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (et_shopping.getText().toString().isEmpty()) {
-                    et_shopping.setText("0");
-                    sb_shopping.setProgress(0);
-                } else if (Integer.parseInt(et_shopping.getText().toString()) > 5000) {
-                    et_shopping.setText("5000");
-                    sb_shopping.setProgress(5000);
-                } else {
-                    setProgressValue(et_shopping, sb_shopping);
-                }
-                CommonUtils.closeKeyboard(view.getContext(), view);
+        et_shopping.setOnFocusChangeListener((view, b) -> {
+            if (et_shopping.getText().toString().isEmpty()) {
+                et_shopping.setText("0");
+                sb_shopping.setProgress(0);
+            } else if (Integer.parseInt(et_shopping.getText().toString()) > 5000) {
+                et_shopping.setText("5000");
+                sb_shopping.setProgress(5000);
+            } else {
+                setProgressValue(et_shopping, sb_shopping);
             }
+            CommonUtils.closeKeyboard(view.getContext(), view);
         });
         sb_living.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
@@ -331,20 +313,17 @@ public class PeakCreateBudget extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar sb_living) {
             }
         });
-        et_living.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (et_living.getText().toString().isEmpty()) {
-                    et_living.setText("0");
-                    sb_living.setProgress(0);
-                } else if (Integer.parseInt(et_living.getText().toString()) > 5000) {
-                    et_living.setText("5000");
-                    sb_living.setProgress(5000);
-                } else {
-                    setProgressValue(et_living, sb_living);
-                }
-                CommonUtils.closeKeyboard(view.getContext(), view);
+        et_living.setOnFocusChangeListener((view, b) -> {
+            if (et_living.getText().toString().isEmpty()) {
+                et_living.setText("0");
+                sb_living.setProgress(0);
+            } else if (Integer.parseInt(et_living.getText().toString()) > 5000) {
+                et_living.setText("5000");
+                sb_living.setProgress(5000);
+            } else {
+                setProgressValue(et_living, sb_living);
             }
+            CommonUtils.closeKeyboard(view.getContext(), view);
         });
         sb_entertainment.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
@@ -363,20 +342,17 @@ public class PeakCreateBudget extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar sb_entertainment) {
             }
         });
-        et_entertainment.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (et_entertainment.getText().toString().isEmpty()) {
-                    et_entertainment.setText("0");
-                    sb_entertainment.setProgress(0);
-                } else if (Integer.parseInt(et_entertainment.getText().toString()) > 5000) {
-                    et_entertainment.setText("5000");
-                    sb_entertainment.setProgress(5000);
-                } else {
-                    setProgressValue(et_entertainment, sb_entertainment);
-                }
-                CommonUtils.closeKeyboard(view.getContext(), view);
+        et_entertainment.setOnFocusChangeListener((view, b) -> {
+            if (et_entertainment.getText().toString().isEmpty()) {
+                et_entertainment.setText("0");
+                sb_entertainment.setProgress(0);
+            } else if (Integer.parseInt(et_entertainment.getText().toString()) > 5000) {
+                et_entertainment.setText("5000");
+                sb_entertainment.setProgress(5000);
+            } else {
+                setProgressValue(et_entertainment, sb_entertainment);
             }
+            CommonUtils.closeKeyboard(view.getContext(), view);
         });
         sb_education.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
@@ -396,20 +372,17 @@ public class PeakCreateBudget extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar sb_education) {
             }
         });
-        et_education.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (et_education.getText().toString().isEmpty()) {
-                    et_education.setText("0");
-                    sb_education.setProgress(0);
-                } else if (Integer.parseInt(et_education.getText().toString()) > 5000) {
-                    et_education.setText("5000");
-                    sb_education.setProgress(5000);
-                } else {
-                    setProgressValue(et_education, sb_education);
-                }
-                CommonUtils.closeKeyboard(view.getContext(), view);
+        et_education.setOnFocusChangeListener((view, b) -> {
+            if (et_education.getText().toString().isEmpty()) {
+                et_education.setText("0");
+                sb_education.setProgress(0);
+            } else if (Integer.parseInt(et_education.getText().toString()) > 5000) {
+                et_education.setText("5000");
+                sb_education.setProgress(5000);
+            } else {
+                setProgressValue(et_education, sb_education);
             }
+            CommonUtils.closeKeyboard(view.getContext(), view);
         });
         sb_beauty.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
@@ -428,20 +401,17 @@ public class PeakCreateBudget extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
             }
         });
-        et_beauty.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (et_beauty.getText().toString().isEmpty()) {
-                    et_beauty.setText("0");
-                    sb_beauty.setProgress(0);
-                } else if (Integer.parseInt(et_beauty.getText().toString()) > 5000) {
-                    et_beauty.setText("5000");
-                    sb_beauty.setProgress(5000);
-                } else {
-                    setProgressValue(et_beauty, sb_beauty);
-                }
-                CommonUtils.closeKeyboard(view.getContext(), view);
+        et_beauty.setOnFocusChangeListener((view, b) -> {
+            if (et_beauty.getText().toString().isEmpty()) {
+                et_beauty.setText("0");
+                sb_beauty.setProgress(0);
+            } else if (Integer.parseInt(et_beauty.getText().toString()) > 5000) {
+                et_beauty.setText("5000");
+                sb_beauty.setProgress(5000);
+            } else {
+                setProgressValue(et_beauty, sb_beauty);
             }
+            CommonUtils.closeKeyboard(view.getContext(), view);
         });
         sb_transportation.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
@@ -460,20 +430,17 @@ public class PeakCreateBudget extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
             }
         });
-        et_transportation.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (et_transportation.getText().toString().isEmpty()) {
-                    et_transportation.setText("0");
-                    sb_transportation.setProgress(0);
-                } else if (Integer.parseInt(et_transportation.getText().toString()) > 5000) {
-                    et_transportation.setText("5000");
-                    sb_transportation.setProgress(5000);
-                } else {
-                    setProgressValue(et_transportation, sb_transportation);
-                }
-                CommonUtils.closeKeyboard(view.getContext(), view);
+        et_transportation.setOnFocusChangeListener((view, b) -> {
+            if (et_transportation.getText().toString().isEmpty()) {
+                et_transportation.setText("0");
+                sb_transportation.setProgress(0);
+            } else if (Integer.parseInt(et_transportation.getText().toString()) > 5000) {
+                et_transportation.setText("5000");
+                sb_transportation.setProgress(5000);
+            } else {
+                setProgressValue(et_transportation, sb_transportation);
             }
+            CommonUtils.closeKeyboard(view.getContext(), view);
         });
         sb_health.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
@@ -492,20 +459,17 @@ public class PeakCreateBudget extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
             }
         });
-        et_health.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (et_health.getText().toString().isEmpty()) {
-                    et_health.setText("0");
-                    sb_health.setProgress(0);
-                } else if (Integer.parseInt(et_health.getText().toString()) > 5000) {
-                    et_health.setText("5000");
-                    sb_health.setProgress(5000);
-                } else {
-                    setProgressValue(et_health, sb_health);
-                }
-                CommonUtils.closeKeyboard(view.getContext(), view);
+        et_health.setOnFocusChangeListener((view, b) -> {
+            if (et_health.getText().toString().isEmpty()) {
+                et_health.setText("0");
+                sb_health.setProgress(0);
+            } else if (Integer.parseInt(et_health.getText().toString()) > 5000) {
+                et_health.setText("5000");
+                sb_health.setProgress(5000);
+            } else {
+                setProgressValue(et_health, sb_health);
             }
+            CommonUtils.closeKeyboard(view.getContext(), view);
         });
         sb_travel.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
@@ -525,20 +489,17 @@ public class PeakCreateBudget extends AppCompatActivity {
             }
         });
 
-        et_travel.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (et_travel.getText().toString().isEmpty()) {
-                    et_travel.setText("0");
-                    sb_travel.setProgress(0);
-                } else if (Integer.parseInt(et_travel.getText().toString()) > 5000) {
-                    et_travel.setText("5000");
-                    sb_travel.setProgress(5000);
-                } else {
-                    setProgressValue(et_travel, sb_travel);
-                }
-                CommonUtils.closeKeyboard(view.getContext(), view);
+        et_travel.setOnFocusChangeListener((view, b) -> {
+            if (et_travel.getText().toString().isEmpty()) {
+                et_travel.setText("0");
+                sb_travel.setProgress(0);
+            } else if (Integer.parseInt(et_travel.getText().toString()) > 5000) {
+                et_travel.setText("5000");
+                sb_travel.setProgress(5000);
+            } else {
+                setProgressValue(et_travel, sb_travel);
             }
+            CommonUtils.closeKeyboard(view.getContext(), view);
         });
         sb_pet.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
@@ -558,20 +519,17 @@ public class PeakCreateBudget extends AppCompatActivity {
             }
         });
 
-        et_pet.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (et_pet.getText().toString().isEmpty()) {
-                    et_pet.setText("0");
-                    sb_pet.setProgress(0);
-                } else if (Integer.parseInt(et_pet.getText().toString()) > 5000) {
-                    et_pet.setText("5000");
-                    sb_pet.setProgress(5000);
-                } else {
-                    setProgressValue(et_pet, sb_pet);
-                }
-                CommonUtils.closeKeyboard(view.getContext(), view);
+        et_pet.setOnFocusChangeListener((view, b) -> {
+            if (et_pet.getText().toString().isEmpty()) {
+                et_pet.setText("0");
+                sb_pet.setProgress(0);
+            } else if (Integer.parseInt(et_pet.getText().toString()) > 5000) {
+                et_pet.setText("5000");
+                sb_pet.setProgress(5000);
+            } else {
+                setProgressValue(et_pet, sb_pet);
             }
+            CommonUtils.closeKeyboard(view.getContext(), view);
         });
         sb_other.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
@@ -591,20 +549,17 @@ public class PeakCreateBudget extends AppCompatActivity {
             }
         });
 
-        et_other.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (et_other.getText().toString().isEmpty()) {
-                    et_other.setText("0");
-                    sb_other.setProgress(0);
-                } else if (Integer.parseInt(et_other.getText().toString()) > 5000) {
-                    et_other.setText("5000");
-                    sb_other.setProgress(5000);
-                } else {
-                    setProgressValue(et_other, sb_other);
-                }
-                CommonUtils.closeKeyboard(view.getContext(), view);
+        et_other.setOnFocusChangeListener((view, b) -> {
+            if (et_other.getText().toString().isEmpty()) {
+                et_other.setText("0");
+                sb_other.setProgress(0);
+            } else if (Integer.parseInt(et_other.getText().toString()) > 5000) {
+                et_other.setText("5000");
+                sb_other.setProgress(5000);
+            } else {
+                setProgressValue(et_other, sb_other);
             }
+            CommonUtils.closeKeyboard(view.getContext(), view);
         });
     }
 
