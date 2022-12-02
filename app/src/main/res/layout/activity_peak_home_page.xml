@@ -23,17 +23,18 @@
             android:text="Choose Date"
             android:textSize="16sp"
             android:textStyle="italic"
-            app:layout_constraintBottom_toTopOf="@+id/btn_pick_month"
-            app:layout_constraintStart_toStartOf="@id/btn_pick_month"
+            app:layout_constraintBottom_toTopOf="@+id/btn_pick_date"
+            app:layout_constraintStart_toStartOf="@id/btn_pick_date"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/btn_pick_month"
+            android:id="@+id/btn_pick_date"
             style="@style/button_light"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:backgroundTint="@color/FinalProj_Light"
+            android:onClick="datePickerDialog"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:text="Today"
@@ -53,7 +54,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/tv_home2"
             app:layout_constraintEnd_toStartOf="@id/tv_expenses"
-            app:layout_constraintStart_toEndOf="@id/btn_pick_month"
+            app:layout_constraintStart_toEndOf="@id/btn_pick_date"
             app:layout_constraintTop_toTopOf="@id/et_pick_year" />
 
         <TextView
@@ -63,7 +64,7 @@
             android:layout_height="wrap_content"
             android:text="Balance: "
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/btn_pick_month"
+            app:layout_constraintBottom_toBottomOf="@id/btn_pick_date"
             app:layout_constraintStart_toStartOf="@+id/tv_home1"
             app:layout_constraintTop_toBottomOf="@+id/tv_home1" />
 
@@ -101,7 +102,7 @@
             android:background="#667080"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_pick_month" />
+            app:layout_constraintTop_toBottomOf="@id/btn_pick_date" />
 
         <TextView
             android:id="@+id/welcome_back"
@@ -111,7 +112,7 @@
             android:layout_marginTop="20dp"
             android:text="Welcome back, "
             android:textColor="#667080"
-            app:layout_constraintStart_toStartOf="@id/btn_pick_month"
+            app:layout_constraintStart_toStartOf="@id/btn_pick_date"
             app:layout_constraintTop_toBottomOf="@id/home_page_divider" />
 
         <TextView

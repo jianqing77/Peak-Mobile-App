@@ -1,6 +1,7 @@
 package edu.northeastern.numad22fa_team15.utils.recyclerUtils.peakTransactionHistoryRecyclerUtil;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.models.databaseModels.TransactionModel;
 import edu.northeastern.numad22fa_team15.utils.Category;
 
@@ -29,9 +31,8 @@ public class TransactionHistoryAdapter extends RecyclerView.Adapter<TransactionH
         @Override
         public TransactionHistoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             // TODO: change the item layout id based on Jaime's
-//        View view = LayoutInflater.from(context).inflate(R.layout.item_daily_transaction, parent, false);
-            View view = null;
-        return new TransactionHistoryViewHolder(view);
+            View view = LayoutInflater.from(context).inflate(R.layout.activity_peak_transaction_cardview, parent, false);
+            return new TransactionHistoryViewHolder(view);
         }
 
         @Override

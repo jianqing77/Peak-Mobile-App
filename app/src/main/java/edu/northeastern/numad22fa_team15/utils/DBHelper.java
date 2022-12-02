@@ -520,7 +520,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
 
     private Cursor getTransactionCursor() {
         SQLiteDatabase db = this.getReadableDatabase();
-        String getTransactionQuery = String.format("SELECT * FROM %s", TRANSACTION_TABLE_NAME);
+        String getTransactionQuery = String.format("SELECT * FROM %s ORDER BY %s DESC", TRANSACTION_TABLE_NAME, TRANSACTION_ID_COL);
         Cursor cursor = db.rawQuery(getTransactionQuery, null);
         return cursor;
     }
