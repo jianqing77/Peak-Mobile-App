@@ -18,7 +18,7 @@ public class PeakHomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_peak_home_page);
 
-        recyclerView = findViewById(R.id.transaction_summary_recyclerview);
+        recyclerView = findViewById(R.id.home_page_recycler_view);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
