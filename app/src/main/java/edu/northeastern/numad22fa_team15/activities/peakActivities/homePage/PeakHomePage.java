@@ -2,15 +2,8 @@ package edu.northeastern.numad22fa_team15.activities.peakActivities.homePage;
 
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessageInSnackbar;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,17 +11,19 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.snackbar.Snackbar;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import edu.northeastern.numad22fa_team15.R;
-import edu.northeastern.numad22fa_team15.activities.firebaseActivities.FirebaseFriendListActivity;
-import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakCreateBudget;
+import edu.northeastern.numad22fa_team15.models.databaseModels.SummaryModel;
 import edu.northeastern.numad22fa_team15.models.databaseModels.TransactionModel;
 import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
@@ -43,6 +38,8 @@ public class PeakHomePage extends AppCompatActivity {
     private List<TransactionModel> matchResults;
 
     private TextView firstNameTextView;
+    private TextView expensesTextView;
+    private TextView balanceTextView;
     private Button datePickerButton;
 
     private IDBHelper dbHelper;
@@ -58,6 +55,8 @@ public class PeakHomePage extends AppCompatActivity {
         recyclerView.setAdapter(new TransactionHistoryAdapter(matchResults, this));
 
         firstNameTextView = (TextView) findViewById(R.id.tv_home_name);
+        expensesTextView = (TextView) findViewById(R.id.tv_expenses);
+        balanceTextView = (TextView) findViewById(R.id.tv_balance);
         datePickerButton = (Button) findViewById(R.id.btn_pick_date);
 
         dbHelper = new DBHelper(PeakHomePage.this);
@@ -76,8 +75,26 @@ public class PeakHomePage extends AppCompatActivity {
         UserModel user = dbHelper.retrieveUserInfoTableUser();
         firstNameTextView.setText(user.getFirstName());
         // Retrieve this month's expenses and balance
-
+        SummaryModel summary = dbHelper.retrieveLatestSummaryInfoTableSummary();
+        float expenses = summary.getCurrentExpense();
+        float balance = summary.getCurrentBalance();
+        String expensesText = String.format("$%.2f", expenses);
+        String balanceText = String.format("$%.2f", balance);
+        expensesTextView.setText(expensesText);
+        balanceTextView.setText(balanceText);
         // Retrieve today's transaction
+        LocalDateTime now = LocalDateTime.now();
+        int currentYear = now.getYear();
+        int currentMonth = now.getMonth().getValue();
+        int currentDay = now.getDayOfMonth();
+        matchResults.clear();
+        List<TransactionModel> transactions = dbHelper.retrieveTransactionsByDateTableTransaction(currentYear, currentMonth, currentDay);
+        for (TransactionModel transaction : transactions) {
+            matchResults.add(transaction);
+        }
+        recyclerView.getAdapter().notifyDataSetChanged();
+        String buttonText = String.format("%s/%s/%s", currentMonth, currentDay, currentYear);
+        datePickerButton.setText(buttonText);
     }
 
     /**
@@ -102,8 +119,9 @@ public class PeakHomePage extends AppCompatActivity {
                 // Check if the selected date is valid.
                 boolean validationResult = selectedDateChecker(year, month, day);
                 if (!validationResult) {
-                    // TODO
-                    // Display invalid date message
+                    String message = "Invalid date. Cannot pick a future date.";
+                    displayMessageInSnackbar(view, message, Snackbar.LENGTH_SHORT);
+                    return;
                 }
                 matchResults.clear();
                 List<TransactionModel> transactions = dbHelper.retrieveTransactionsByDateTableTransaction(year, month, day);
@@ -126,17 +144,37 @@ public class PeakHomePage extends AppCompatActivity {
         alert.show();
     }
 
+    /**
+     * Check whether the given date is valid (i.e., present or past).
+     * @param year year
+     * @param month month
+     * @param day day
+     * @return true if input date is today or in the past. Otherwise, return false
+     */
     private boolean selectedDateChecker(int year, int month, int day) {
         LocalDateTime now = LocalDateTime.now();
-//                String transactionDate = String.valueOf(now);
-
         int currentYear = now.getYear();
         int currentMonth = now.getMonth().getValue();
         int currentDay = now.getDayOfMonth();
         String message = "" + currentYear + " " + currentMonth + " " + currentDay;
-//        displayMessageInSnackbar(view, message, Snackbar.LENGTH_SHORT);
-        return true;
-
+        // Very interesting (stupid) nested if statements xh wrote
+        if (year > currentYear) {
+            return false;
+        } else if (year < currentYear) {
+            return true;
+        } else { // year == currentYear
+            if (month > currentMonth) {
+                return false;
+            } else if (month < currentMonth) {
+                return true;
+            } else { // month == currentMonth
+                if (day > currentDay) {
+                    return false;
+                }
+                // day <= currentDay
+                return true;
+            }
+        }
     }
 
     @Override
