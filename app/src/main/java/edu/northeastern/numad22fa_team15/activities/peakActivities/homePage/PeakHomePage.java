@@ -49,6 +49,8 @@ public class PeakHomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_peak_home_page);
 
+        // TODO: Ask user to set budget if it's there first time to
+
         matchResults = new ArrayList<>();
         recyclerView = findViewById(R.id.home_page_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
