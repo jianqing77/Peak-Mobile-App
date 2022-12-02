@@ -82,9 +82,20 @@
         android:layout_height="wrap_content"
         android:onClick="profileTestActivity"
         android:text="Profile Test"
-        app:layout_constraintBottom_toTopOf="@+id/about_team_button"
+        app:layout_constraintBottom_toTopOf="@+id/homepage_testing_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/transaction_testing_button" />
+
+    <Button
+        android:id="@+id/homepage_testing_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home Page Test"
+        android:onClick="homePageActivity"
+        app:layout_constraintTop_toBottomOf="@id/profile_testing_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/about_team_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

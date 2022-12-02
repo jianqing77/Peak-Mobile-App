@@ -13,6 +13,7 @@ import edu.northeastern.numad22fa_team15.activities.movieApiActivities.MovieSear
 import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakAddTransaction;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakCreateBudget;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakEntrance;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.homePage.PeakHomePage;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.lockScreen.PeakLockScreen;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.profilePage.ProfileActivity;
 
@@ -94,6 +95,14 @@ public class MainActivity extends AppCompatActivity {
      */
     public void profileTestActivity(View view) {
         Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Test for the homepage button
+     */
+    public void homePageActivity(View view) {
+        Intent intent = new Intent(getApplicationContext(), PeakHomePage.class);
         startActivity(intent);
     }
 
