@@ -61,12 +61,6 @@ public class PeakCreateBudget extends AppCompatActivity {
         dbhelper = new DBHelper(PeakCreateBudget.this);
         SummaryModel currentSummary = dbhelper.retrieveLatestSummaryInfoTableSummary();
 
-        /**
-         * TODO: get current budget amount for each category from the database and set
-         *      seekbar progress to that amount. If it is the user's first time on
-         *      this page (if the budget table is empty), set all progress to 0.
-         */
-
         totalBudget_tv = (TextView) findViewById(R.id.edit_budget_amount);
         totalBudget_tv.setText("$ " + currentSummary.getTotalBudget() + "0");
 
@@ -85,9 +79,7 @@ public class PeakCreateBudget extends AppCompatActivity {
         // Setting functions for buttons - Cancel Button
         cancel = (Button) findViewById(R.id.btn_cancel_new_budget);
 
-
         confirm = (Button) findViewById(R.id.btn_confirm_new_budget);
-
 
         // Dining SeekBar
         sb_dining = (SeekBar) findViewById(R.id.seekbar_dining);
@@ -164,8 +156,6 @@ public class PeakCreateBudget extends AppCompatActivity {
         setOnClickListenerHelper();
     }
 
-
-
     // Helper function to set progress of seekbar
     private void setProgressValue(EditText et, SeekBar seekBar) {
         seekBar.setProgress(Integer.parseInt(et.getText().toString()));
@@ -232,20 +222,17 @@ public class PeakCreateBudget extends AppCompatActivity {
         sb_dining.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             @Override
-            public void onProgressChanged(SeekBar sb_dining, int progress,
-                                          boolean b) {
+            public void onProgressChanged(SeekBar sb_dining, int progress, boolean b) {
                 et_dining.setText(String.valueOf(progress));
                 updateTotalBudget();
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar sb_dining) {
-
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar sb_dining) {
-
             }
         });
         et_dining.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -274,12 +261,10 @@ public class PeakCreateBudget extends AppCompatActivity {
 
             @Override
             public void onStartTrackingTouch(SeekBar sb_groceries) {
-                // TODO Auto-generated method stub
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar sb_groceries) {
-                // TODO Auto-generated method stub
             }
         });
         et_groceries.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -308,12 +293,10 @@ public class PeakCreateBudget extends AppCompatActivity {
 
             @Override
             public void onStartTrackingTouch(SeekBar sb_shopping) {
-                // TODO Auto-generated method stub
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar sb_shopping) {
-                // TODO Auto-generated method stub
             }
         });
         et_shopping.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -342,12 +325,10 @@ public class PeakCreateBudget extends AppCompatActivity {
 
             @Override
             public void onStartTrackingTouch(SeekBar sb_living) {
-                // TODO Auto-generated method stub
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar sb_living) {
-                // TODO Auto-generated method stub
             }
         });
         et_living.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -376,12 +357,10 @@ public class PeakCreateBudget extends AppCompatActivity {
 
             @Override
             public void onStartTrackingTouch(SeekBar sb_entertainment) {
-                // TODO Auto-generated method stub
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar sb_entertainment) {
-                // TODO Auto-generated method stub
             }
         });
         et_entertainment.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -411,12 +390,10 @@ public class PeakCreateBudget extends AppCompatActivity {
 
             @Override
             public void onStartTrackingTouch(SeekBar sb_education) {
-                // TODO Auto-generated method stub
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar sb_education) {
-                // TODO Auto-generated method stub
             }
         });
         et_education.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -445,12 +422,10 @@ public class PeakCreateBudget extends AppCompatActivity {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-                // TODO Auto-generated method stub
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                // TODO Auto-generated method stub
             }
         });
         et_beauty.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -479,12 +454,10 @@ public class PeakCreateBudget extends AppCompatActivity {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-                // TODO Auto-generated method stub
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                // TODO Auto-generated method stub
             }
         });
         et_transportation.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -513,12 +486,10 @@ public class PeakCreateBudget extends AppCompatActivity {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-                // TODO Auto-generated method stub
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                // TODO Auto-generated method stub
             }
         });
         et_health.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -547,12 +518,10 @@ public class PeakCreateBudget extends AppCompatActivity {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-                // TODO Auto-generated method stub
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                // TODO Auto-generated method stub
             }
         });
 
@@ -582,12 +551,10 @@ public class PeakCreateBudget extends AppCompatActivity {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-                // TODO Auto-generated method stub
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                // TODO Auto-generated method stub
             }
         });
 
@@ -617,12 +584,10 @@ public class PeakCreateBudget extends AppCompatActivity {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-                // TODO Auto-generated method stub
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                // TODO Auto-generated method stub
             }
         });
 
