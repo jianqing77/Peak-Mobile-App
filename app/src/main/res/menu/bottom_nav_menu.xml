@@ -4,11 +4,13 @@
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_nav_home"
+        android:onClick="openHomePage"
         android:title="Home"/>
 
     <item
         android:id="@+id/nav_graph"
         android:icon="@drawable/ic_nav_graph"
+        android:onClick="openGraph"
         android:title="Graph"/>
 
     <item
@@ -17,11 +19,13 @@
 
     <item
         android:id="@+id/nav_savings"
+        android:onClick="openPiggySaving"
         android:icon="@drawable/ic_nav_savings"
         android:title="Savings"/>
 
     <item
         android:id="@+id/nav_profile"
+        android:onClick="openProfile"
         android:icon="@drawable/ic_nav_profile"
         android:title="Profile"/>
 
