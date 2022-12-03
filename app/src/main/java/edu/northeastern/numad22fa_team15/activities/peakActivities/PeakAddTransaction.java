@@ -107,8 +107,6 @@ public class PeakAddTransaction extends AppCompatActivity {
             transactionMessage = "Successfully added transaction";
         }
         displayMessageInSnackbar(view, transactionMessage, Snackbar.LENGTH_SHORT);
-
-
     }
 
     private boolean invalidCategoryChecker(String categoryInput) {
