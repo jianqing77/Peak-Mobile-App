@@ -10,17 +10,23 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.snackbar.Snackbar;
 
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakCreateBudget;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.graph.GraphActivity;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.homePage.PeakHomePage;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.piggySavings.SavingsActivity;
 import edu.northeastern.numad22fa_team15.models.databaseModels.SummaryModel;
 
 import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
@@ -31,12 +37,14 @@ public class ProfileActivity extends AppCompatActivity {
 
     private static final String TAG = "ProfileActivity______";
 
+    private IDBHelper dbHelper;
+
     private ImageView profilePictureImageView;
     private TextView fullNameTextView;
     private TextView usernameTextView;
     private TextView profileBudgetTextView;
 
-    private IDBHelper dbHelper;
+    private NavigationBarView navigationBarView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +59,32 @@ public class ProfileActivity extends AppCompatActivity {
         fullNameTextView = (TextView) findViewById(R.id.tv_profile_full_name);
         usernameTextView = (TextView) findViewById(R.id.tv_profile_username);
         profileBudgetTextView = (TextView) findViewById(R.id.profile_budget);
+
+        // set up navigation bar
+        navigationBarView = findViewById(R.id.bottom_navigation_id);
+        navigationBarView.setSelectedItemId(R.id.nav_profile);
+        navigationBarView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.nav_home:
+                        startActivity(new Intent(getApplicationContext(), PeakHomePage.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.nav_graph:
+                        startActivity(new Intent(getApplicationContext(), GraphActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.nav_savings:
+                        startActivity(new Intent(getApplicationContext(), SavingsActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.nav_profile:
+                        return true;
+                }
+                return false;
+            }
+        });
 
         retrieveUserAndBudgetInfoFromDatabase();
 

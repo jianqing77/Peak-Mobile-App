@@ -13,11 +13,14 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.time.LocalDateTime;
@@ -48,6 +51,8 @@ public class PeakHomePage extends AppCompatActivity {
     private TextView balanceTextView;
     private Button datePickerButton;
 
+    private NavigationBarView navigationBarView;
+
     private IDBHelper dbHelper;
 
     @Override
@@ -68,6 +73,32 @@ public class PeakHomePage extends AppCompatActivity {
         datePickerButton = (Button) findViewById(R.id.btn_pick_date);
 
         dbHelper = new DBHelper(PeakHomePage.this);
+
+        // set up navigation bar
+        navigationBarView = findViewById(R.id.bottom_navigation_id);
+        navigationBarView.setSelectedItemId(R.id.nav_home);
+        navigationBarView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.nav_home:
+                        return true;
+                    case R.id.nav_graph:
+                        startActivity(new Intent(getApplicationContext(), GraphActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.nav_savings:
+                        startActivity(new Intent(getApplicationContext(), SavingsActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.nav_profile:
+                        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                }
+                return false;
+            }
+        });
 
         // set homepage information with data from database
         setInfoOnHomePage();
@@ -99,7 +130,7 @@ public class PeakHomePage extends AppCompatActivity {
     }
 
     // Bottom Navigation Bar -- add transaction
-    public void addTransaction(View view) {
+    public void addTransactionFAB(View view) {
         Log.v(TAG, "Trying to add a new transaction");
         Intent intent = new Intent(PeakHomePage.this, AddTransactionActivity.class);
         startActivity(intent);
