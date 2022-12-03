@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="edu.northeastern.numad22fa_team15">
+    package="edu.northeastern.numad22fa_team15" >
     <!-- Internet Permission -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -25,7 +25,7 @@
         android:roundIcon="@mipmap/ic_launcher_team15_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NUMAD22Fa_Team15"
-        tools:targetApi="31">
+        tools:targetApi="31" >
         <activity
             android:name=".activities.peakActivities.profilePage.TestBudgetActivity"
             android:exported="false" />
@@ -62,7 +62,7 @@
         <activity
             android:name=".activities.MainActivity"
             android:configChanges="orientation|screenSize"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -112,6 +112,14 @@
         <activity
             android:name=".activities.peakActivities.onBoarding.onBoardingAnimation"
             android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".activities.peakActivities.graph.GraphActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".activities.peakActivities.piggySavings.SavingsActivity"
+            android:configChanges="orientation|screenSize" />
+
+
         <meta-data
             android:name="API_KEY"
             android:value="${API_KEY}" />

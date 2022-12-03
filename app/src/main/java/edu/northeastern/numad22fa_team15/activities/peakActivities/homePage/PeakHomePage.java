@@ -3,9 +3,11 @@ package edu.northeastern.numad22fa_team15.activities.peakActivities.homePage;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessageInSnackbar;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -16,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.time.LocalDateTime;
@@ -23,6 +26,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.northeastern.numad22fa_team15.R;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.graph.GraphActivity;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.piggySavings.SavingsActivity;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.profilePage.ProfileActivity;
 import edu.northeastern.numad22fa_team15.models.databaseModels.SummaryModel;
 import edu.northeastern.numad22fa_team15.models.databaseModels.TransactionModel;
 import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
@@ -49,7 +55,7 @@ public class PeakHomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_peak_home_page);
 
-        // TODO: Ask user to set budget if it's there first time to
+        // TODO: Ask user to set budget if it's their first time to open the app
 
         matchResults = new ArrayList<>();
         recyclerView = findViewById(R.id.home_page_recycler_view);
@@ -63,7 +69,33 @@ public class PeakHomePage extends AppCompatActivity {
 
         dbHelper = new DBHelper(PeakHomePage.this);
 
+        // set homepage information with data from database
         setInfoOnHomePage();
+    }
+
+    // Bottom Navigation Bar linked functions -- open home page
+    public void openHomePage(MenuItem item) {
+        Intent intent = new Intent(PeakHomePage.this, PeakHomePage.class);
+        startActivity(intent);
+    }
+
+    // Bottom Navigation Bar linked functions -- open graph page
+    public void openGraph(MenuItem item) {
+        Intent intent = new Intent(PeakHomePage.this, GraphActivity.class);
+        startActivity(intent);
+    }
+
+    // Bottom Navigation Bar linked functions -- open piggy saving page
+    public void openPiggySaving(MenuItem item)  {
+        Intent intent = new Intent(PeakHomePage.this, SavingsActivity.class);
+        startActivity(intent);
+    }
+
+    // Bottom Navigation Bar linked functions -- open profile page
+    public void openProfile(MenuItem item) {
+        // TODO: solve bug when open the profile activity
+        Intent intent = new Intent(PeakHomePage.this, ProfileActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -214,4 +246,43 @@ public class PeakHomePage extends AppCompatActivity {
         Log.v(TAG, "onStop()");
         super.onStop();
     }
+
+
+//    // navigation bar
+//    bottomAppBar = (BottomAppBar) findViewById(R.id.bottom_app_bar);
+//        bottomAppBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+//        @Override
+//        public boolean onMenuItemClick(MenuItem item) {
+//            switch (item.getItemId()) {
+//                case R.id.nav_home:
+//                    Log.v(TAG, "clicked the home page menu button");
+//                    Toast.makeText(PeakHomePage.this, "Home", Toast.LENGTH_SHORT).show();
+////                        Intent intent_openHome = new Intent(PeakHomePage.this, PeakHomePage.class);
+////                        startActivity(intent_openHome);
+//                    break;
+//                case R.id.nav_graph:
+//                    Log.v(TAG, "clicked the graph page menu button");
+//                    Toast.makeText(PeakHomePage.this, "Graph", Toast.LENGTH_SHORT).show();
+//
+////                        Intent intent_openGraph = new Intent(PeakHomePage.this, GraphActivity.class);
+////                        startActivity(intent_openGraph);
+//                    break;
+//                case R.id.nav_savings:
+//                    Log.v(TAG, "clicked the savings page menu button");
+//                    Toast.makeText(PeakHomePage.this, "savings", Toast.LENGTH_SHORT).show();
+////                        Intent intent_openSavings = new Intent(PeakHomePage.this, SavingsActivity.class);
+////                        startActivity(intent_openSavings);
+//                    break;
+//                case R.id.nav_profile:
+//                    Log.v(TAG, "clicked the profile page menu button");
+//                    Toast.makeText(PeakHomePage.this, "profile", Toast.LENGTH_SHORT).show();
+//
+////                        Intent intent_openProfile = new Intent(PeakHomePage.this, ProfileActivity.class);
+////                        startActivity(intent_openProfile);
+//                    break;
+//                default:
+//            }
+//            return true;
+//        }
+//    });
 }
