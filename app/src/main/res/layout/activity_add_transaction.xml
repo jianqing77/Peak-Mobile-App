@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent"
+    tools:context=".activities.peakActivities.addTransaction.AddTransactionActivity">
 
     <GridLayout
         android:layout_gravity="center_horizontal"
@@ -22,8 +24,7 @@
             android:layout_marginRight="50dp"
             android:src="@drawable/ic_dining"
             android:background="@drawable/round_corner"
-            android:contentDescription="Dining Button"
-            />
+            android:contentDescription="Dining Button" />
 
         <ImageButton
             android:id="@+id/btn_groceries"
@@ -34,8 +35,7 @@
             android:layout_marginRight="50dp"
             android:src="@drawable/ic_groceries"
             android:background="@drawable/round_corner"
-            android:contentDescription="Groceries Button"
-            />
+            android:contentDescription="Groceries Button" />
 
         <ImageButton
             android:id="@+id/btn_shopping"
@@ -45,29 +45,25 @@
             android:layout_gravity="center_horizontal"
             android:src="@drawable/ic_shopping"
             android:background="@drawable/round_corner"
-            android:contentDescription="Shopping Button"
-            />
+            android:contentDescription="Shopping Button" />
 
         <TextView
-            android:text="Dining"
             android:layout_gravity="center"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="20dp"
-            />
+            android:text="Dining" />
 
         <TextView
             android:text="Groceries"
             android:layout_gravity="center"
             android:layout_marginRight="50dp"
-            android:layout_marginBottom="20dp"
-            />
+            android:layout_marginBottom="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:text="Shopping"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="20dp"
-            />
+            android:layout_marginBottom="20dp" />
 
         <ImageButton
             android:id="@+id/btn_living"
@@ -78,8 +74,7 @@
             android:layout_marginRight="50dp"
             android:src="@drawable/ic_living"
             android:background="@drawable/round_corner"
-            android:contentDescription="Living Button"
-            />
+            android:contentDescription="Living Button" />
 
         <ImageButton
             android:id="@+id/btn_entertainment"
@@ -90,8 +85,7 @@
             android:layout_marginRight="50dp"
             android:src="@drawable/ic_entertainment"
             android:background="@drawable/round_corner"
-            android:contentDescription="Entertainment Button"
-            />
+            android:contentDescription="Entertainment Button" />
 
         <ImageButton
             android:id="@+id/btn_education"
@@ -101,28 +95,24 @@
             android:layout_gravity="center_horizontal"
             android:src="@drawable/ic_education"
             android:background="@drawable/round_corner"
-            android:contentDescription="Education Button"
-            />
+            android:contentDescription="Education Button" />
 
         <TextView
             android:text="Living"
             android:layout_gravity="center"
             android:layout_marginRight="50dp"
-            android:layout_marginBottom="20dp"
-            />
+            android:layout_marginBottom="20dp" />
 
         <TextView
             android:text="Entertainment"
             android:layout_gravity="center"
             android:layout_marginRight="50dp"
-            android:layout_marginBottom="20dp"
-            />
+            android:layout_marginBottom="20dp" />
 
         <TextView
             android:text="Education"
             android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
-            />
+            android:layout_marginBottom="20dp" />
 
         <ImageButton
             android:id="@+id/btn_beauty"
@@ -133,8 +123,7 @@
             android:layout_marginRight="50dp"
             android:src="@drawable/ic_beauty"
             android:background="@drawable/round_corner"
-            android:contentDescription="Beauty Button"
-            />
+            android:contentDescription="Beauty Button" />
 
         <ImageButton
             android:id="@+id/btn_transportation"
@@ -145,8 +134,7 @@
             android:layout_marginRight="50dp"
             android:src="@drawable/ic_transportation"
             android:background="@drawable/round_corner"
-            android:contentDescription="Transportation Button"
-            />
+            android:contentDescription="Transportation Button" />
 
         <ImageButton
             android:id="@+id/btn_health"
@@ -156,28 +144,24 @@
             android:layout_gravity="center_horizontal"
             android:src="@drawable/ic_health"
             android:background="@drawable/round_corner"
-            android:contentDescription="Health Button"
-            />
+            android:contentDescription="Health Button" />
 
         <TextView
             android:text="Beauty"
             android:layout_gravity="center"
             android:layout_marginRight="50dp"
-            android:layout_marginBottom="20dp"
-            />
+            android:layout_marginBottom="20dp" />
 
         <TextView
             android:text="Transportation"
             android:layout_gravity="center"
             android:layout_marginRight="50dp"
-            android:layout_marginBottom="20dp"
-            />
+            android:layout_marginBottom="20dp" />
 
         <TextView
             android:text="Health"
             android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
-            />
+            android:layout_marginBottom="20dp" />
 
         <ImageButton
             android:id="@+id/btn_travel"
@@ -188,8 +172,7 @@
             android:layout_marginRight="50dp"
             android:src="@drawable/ic_travel"
             android:background="@drawable/round_corner"
-            android:contentDescription="Travel Button"
-            />
+            android:contentDescription="Travel Button" />
 
         <ImageButton
             android:id="@+id/btn_pet"
@@ -200,8 +183,7 @@
             android:layout_marginRight="50dp"
             android:src="@drawable/ic_pet"
             android:background="@drawable/round_corner"
-            android:contentDescription="Pet Button"
-            />
+            android:contentDescription="Pet Button" />
 
         <ImageButton
             android:id="@+id/btn_other"
@@ -211,28 +193,24 @@
             android:layout_gravity="center_horizontal"
             android:src="@drawable/ic_other"
             android:background="@drawable/round_corner"
-            android:contentDescription="Other Button"
-            />
+            android:contentDescription="Other Button" />
 
         <TextView
             android:text="Travel"
             android:layout_gravity="center"
             android:layout_marginRight="50dp"
-            android:layout_marginBottom="20dp"
-            />
+            android:layout_marginBottom="20dp" />
 
         <TextView
             android:text="Pet"
             android:layout_gravity="center"
             android:layout_marginRight="50dp"
-            android:layout_marginBottom="20dp"
-            />
+            android:layout_marginBottom="20dp" />
 
         <TextView
             android:text="Other"
             android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
-            />
+            android:layout_marginBottom="20dp" />
 
     </GridLayout>
 
