@@ -104,31 +104,6 @@ public class PeakHomePage extends AppCompatActivity {
         setInfoOnHomePage();
     }
 
-    // Bottom Navigation Bar -- open home page
-    public void openHomePage(MenuItem item) {
-        Intent intent = new Intent(PeakHomePage.this, PeakHomePage.class);
-        startActivity(intent);
-    }
-
-    // Bottom Navigation Bar -- open graph page
-    public void openGraph(MenuItem item) {
-        Intent intent = new Intent(PeakHomePage.this, GraphActivity.class);
-        startActivity(intent);
-    }
-
-    // Bottom Navigation Bar -- open piggy saving page
-    public void openPiggySaving(MenuItem item)  {
-        Intent intent = new Intent(PeakHomePage.this, SavingsActivity.class);
-        startActivity(intent);
-    }
-
-    // Bottom Navigation Bar -- open profile page
-    public void openProfile(MenuItem item) {
-        // TODO: solve bug when open the profile activity
-        Intent intent = new Intent(PeakHomePage.this, ProfileActivity.class);
-        startActivity(intent);
-    }
-
     // Bottom Navigation Bar -- add transaction
     public void addTransactionFAB(View view) {
         Log.v(TAG, "Trying to add a new transaction");

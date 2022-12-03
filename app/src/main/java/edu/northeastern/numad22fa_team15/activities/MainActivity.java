@@ -89,22 +89,22 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    /**
-     * Clicking the BUTTON button will start the EditProfile activity.
-     * @param view view
-     */
-    public void profileTestActivity(View view) {
-        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-        startActivity(intent);
-    }
+//    /**
+//     * Clicking the BUTTON button will start the EditProfile activity.
+//     * @param view view
+//     */
+//    public void profileTestActivity(View view) {
+//        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+//        startActivity(intent);
+//    }
 
-    /**
-     * Test for the homepage button
-     */
-    public void homePageActivity(View view) {
-        Intent intent = new Intent(getApplicationContext(), PeakHomePage.class);
-        startActivity(intent);
-    }
+//    /**
+//     * Test for the homepage button
+//     */
+//    public void homePageActivity(View view) {
+//        Intent intent = new Intent(getApplicationContext(), PeakHomePage.class);
+//        startActivity(intent);
+//    }
 
     @Override
     protected void onPause() {
