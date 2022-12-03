@@ -183,6 +183,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/FinalProj_Primary"
             android:src="@drawable/ic_nav_add"
+            android:onClick="addTransaction"
             app:layout_anchor="@id/bottom_app_bar" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

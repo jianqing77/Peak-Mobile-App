@@ -18,7 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.time.LocalDateTime;
@@ -26,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.northeastern.numad22fa_team15.R;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.addTransaction.AddTransactionActivity;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.graph.GraphActivity;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.piggySavings.SavingsActivity;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.profilePage.ProfileActivity;
@@ -73,37 +73,41 @@ public class PeakHomePage extends AppCompatActivity {
         setInfoOnHomePage();
     }
 
-    // Bottom Navigation Bar linked functions -- open home page
+    // Bottom Navigation Bar -- open home page
     public void openHomePage(MenuItem item) {
         Intent intent = new Intent(PeakHomePage.this, PeakHomePage.class);
         startActivity(intent);
     }
 
-    // Bottom Navigation Bar linked functions -- open graph page
+    // Bottom Navigation Bar -- open graph page
     public void openGraph(MenuItem item) {
         Intent intent = new Intent(PeakHomePage.this, GraphActivity.class);
         startActivity(intent);
     }
 
-    // Bottom Navigation Bar linked functions -- open piggy saving page
+    // Bottom Navigation Bar -- open piggy saving page
     public void openPiggySaving(MenuItem item)  {
         Intent intent = new Intent(PeakHomePage.this, SavingsActivity.class);
         startActivity(intent);
     }
 
-    // Bottom Navigation Bar linked functions -- open profile page
+    // Bottom Navigation Bar -- open profile page
     public void openProfile(MenuItem item) {
         // TODO: solve bug when open the profile activity
         Intent intent = new Intent(PeakHomePage.this, ProfileActivity.class);
         startActivity(intent);
     }
 
-    @Override
-    public void onBackPressed() {
-        // back to main activity when press the back button
-        finish();
+    // Bottom Navigation Bar -- add transaction
+    public void addTransaction(View view) {
+        Intent intent = new Intent(PeakHomePage.this, AddTransactionActivity.class);
+        startActivity(intent);
+
     }
 
+    /**
+     * Helper function to set home page Info
+     */
     private void setInfoOnHomePage() {
         // Retrieve user's first name
         UserModel user = dbHelper.retrieveUserInfoTableUser();
@@ -209,6 +213,12 @@ public class PeakHomePage extends AppCompatActivity {
                 return true;
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        // back to main activity when press the back button
+        finish();
     }
 
     @Override
