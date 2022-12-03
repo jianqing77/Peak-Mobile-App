@@ -100,9 +100,9 @@ public class PeakHomePage extends AppCompatActivity {
 
     // Bottom Navigation Bar -- add transaction
     public void addTransaction(View view) {
+        Log.v(TAG, "Trying to add a new transaction");
         Intent intent = new Intent(PeakHomePage.this, AddTransactionActivity.class);
         startActivity(intent);
-
     }
 
     /**
