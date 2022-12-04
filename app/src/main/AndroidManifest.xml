@@ -34,13 +34,13 @@
             android:exported="false" />
         <activity
             android:name=".activities.peakActivities.PeakCreateBudget"
-            android:windowSoftInputMode="stateHidden"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.peakActivities.profilePage.EditProfileActivity"
             android:configChanges="orientation|screenSize"
-            android:windowSoftInputMode="stateHidden"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.peakActivities.profilePage.ProfileActivity"
             android:configChanges="orientation|screenSize"
@@ -48,8 +48,8 @@
         <activity
             android:name=".activities.peakActivities.profilePage.ChangePasscodeActivity"
             android:configChanges="orientation|screenSize"
-            android:windowSoftInputMode="stateHidden"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".peakPasscodeRecovery.ResetPasscodeConfirmation"
             android:exported="false" />
@@ -58,7 +58,7 @@
             android:exported="false" />
         <activity
             android:name=".peakPasscodeRecovery.ForgotPasscode"
-            android:exported="false" /> 
+            android:exported="false" />
         <activity
             android:name=".activities.MainActivity"
             android:configChanges="orientation|screenSize"
@@ -96,8 +96,7 @@
             android:name=".activities.peakActivities.onBoarding.onBoarding"
             android:configChanges="orientation|screenSize" />
         <activity android:name=".activities.peakActivities.userRegister.PeakSignUp" />
-        <activity
-            android:name=".activities.peakActivities.userRegister.PeakSignUpConfirmation" />
+        <activity android:name=".activities.peakActivities.userRegister.PeakSignUpConfirmation" />
         <activity
             android:name=".activities.peakActivities.userRegister.PeakLogin"
             android:configChanges="orientation|screenSize" /> <!-- Lock Screen -->
@@ -110,9 +109,25 @@
         <activity
             android:name=".activities.peakActivities.profilePage.TermsAndConditionActivity"
             android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".activities.peakActivities.onBoarding.onBoardingAnimation"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".activities.peakActivities.graph.GraphActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".activities.peakActivities.piggySavings.SavingsActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".activities.peakActivities.addTransaction.AddTransactionActivity"
+            android:configChanges="orientation|screenSize" />
+
         <meta-data
             android:name="API_KEY"
             android:value="${API_KEY}" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
