@@ -108,30 +108,36 @@ public class PeakAddTransaction extends AppCompatActivity {
         float otherExpense = currentSummary.getOtherExpense();
 
         // TODO: hardcoded for now, need a better helper function
-        if (category == "DINING") {
+        if (category.equals("DINING")) {
             diningExpense += expense;
-        } else if (category == "GROCERIES") {
+        } else if (category.equals("GROCERIES")) {
             groceriesExpense += expense;
-        } else if (category == "SHOPPING") {
+        } else if (category.equals("SHOPPING")) {
             shoppingExpense += expense;
-        } else if (category == "LIVING") {
+        } else if (category.equals("LIVING")) {
             livingExpense += expense;
-        } else if (category == "ENTERTAINMENT") {
+        } else if (category.equals("ENTERTAINMENT")) {
             entertainmentExpense += expense;
-        } else if (category == "EDUCATION") {
+        } else if (category.equals("EDUCATION")) {
             educationExpense += expense;
-        } else if (category == "BEAUTY") {
+        } else if (category.equals("BEAUTY")) {
             beautyExpense += expense;
-        } else if (category == "TRANSPORTATION") {
+        } else if (category.equals("TRANSPORTATION")) {
             transportationExpense += expense;
-        } else if (category == "HEALTH") {
+        } else if (category.equals("HEALTH")) {
             healthExpense += expense;
-        } else if (category == "TRAVEL") {
+        } else if (category.equals("TRAVEL")) {
             travelExpense += expense;
-        } else if (category == "PET") {
+        } else if (category.equals("PET")) {
             petExpense += expense;
-        } else if (category == "OTHER") {
+        } else if (category.equals("OTHER")) {
             otherExpense += expense;
+        } else {
+            String message = "invalid category";
+            Context context = getApplicationContext();
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, message, duration);
+            toast.show();
         }
         currentExpense += expense;
 
