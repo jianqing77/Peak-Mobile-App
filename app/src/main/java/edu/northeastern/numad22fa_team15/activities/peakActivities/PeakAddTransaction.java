@@ -79,6 +79,7 @@ public class PeakAddTransaction extends AppCompatActivity {
             transactionDate = String.valueOf(now);
         }
 
+        // TODO: check if there's correlated summary table and create?
         boolean addTransaction = dbHelper.addTranTableTransaction(expense, description, category, transactionDate);
         String transactionMessage = "Fail to add Transaction";
         if (addTransaction) {
