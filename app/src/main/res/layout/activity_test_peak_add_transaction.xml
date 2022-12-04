@@ -94,6 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="show summary"
+        android:onClick="summaryActivity"
         app:layout_constraintEnd_toStartOf="@+id/button_addTransaction"
         app:layout_constraintHorizontal_bias="0.075"
         app:layout_constraintStart_toStartOf="parent"

@@ -12,4 +12,16 @@
     <color name="FinalProj_Dark">#1E2933</color>
     <color name="FinalProj_Primary">#F6CA56</color>
     <color name="FinalProj_Secondary">#F1A817</color>
+    <color name="dining">#c0392b</color>
+    <color name="groceries">#d35400</color>
+    <color name="shopping">#f1c40f</color>
+    <color name="living">#f39c12</color>
+    <color name="entertainment">#1abc9c</color>
+    <color name="education">#2ecc71</color>
+    <color name="beauty">#3498db</color>
+    <color name="transportation">#2980b9</color>
+    <color name="health">#9b59b6</color>
+    <color name="travel">#34495e</color>
+    <color name="pet">#7f8c8d</color>
+    <color name="other">#bdc3c7</color>
 </resources>

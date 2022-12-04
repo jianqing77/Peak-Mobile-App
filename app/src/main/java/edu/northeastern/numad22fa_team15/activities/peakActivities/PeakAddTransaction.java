@@ -5,6 +5,7 @@ import static edu.northeastern.numad22fa_team15.utils.CommonUtils.*;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,7 +20,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import edu.northeastern.numad22fa_team15.PeakSummaryPieChart;
 import edu.northeastern.numad22fa_team15.R;
+import edu.northeastern.numad22fa_team15.activities.MainActivity;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.userRegister.PeakSignUpConfirmation;
 import edu.northeastern.numad22fa_team15.models.databaseModels.SummaryModel;
 import edu.northeastern.numad22fa_team15.utils.Category;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
@@ -202,5 +206,10 @@ public class PeakAddTransaction extends AppCompatActivity {
         }
         displayMessageInSnackbar(view, resultMessage, Snackbar.LENGTH_SHORT);
 
+    }
+
+    public void summaryActivity(View view) {
+        Intent intent = new Intent(PeakAddTransaction.this, PeakSummaryPieChart.class);
+        startActivity(intent);
     }
 }
