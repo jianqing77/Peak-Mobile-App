@@ -90,32 +90,28 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/viewButtonTest"
+        android:id="@+id/button_show_summary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="viewTransactions"
-        android:text="View"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/monthEditTextTest" />
-
-    <EditText
-        android:id="@+id/yearEditTextTest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="year"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/monthEditTextTest"
+        android:text="show summary"
+        app:layout_constraintEnd_toStartOf="@+id/button_addTransaction"
+        app:layout_constraintHorizontal_bias="0.075"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/transactionID_textinput_layout" />
+        app:layout_constraintTop_toTopOf="@+id/button_addTransaction" />
 
-    <EditText
-        android:id="@+id/monthEditTextTest"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/transactionDate_extinput_layout"
+        android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:hint="month"
-        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/yearEditTextTest"
-        app:layout_constraintTop_toBottomOf="@+id/transactionID_textinput_layout" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/transactionID_textinput_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/transactionDate_textinput_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="date" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -350,8 +350,6 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         float currentBalance = totalBudget - currentExpense;
 
         ContentValues values = new ContentValues();
-        values.put(SUMMARY_YEAR_COL, year);
-        values.put(SUMMARY_MONTH_COL, month);
         values.put(SUMMARY_TOTAL_BUDGET_COL, totalBudget);
         values.put(SUMMARY_CURRENT_BALANCE_COL, currentBalance);
         values.put(SUMMARY_DINING_BUDGET_COL, diningBudget);
@@ -367,7 +365,41 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         values.put(SUMMARY_PET_BUDGET_COL, petBudget);
         values.put(SUMMARY_OTHER_BUDGET_COL, otherBudget);
 
-        // Number of users should always be 1.
+        // update to the summary data that matches given year and month
+        String whereClause = String.format("%s = ? and %s = ?", SUMMARY_YEAR_COL, SUMMARY_MONTH_COL);
+        int numOfRowsImpacted = db.update(SUMMARY_TABLE_NAME, values, whereClause, new String[]{year.toString(), month.toString()});
+
+        return (numOfRowsImpacted != 0);
+    }
+
+    @Override
+    public boolean updateExpenseTableSummary(Integer year, Integer month, float totalExpense,
+                                             float diningExpense, float groceriesExpense, float shoppingExpense,
+                                             float livingExpense, float entertainmentExpense, float educationExpense,
+                                             float beautyExpense, float transportationExpense, float healthExpense,
+                                             float travelExpense, float petExpense, float otherExpense) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        SummaryModel currentSummary = this.retrieveLatestSummaryInfoTableSummary();
+        float totalBudget = currentSummary.getTotalBudget();
+        float currentBalance = totalBudget - totalExpense;
+
+        ContentValues values = new ContentValues();
+        values.put(SUMMARY_CURRENT_EXPENSE_COL, totalExpense);
+        values.put(SUMMARY_CURRENT_BALANCE_COL, currentBalance);
+        values.put(SUMMARY_DINING_EXPENSE_COL, diningExpense);
+        values.put(SUMMARY_GROCERIES_EXPENSE_COL, groceriesExpense);
+        values.put(SUMMARY_SHOPPING_EXPENSE_COL, shoppingExpense);
+        values.put(SUMMARY_LIVING_EXPENSE_COL, livingExpense);
+        values.put(SUMMARY_ENTERTAINMENT_EXPENSE_COL, entertainmentExpense);
+        values.put(SUMMARY_EDUCATION_EXPENSE_COL, educationExpense);
+        values.put(SUMMARY_BEAUTY_EXPENSE_COL, beautyExpense);
+        values.put(SUMMARY_TRANSPORTATION_EXPENSE_COL, transportationExpense);
+        values.put(SUMMARY_HEALTH_EXPENSE_COL, healthExpense);
+        values.put(SUMMARY_TRAVEL_EXPENSE_COL, travelExpense);
+        values.put(SUMMARY_PET_EXPENSE_COL, petExpense);
+        values.put(SUMMARY_OTHER_EXPENSE_COL, otherExpense);
+
+        // update the the summary data that matches the given year and month
         String whereClause = String.format("%s = ? and %s = ?", SUMMARY_YEAR_COL, SUMMARY_MONTH_COL);
         int numOfRowsImpacted = db.update(SUMMARY_TABLE_NAME, values, whereClause, new String[]{year.toString(), month.toString()});
 
@@ -384,7 +416,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
             int month = cursor.getInt(2);
             float totalBudget = cursor.getFloat(3);
             float currentExpense = cursor.getFloat(4);
-            float currentBalance = cursor.getFloat(5);
+            // float currentBalance = cursor.getFloat(5);
             float diningBudget = cursor.getFloat(6);
             float diningExpense = cursor.getFloat(7);
             float groceriesBudget = cursor.getFloat(8);
@@ -437,8 +469,63 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
 
 
     @Override
-    public boolean addTranTableTransaction(float expense, String description, String category, String transactionDate, int summaryID) {
+    public boolean addTranTableTransaction(float expense, String description, String category, String transactionDate) {
         SQLiteDatabase db = this.getWritableDatabase();
+        int transactionYear = Integer.parseInt(transactionDate.substring(0, 4));
+        int transactionMonth = Integer.parseInt(transactionDate.substring(5, 7));
+        Cursor cursor = getSummaryIdCursor(transactionYear, transactionMonth);
+
+        SummaryModel summary = null;
+        if (cursor.moveToFirst()) {
+            int id = cursor.getInt(0);
+            int year = cursor.getInt(1);
+            int month = cursor.getInt(2);
+            float totalBudget = cursor.getFloat(3);
+            float currentExpense = cursor.getFloat(4);
+            // float currentBalance = cursor.getFloat(5);
+            float diningBudget = cursor.getFloat(6);
+            float diningExpense = cursor.getFloat(7);
+            float groceriesBudget = cursor.getFloat(8);
+            float groceriesExpense = cursor.getFloat(9);
+            float shoppingBudget = cursor.getFloat(10);
+            float shoppingExpense = cursor.getFloat(11);
+            float livingBudget = cursor.getFloat(12);
+            float livingExpense = cursor.getFloat(13);
+            float entertainmentBudget = cursor.getFloat(14);
+            float entertainmentExpense = cursor.getFloat(15);
+            float educationBudget = cursor.getFloat(16);
+            float educationExpense = cursor.getFloat(17);
+            float beautyBudget = cursor.getFloat(18);
+            float beautyExpense = cursor.getFloat(19);
+            float transportationBudget = cursor.getFloat(20);
+            float transportationExpense = cursor.getFloat(21);
+            float healthBudget = cursor.getFloat(22);
+            float healthExpense = cursor.getFloat(23);
+            float travelBudget = cursor.getFloat(24);
+            float travelExpense = cursor.getFloat(25);
+            float petBudget = cursor.getFloat(26);
+            float petExpense = cursor.getFloat(27);
+            float otherBudget = cursor.getFloat(28);
+            float otherExpense = cursor.getFloat(29);
+
+            summary = new SummaryModel(year, month, totalBudget, currentExpense,
+                    diningBudget, diningExpense,
+                    groceriesBudget, groceriesExpense,
+                    shoppingBudget, shoppingExpense,
+                    livingBudget, livingExpense,
+                    entertainmentBudget, entertainmentExpense,
+                    educationBudget, educationExpense,
+                    beautyBudget, beautyExpense,
+                    transportationBudget, transportationExpense,
+                    healthBudget, healthExpense,
+                    travelBudget, travelExpense,
+                    petBudget, petExpense,
+                    otherBudget, otherExpense);
+            summary.setSummaryID(id);
+        }
+        cursor.close();
+        int summaryID = summary.getSummaryID();
+
 
         ContentValues values = new ContentValues();
         values.put(EXPENSE_COL, expense);
@@ -449,6 +536,14 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
 
         long result = db.insert(TRANSACTION_TABLE_NAME, null, values);
         return (result != -1);
+    }
+
+    private Cursor getSummaryIdCursor(int year, int month) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String getIDQuery = String.format("SELECT * FROM %s WHERE %s = %d AND %s = %d",
+                SUMMARY_TABLE_NAME, SUMMARY_YEAR_COL, year, SUMMARY_MONTH_COL, month);
+        Cursor cursor = db.rawQuery(getIDQuery, null);
+        return cursor;
     }
 
     @Override

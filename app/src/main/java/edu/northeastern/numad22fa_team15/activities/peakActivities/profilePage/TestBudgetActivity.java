@@ -6,8 +6,10 @@ import static edu.northeastern.numad22fa_team15.utils.CommonUtils.nullOrEmptyInp
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
@@ -18,6 +20,7 @@ import java.util.Locale;
 
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakAddTransaction;
+import edu.northeastern.numad22fa_team15.models.databaseModels.SummaryModel;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
 import edu.northeastern.numad22fa_team15.utils.IDBHelper;
 
@@ -47,9 +50,6 @@ public class TestBudgetActivity extends AppCompatActivity {
             return;
         }
 
-        float totalBudget = Float.parseFloat(budgetString);
-        float category_budget = totalBudget / 12;
-
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         String currentDate = String.valueOf(now);
@@ -57,16 +57,31 @@ public class TestBudgetActivity extends AppCompatActivity {
         Integer currentYear = Integer.parseInt(currentDate.substring(0,4));
         Integer currentMonth = Integer.parseInt(currentDate.substring(5,7));
 
-        boolean addSummary = dbHelper.addSummaryTableSummary(currentYear, currentMonth, totalBudget,
-                category_budget, category_budget, category_budget, category_budget, category_budget,
-                category_budget, category_budget, category_budget, category_budget, category_budget,
-                category_budget, category_budget);
+        SummaryModel lastSummary = dbHelper.retrieveLatestSummaryInfoTableSummary();
+        if (!(lastSummary.getYear() == currentYear && lastSummary.getMonth() == currentMonth)) {
+            float totalBudget = Float.parseFloat(budgetString);
+            float category_budget = totalBudget / 12;
 
-        String budgetMessage = "Fail to add Summary";
-        if (addSummary) {
-            budgetMessage = "Successfully added summary";
+            boolean addSummary = dbHelper.addSummaryTableSummary(currentYear, currentMonth, totalBudget,
+                    category_budget, category_budget, category_budget, category_budget, category_budget,
+                    category_budget, category_budget, category_budget, category_budget, category_budget,
+                    category_budget, category_budget);
+
+            // TODO: snackbar for debug, need to be removed
+            String budgetMessage = "Fail to add Summary";
+            if (addSummary) {
+                budgetMessage = "Successfully added summary";
+            }
+            Context context = getApplicationContext();
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, budgetMessage, duration);
+            toast.show();
+            // displayMessageInSnackbar((View) view_01.getParent(), budgetMessage, Snackbar.LENGTH_SHORT);
+
+        } else {
+            return;
         }
-        displayMessageInSnackbar(view, budgetMessage, Snackbar.LENGTH_SHORT);
     }
 
     public void updateBudget(View view) {

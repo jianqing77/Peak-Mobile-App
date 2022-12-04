@@ -1,26 +1,28 @@
 package edu.northeastern.numad22fa_team15.activities.peakActivities;
 
-import static edu.northeastern.numad22fa_team15.utils.CommonUtils.*;
+import static edu.northeastern.numad22fa_team15.utils.CommonUtils.closeKeyboard;
+import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessageInSnackbar;
+import static edu.northeastern.numad22fa_team15.utils.CommonUtils.nullOrEmptyInputChecker;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import edu.northeastern.numad22fa_team15.R;
+import edu.northeastern.numad22fa_team15.models.databaseModels.SummaryModel;
 import edu.northeastern.numad22fa_team15.models.databaseModels.TransactionModel;
 import edu.northeastern.numad22fa_team15.utils.Category;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
@@ -33,6 +35,7 @@ public class PeakAddTransaction extends AppCompatActivity {
     private TextInputEditText descriptionTextInputEditText;
     private TextInputEditText categoryTextInputEditText;
     private TextInputEditText transactionIdInputEdittext;
+    private TextInputEditText transactionDateInputEdittext;
 
     private IDBHelper dbHelper;
 
@@ -48,6 +51,7 @@ public class PeakAddTransaction extends AppCompatActivity {
         descriptionTextInputEditText = findViewById(R.id.description_textinput_edittext);
         categoryTextInputEditText = findViewById(R.id.category_textinput_edittext);
         transactionIdInputEdittext = findViewById(R.id.transactionID_textinput_edittext);
+        transactionDateInputEdittext = findViewById(R.id.transactionDate_textinput_edittext);
     }
 
     public void viewTransactions(View view) {
@@ -81,6 +85,7 @@ public class PeakAddTransaction extends AppCompatActivity {
         String expenseString = expenseTextInputEditText.getText().toString();
         String description = descriptionTextInputEditText.getText().toString();
         String category = categoryTextInputEditText.getText().toString();
+        String transactionDate = transactionDateInputEdittext.getText().toString();
 
         if (nullOrEmptyInputChecker(expenseString, description, category)) {
             String message = "All fields are required.";
@@ -96,17 +101,93 @@ public class PeakAddTransaction extends AppCompatActivity {
             return;
         }
 
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
-        String transactionDate = String.valueOf(now);
+        if (nullOrEmptyInputChecker(transactionDate)) {
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            LocalDateTime now = LocalDateTime.now();
+            transactionDate = String.valueOf(now);
+        }
 
-        // hardcode summary id for testing
-        boolean addTransaction = dbHelper.addTranTableTransaction(expense, description, category, transactionDate, 1);
+        // TODO: check if there's correlated summary table and create?
+        boolean addTransaction = dbHelper.addTranTableTransaction(expense, description, category, transactionDate);
         String transactionMessage = "Fail to add Transaction";
         if (addTransaction) {
             transactionMessage = "Successfully added transaction";
         }
         displayMessageInSnackbar(view, transactionMessage, Snackbar.LENGTH_SHORT);
+
+        updateSummaryTable(expense, category, transactionDate);
+
+
+    }
+
+    private void updateSummaryTable(float expense, String category, String transactionDate) {
+        SummaryModel currentSummary = dbHelper.retrieveLatestSummaryInfoTableSummary();
+        float currentExpense = currentSummary.getCurrentExpense();
+        float diningExpense = currentSummary.getDiningExpense();
+        float groceriesExpense = currentSummary.getGroceriesExpense();
+        float shoppingExpense = currentSummary.getShoppingExpense();
+        float livingExpense = currentSummary.getLivingExpense();
+        float entertainmentExpense = currentSummary.getEntertainmentExpense();
+        float educationExpense = currentSummary.getEducationExpense();
+        float beautyExpense = currentSummary.getBeautyExpense();
+        float transportationExpense = currentSummary.getTransportationExpense();
+        float healthExpense = currentSummary.getHealthExpense();
+        float travelExpense = currentSummary.getTravelExpense();
+        float petExpense = currentSummary.getPetExpense();
+        float otherExpense = currentSummary.getOtherExpense();
+
+        // TODO: hardcoded for now, need a better helper function
+        if (category.equals("DINING")) {
+            diningExpense += expense;
+        } else if (category.equals("GROCERIES")) {
+            groceriesExpense += expense;
+        } else if (category.equals("SHOPPING")) {
+            shoppingExpense += expense;
+        } else if (category.equals("LIVING")) {
+            livingExpense += expense;
+        } else if (category.equals("ENTERTAINMENT")) {
+            entertainmentExpense += expense;
+        } else if (category.equals("EDUCATION")) {
+            educationExpense += expense;
+        } else if (category.equals("BEAUTY")) {
+            beautyExpense += expense;
+        } else if (category.equals("TRANSPORTATION")) {
+            transportationExpense += expense;
+        } else if (category.equals("HEALTH")) {
+            healthExpense += expense;
+        } else if (category.equals("TRAVEL")) {
+            travelExpense += expense;
+        } else if (category.equals("PET")) {
+            petExpense += expense;
+        } else if (category.equals("OTHER")) {
+            otherExpense += expense;
+        } else {
+            String message = "invalid category";
+            Context context = getApplicationContext();
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, message, duration);
+            toast.show();
+        }
+        currentExpense += expense;
+
+        int year = Integer.parseInt(transactionDate.substring(0, 4));
+        int month = Integer.parseInt(transactionDate.substring(5, 7));
+
+        boolean updateSummary = dbHelper.updateExpenseTableSummary(year, month, currentExpense,
+                diningExpense, groceriesExpense, shoppingExpense, livingExpense, entertainmentExpense,
+                educationExpense, beautyExpense, transportationExpense, healthExpense, travelExpense,
+                petExpense, otherExpense);
+        String transactionMessage = "Fail to update summary";
+        if (updateSummary) {
+            transactionMessage = "Successfully added transaction";
+        }
+        // displayMessageInSnackbar(, transactionMessage, Snackbar.LENGTH_SHORT);
+
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, transactionMessage, duration);
+        toast.show();
     }
 
     private boolean invalidCategoryChecker(String categoryInput) {

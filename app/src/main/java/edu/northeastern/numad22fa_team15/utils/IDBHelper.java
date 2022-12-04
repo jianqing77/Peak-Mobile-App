@@ -29,10 +29,15 @@ public interface IDBHelper {
                                       float livingBudget, float entertainmentBudget, float educationBudget,
                                       float beautyBudget, float transportationBudget, float healthBudget,
                                       float travelBudget, float petBudget, float otherBudget);
+    boolean updateExpenseTableSummary(Integer year, Integer month, float totalExpense,
+                                      float diningExpense, float groceriesExpense, float shoppingExpense,
+                                      float livingExpense, float entertainmentExpense, float educationExpense,
+                                      float beautyExpense, float transportationExpense, float healthExpense,
+                                      float travelExpense, float petExpense, float otherExpense);
     SummaryModel retrieveLatestSummaryInfoTableSummary();
 
     // Methods that interact with the transactionEntry table
-    boolean addTranTableTransaction(float expense, String description, String category, String transactionDate, int summaryID);
+    boolean addTranTableTransaction(float expense, String description, String category, String transactionDate);
     boolean updateTranTableTransaction(float expense, String description, String category, int transactionID);
     List<TransactionModel> retrieveTransactionsByYearMonthTableTransaction(int yearInput, int monthInput);
     List<TransactionModel> retrieveTransactionsByDateTableTransaction(int yearInput, int monthInput, int dayInput);
