@@ -366,7 +366,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
     }
 
     @Override
-    public boolean updateExpenseTableExpense(Integer year, Integer month, float totalExpense,
+    public boolean updateExpenseTableSummary(Integer year, Integer month, float totalExpense,
                                              float diningExpense, float groceriesExpense, float shoppingExpense,
                                              float livingExpense, float entertainmentExpense, float educationExpense,
                                              float beautyExpense, float transportationExpense, float healthExpense,

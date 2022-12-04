@@ -26,7 +26,7 @@ public interface IDBHelper {
                                       float livingBudget, float entertainmentBudget, float educationBudget,
                                       float beautyBudget, float transportationBudget, float healthBudget,
                                       float travelBudget, float petBudget, float otherBudget);
-    boolean updateExpenseTableExpense(Integer year, Integer month, float totalExpense,
+    boolean updateExpenseTableSummary(Integer year, Integer month, float totalExpense,
                                       float diningExpense, float groceriesExpense, float shoppingExpense,
                                       float livingExpense, float entertainmentExpense, float educationExpense,
                                       float beautyExpense, float transportationExpense, float healthExpense,
