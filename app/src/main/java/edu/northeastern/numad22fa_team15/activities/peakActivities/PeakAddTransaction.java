@@ -72,7 +72,7 @@ public class PeakAddTransaction extends AppCompatActivity {
         String transactionDate = String.valueOf(now);
 
         // hardcode summary id for testing
-        boolean addTransaction = dbHelper.addTranTableTransaction(expense, description, category, transactionDate, 1);
+        boolean addTransaction = dbHelper.addTranTableTransaction(expense, description, category, transactionDate);
         String transactionMessage = "Fail to add Transaction";
         if (addTransaction) {
             transactionMessage = "Successfully added transaction";
