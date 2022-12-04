@@ -37,6 +37,7 @@
         <entry key="app/src/main/res/drawable/ic_nav_profile.xml" value="0.226" />
         <entry key="app/src/main/res/layout-land/activity_firebase_login.xml" value="0.263668430335097" />
         <entry key="app/src/main/res/layout/activity_about_team.xml" value="0.25679347826086957" />
+        <entry key="app/src/main/res/layout/activity_add_transaction.xml" value="0.24547101449275363" />
         <entry key="app/src/main/res/layout/activity_add_transaction_with_tip_popup.xml" value="0.2427536231884058" />
         <entry key="app/src/main/res/layout/activity_add_transaction_without_tip_popup.xml" value="0.2427536231884058" />
         <entry key="app/src/main/res/layout/activity_create_budget.xml" value="0.2140625" />

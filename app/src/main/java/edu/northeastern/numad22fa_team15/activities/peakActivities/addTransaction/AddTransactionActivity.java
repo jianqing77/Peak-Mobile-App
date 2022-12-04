@@ -6,15 +6,19 @@ import static edu.northeastern.numad22fa_team15.utils.CommonUtils.nullOrEmptyInp
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -22,31 +26,31 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import edu.northeastern.numad22fa_team15.R;
+import edu.northeastern.numad22fa_team15.utils.Category;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
 import edu.northeastern.numad22fa_team15.utils.IDBHelper;
 
 public class AddTransactionActivity extends AppCompatActivity {
 
-    private static final String TAG = "AddTransactionPage___";
+    private static final String TAG = "AddTransactionPage______";
 
-    ImageButton dinningImgBtn;
-    ImageButton groceryBtn;
-    ImageButton shoppingBtn;
-    ImageButton livingBtn;
-    ImageButton entertainmentBtn;
-    ImageButton educationBtn;
-    ImageButton beautyBtn;
-    ImageButton transportationBtn;
-    ImageButton healthBtn;
-    ImageButton travelBtn;
-    ImageButton petBtn;
-    ImageButton otherBtn;
+    private ImageButton dinningImgBtn;
+    private ImageButton groceryBtn;
+    private ImageButton shoppingBtn;
+    private ImageButton livingBtn;
+    private ImageButton entertainmentBtn;
+    private ImageButton educationBtn;
+    private ImageButton beautyBtn;
+    private ImageButton transportationBtn;
+    private ImageButton healthBtn;
+    private ImageButton travelBtn;
+    private ImageButton petBtn;
+    private ImageButton otherBtn;
 
     private IDBHelper dbHelper;
     private EditText expenseEditText;
     private EditText descriptionEditText;
     private TextView categoryText;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,107 +72,122 @@ public class AddTransactionActivity extends AppCompatActivity {
 
         dbHelper = new DBHelper(AddTransactionActivity.this);
 
+        // TODO: JM can follow addTransactionCategoryDining and addTransactionCategoryGroceries method examples
+    }
 
-        dinningImgBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.v(TAG, "Clicked dining");
-                // set the dialog style
-                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog (
-                        AddTransactionActivity.this,
-                        R.style.BottomSheetDialogTheme);
+    public void addTransactionCategoryDining(View view) {
+        Log.d(TAG, "Category Dining was clicked.");
 
-                // get the bottom sheet dialog view
-                View bottomSheetView = LayoutInflater.from(getApplicationContext())
-                        .inflate(R.layout.layout_bottom_sheet_add_transaction, (LinearLayout)findViewById(R.id.bottomTransactionContainer));
+        addTransactionWithTipHelper(Category.DINING);
+    }
 
-                // TODO: modify the bottom sheet height
-                bottomSheetDialog.getBehavior().setPeekHeight(1500);
-                bottomSheetDialog.setContentView(bottomSheetView);
-                bottomSheetDialog.show();
+    public void addTransactionCategoryGroceries(View view) {
+        Log.d(TAG, "Category Groceries was clicked.");
 
-                // TODO: link the buttons to functions
-                bottomSheetView.findViewById(R.id.btn_done_add_transaction).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        // closeKeyboard(this.getApplicationContext(), view);
+        // TODO: Should be replaced by addTransactionWithoutTipHelper (not yet implemented)
+        addTransactionWithTipHelper(Category.GROCERIES);
+    }
 
-                        expenseEditText = (EditText) bottomSheetView.findViewById(R.id.et_transaction_amount_tip);
-                        descriptionEditText = (EditText) bottomSheetView.findViewById(R.id.et_description_tip);
-                        categoryText = (TextView) bottomSheetView.findViewById(R.id.tv_category_with_tip);
+    private void addTransactionWithTipHelper(Category category) {
+        // Create and display the BottomSheetDialog
+        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+        View bottomSheetView = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.layout_bottom_sheet_add_transaction, null);
+        bottomSheetDialog.setContentView(bottomSheetView);
 
-                        String expenseString = expenseEditText.getText().toString();
-                        String description = descriptionEditText.getText().toString();
-                        String category = categoryText.getText().toString();
+        BottomSheetBehavior mBehavior = BottomSheetBehavior.from((View) bottomSheetView.getParent());
 
-                        if (nullOrEmptyInputChecker(expenseString, description)) {
-                            String message = "All fields are required.";
-                            displayMessageInSnackbar(view, message, Snackbar.LENGTH_SHORT);
-                            return;
-                        }
-
-                        float expense = Float.parseFloat(expenseString);
-
-                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-                        LocalDateTime now = LocalDateTime.now();
-                        String transactionDate = String.valueOf(now);
-
-                        // hardcode summary id for testing
-                        boolean addTransaction = dbHelper.addTranTableTransaction(expense, description, category, transactionDate, 1);
-                        String transactionMessage = "Fail to add Transaction";
-                        if (addTransaction) {
-                            transactionMessage = "Successfully added transaction";
-                        }
-                        displayMessageInSnackbar(view, transactionMessage, Snackbar.LENGTH_SHORT);
-                    }
-                });
-            }
+        // REF: https://stackoverflow.com/questions/41591733/bottom-sheet-landscape-issue
+        bottomSheetDialog.setOnShowListener(dialogInterface -> {
+            mBehavior.setPeekHeight(800);
         });
 
-        groceryBtn.setOnClickListener(new View.OnClickListener() {
+        categoryText = (TextView) bottomSheetView.findViewById(R.id.tv_category_with_tip);
+        String categoryString = category.toString();
+        categoryText.setText(categoryString);
+        bottomSheetDialog.show();
+
+        Button confirmTransactionDoneButton = (Button) bottomSheetView.findViewById(R.id.btn_done_add_transaction);
+        confirmTransactionDoneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.v(TAG, "Clicked dining, without tio");
+                confirmAddTransaction(bottomSheetView, bottomSheetDialog, categoryString);
             }
         });
     }
 
-    // element on the dialog
-    public void addTransaction(View view) {
-        closeKeyboard(this.getApplicationContext(), view);
+    private void confirmAddTransaction(View bottomSheetView, BottomSheetDialog bottomSheetDialog, String category) {
+        Log.d(TAG, "Add transaction DONE button was clicked");
 
-        expenseEditText = (EditText) findViewById(R.id.et_transaction_amount_tip);
-        descriptionEditText = (EditText) findViewById(R.id.et_description_tip);
-        categoryText = (TextView) findViewById(R.id.tv_category_with_tip);
+        expenseEditText = (EditText) bottomSheetView.findViewById(R.id.et_transaction_amount_tip);
+        descriptionEditText = (EditText) bottomSheetView.findViewById(R.id.et_description_tip);
 
         String expenseString = expenseEditText.getText().toString();
         String description = descriptionEditText.getText().toString();
-        String category = categoryText.getText().toString();
+
+        Log.d(TAG, String.format("Category: %s. Expense: %s. Description: %s",
+                category, expenseString, description));
 
         if (nullOrEmptyInputChecker(expenseString, description)) {
+            // 向恶势力屈服
             String message = "All fields are required.";
-            displayMessageInSnackbar(view, message, Snackbar.LENGTH_SHORT);
+            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
             return;
         }
 
         float expense = Float.parseFloat(expenseString);
-
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         String transactionDate = String.valueOf(now);
 
-        // hardcode summary id for testing
-        boolean addTransaction = dbHelper.addTranTableTransaction(expense, description, category, transactionDate, 1);
-//        String transactionMessage = "Fail to add Transaction";
-//        if (addTransaction) {
-//            transactionMessage = "Successfully added transaction";
-//        }
-//        displayMessageInSnackbar(view, transactionMessage, Snackbar.LENGTH_SHORT);
+        // Try to add transaction to the transactionEntry Table
+        boolean addTransaction = dbHelper.addTranTableTransaction(expense, description, category, transactionDate);
+        String transactionMessage = "Failed to add Transaction.";
+        if (addTransaction) {
+            transactionMessage = "Transaction added successfully.";
+        }
+        Toast.makeText(getApplicationContext(), transactionMessage, Toast.LENGTH_SHORT).show();
+        bottomSheetDialog.dismiss();
     }
 
+    @Override
+    protected void onPause() {
+        Log.v(TAG, "onPause()");
+        super.onPause();
+    }
 
+    @Override
+    protected void onDestroy() {
+        Log.v(TAG, "onDestroy()");
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onResume() {
+        Log.v(TAG, "onResume()");
+        super.onResume();
+    }
+
+    @Override
+    protected void onRestart() {
+        Log.v(TAG, "onRestart()");
+        super.onRestart();
+    }
+
+    @Override
+    protected void onStart() {
+        Log.v(TAG, "onStart()");
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        Log.v(TAG, "onStop()");
+        super.onStop();
+    }
 
 }
+
+
 
 
 

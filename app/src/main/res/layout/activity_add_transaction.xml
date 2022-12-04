@@ -19,33 +19,38 @@
             android:id="@+id/btn_dining"
             android:layout_width="83dp"
             android:layout_height="51dp"
-            android:radius="10dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginRight="50dp"
-            android:src="@drawable/ic_dining"
             android:background="@drawable/round_corner"
-            android:contentDescription="Dining Button" />
+            android:contentDescription="Dining Button"
+            android:onClick="addTransactionCategoryDining"
+            android:radius="10dp"
+            android:src="@drawable/ic_dining"
+            tools:ignore="RedundantDescriptionCheck,ImageContrastCheck" />
 
         <ImageButton
             android:id="@+id/btn_groceries"
             android:layout_width="83dp"
             android:layout_height="51dp"
-            android:radius="10dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginRight="50dp"
-            android:src="@drawable/ic_groceries"
             android:background="@drawable/round_corner"
-            android:contentDescription="Groceries Button" />
+            android:contentDescription="Groceries Button"
+            android:onClick="addTransactionCategoryGroceries"
+            android:radius="10dp"
+            android:src="@drawable/ic_groceries"
+            tools:ignore="RedundantDescriptionCheck,ImageContrastCheck" />
 
         <ImageButton
             android:id="@+id/btn_shopping"
             android:layout_width="83dp"
             android:layout_height="51dp"
-            android:radius="10dp"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/ic_shopping"
             android:background="@drawable/round_corner"
-            android:contentDescription="Shopping Button" />
+            android:contentDescription="Shopping Button"
+            android:radius="10dp"
+            android:src="@drawable/ic_shopping"
+            tools:ignore="RedundantDescriptionCheck,ImageContrastCheck" />
 
         <TextView
             android:layout_gravity="center"
@@ -69,33 +74,36 @@
             android:id="@+id/btn_living"
             android:layout_width="83dp"
             android:layout_height="51dp"
-            android:radius="10dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginRight="50dp"
-            android:src="@drawable/ic_living"
             android:background="@drawable/round_corner"
-            android:contentDescription="Living Button" />
+            android:contentDescription="Living Button"
+            android:radius="10dp"
+            android:src="@drawable/ic_living"
+            tools:ignore="ImageContrastCheck,RedundantDescriptionCheck" />
 
         <ImageButton
             android:id="@+id/btn_entertainment"
             android:layout_width="83dp"
             android:layout_height="51dp"
-            android:radius="10dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginRight="50dp"
-            android:src="@drawable/ic_entertainment"
             android:background="@drawable/round_corner"
-            android:contentDescription="Entertainment Button" />
+            android:contentDescription="Entertainment Button"
+            android:radius="10dp"
+            android:src="@drawable/ic_entertainment"
+            tools:ignore="ImageContrastCheck,RedundantDescriptionCheck" />
 
         <ImageButton
             android:id="@+id/btn_education"
             android:layout_width="83dp"
             android:layout_height="51dp"
-            android:radius="10dp"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/ic_education"
             android:background="@drawable/round_corner"
-            android:contentDescription="Education Button" />
+            android:contentDescription="Education Button"
+            android:radius="10dp"
+            android:src="@drawable/ic_education"
+            tools:ignore="ImageContrastCheck,RedundantDescriptionCheck" />
 
         <TextView
             android:text="Living"
@@ -118,33 +126,36 @@
             android:id="@+id/btn_beauty"
             android:layout_width="83dp"
             android:layout_height="51dp"
-            android:radius="10dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginRight="50dp"
-            android:src="@drawable/ic_beauty"
             android:background="@drawable/round_corner"
-            android:contentDescription="Beauty Button" />
+            android:contentDescription="Beauty Button"
+            android:radius="10dp"
+            android:src="@drawable/ic_beauty"
+            tools:ignore="RedundantDescriptionCheck,ImageContrastCheck" />
 
         <ImageButton
             android:id="@+id/btn_transportation"
             android:layout_width="83dp"
             android:layout_height="51dp"
-            android:radius="10dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginRight="50dp"
-            android:src="@drawable/ic_transportation"
             android:background="@drawable/round_corner"
-            android:contentDescription="Transportation Button" />
+            android:contentDescription="Transportation Button"
+            android:radius="10dp"
+            android:src="@drawable/ic_transportation"
+            tools:ignore="RedundantDescriptionCheck,ImageContrastCheck" />
 
         <ImageButton
             android:id="@+id/btn_health"
             android:layout_width="83dp"
             android:layout_height="51dp"
-            android:radius="10dp"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/ic_health"
             android:background="@drawable/round_corner"
-            android:contentDescription="Health Button" />
+            android:contentDescription="Health Button"
+            android:radius="10dp"
+            android:src="@drawable/ic_health"
+            tools:ignore="ImageContrastCheck,RedundantDescriptionCheck" />
 
         <TextView
             android:text="Beauty"
@@ -167,33 +178,36 @@
             android:id="@+id/btn_travel"
             android:layout_width="83dp"
             android:layout_height="51dp"
-            android:radius="10dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginRight="50dp"
-            android:src="@drawable/ic_travel"
             android:background="@drawable/round_corner"
-            android:contentDescription="Travel Button" />
+            android:contentDescription="Travel Button"
+            android:radius="10dp"
+            android:src="@drawable/ic_travel"
+            tools:ignore="RedundantDescriptionCheck,ImageContrastCheck" />
 
         <ImageButton
             android:id="@+id/btn_pet"
             android:layout_width="83dp"
             android:layout_height="51dp"
-            android:radius="10dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginRight="50dp"
-            android:src="@drawable/ic_pet"
             android:background="@drawable/round_corner"
-            android:contentDescription="Pet Button" />
+            android:contentDescription="Pet Button"
+            android:radius="10dp"
+            android:src="@drawable/ic_pet"
+            tools:ignore="ImageContrastCheck,RedundantDescriptionCheck" />
 
         <ImageButton
             android:id="@+id/btn_other"
             android:layout_width="83dp"
             android:layout_height="51dp"
-            android:radius="10dp"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/ic_other"
             android:background="@drawable/round_corner"
-            android:contentDescription="Other Button" />
+            android:contentDescription="Other Button"
+            android:radius="10dp"
+            android:src="@drawable/ic_other"
+            tools:ignore="ImageContrastCheck,RedundantDescriptionCheck" />
 
         <TextView
             android:text="Travel"
