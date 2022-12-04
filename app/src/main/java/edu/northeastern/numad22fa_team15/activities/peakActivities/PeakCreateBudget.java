@@ -25,6 +25,7 @@ import edu.northeastern.numad22fa_team15.activities.peakActivities.profilePage.P
 import edu.northeastern.numad22fa_team15.models.databaseModels.SummaryModel;
 import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
+import edu.northeastern.numad22fa_team15.utils.IDBHelper;
 
 public class PeakCreateBudget extends AppCompatActivity {
 
@@ -44,7 +45,7 @@ public class PeakCreateBudget extends AppCompatActivity {
 
     private Button confirm, cancel;
 
-    private DBHelper dbhelper;
+    private IDBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,13 +59,13 @@ public class PeakCreateBudget extends AppCompatActivity {
                     potentialMessage, Snackbar.LENGTH_SHORT);
         }
 
-        dbhelper = new DBHelper(PeakCreateBudget.this);
-        SummaryModel currentSummary = dbhelper.retrieveLatestSummaryInfoTableSummary();
+        dbHelper = new DBHelper(PeakCreateBudget.this);
+        SummaryModel currentSummary = dbHelper.retrieveLatestSummaryInfoTableSummary();
 
         totalBudget_tv = (TextView) findViewById(R.id.edit_budget_amount);
         totalBudget_tv.setText("$ " + currentSummary.getTotalBudget() + "0");
 
-        UserModel user = dbhelper.retrieveUserInfoTableUser();
+        UserModel user = dbHelper.retrieveUserInfoTableUser();
 
         fullName_tv = (TextView) findViewById(R.id.tv_edit_budget_full_name);
         username_tv = (TextView) findViewById(R.id.tv_edit_budget_username);
@@ -74,7 +75,7 @@ public class PeakCreateBudget extends AppCompatActivity {
         username_tv.setText(username);
 
         profile_pic_iv = (ImageView) findViewById(R.id.edit_budget_profile_picture);
-        setProfilePictureToGivenImageView(dbhelper, profile_pic_iv);
+        setProfilePictureToGivenImageView(dbHelper, profile_pic_iv);
 
         // Setting functions for buttons - Cancel Button
         cancel = (Button) findViewById(R.id.btn_cancel_new_budget);
@@ -163,13 +164,16 @@ public class PeakCreateBudget extends AppCompatActivity {
 
     // Function to ensure the user creates a budget when the budget table is empty
     private void cancelEditBudget(View view) {
-
-        // TODO: if statement to check if the summary table is empty. If it is, then:
-        // String message = "You must set a budget for at least one category.";
-        // displayMessageInSnackbar(view, message, Snackbar.LENGTH_SHORT);
-
-        // TODO: else, bring the user back to the home screen.
-
+        SummaryModel summary = dbHelper.retrieveLatestSummaryInfoTableSummary();
+        // Check if the summary table is empty. If it is, then:
+        if (summary == null) {
+            String message = "You need to set a budget for at least one category.";
+             displayMessageInSnackbar(view, message, Snackbar.LENGTH_SHORT);
+        } else {
+            // Bring the user back to the home screen.
+            Intent intent = new Intent(PeakCreateBudget.this, ProfileActivity.class);
+            startActivity(intent);
+        }
     }
 
     private void setOnFocusChangeListenerHelper(EditText categoryEditText, SeekBar categorySeekBar, View view) {
@@ -212,17 +216,20 @@ public class PeakCreateBudget extends AppCompatActivity {
             Integer currentYear = Integer.parseInt(currentDate.substring(0,4));
             Integer currentMonth = Integer.parseInt(currentDate.substring(5,7));
 
-            dbhelper = new DBHelper(PeakCreateBudget.this);
-
-            boolean updateSummary = dbhelper.updateSummaryTableSummary(currentYear, currentMonth, totalBudget,
+            boolean updateSummary = dbHelper.updateSummaryTableSummary(currentYear, currentMonth, totalBudget,
                     diningBudget, groceriesBudget, shoppingBudget, livingBudget, entertainmentBudget, educationBudget,
                     beautyBudget, transportationBudget, healthBudget, travelBudget, petBudget, otherBudget);
 
-            String budgetMessage = "Fail to update Summary";
+
             if (updateSummary) {
-                budgetMessage = "Successfully updated summary";
+                // Bring the user to the profile page if summary was updated successfully.
+                Intent intent = new Intent(PeakCreateBudget.this, ProfileActivity.class);
+                intent.putExtra("message", "Successfully updated summary");
+                startActivity(intent);
+            } else {
+                String budgetMessage = "Fail to update Summary";
+                displayMessageInSnackbar(view, budgetMessage, Snackbar.LENGTH_SHORT);
             }
-            displayMessageInSnackbar(view, budgetMessage, Snackbar.LENGTH_SHORT);
         });
         sb_dining.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
