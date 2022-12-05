@@ -88,7 +88,6 @@ public class PeakSignUp extends AppCompatActivity {
          displayMessageInSnackbar(view, resultMessage, Snackbar.LENGTH_SHORT);
 
         // create a default budget
-//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         String currentDate = String.valueOf(now);
 

@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -18,6 +19,7 @@ import com.google.android.material.snackbar.Snackbar;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.homePage.PeakHomePage;
@@ -29,12 +31,13 @@ import edu.northeastern.numad22fa_team15.utils.IDBHelper;
 
 public class PeakLockScreen extends AppCompatActivity implements View.OnClickListener {
 
-    View view_01, view_02, view_03, view_04;
-    Button btn_01, btn_02, btn_03, btn_04, btn_05, btn_06, btn_07, btn_08, btn_09, btn_00, btn_clear;
+    private static final String TAG = "PeakLockScreen___";
+    private View view_01, view_02, view_03, view_04;
+    private Button btn_01, btn_02, btn_03, btn_04, btn_05, btn_06, btn_07, btn_08, btn_09, btn_00, btn_clear;
 
-    ArrayList<String> numbers_list = new ArrayList<>();
-    String passcodeInput = "";
-    String num_01, num_02, num_03, num_04;
+    private List<String> numbers_list = new ArrayList<>();
+    private String passcodeInput = "";
+    private String num_01, num_02, num_03, num_04;
 
     private IDBHelper dbHelper;
 
@@ -45,15 +48,18 @@ public class PeakLockScreen extends AppCompatActivity implements View.OnClickLis
 
         dbHelper = new DBHelper(PeakLockScreen.this);
 
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        initializeComponents();
+
         LocalDateTime now = LocalDateTime.now();
         String currentDate = String.valueOf(now);
-
         Integer currentYear = Integer.parseInt(currentDate.substring(0,4));
         Integer currentMonth = Integer.parseInt(currentDate.substring(5,7));
 
         SummaryModel lastSummary = dbHelper.retrieveLatestSummaryInfoTableSummary();
-        if (!(lastSummary.getYear() == currentYear && lastSummary.getMonth() == currentMonth)) {
+        Log.d(TAG, "Last Summary Year: " + lastSummary.getYear() + ". Current Year: " + currentYear);
+        Log.d(TAG, "Last Summary Month: " + lastSummary.getMonth() + ". Current Month: " + currentMonth);
+        if (lastSummary.getYear() != currentYear && lastSummary.getMonth() != currentMonth) {
+            Log.d(TAG, "No summary found for this current month. Adding summary to database...");
             float budget = lastSummary.getTotalBudget();
             float diningBudget = lastSummary.getDiningBudget();
             float groceriesBudget = lastSummary.getGroceriesBudget();
@@ -73,26 +79,15 @@ public class PeakLockScreen extends AppCompatActivity implements View.OnClickLis
                     educationBudget, beautyBudget, transportationBudget, healthBudget, travelBudget,
                     petBudget, otherBudget);
 
-            // TODO: snackbar for debug, need to be removed
             String budgetMessage = "Fail to add Summary";
             if (addSummary) {
                 budgetMessage = "Successfully added summary";
             }
-            Context context = getApplicationContext();
-            int duration = Toast.LENGTH_SHORT;
-
-            Toast toast = Toast.makeText(context, budgetMessage, duration);
-            toast.show();
-            // displayMessageInSnackbar((View) view_01.getParent(), budgetMessage, Snackbar.LENGTH_SHORT);
-
-        } else {
-            return;
+            Log.d(TAG, budgetMessage);
         }
-        initializeComponents();
     }
 
     private void initializeComponents() {
-
         view_01 = findViewById(R.id.view_01);
         view_02 = findViewById(R.id.view_02);
         view_03 = findViewById(R.id.view_03);
@@ -175,7 +170,7 @@ public class PeakLockScreen extends AppCompatActivity implements View.OnClickLis
 
     }
 
-    private void passNumber(ArrayList<String> numbers_list) {
+    private void passNumber(List<String> numbers_list) {
 
         if (numbers_list.size() == 0) {
             view_01.setBackgroundResource(R.drawable.bg_view_grey_oval);

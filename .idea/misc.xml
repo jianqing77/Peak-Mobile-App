@@ -53,6 +53,7 @@
         <entry key="app/src/main/res/layout/activity_peak_add_transaction.xml" value="0.2427536231884058" />
         <entry key="app/src/main/res/layout/activity_peak_home_page.xml" value="0.26766304347826086" />
         <entry key="app/src/main/res/layout/activity_peak_lock_screen.xml" value="0.21920289855072464" />
+        <entry key="app/src/main/res/layout/activity_peak_login.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/layout/activity_peak_sign_up.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_peak_transaction_cardview.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/activity_profile_page.xml" value="0.18333333333333332" />
