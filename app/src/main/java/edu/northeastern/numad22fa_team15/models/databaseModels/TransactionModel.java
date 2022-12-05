@@ -16,14 +16,15 @@ public class TransactionModel {
     private Category category;
     private String description;
     private String transactionDate;
-    private Blob receiptPhoto;
+    private byte[] receiptPhoto;
     private int summaryID;
 
-    public TransactionModel(float expense, Category category, String description, String transactionDate) {
+    public TransactionModel(float expense, Category category, String description, String transactionDate, byte[] receiptPhoto) {
         this.expense = expense;
         this.category = category;
         this.description = description;
         this.transactionDate = transactionDate;
+        this.receiptPhoto = receiptPhoto;
     }
 
     public int getTransactionID() {
@@ -66,11 +67,11 @@ public class TransactionModel {
         this.transactionDate = transactionDate;
     }
 
-    public Blob getReceiptPhoto() {
+    public byte[] getReceiptPhoto() {
         return this.receiptPhoto;
     }
 
-    public void setReceiptPhoto(Blob receiptPhoto) {
+    public void setReceiptPhoto(byte[] receiptPhoto) {
         this.receiptPhoto = receiptPhoto;
     }
 

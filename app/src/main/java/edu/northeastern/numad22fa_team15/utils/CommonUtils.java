@@ -81,11 +81,20 @@ public class CommonUtils {
             return;
         }
         byte[] profilePictureByteArray = user.getProfilePicture();
-        if (profilePictureByteArray == null || profilePictureByteArray.length == 0) {
-            // Default profile picture.
+        setPictureToGivenImageView(profilePictureByteArray, imageView);
+    }
+
+    /**
+     * Set the given picture byte array as a Bitmap object in the given ImageView.
+     * @param pictureByteArray picture presented as byte array
+     * @param imageView image view
+     */
+    public static void setPictureToGivenImageView(@NonNull byte[] pictureByteArray, @NonNull ImageView imageView) {
+        if (pictureByteArray == null || pictureByteArray.length == 0) {
+            // Do nothing
             return;
         }
-        Bitmap bitmap = BitmapFactory.decodeByteArray(profilePictureByteArray,0, profilePictureByteArray.length);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(pictureByteArray,0, pictureByteArray.length);
         imageView.setImageBitmap(bitmap);
     }
 

@@ -579,7 +579,8 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
                     float expense = cursor.getFloat(1);
                     Category category = Category.valueOf(cursor.getString(2).toUpperCase());
                     String description = cursor.getString(3);
-                    TransactionModel transactionModel = new TransactionModel(expense, category, description, transactionDate);
+                    byte[] receiptPhoto = cursor.getBlob(5);
+                    TransactionModel transactionModel = new TransactionModel(expense, category, description, transactionDate, receiptPhoto);
                     transactionList.add(transactionModel);
                 }
             } while (cursor.moveToNext());
@@ -605,7 +606,8 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
                     float expense = cursor.getFloat(1);
                     Category category = Category.valueOf(cursor.getString(2).toUpperCase());
                     String description = cursor.getString(3);
-                    TransactionModel transactionModel = new TransactionModel(expense, category, description, transactionDate);
+                    byte[] receiptPhoto = cursor.getBlob(5);
+                    TransactionModel transactionModel = new TransactionModel(expense, category, description, transactionDate, receiptPhoto);
                     transactionList.add(transactionModel);
                 }
             } while (cursor.moveToNext());

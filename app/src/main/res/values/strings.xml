@@ -107,6 +107,12 @@
     <string name="_1234">1234</string>
     <string name="terms_and_condition_text">\t\t\tPEAK is licensed to You (End-User) by Team 15, located and registered at 360 Huntington Ave, Boston, Massachusetts 02115, United States (“Licensor”), for use only under the terms of this License Agreement.\n\n\t\t\tBy downloading the Licensed Application from Google’s software distribution platform (“Play Store”), and any update thereto (as permitted by this License Agreement), You indicate that You agree to be bound by all of the terms and conditions of this License Agreement, and that You accept this LicenseAgreement. Play Store is referred to in this License Agreement as “Services.”\n\n\t\t\tThe parties of this License Agreement acknowledge that the Services are not a Party to this License Agreement and are not bound by any provisions or obligations with regard to the Licensed Application, such as warranty, liability, maintenance and support thereof. Team 15, not the Services, is solely responsible for the Licensed Application and the content thereof.\n\n\t\t\tThis License Agreement may not provide for usage rules for the Licensed Application that are in conflict with the latest Google Play Terms of Service (“Usage Rules” ). Team 15 acknowledges that it had the opportunity to review the Usage Rules and this License Agreement is not conflicting with them.\n\n\t\t\tPEAK when purchased or downloaded through the Services, is licensed to You for use only under the terms of this License Agreement. The Licensor reserves all rights not expressly granted to You. PEAK is to be used on devices that operate with Google’s operating system (“Android”)</string>
     <string name="dollar_sign">$</string>
+    <string name="receipt_photo">receipt photo</string>
+    <string name="expense">Expense:</string>
+    <string name="category">Category:</string>
+    <string name="date">Date:</string>
+    <string name="description">Description:</string>
+    <string name="ok">Ok</string>
     <string-array name="tip_choices">
         <item>0% tip</item>
         <item>15% tip</item>
