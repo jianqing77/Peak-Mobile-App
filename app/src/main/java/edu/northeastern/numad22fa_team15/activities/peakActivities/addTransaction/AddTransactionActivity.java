@@ -41,7 +41,7 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
 
     private static final String TAG = "AddTransactionPage______";
 
-    private ImageButton dinningImgBtn;
+    private ImageButton diningImgBtn;
     private ImageButton groceryBtn;
     private ImageButton shoppingBtn;
     private ImageButton livingBtn;
@@ -66,7 +66,7 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_transaction);
 
-        dinningImgBtn = (ImageButton) findViewById(R.id.btn_dining);
+        diningImgBtn = (ImageButton) findViewById(R.id.btn_dining);
         groceryBtn =  (ImageButton) findViewById(R.id.btn_groceries);
         shoppingBtn =  (ImageButton) findViewById(R.id.btn_shopping);
         livingBtn =  (ImageButton) findViewById(R.id.btn_living);
@@ -80,23 +80,72 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
         otherBtn =  (ImageButton) findViewById(R.id.btn_other);
 
         dbHelper = new DBHelper(AddTransactionActivity.this);
-
-        // TODO: JM can follow addTransactionCategoryDining and addTransactionCategoryGroceries method examples
     }
 
     public void addTransactionCategoryDining(View view) {
         Log.d(TAG, "Category Dining was clicked.");
-
         addTransactionWithTipHelper(Category.DINING);
     }
 
     public void addTransactionCategoryGroceries(View view) {
         Log.d(TAG, "Category Groceries was clicked.");
-
-        // TODO: Should be replaced by addTransactionWithoutTipHelper (not yet implemented)
-        addTransactionWithTipHelper(Category.GROCERIES);
+        addTransactionWithoutTipHelper(Category.GROCERIES);
     }
 
+    public void addTransactionCategoryShopping(View view) {
+        Log.d(TAG, "Category Shopping was clicked.");
+        addTransactionWithTipHelper(Category.SHOPPING);
+    }
+
+    public void addTransactionCategoryLiving(View view) {
+        Log.d(TAG, "Category Living was clicked.");
+        addTransactionWithoutTipHelper(Category.LIVING);
+    }
+
+    public void addTransactionCategoryEntertainment(View view) {
+        Log.d(TAG, "Category Entertainment was clicked.");
+        addTransactionWithTipHelper(Category.ENTERTAINMENT);
+    }
+
+    public void addTransactionCategoryEducation(View view) {
+        Log.d(TAG, "Category Education was clicked.");
+        addTransactionWithoutTipHelper(Category.EDUCATION);
+    }
+
+    public void addTransactionCategoryBeauty(View view) {
+        Log.d(TAG, "Category Beauty was clicked.");
+        addTransactionWithTipHelper(Category.BEAUTY);
+    }
+
+    public void addTransactionCategoryTransportation(View view) {
+        Log.d(TAG, "Category Transportation was clicked.");
+        addTransactionWithoutTipHelper(Category.TRANSPORTATION);
+    }
+
+    public void addTransactionCategoryHealth(View view) {
+        Log.d(TAG, "Category Health was clicked.");
+        addTransactionWithoutTipHelper(Category.HEALTH);
+    }
+
+    public void addTransactionCategoryTravel(View view) {
+        Log.d(TAG, "Category Travel was clicked.");
+        addTransactionWithTipHelper(Category.TRAVEL);
+    }
+
+    public void addTransactionCategoryPet(View view) {
+        Log.d(TAG, "Category Pet was clicked.");
+        addTransactionWithoutTipHelper(Category.PET);
+    }
+
+    public void addTransactionCategoryOther(View view) {
+        Log.d(TAG, "Category Other was clicked.");
+        addTransactionWithTipHelper(Category.OTHER);
+    }
+
+    /**
+     * Helper method for categories when adding transaction that requires tip calculation.
+     * @param category category that requires tip calculation
+     */
     private void addTransactionWithTipHelper(Category category) {
         // Create and display the BottomSheetDialog
         final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this,
@@ -172,6 +221,12 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
 
     }
 
+    /**
+     * Linked with DONE button on bottomSheetDialog for transaction with tip.
+     * @param bottomSheetView
+     * @param bottomSheetDialog
+     * @param category
+     */
     private void confirmAddTransaction(View bottomSheetView, BottomSheetDialog bottomSheetDialog, String category) {
         Log.d(TAG, "Add transaction DONE button was clicked");
 
@@ -186,6 +241,73 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
 
         if (nullOrEmptyInputChecker(expenseString, description)) {
             // 向恶势力屈服
+            String message = "All fields are required.";
+            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        float expense = Float.parseFloat(expenseString);
+        LocalDateTime now = LocalDateTime.now();
+        String transactionDate = String.valueOf(now);
+
+        // Try to add transaction to the transactionEntry Table
+        boolean addTransaction = dbHelper.addTranTableTransaction(expense, description, category, transactionDate);
+        String transactionMessage = "Failed to add Transaction.";
+        if (addTransaction) {
+            transactionMessage = "Transaction added successfully.";
+        }
+        Toast.makeText(getApplicationContext(), transactionMessage, Toast.LENGTH_SHORT).show();
+        bottomSheetDialog.dismiss();
+    }
+
+    /**
+     * Helper method for adding transaction without tip categories.
+     * @param category the category chosen that does not require tip calculation
+     */
+    private void addTransactionWithoutTipHelper(Category category) {
+        // Create and display the BottomSheetDialog
+        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this,
+                R.style.BottomSheetDialogTheme);
+        bottomSheetView = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.layout_bottom_sheet_add_transaction_without_tip, null);
+        bottomSheetDialog.setContentView(bottomSheetView);
+
+        BottomSheetBehavior mBehavior = BottomSheetBehavior.from((View) bottomSheetView.getParent());
+        bottomSheetDialog.setOnShowListener(dialogInterface -> {
+            mBehavior.setPeekHeight(800);
+        });
+
+        // set category text
+        categoryText = (TextView) bottomSheetView.findViewById(R.id.tv_category_without_tip);
+        String categoryString = category.toString();
+        categoryText.setText(categoryString);
+        bottomSheetDialog.show();
+
+        Button confirmTransactionDoneButton = (Button) bottomSheetView.findViewById(R.id.btn_done_add_transaction_no_tip);
+        confirmTransactionDoneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                confirmAddTransactionWithoutTip(bottomSheetView, bottomSheetDialog, categoryString);
+            }
+        });
+    }
+
+    /**
+     * Linked with DONE button for bottomSheetDialog without tip
+     */
+    private void confirmAddTransactionWithoutTip(View bottomSheetView, BottomSheetDialog bottomSheetDialog, String category) {
+        Log.d(TAG, "Add transaction DONE button was clicked for transaction without tip ");
+
+        expenseEditText = (EditText) bottomSheetView.findViewById(R.id.et_transaction_amount_no_tip);
+        descriptionEditText = (EditText) bottomSheetView.findViewById(R.id.et_description_no_tip);
+
+        String expenseString = expenseEditText.getText().toString();
+        String description = descriptionEditText.getText().toString();
+
+        Log.d(TAG, String.format("Category: %s. Expense: %s. Description: %s",
+                category, expenseString, description));
+
+        if (nullOrEmptyInputChecker(expenseString, description)) {
             String message = "All fields are required.";
             Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
             return;
