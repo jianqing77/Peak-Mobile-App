@@ -37,7 +37,7 @@ public interface IDBHelper {
     SummaryModel retrieveLatestSummaryInfoTableSummary();
 
     // Methods that interact with the transactionEntry table
-    boolean addTranTableTransaction(float expense, String description, String category, String transactionDate);
+    boolean addTranTableTransaction(float expense, String description, String category, String transactionDate, byte[] receiptPhoto);
     boolean updateTranTableTransaction(float expense, String description, String category, int transactionID);
     List<TransactionModel> retrieveTransactionsByYearMonthTableTransaction(int yearInput, int monthInput);
     List<TransactionModel> retrieveTransactionsByDateTableTransaction(int yearInput, int monthInput, int dayInput);

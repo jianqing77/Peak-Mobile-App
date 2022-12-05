@@ -469,7 +469,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
 
 
     @Override
-    public boolean addTranTableTransaction(float expense, String description, String category, String transactionDate) {
+    public boolean addTranTableTransaction(float expense, String description, String category, String transactionDate, byte[] receiptPhoto) {
         SQLiteDatabase db = this.getWritableDatabase();
         int transactionYear = Integer.parseInt(transactionDate.substring(0, 4));
         int transactionMonth = Integer.parseInt(transactionDate.substring(5, 7));
@@ -532,6 +532,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         values.put(DESCRIPTION_COL, description);
         values.put(CATEGORY_COL, category);
         values.put(TRANSACTION_DATE_COL, transactionDate);
+        values.put(RECEIPT_PHOTO_COL, receiptPhoto);
         values.put(TRANSACTION_FK_SUMMARY_ID_COL, summaryID);
 
         long result = db.insert(TRANSACTION_TABLE_NAME, null, values);

@@ -36,6 +36,7 @@
         <entry key="app/src/main/res/drawable/ic_launcher_team15_background.xml" value="0.23" />
         <entry key="app/src/main/res/drawable/ic_nav_profile.xml" value="0.226" />
         <entry key="app/src/main/res/layout-land/activity_firebase_login.xml" value="0.263668430335097" />
+        <entry key="app/src/main/res/layout-land/change_profile_picture_bottomsheet.xml" value="0.1865079365079365" />
         <entry key="app/src/main/res/layout/activity_about_team.xml" value="0.25679347826086957" />
         <entry key="app/src/main/res/layout/activity_add_transaction.xml" value="0.24547101449275363" />
         <entry key="app/src/main/res/layout/activity_add_transaction_with_tip_popup.xml" value="0.2427536231884058" />
@@ -72,6 +73,8 @@
         <entry key="app/src/main/res/layout/item_send_sticker_cardview.xml" value="0.26992753623188404" />
         <entry key="app/src/main/res/layout/item_sticker_record.xml" value="0.25" />
         <entry key="app/src/main/res/layout/layout_bottom_sheet_add_transaction.xml" value="0.18854166666666666" />
+        <entry key="app/src/main/res/layout/layout_bottom_sheet_add_transaction_with_tip.xml" value="0.2203125" />
+        <entry key="app/src/main/res/layout/layout_bottom_sheet_add_transaction_without_tip.xml" value="0.2203125" />
         <entry key="app/src/main/res/layout/messaging_notification.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/recover_passcode.xml" value="0.25" />
         <entry key="app/src/main/res/layout/reset_passcode_confirmation.xml" value="0.240625" />

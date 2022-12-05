@@ -123,6 +123,7 @@ public class ProfileActivity extends AppCompatActivity {
     public void editBudgetActivity(View view) {
         Intent intent = new Intent(ProfileActivity.this, PeakCreateBudget.class);
         startActivity(intent);
+        finish();
     }
 
     public void changePasscodeActivity(View view) {
