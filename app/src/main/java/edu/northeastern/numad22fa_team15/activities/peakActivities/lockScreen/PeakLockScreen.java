@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.northeastern.numad22fa_team15.R;
+import edu.northeastern.numad22fa_team15.activities.MainActivity;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakEntrance;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.homePage.PeakHomePage;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.profilePage.ProfileActivity;
 import edu.northeastern.numad22fa_team15.models.databaseModels.SummaryModel;
@@ -216,8 +218,6 @@ public class PeakLockScreen extends AppCompatActivity implements View.OnClickLis
     }
 
     private String getPasscode() {
-
-        // TODO: retrieve passcode from database and return as string
         UserModel user = dbHelper.retrieveUserInfoTableUser();
         String passcode = user.getPasscode();
 
@@ -226,6 +226,8 @@ public class PeakLockScreen extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
         finish();
     }
 

@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.northeastern.numad22fa_team15.R;
+import edu.northeastern.numad22fa_team15.activities.MainActivity;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.addTransaction.AddTransactionActivity;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.graph.GraphActivity;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.piggySavings.SavingsActivity;
@@ -222,7 +223,8 @@ public class PeakHomePage extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        // back to main activity when press the back button
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
         finish();
     }
 

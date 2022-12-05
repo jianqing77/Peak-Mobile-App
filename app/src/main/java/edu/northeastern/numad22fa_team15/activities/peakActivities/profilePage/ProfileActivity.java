@@ -23,6 +23,7 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.snackbar.Snackbar;
 
 import edu.northeastern.numad22fa_team15.R;
+import edu.northeastern.numad22fa_team15.activities.MainActivity;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakCreateBudget;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.graph.GraphActivity;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.homePage.PeakHomePage;
@@ -184,6 +185,13 @@ public class ProfileActivity extends AppCompatActivity {
         });
         AlertDialog alert = b.create();
         alert.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), PeakHomePage.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override
