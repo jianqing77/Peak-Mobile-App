@@ -226,7 +226,7 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Upload picture button clicked.");
-//                pickFromPhotos(v);
+                pickFromPhotos(v);
                 bottomSheetDialog.dismiss();
             }
         });
@@ -234,7 +234,7 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Delete picture button clicked.");
-//                deleteProfilePicture();
+                deleteProfilePicture();
                 bottomSheetDialog.dismiss();
             }
         });
@@ -254,40 +254,62 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
         }
     }
 
+    private void pickFromPhotos(View view) {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+
+        // Check if a image gallery exists on the device.
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(intent, PICK_IMAGE_CODE);
+        } else {
+            String errorMessage = "No image gallery found.";
+            displayMessageInSnackbar(view, errorMessage, Snackbar.LENGTH_SHORT);
+        }
+    }
+
+    private void deleteProfilePicture() {
+        // Set this.profilePictureByteArray to null
+        this.receiptPictureByteArray = null;
+        String receiptPictureMessage = "Receipt picture deleted.";
+        Toast.makeText(getApplicationContext(), receiptPictureMessage, Toast.LENGTH_SHORT).show();
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
 
-        String profilePictureMessage = "Failed to update profile picture.";
+        String receiptPictureMessage = "Failed to add receipt picture.";
         if (requestCode == CAMERA_ACTION_CODE && resultCode == RESULT_OK && intent != null) {
             Log.d(TAG, "CAMERA_ACTION onActivityResult()");
             try {
                 Bundle bundle = intent.getExtras();
                 Bitmap photoTaken = (Bitmap) bundle.get("data");
-//                profilePictureImageView.setImageBitmap(photoTaken);
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 photoTaken.compress(Bitmap.CompressFormat.JPEG,80,stream);
                 receiptPictureByteArray = stream.toByteArray();
-                Log.d(TAG, "Receipt Photo Byte Array: " + Arrays.toString(receiptPictureByteArray));
+                Log.d(TAG, "Receipt Photo Byte Array: " + receiptPictureByteArray);
+                receiptPictureMessage = "Receipt picture added.";
+                Toast.makeText(getApplicationContext(), receiptPictureMessage, Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
-                Log.d(TAG, "Fail to set profile picture using image taken by device camera.");
+                Log.d(TAG, "Fail to add receipt photo using image taken by device camera.");
                 Log.d(TAG, e.getMessage());
-//                displayMessageInSnackbar(profilePictureImageView.getRootView(), profilePictureMessage, Snackbar.LENGTH_SHORT);
+                Toast.makeText(getApplicationContext(), receiptPictureMessage, Toast.LENGTH_SHORT).show();
             }
         }
-//        if (requestCode == PICK_IMAGE_CODE && resultCode == RESULT_OK && intent != null) {
-//            Log.d(TAG, "PICK_IMAGE onActivityResult()");
-//            try {
-//                Uri imageUri = intent.getData();
-//                profilePictureImageView.setImageURI(imageUri);
-//                InputStream inputStream = getContentResolver().openInputStream(imageUri);
-//                profilePictureByteArray = getByteArrayFromInputStream(inputStream);
-//            } catch (Exception e) {
-//                Log.d(TAG, "Fail to set profile picture using image picked from photo library.");
-//                Log.d(TAG, e.getMessage());
-//                displayMessageInSnackbar(profilePictureImageView.getRootView(), profilePictureMessage, Snackbar.LENGTH_SHORT);
-//            }
-//        }
+        if (requestCode == PICK_IMAGE_CODE && resultCode == RESULT_OK && intent != null) {
+            Log.d(TAG, "PICK_IMAGE onActivityResult()");
+            try {
+                Uri imageUri = intent.getData();
+                InputStream inputStream = getContentResolver().openInputStream(imageUri);
+                receiptPictureByteArray = getByteArrayFromInputStream(inputStream);
+                Log.d(TAG, "Receipt Photo Byte Array: " + receiptPictureByteArray);
+                receiptPictureMessage = "Receipt picture added.";
+                Toast.makeText(getApplicationContext(), receiptPictureMessage, Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                Log.d(TAG, "Fail to add receipt photo using image picked from photo library.");
+                Log.d(TAG, e.getMessage());
+                Toast.makeText(getApplicationContext(), receiptPictureMessage, Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     /**
@@ -369,6 +391,16 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
         categoryText.setText(categoryString);
         bottomSheetDialog.show();
 
+        // Add setOnClickListener to ADD RECEIPT button
+        Button addReceiptButton = (Button) bottomSheetView.findViewById(R.id.btn_add_receipt_no_tip);
+        addReceiptButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showBottomSheetDialog(v);
+            }
+        });
+
+        // Add setOnClickListener to DONE button
         Button confirmTransactionDoneButton = (Button) bottomSheetView.findViewById(R.id.btn_done_add_transaction_no_tip);
         confirmTransactionDoneButton.setOnClickListener(new View.OnClickListener() {
             @Override
