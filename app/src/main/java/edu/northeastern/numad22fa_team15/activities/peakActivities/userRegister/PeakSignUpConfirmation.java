@@ -19,9 +19,11 @@ public class PeakSignUpConfirmation extends AppCompatActivity {
         setContentView(R.layout.activity_peak_sign_up_confirmation);
     }
 
+    /**
+     * After sign up confirmation, direct to create budget page
+     */
     public void openHomePage(View view) {
-        // after sign up confirmation, jump to homepage
-        Intent intent = new Intent(PeakSignUpConfirmation.this, PeakHomePage.class);
+        Intent intent = new Intent(PeakSignUpConfirmation.this, PeakCreateBudget.class);
         startActivity(intent);
     }
 
