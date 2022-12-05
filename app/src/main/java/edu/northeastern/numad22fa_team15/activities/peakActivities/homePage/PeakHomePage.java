@@ -109,6 +109,7 @@ public class PeakHomePage extends AppCompatActivity {
         Log.v(TAG, "Trying to add a new transaction");
         Intent intent = new Intent(PeakHomePage.this, AddTransactionActivity.class);
         startActivity(intent);
+        finish();
     }
 
     /**
