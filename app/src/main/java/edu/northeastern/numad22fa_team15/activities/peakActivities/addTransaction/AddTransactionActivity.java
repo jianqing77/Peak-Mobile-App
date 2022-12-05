@@ -1,12 +1,7 @@
 package edu.northeastern.numad22fa_team15.activities.peakActivities.addTransaction;
 
-import static edu.northeastern.numad22fa_team15.utils.CommonUtils.closeKeyboard;
-import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessageInSnackbar;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.nullOrEmptyInputChecker;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,22 +11,19 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import edu.northeastern.numad22fa_team15.R;
-import edu.northeastern.numad22fa_team15.activities.MainActivity;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.homePage.PeakHomePage;
 import edu.northeastern.numad22fa_team15.utils.Category;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
@@ -39,20 +31,7 @@ import edu.northeastern.numad22fa_team15.utils.IDBHelper;
 
 public class AddTransactionActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private static final String TAG = "AddTransactionPage______";
-
-    private ImageButton diningImgBtn;
-    private ImageButton groceryBtn;
-    private ImageButton shoppingBtn;
-    private ImageButton livingBtn;
-    private ImageButton entertainmentBtn;
-    private ImageButton educationBtn;
-    private ImageButton beautyBtn;
-    private ImageButton transportationBtn;
-    private ImageButton healthBtn;
-    private ImageButton travelBtn;
-    private ImageButton petBtn;
-    private ImageButton otherBtn;
+    private static final String TAG = "AddTransactionActivity______";
 
     private IDBHelper dbHelper;
     private View bottomSheetView;
@@ -65,19 +44,6 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_transaction);
-
-        diningImgBtn = (ImageButton) findViewById(R.id.btn_dining);
-        groceryBtn =  (ImageButton) findViewById(R.id.btn_groceries);
-        shoppingBtn =  (ImageButton) findViewById(R.id.btn_shopping);
-        livingBtn =  (ImageButton) findViewById(R.id.btn_living);
-        entertainmentBtn =  (ImageButton) findViewById(R.id.btn_entertainment);
-        educationBtn =  (ImageButton) findViewById(R.id.btn_education);
-        beautyBtn =  (ImageButton) findViewById(R.id.btn_beauty);
-        transportationBtn =  (ImageButton) findViewById(R.id.btn_transportation);
-        healthBtn =  (ImageButton) findViewById(R.id.btn_health);
-        travelBtn =  (ImageButton) findViewById(R.id.btn_travel);
-        petBtn =  (ImageButton) findViewById(R.id.btn_pet);
-        otherBtn =  (ImageButton) findViewById(R.id.btn_other);
 
         dbHelper = new DBHelper(AddTransactionActivity.this);
     }
@@ -177,7 +143,7 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
         confirmTransactionDoneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                confirmAddTransaction(bottomSheetView, bottomSheetDialog, categoryString);
+                confirmAddTransaction(bottomSheetDialog, categoryString);
             }
         });
     }
@@ -213,7 +179,7 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
         float selectedTip = Float.parseFloat(selectedTipChoice.substring(0, 2)) / 100;
         DecimalFormat df = new DecimalFormat("0.00");
         float updatedAmount = expense * (1 + selectedTip);
-        expenseEditText.setText(String.valueOf(df.format(updatedAmount)));
+        expenseEditText.setText(df.format(updatedAmount));
     }
 
     @Override
@@ -223,11 +189,10 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
 
     /**
      * Linked with DONE button on bottomSheetDialog for transaction with tip.
-     * @param bottomSheetView
-     * @param bottomSheetDialog
-     * @param category
+     * @param bottomSheetDialog bottom sheet dialog
+     * @param category expense category
      */
-    private void confirmAddTransaction(View bottomSheetView, BottomSheetDialog bottomSheetDialog, String category) {
+    private void confirmAddTransaction(BottomSheetDialog bottomSheetDialog, String category) {
         Log.d(TAG, "Add transaction DONE button was clicked");
 
         expenseEditText = (EditText) bottomSheetView.findViewById(R.id.et_transaction_amount_tip);
@@ -240,7 +205,6 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
                 category, expenseString, description));
 
         if (nullOrEmptyInputChecker(expenseString, description)) {
-            // 向恶势力屈服
             String message = "All fields are required.";
             Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
             return;
@@ -287,7 +251,7 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
         confirmTransactionDoneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                confirmAddTransactionWithoutTip(bottomSheetView, bottomSheetDialog, categoryString);
+                confirmAddTransactionWithoutTip(bottomSheetDialog, categoryString);
             }
         });
     }
@@ -295,7 +259,7 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
     /**
      * Linked with DONE button for bottomSheetDialog without tip
      */
-    private void confirmAddTransactionWithoutTip(View bottomSheetView, BottomSheetDialog bottomSheetDialog, String category) {
+    private void confirmAddTransactionWithoutTip(BottomSheetDialog bottomSheetDialog, String category) {
         Log.d(TAG, "Add transaction DONE button was clicked for transaction without tip ");
 
         expenseEditText = (EditText) bottomSheetView.findViewById(R.id.et_transaction_amount_no_tip);
@@ -371,8 +335,3 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
     }
 
 }
-
-
-
-
-
