@@ -49,7 +49,8 @@
                 android:layout_marginStart="40dp"
                 android:layout_toRightOf="@id/tv_amount"
                 android:hint="Transaction Amount"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                tools:ignore="TextContrastCheck" />
 
         </RelativeLayout>
 
@@ -74,7 +75,8 @@
                 android:layout_marginStart="15dp"
                 android:layout_toRightOf="@id/tv_description"
                 android:hint="Add a description"
-                android:inputType="textShortMessage" />
+                android:inputType="textShortMessage"
+                tools:ignore="TextContrastCheck" />
         </RelativeLayout>
 
         <LinearLayout
@@ -83,15 +85,11 @@
             android:layout_marginTop="10dp"
             android:gravity="center_horizontal">
 
-            <Button
-                android:id="@+id/btn_add_tip"
+            <Spinner
+                android:id="@+id/spinner_add_tip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/FinalProj_Primary"
-                android:drawableLeft="@drawable/ic_add_tip"
-                android:padding="8dp"
-                android:text="Add tip"
-                android:textColor="@color/FinalProj_Dark" />
+                android:spinnerMode="dropdown" />
 
             <Button
                 android:id="@+id/btn_add_receipt"

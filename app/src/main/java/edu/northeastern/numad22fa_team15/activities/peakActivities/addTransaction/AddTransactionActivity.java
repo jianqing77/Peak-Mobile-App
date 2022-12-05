@@ -11,10 +11,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +25,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -30,7 +34,7 @@ import edu.northeastern.numad22fa_team15.utils.Category;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
 import edu.northeastern.numad22fa_team15.utils.IDBHelper;
 
-public class AddTransactionActivity extends AppCompatActivity {
+public class AddTransactionActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private static final String TAG = "AddTransactionPage______";
 
@@ -48,6 +52,8 @@ public class AddTransactionActivity extends AppCompatActivity {
     private ImageButton otherBtn;
 
     private IDBHelper dbHelper;
+    private View bottomSheetView;
+    private Spinner addTipSpinner;
     private EditText expenseEditText;
     private EditText descriptionEditText;
     private TextView categoryText;
@@ -91,7 +97,7 @@ public class AddTransactionActivity extends AppCompatActivity {
     private void addTransactionWithTipHelper(Category category) {
         // Create and display the BottomSheetDialog
         final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
-        View bottomSheetView = LayoutInflater.from(getApplicationContext())
+        bottomSheetView = LayoutInflater.from(getApplicationContext())
                 .inflate(R.layout.layout_bottom_sheet_add_transaction, null);
         bottomSheetDialog.setContentView(bottomSheetView);
 
@@ -107,6 +113,13 @@ public class AddTransactionActivity extends AppCompatActivity {
         categoryText.setText(categoryString);
         bottomSheetDialog.show();
 
+        // Add tip spinner
+        addTipSpinner = (Spinner) bottomSheetView.findViewById(R.id.spinner_add_tip);
+        addTipSpinner.setOnItemSelectedListener(this);
+        ArrayAdapter<CharSequence> adapter= ArrayAdapter.createFromResource(this, R.array.tip_choices, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        addTipSpinner.setAdapter(adapter);
+
         Button confirmTransactionDoneButton = (Button) bottomSheetView.findViewById(R.id.btn_done_add_transaction);
         confirmTransactionDoneButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,6 +127,45 @@ public class AddTransactionActivity extends AppCompatActivity {
                 confirmAddTransaction(bottomSheetView, bottomSheetDialog, categoryString);
             }
         });
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String[] tipChoices = getResources().getStringArray(R.array.tip_choices);
+        String selectedTipChoice = tipChoices[position];
+        Log.d(TAG, String.format("Selected tip choice: %s", selectedTipChoice));
+        // If other tip choices are selected, check if amount has value in it.
+        if (!selectedTipChoice.equals(tipChoices[0])) {
+            expenseEditText = (EditText) bottomSheetView.findViewById(R.id.et_transaction_amount_tip);
+            String expenseString = expenseEditText.getText().toString();
+            // If not, ask user to put a value in the amount field.
+            if (nullOrEmptyInputChecker(expenseString)) {
+                addTipSpinner.setSelection(0);
+                String addTipErrorMessage = "Amount is required if you want to calculate the tip.";
+                Toast.makeText(getApplicationContext(), addTipErrorMessage, Toast.LENGTH_SHORT).show();
+            } else { // If yes, calculate tip and update amount.
+                calculateTipAndUpdateAmount(expenseEditText, selectedTipChoice);
+            }
+        }
+    }
+
+    /**
+     * This method should not be called if user selects 0% tip.
+     * @param expenseEditText expense EditText
+     * @param selectedTipChoice selected tip choice
+     */
+    private void calculateTipAndUpdateAmount(EditText expenseEditText, String selectedTipChoice) {
+        float expense = Float.parseFloat(expenseEditText.getText().toString());
+        // Retrieve tip percentage from selectedTipChoice String
+        float selectedTip = Float.parseFloat(selectedTipChoice.substring(0, 2)) / 100;
+        DecimalFormat df = new DecimalFormat("0.00");
+        float updatedAmount = expense * (1 + selectedTip);
+        expenseEditText.setText(String.valueOf(df.format(updatedAmount)));
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 
     private void confirmAddTransaction(View bottomSheetView, BottomSheetDialog bottomSheetDialog, String category) {
