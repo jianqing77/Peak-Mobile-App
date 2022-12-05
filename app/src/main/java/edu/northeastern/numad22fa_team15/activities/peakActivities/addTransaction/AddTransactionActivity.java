@@ -99,9 +99,10 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
 
     private void addTransactionWithTipHelper(Category category) {
         // Create and display the BottomSheetDialog
-        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this,
+                R.style.BottomSheetDialogTheme);
         bottomSheetView = LayoutInflater.from(getApplicationContext())
-                .inflate(R.layout.layout_bottom_sheet_add_transaction, null);
+                .inflate(R.layout.layout_bottom_sheet_add_transaction_with_tip, null);
         bottomSheetDialog.setContentView(bottomSheetView);
 
         BottomSheetBehavior mBehavior = BottomSheetBehavior.from((View) bottomSheetView.getParent());
