@@ -74,39 +74,40 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_profile_username" />
 
-            <TextView
-                android:id="@+id/textView"
-                style="@style/onboarding_text"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/total_budget_linear_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="12dp"
-                android:text="@string/your_current_budget_is"
-                app:layout_constraintEnd_toStartOf="@id/profile_budget"
+                android:orientation="horizontal"
+                android:gravity="center"
+                app:layout_constraintEnd_toStartOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/profile_divider"
-                app:layout_constraintTop_toBottomOf="@+id/profile_divider" />
+                app:layout_constraintTop_toBottomOf="@+id/profile_divider">
 
-            <TextView
-                android:id="@+id/profile_budget"
-                style="@style/onboarding_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/_2500"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@id/textView2"
-                app:layout_constraintStart_toEndOf="@+id/textView"
-                app:layout_constraintTop_toTopOf="@+id/textView" />
+                <TextView
+                    android:id="@+id/textView"
+                    style="@style/onboarding_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/your_current_budget_is" />
 
-            <TextView
-                android:id="@+id/textView2"
-                style="@style/onboarding_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="25dp"
-                android:text="@string/month"
-                app:layout_constraintEnd_toEndOf="@+id/profile_divider"
-                app:layout_constraintStart_toEndOf="@+id/profile_budget"
-                app:layout_constraintTop_toTopOf="@+id/textView" />
+                <TextView
+                    android:id="@+id/profile_budget"
+                    style="@style/onboarding_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_2500"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    style="@style/onboarding_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="25dp"
+                    android:text="@string/month" />
+            </LinearLayout>
+
 
             <TextView
                 android:id="@+id/tv_account"
@@ -116,7 +117,7 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/account"
                 app:layout_constraintStart_toStartOf="@+id/btn_edit_profile"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                app:layout_constraintTop_toBottomOf="@+id/total_budget_linear_layout" />
 
             <Button
                 android:id="@+id/btn_edit_profile"
