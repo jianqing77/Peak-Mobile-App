@@ -3,42 +3,38 @@ package edu.northeastern.numad22fa_team15.activities.peakActivities.lockScreen;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessageInSnackbar;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.nullOrEmptyInputChecker;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.activities.MainActivity;
-import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakEntrance;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.homePage.PeakHomePage;
-import edu.northeastern.numad22fa_team15.activities.peakActivities.profilePage.ProfileActivity;
 import edu.northeastern.numad22fa_team15.models.databaseModels.SummaryModel;
 import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
+import edu.northeastern.numad22fa_team15.utils.Category;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
 import edu.northeastern.numad22fa_team15.utils.IDBHelper;
 
-public class PeakLockScreen extends AppCompatActivity implements View.OnClickListener {
+public class PeakLockScreen extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener{
 
     private static final String TAG = "PeakLockScreen___";
     private View view_01, view_02, view_03, view_04;
@@ -47,6 +43,8 @@ public class PeakLockScreen extends AppCompatActivity implements View.OnClickLis
     private List<String> numbers_list;
     private String passcodeInput;
     private String num_01, num_02, num_03, num_04;
+
+    private String selectedCategoryChoice;
 
     private IDBHelper dbHelper;
 
@@ -59,6 +57,7 @@ public class PeakLockScreen extends AppCompatActivity implements View.OnClickLis
 
         numbers_list = new ArrayList<>();
         passcodeInput = "";
+        selectedCategoryChoice = Category.OTHER.toString();
 
         initializeComponents();
 
@@ -261,28 +260,39 @@ public class PeakLockScreen extends AppCompatActivity implements View.OnClickLis
             mBehavior.setPeekHeight(800);
         });
 
-        // Set category spinner
-//        TextView categoryText = (TextView) bottomSheetView.findViewById(R.id.tv_category_without_tip); // TODO: update id
-//        String categoryString = "";
-////        String categoryString = category.toString();
-////        categoryText.setText(categoryString);
+        // Add tip spinner
+        Spinner categorySpinner = (Spinner) bottomSheetView.findViewById(R.id.spinner_category);
+        categorySpinner.setOnItemSelectedListener(this);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.category_choices, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        categorySpinner.setAdapter(adapter);
         bottomSheetDialog.show();
-//
-//        // Add setOnClickListener to DONE button
-//        Button confirmTransactionDoneButton = (Button) bottomSheetView.findViewById(R.id.btn_done_add_transaction_no_tip); // TODO: update id
-//        confirmTransactionDoneButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                confirmAddTransaction(bottomSheetView, bottomSheetDialog, categoryString);
-//            }
-//        });
+
+        // Add setOnClickListener to DONE button
+        Button confirmTransactionDoneButton = (Button) bottomSheetView.findViewById(R.id.btn_done_add_transaction_quick_add);
+        confirmTransactionDoneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                confirmAddTransaction(bottomSheetView, bottomSheetDialog, selectedCategoryChoice);
+            }
+        });
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String[] categoryChoices = getResources().getStringArray(R.array.category_choices);
+        selectedCategoryChoice = categoryChoices[position];
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
     }
 
     private void confirmAddTransaction(View bottomSheetView, BottomSheetDialog bottomSheetDialog, String category) {
-        Log.d(TAG, "Add transaction DONE button was clicked for transaction without tip ");
+        Log.d(TAG, "Add transaction DONE button was clicked for quick add transaction.");
 
-        EditText expenseEditText = (EditText) bottomSheetView.findViewById(R.id.et_transaction_amount_no_tip); // TODO: update id
-        EditText descriptionEditText = (EditText) bottomSheetView.findViewById(R.id.et_description_no_tip); // TODO: update id
+        EditText expenseEditText = (EditText) bottomSheetView.findViewById(R.id.et_transaction_amount_quick_add);
+        EditText descriptionEditText = (EditText) bottomSheetView.findViewById(R.id.et_description_quick_add);
 
         String expenseString = expenseEditText.getText().toString();
         String description = descriptionEditText.getText().toString();
