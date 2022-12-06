@@ -47,7 +47,6 @@
             android:exported="false" />
         <activity
             android:name=".activities.peakActivities.profilePage.ChangePasscodeActivity"
-            android:configChanges="orientation|screenSize"
             android:exported="false"
             android:windowSoftInputMode="stateHidden" />
         <activity
@@ -104,8 +103,7 @@
             android:name=".activities.peakActivities.lockScreen.PeakLockScreen"
             android:configChanges="orientation|screenSize" />
         <activity
-            android:name=".activities.peakActivities.homePage.PeakHomePage"
-            android:configChanges="orientation|screenSize" />
+            android:name=".activities.peakActivities.homePage.PeakHomePage" />
         <activity
             android:name=".activities.peakActivities.profilePage.TermsAndConditionActivity"
             android:configChanges="orientation|screenSize" />
