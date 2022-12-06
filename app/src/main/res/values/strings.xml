@@ -116,8 +116,22 @@
     <string-array name="tip_choices">
         <item>0% tip</item>
         <item>15% tip</item>
-        <item>18% tip </item>
+        <item>18% tip</item>
         <item>20% tip</item>
         <item>25% tip</item>
+    </string-array>
+    <string-array name="category_choices">
+        <item>OTHER</item>
+        <item>DINING</item>
+        <item>GROCERIES</item>
+        <item>SHOPPING</item>
+        <item>LIVING</item>
+        <item>ENTERTAINMENT</item>
+        <item>EDUCATION</item>
+        <item>BEAUTY</item>
+        <item>TRANSPORTATION</item>
+        <item>HEALTH</item>
+        <item>TRAVEL</item>
+        <item>PET</item>
     </string-array>
 </resources>

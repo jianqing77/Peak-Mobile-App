@@ -77,6 +77,7 @@
         <entry key="app/src/main/res/layout/layout_bottom_sheet_add_transaction.xml" value="0.18854166666666666" />
         <entry key="app/src/main/res/layout/layout_bottom_sheet_add_transaction_with_tip.xml" value="0.14108886718750002" />
         <entry key="app/src/main/res/layout/layout_bottom_sheet_add_transaction_without_tip.xml" value="0.2203125" />
+        <entry key="app/src/main/res/layout/layout_bottom_sheet_quick_add_transaction.xml" value="0.10029192938320874" />
         <entry key="app/src/main/res/layout/messaging_notification.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/recover_passcode.xml" value="0.25" />
         <entry key="app/src/main/res/layout/reset_passcode_confirmation.xml" value="0.240625" />

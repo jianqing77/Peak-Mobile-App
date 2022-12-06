@@ -241,7 +241,6 @@ public class PeakLockScreen extends AppCompatActivity implements View.OnClickLis
         finish();
     }
 
-    // TODO: This whole function needs to be updated once the frontend is implemented.
     /**
      * This method gets called when the QUICK ADD button was clicked. It brings a dialog that allows
      * the user to quickly add a transaction to the database.
@@ -254,7 +253,7 @@ public class PeakLockScreen extends AppCompatActivity implements View.OnClickLis
         final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this,
                 R.style.BottomSheetDialogTheme);
         View bottomSheetView = LayoutInflater.from(getApplicationContext())
-                .inflate(R.layout.layout_bottom_sheet_add_transaction_without_tip, null);
+                .inflate(R.layout.layout_bottom_sheet_quick_add_transaction, null);
         bottomSheetDialog.setContentView(bottomSheetView);
 
         BottomSheetBehavior mBehavior = BottomSheetBehavior.from((View) bottomSheetView.getParent());
@@ -263,20 +262,20 @@ public class PeakLockScreen extends AppCompatActivity implements View.OnClickLis
         });
 
         // Set category spinner
-        TextView categoryText = (TextView) bottomSheetView.findViewById(R.id.tv_category_without_tip); // TODO: update id
-        String categoryString = "";
-//        String categoryString = category.toString();
-//        categoryText.setText(categoryString);
+//        TextView categoryText = (TextView) bottomSheetView.findViewById(R.id.tv_category_without_tip); // TODO: update id
+//        String categoryString = "";
+////        String categoryString = category.toString();
+////        categoryText.setText(categoryString);
         bottomSheetDialog.show();
-
-        // Add setOnClickListener to DONE button
-        Button confirmTransactionDoneButton = (Button) bottomSheetView.findViewById(R.id.btn_done_add_transaction_no_tip); // TODO: update id
-        confirmTransactionDoneButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                confirmAddTransaction(bottomSheetView, bottomSheetDialog, categoryString);
-            }
-        });
+//
+//        // Add setOnClickListener to DONE button
+//        Button confirmTransactionDoneButton = (Button) bottomSheetView.findViewById(R.id.btn_done_add_transaction_no_tip); // TODO: update id
+//        confirmTransactionDoneButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                confirmAddTransaction(bottomSheetView, bottomSheetDialog, categoryString);
+//            }
+//        });
     }
 
     private void confirmAddTransaction(View bottomSheetView, BottomSheetDialog bottomSheetDialog, String category) {
