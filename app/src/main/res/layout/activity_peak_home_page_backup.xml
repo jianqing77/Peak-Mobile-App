@@ -47,126 +47,132 @@
 
     <LinearLayout
         android:id="@+id/summary"
-        android:background="@drawable/bg_homepage_summary"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="190dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/home_page_divider"
-        app:layout_constraintEnd_toStartOf="@id/btn_pick_date"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@id/welcome_back"
         app:layout_constraintVertical_bias="0.0">
 
-        <TextView
-            android:id="@+id/tv_summary"
-            style="@style/default_page_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:text="Monthly Summary"
-            android:textColor="@color/FinalProj_Dark" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            android:background="@drawable/bg_homepage_summary"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_summary"
+                style="@style/default_page_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="Monthly Summary"
+                android:textColor="@color/FinalProj_Dark" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="54dp"
-                    android:layout_height="35dp"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@drawable/coin_pic">
-                </ImageView>
-
-                <TextView
-                    android:id="@+id/tv_home1"
-                    style="@style/default_page_header"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Expenses"
-                    android:layout_gravity="center_horizontal"
-                    android:textStyle="bold" />
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_expenses"
-                    style="@style/default_page_header"
+                    <ImageView
+                        android:layout_width="54dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/coin_pic">
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/tv_home1"
+                        style="@style/default_page_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Expenses"
+                        android:layout_gravity="center_horizontal"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_expenses"
+                        style="@style/default_page_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="$1000"
+                        android:textStyle="normal" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="$1000"
-                    android:textStyle="normal" />
-            </LinearLayout>
+                    android:layout_marginLeft="30dp"
+                    android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="47dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/piggysaving">
 
-                <ImageView
-                    android:layout_width="47dp"
-                    android:layout_height="35dp"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@drawable/piggysaving"></ImageView>
+                    </ImageView>
 
-                <TextView
-                    android:id="@+id/tv_home2"
-                    style="@style/default_page_header"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Balance"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tv_home2"
+                        style="@style/default_page_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Balance"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tv_balance"
-                    style="@style/default_page_header"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="13dp"
-                    android:text="$5000"
-                    android:textStyle="normal" />
+                    <TextView
+                        android:id="@+id/tv_balance"
+                        style="@style/default_page_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="13dp"
+                        android:text="$5000"
+                        android:textStyle="normal" />
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_pick_date"
-        style="@style/button_light"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/FinalProj_Primary"
-        android:onClick="datePickerDialog"
-        android:text="Today"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/summary" />
+        <Button
+            android:id="@+id/btn_pick_date"
+            style="@style/button_light"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/FinalProj_Primary"
+            android:onClick="datePickerDialog"
+            android:text="Today"
+            android:textAlignment="center"
+            android:textAllCaps="false" />
+    </LinearLayout>
 
     <View
         android:id="@+id/home_page_divider"
         android:layout_width="match_parent"
         android:layout_height=".5dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:background="@color/FinalProj_Primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_pick_date" />
+        app:layout_constraintTop_toBottomOf="@id/summary" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/home_page_recycler_view"
