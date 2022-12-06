@@ -14,7 +14,6 @@
         android:paddingEnd="20dp">
 
         <!-- chosen category-->
-        <!-- TODO: change based on the category picker-->
         <TextView
             android:id="@+id/tv_category_without_tip"
             android:layout_width="wrap_content"
@@ -70,6 +69,31 @@
                 android:layout_toRightOf="@id/tv_description_no_tip"
                 android:hint="Add a description"
                 android:inputType="textShortMessage"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_receipt_no_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:gravity="center"
+                android:text="Receipt:"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <Button
+                android:id="@+id/btn_view_receipt_no_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/tv_receipt_no_tip"
+                android:backgroundTint="@color/FinalProj_Primary"
+                android:text="View"
+                android:textColor="@color/FinalProj_Dark" />
+
         </RelativeLayout>
 
         <RelativeLayout

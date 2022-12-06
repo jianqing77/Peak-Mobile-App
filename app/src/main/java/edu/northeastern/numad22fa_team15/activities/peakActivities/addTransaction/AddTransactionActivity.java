@@ -6,6 +6,7 @@ import static edu.northeastern.numad22fa_team15.utils.CommonUtils.nullOrEmptyInp
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -17,11 +18,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
@@ -139,13 +142,22 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
 
         // REF: https://stackoverflow.com/questions/41591733/bottom-sheet-landscape-issue
         bottomSheetDialog.setOnShowListener(dialogInterface -> {
-            mBehavior.setPeekHeight(800);
+            mBehavior.setPeekHeight(1000);
         });
 
         categoryText = (TextView) bottomSheetView.findViewById(R.id.tv_category_with_tip);
         String categoryString = category.toString();
         categoryText.setText(categoryString);
         bottomSheetDialog.show();
+
+        // Add setOnClickListener to VIEW button
+        Button previewReceiptPhotoViewButton = (Button) bottomSheetView.findViewById(R.id.btn_view_receipt);
+        previewReceiptPhotoViewButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showReceiptPicturePreviewDialog(v);
+            }
+        });
 
         // Add tip spinner
         addTipSpinner = (Spinner) bottomSheetView.findViewById(R.id.spinner_add_tip);
@@ -171,6 +183,40 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
                 confirmAddTransaction(bottomSheetDialog, categoryString);
             }
         });
+    }
+
+    private void showReceiptPicturePreviewDialog(View v) {
+        // Check if receiptPictureByteArray contains value
+        // If no, make a toast
+        if (receiptPictureByteArray == null || receiptPictureByteArray.length == 0) {
+            Toast.makeText(getApplicationContext(), "No receipt photo added.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        // If yes, create a dialog
+        AlertDialog.Builder b = new AlertDialog.Builder(this);
+        b.setTitle("Receipt Picture Preview");
+        View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.dialog_receipt_picture_preview, null);
+        ImageView imageView = (ImageView) dialogView.findViewById(R.id.receipt_photo_preview_image_view);
+        Log.d(TAG, "showReceiptPicturePreviewDialog() method: " + receiptPictureByteArray);
+        if (imageView == null) {
+            Log.d(TAG, "Something wrong");
+        }
+        // Not sure why setPictureToGivenImageView() method does not work here
+        Bitmap bitmap = BitmapFactory.decodeByteArray(receiptPictureByteArray,0, receiptPictureByteArray.length);
+        imageView.setImageBitmap(bitmap);
+        Button okButton = (Button) dialogView.findViewById(R.id.ok_button_drpp);
+        b.setView(dialogView);
+        AlertDialog alert = b.create();
+        okButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alert.dismiss();
+            }
+        });
+        alert.show();
+    }
+
+    private void setPictureToGivenImageView(byte[] receiptPictureByteArray, ImageView imageView) {
     }
 
     @Override
@@ -206,7 +252,7 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
 
         // REF: https://stackoverflow.com/questions/41591733/bottom-sheet-landscape-issue
         bottomSheetDialog.setOnShowListener(dialogInterface -> {
-            mBehavior.setPeekHeight(500);
+            mBehavior.setPeekHeight(700);
         });
 
         ImageButton takePictureButton = (ImageButton) bottomSheetDialog.findViewById(R.id.btn_take_profile_picture);
@@ -382,7 +428,7 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
 
         BottomSheetBehavior mBehavior = BottomSheetBehavior.from((View) bottomSheetView.getParent());
         bottomSheetDialog.setOnShowListener(dialogInterface -> {
-            mBehavior.setPeekHeight(800);
+            mBehavior.setPeekHeight(1000);
         });
 
         // set category text
@@ -390,6 +436,15 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
         String categoryString = category.toString();
         categoryText.setText(categoryString);
         bottomSheetDialog.show();
+
+        // Add setOnClickListener to VIEW button
+        Button previewReceiptPhotoViewButton = (Button) bottomSheetView.findViewById(R.id.btn_view_receipt_no_tip);
+        previewReceiptPhotoViewButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showReceiptPicturePreviewDialog(v);
+            }
+        });
 
         // Add setOnClickListener to ADD RECEIPT button
         Button addReceiptButton = (Button) bottomSheetView.findViewById(R.id.btn_add_receipt_no_tip);

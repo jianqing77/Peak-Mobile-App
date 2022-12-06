@@ -65,6 +65,7 @@
         <entry key="app/src/main/res/layout/activity_test_peak_first_page.xml" value="0.2140625" />
         <entry key="app/src/main/res/layout/change_profile_picture_bottomsheet.xml" value="0.2515625" />
         <entry key="app/src/main/res/layout/dialog_add_friend.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/dialog_receipt_picture_preview.xml" value="0.1796875" />
         <entry key="app/src/main/res/layout/dialog_send_sticker_w_recycler_view.xml" value="0.30027173913043476" />
         <entry key="app/src/main/res/layout/dialog_transactions_date_picker.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/dialog_view_transaction.xml" value="0.37045135498046877" />
@@ -74,7 +75,7 @@
         <entry key="app/src/main/res/layout/item_send_sticker_cardview.xml" value="0.26992753623188404" />
         <entry key="app/src/main/res/layout/item_sticker_record.xml" value="0.25" />
         <entry key="app/src/main/res/layout/layout_bottom_sheet_add_transaction.xml" value="0.18854166666666666" />
-        <entry key="app/src/main/res/layout/layout_bottom_sheet_add_transaction_with_tip.xml" value="0.2203125" />
+        <entry key="app/src/main/res/layout/layout_bottom_sheet_add_transaction_with_tip.xml" value="0.14108886718750002" />
         <entry key="app/src/main/res/layout/layout_bottom_sheet_add_transaction_without_tip.xml" value="0.2203125" />
         <entry key="app/src/main/res/layout/messaging_notification.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/recover_passcode.xml" value="0.25" />

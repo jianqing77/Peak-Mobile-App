@@ -1,6 +1,7 @@
 package edu.northeastern.numad22fa_team15.activities.peakActivities.lockScreen;
 
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessageInSnackbar;
+import static edu.northeastern.numad22fa_team15.utils.CommonUtils.nullOrEmptyInputChecker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,15 +11,21 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import edu.northeastern.numad22fa_team15.R;
@@ -37,8 +44,8 @@ public class PeakLockScreen extends AppCompatActivity implements View.OnClickLis
     private View view_01, view_02, view_03, view_04;
     private Button btn_01, btn_02, btn_03, btn_04, btn_05, btn_06, btn_07, btn_08, btn_09, btn_00, btn_clear;
 
-    private List<String> numbers_list = new ArrayList<>();
-    private String passcodeInput = "";
+    private List<String> numbers_list;
+    private String passcodeInput;
     private String num_01, num_02, num_03, num_04;
 
     private IDBHelper dbHelper;
@@ -49,6 +56,9 @@ public class PeakLockScreen extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_peak_lock_screen);
 
         dbHelper = new DBHelper(PeakLockScreen.this);
+
+        numbers_list = new ArrayList<>();
+        passcodeInput = "";
 
         initializeComponents();
 
@@ -229,6 +239,112 @@ public class PeakLockScreen extends AppCompatActivity implements View.OnClickLis
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    // TODO: This whole function needs to be updated once the frontend is implemented.
+    /**
+     * This method gets called when the QUICK ADD button was clicked. It brings a dialog that allows
+     * the user to quickly add a transaction to the database.
+     * @param view view
+     */
+    public void quickAddDialog(View view) {
+        Log.d(TAG, "QUICK ADD button was clicked.");
+
+        // Create and display the BottomSheetDialog
+        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this,
+                R.style.BottomSheetDialogTheme);
+        View bottomSheetView = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.layout_bottom_sheet_add_transaction_without_tip, null);
+        bottomSheetDialog.setContentView(bottomSheetView);
+
+        BottomSheetBehavior mBehavior = BottomSheetBehavior.from((View) bottomSheetView.getParent());
+        bottomSheetDialog.setOnShowListener(dialogInterface -> {
+            mBehavior.setPeekHeight(800);
+        });
+
+        // Set category spinner
+        TextView categoryText = (TextView) bottomSheetView.findViewById(R.id.tv_category_without_tip); // TODO: update id
+        String categoryString = "";
+//        String categoryString = category.toString();
+//        categoryText.setText(categoryString);
+        bottomSheetDialog.show();
+
+        // Add setOnClickListener to DONE button
+        Button confirmTransactionDoneButton = (Button) bottomSheetView.findViewById(R.id.btn_done_add_transaction_no_tip); // TODO: update id
+        confirmTransactionDoneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                confirmAddTransaction(bottomSheetView, bottomSheetDialog, categoryString);
+            }
+        });
+    }
+
+    private void confirmAddTransaction(View bottomSheetView, BottomSheetDialog bottomSheetDialog, String category) {
+        Log.d(TAG, "Add transaction DONE button was clicked for transaction without tip ");
+
+        EditText expenseEditText = (EditText) bottomSheetView.findViewById(R.id.et_transaction_amount_no_tip); // TODO: update id
+        EditText descriptionEditText = (EditText) bottomSheetView.findViewById(R.id.et_description_no_tip); // TODO: update id
+
+        String expenseString = expenseEditText.getText().toString();
+        String description = descriptionEditText.getText().toString();
+
+        Log.d(TAG, String.format("Category: %s. Expense: %s. Description: %s",
+                category, expenseString, description));
+
+        if (nullOrEmptyInputChecker(expenseString, description)) {
+            String message = "All fields are required.";
+            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        float expense = Float.parseFloat(expenseString);
+        LocalDateTime now = LocalDateTime.now();
+        String transactionDate = String.valueOf(now);
+        // Try to add transaction to the transactionEntry Table
+        // Set null as receiptPhoto's value
+        boolean addTransaction = dbHelper.addTranTableTransaction(expense, description, category, transactionDate, null);
+        String transactionMessage = "Failed to add Transaction.";
+        if (addTransaction) {
+            transactionMessage = "Transaction added successfully.";
+        }
+        Toast.makeText(getApplicationContext(), transactionMessage, Toast.LENGTH_SHORT).show();
+        bottomSheetDialog.dismiss();
+    }
+
+    @Override
+    protected void onPause() {
+        Log.v(TAG, "onPause()");
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.v(TAG, "onDestroy()");
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onResume() {
+        Log.v(TAG, "onResume()");
+        super.onResume();
+    }
+
+    @Override
+    protected void onRestart() {
+        Log.v(TAG, "onRestart()");
+        super.onRestart();
+    }
+
+    @Override
+    protected void onStart() {
+        Log.v(TAG, "onStart()");
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        Log.v(TAG, "onStop()");
+        super.onStop();
     }
 
 }

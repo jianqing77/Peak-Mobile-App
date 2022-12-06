@@ -51,31 +51,31 @@
             android:layout_height="wrap_content"
             android:text="@string/description"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/receipt_photo_image_view"
+            app:layout_constraintBottom_toTopOf="@+id/receipt_photo_preview_image_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/date_tv_dvt" />
 
         <ImageView
-            android:id="@+id/receipt_photo_image_view"
+            android:id="@+id/receipt_photo_preview_image_view"
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:contentDescription="@string/receipt_photo"
-            app:layout_constraintBottom_toTopOf="@+id/ok_button_dvt"
+            app:layout_constraintBottom_toTopOf="@+id/ok_button_drpp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/description_tv_dvt"
             tools:srcCompat="@tools:sample/avatars" />
 
         <Button
-            android:id="@+id/ok_button_dvt"
+            android:id="@+id/ok_button_drpp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/ok"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/receipt_photo_image_view" />
+            app:layout_constraintTop_toBottomOf="@+id/receipt_photo_preview_image_view" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

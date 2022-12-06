@@ -10,13 +10,12 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="400dp"
         android:orientation="vertical"
         android:paddingStart="20dp"
         android:paddingEnd="20dp">
 
         <!-- chosen category-->
-        <!-- TODO: change based on the category picker-->
         <TextView
             android:id="@+id/tv_category_with_tip"
             android:layout_width="wrap_content"
@@ -79,6 +78,31 @@
                 tools:ignore="TextContrastCheck" />
         </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_receipt"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:gravity="center"
+                android:text="Receipt:"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <Button
+                android:id="@+id/btn_view_receipt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/tv_receipt"
+                android:backgroundTint="@color/FinalProj_Primary"
+                android:text="View"
+                android:textColor="@color/FinalProj_Dark" />
+
+        </RelativeLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -89,7 +113,8 @@
                 android:id="@+id/spinner_add_tip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:spinnerMode="dropdown" />
+                android:spinnerMode="dropdown"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
             <Button
                 android:id="@+id/btn_add_receipt"
@@ -100,7 +125,8 @@
                 android:drawableLeft="@drawable/ic_add_receipt"
                 android:padding="8dp"
                 android:text="Add receipt"
-                android:textColor="@color/FinalProj_Dark" />
+                android:textColor="@color/FinalProj_Dark"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <Button
                 android:id="@+id/btn_done_add_transaction"
@@ -111,7 +137,8 @@
                 android:drawableLeft="@drawable/ic_done_add"
                 android:padding="8dp"
                 android:text="Done"
-                android:textColor="@color/FinalProj_Dark" />
+                android:textColor="@color/FinalProj_Dark"
+                tools:ignore="TouchTargetSizeCheck" />
 
         </LinearLayout>
 

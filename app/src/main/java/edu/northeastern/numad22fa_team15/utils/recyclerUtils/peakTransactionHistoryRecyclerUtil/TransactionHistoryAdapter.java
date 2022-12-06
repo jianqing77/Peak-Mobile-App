@@ -2,12 +2,9 @@ package edu.northeastern.numad22fa_team15.utils.recyclerUtils.peakTransactionHis
 
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.getYearMonthAndDayFromDateString;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.setPictureToGivenImageView;
-import static edu.northeastern.numad22fa_team15.utils.recyclerUtils.firebaseFriendTvRecyclerUtil.FriendTvAdapter.sendStickerDialog;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.opengl.Visibility;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +15,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
-
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import edu.northeastern.numad22fa_team15.R;
@@ -127,8 +120,8 @@ public class TransactionHistoryAdapter extends RecyclerView.Adapter<TransactionH
         TextView categoryTextView = (TextView) dialogView.findViewById(R.id.category_tv_dvt);
         TextView dateTextView = (TextView) dialogView.findViewById(R.id.date_tv_dvt);
         TextView descriptionTextView = (TextView) dialogView.findViewById(R.id.description_tv_dvt);
-        ImageView receiptPhotoImageView = (ImageView) dialogView.findViewById(R.id.receipt_photo_image_view);
-        Button okButton = (Button) dialogView.findViewById(R.id.ok_button_dvt);
+        ImageView receiptPhotoImageView = (ImageView) dialogView.findViewById(R.id.receipt_photo_preview_image_view);
+        Button okButton = (Button) dialogView.findViewById(R.id.ok_button_drpp);
 
         // Update TextView values
         String expenseString = String.format("%s %.2f", expenseTextView.getText().toString(), expense);
