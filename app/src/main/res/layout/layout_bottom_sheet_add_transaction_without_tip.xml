@@ -29,7 +29,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
 
             <TextView
                 android:id="@+id/tv_amount_no_tip"
@@ -41,7 +42,7 @@
                 android:textSize="18sp" />
             <EditText
                 android:id="@+id/et_transaction_amount_no_tip"
-                android:layout_width="match_parent"
+                android:layout_width="280dp"
                 android:layout_height="70dp"
                 android:layout_toRightOf="@id/tv_amount_no_tip"
                 android:layout_marginStart="40dp"
@@ -53,7 +54,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
             <TextView
                 android:id="@+id/tv_description_no_tip"
                 android:layout_width="wrap_content"
@@ -64,7 +66,7 @@
                 android:textSize="18sp" />
             <EditText
                 android:id="@+id/et_description_no_tip"
-                android:layout_width="match_parent"
+                android:layout_width="280dp"
                 android:layout_height="70dp"
                 android:layout_marginStart="15dp"
                 android:layout_toRightOf="@id/tv_description_no_tip"
@@ -75,17 +77,18 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal">
 
             <Button
                 android:id="@+id/btn_add_receipt_no_tip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add receipt"
+                android:layout_toLeftOf="@+id/btn_done_add_transaction_no_tip"
+                android:layout_marginRight="40dp"
                 android:backgroundTint="@color/FinalProj_Primary"
                 android:textColor="@color/FinalProj_Dark"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="30dp"
                 android:padding="8dp"
                 android:drawableLeft="@drawable/ic_add_receipt"/>
 
@@ -98,7 +101,7 @@
                 android:textColor="@color/FinalProj_Dark"
                 android:padding="8dp"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="45dp"
+                android:layout_marginRight="30dp"
                 android:drawableLeft="@drawable/ic_done_add"
                 android:onClick="addTransaction"/>
 
