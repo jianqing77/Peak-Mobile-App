@@ -12,26 +12,12 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/help_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:minHeight="48dp"
-            android:minWidth="48dp"
-            android:gravity="center"
-            android:text="Help"
-            android:textSize="16sp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
-            android:layout_gravity="top|right"/>
-
-        <TextView
             android:id="@+id/peak_text_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/peak"
             android:textAppearance="@style/peak_logo"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="25dp"
             android:layout_gravity="center_horizontal"/>
 
         <LinearLayout
