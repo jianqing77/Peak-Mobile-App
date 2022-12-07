@@ -694,7 +694,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
 
         SavingModel savingModel = null;
         if (cursor.moveToLast()) {
-            float savingGoal = cursor.getFloat(1);
+            int savingGoal = cursor.getInt(1);
             String goalDescription = cursor.getString(2);
             float savingSoFar = cursor.getFloat(3);
             boolean savingStatus = Boolean.valueOf(cursor.getString(4));

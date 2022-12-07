@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.snackbar.Snackbar;
@@ -28,6 +29,7 @@ import edu.northeastern.numad22fa_team15.activities.peakActivities.addTransactio
 import edu.northeastern.numad22fa_team15.activities.peakActivities.graph.GraphActivity;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.homePage.PeakHomePage;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.profilePage.ProfileActivity;
+import edu.northeastern.numad22fa_team15.models.databaseModels.SavingModel;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
 
 public class SavingsActivity extends AppCompatActivity {
@@ -36,7 +38,9 @@ public class SavingsActivity extends AppCompatActivity {
     private EditText savingGoal_et;
     private EditText goalDescription_et;
     private Button confirmGoal_btn;
-    private Button editGoal_btn;
+    private TextView goalDescription_tv;
+    private TextView savedAmount_tv;
+    private TextView remainingAmount_tv;
     DBHelper dbHelper;
 
     @Override
@@ -46,8 +50,16 @@ public class SavingsActivity extends AppCompatActivity {
 
         dbHelper = new DBHelper(SavingsActivity.this);
 
-        editGoal_btn = findViewById(R.id.btn_piggybank_goal);
-        // editGoal_btn.setOnClickListener(view -> editGoalDialog());
+        goalDescription_tv = findViewById(R.id.tv_goal_description);
+        savedAmount_tv = findViewById(R.id.tv_saved_amount);
+        remainingAmount_tv = findViewById(R.id.tv_remaining_amount);
+
+        // show current saving info
+        SavingModel saving = dbHelper.retrieveLatestSavingTableSaving();
+        goalDescription_tv.setText("Goal: " + saving.getGoalDescription());
+        savedAmount_tv.setText("$ " + saving.getSavingSoFar());
+        float remainingAmount = saving.getSavingGoal() - saving.getSavingSoFar();
+        remainingAmount_tv.setText("$ " + remainingAmount);
 
         // set up navigation bar
         navigationBarView = findViewById(R.id.bottom_navigation_id);
@@ -113,6 +125,13 @@ public class SavingsActivity extends AppCompatActivity {
                     savingMessage = "Successfully updated saving goal";
                 }
                 displayMessageInSnackbar(view, savingMessage, Snackbar.LENGTH_SHORT);
+
+                // show current saving info
+                SavingModel saving = dbHelper.retrieveLatestSavingTableSaving();
+                goalDescription_tv.setText("Goal: " + saving.getGoalDescription());
+                savedAmount_tv.setText("$ " + saving.getSavingSoFar());
+                float remainingAmount = saving.getSavingGoal() - saving.getSavingSoFar();
+                remainingAmount_tv.setText("$ " + remainingAmount);
             }
         });
         alert.show();
