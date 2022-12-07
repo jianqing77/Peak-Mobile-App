@@ -5,17 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.material.navigation.NavigationBarView;
 
 import edu.northeastern.numad22fa_team15.R;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.addTransaction.AddTransactionActivity;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.graph.GraphActivity;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.homePage.PeakHomePage;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.profilePage.ProfileActivity;
 
 public class SavingsActivity extends AppCompatActivity {
 
+    private static final String TAG = "PeakGraphPage___";
     private NavigationBarView navigationBarView;
 
     @Override
@@ -48,5 +52,13 @@ public class SavingsActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    // Bottom Navigation Bar -- add transaction
+    public void addTransactionFAB(View view) {
+        Log.v(TAG, "Trying to add a new transaction");
+        Intent intent = new Intent(SavingsActivity.this, AddTransactionActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
