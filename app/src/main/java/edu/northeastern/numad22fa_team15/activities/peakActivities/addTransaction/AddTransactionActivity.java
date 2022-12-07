@@ -5,6 +5,7 @@ import static edu.northeastern.numad22fa_team15.utils.CommonUtils.getByteArrayFr
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.nullOrEmptyInputChecker;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.setPictureToGivenImageView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -39,6 +40,7 @@ import java.util.Arrays;
 
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.homePage.PeakHomePage;
+import edu.northeastern.numad22fa_team15.models.databaseModels.SummaryModel;
 import edu.northeastern.numad22fa_team15.utils.Category;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
 import edu.northeastern.numad22fa_team15.utils.IDBHelper;
@@ -407,6 +409,10 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
             transactionMessage = "Transaction added successfully.";
         }
         Toast.makeText(getApplicationContext(), transactionMessage, Toast.LENGTH_SHORT).show();
+
+        // update summary table
+        updateSummaryTable(expense, category, transactionDate);
+
         bottomSheetDialog.dismiss();
     }
 
@@ -493,7 +499,79 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
             transactionMessage = "Transaction added successfully.";
         }
         Toast.makeText(getApplicationContext(), transactionMessage, Toast.LENGTH_SHORT).show();
+
+        // update summary table
+        updateSummaryTable(expense, category, transactionDate);
+
         bottomSheetDialog.dismiss();
+    }
+
+    private void updateSummaryTable(float expense, String category, String transactionDate) {
+        SummaryModel currentSummary = dbHelper.retrieveLatestSummaryInfoTableSummary();
+        float currentExpense = currentSummary.getCurrentExpense();
+        float diningExpense = currentSummary.getDiningExpense();
+        float groceriesExpense = currentSummary.getGroceriesExpense();
+        float shoppingExpense = currentSummary.getShoppingExpense();
+        float livingExpense = currentSummary.getLivingExpense();
+        float entertainmentExpense = currentSummary.getEntertainmentExpense();
+        float educationExpense = currentSummary.getEducationExpense();
+        float beautyExpense = currentSummary.getBeautyExpense();
+        float transportationExpense = currentSummary.getTransportationExpense();
+        float healthExpense = currentSummary.getHealthExpense();
+        float travelExpense = currentSummary.getTravelExpense();
+        float petExpense = currentSummary.getPetExpense();
+        float otherExpense = currentSummary.getOtherExpense();
+
+        if (category.equals("DINING")) {
+            diningExpense += expense;
+        } else if (category.equals("GROCERIES")) {
+            groceriesExpense += expense;
+        } else if (category.equals("SHOPPING")) {
+            shoppingExpense += expense;
+        } else if (category.equals("LIVING")) {
+            livingExpense += expense;
+        } else if (category.equals("ENTERTAINMENT")) {
+            entertainmentExpense += expense;
+        } else if (category.equals("EDUCATION")) {
+            educationExpense += expense;
+        } else if (category.equals("BEAUTY")) {
+            beautyExpense += expense;
+        } else if (category.equals("TRANSPORTATION")) {
+            transportationExpense += expense;
+        } else if (category.equals("HEALTH")) {
+            healthExpense += expense;
+        } else if (category.equals("TRAVEL")) {
+            travelExpense += expense;
+        } else if (category.equals("PET")) {
+            petExpense += expense;
+        } else if (category.equals("OTHER")) {
+            otherExpense += expense;
+        } else {
+            String message = "invalid category";
+            Context context = getApplicationContext();
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, message, duration);
+            toast.show();
+        }
+        currentExpense += expense;
+
+        int year = Integer.parseInt(transactionDate.substring(0, 4));
+        int month = Integer.parseInt(transactionDate.substring(5, 7));
+
+        boolean updateSummary = dbHelper.updateExpenseTableSummary(year, month, currentExpense,
+                diningExpense, groceriesExpense, shoppingExpense, livingExpense, entertainmentExpense,
+                educationExpense, beautyExpense, transportationExpense, healthExpense, travelExpense,
+                petExpense, otherExpense);
+        String transactionMessage = "Fail to update summary";
+        if (updateSummary) {
+            transactionMessage = "Successfully added transaction";
+        }
+
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, transactionMessage, duration);
+        toast.show();
     }
 
     @Override

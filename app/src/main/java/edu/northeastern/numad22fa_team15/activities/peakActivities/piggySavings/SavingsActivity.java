@@ -139,6 +139,7 @@ public class SavingsActivity extends AppCompatActivity {
                 savedAmount_tv.setText("$ " + saving.getSavingSoFar());
                 float remainingAmount = saving.getSavingGoal() - saving.getSavingSoFar();
                 remainingAmount_tv.setText("$ " + remainingAmount);
+
             }
         });
         alert.show();
