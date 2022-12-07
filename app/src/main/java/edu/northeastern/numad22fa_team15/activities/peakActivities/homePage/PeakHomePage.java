@@ -60,8 +60,6 @@ public class PeakHomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_peak_home_page_backup);
 
-        // TODO: Ask user to set budget if it's their first time to open the app
-
         matchResults = new ArrayList<>();
         recyclerView = findViewById(R.id.home_page_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -121,10 +119,12 @@ public class PeakHomePage extends AppCompatActivity {
         firstNameTextView.setText(user.getFirstName());
         // Retrieve this month's expenses and balance
         SummaryModel summary = dbHelper.retrieveLatestSummaryInfoTableSummary();
+        float totalBudget = summary.getTotalBudget();
         float expenses = summary.getCurrentExpense();
-        float balance = summary.getCurrentBalance();
+        float balance = totalBudget - expenses;
         String expensesText = String.format("$%.2f", expenses);
         String balanceText = String.format("$%.2f", balance);
+        Log.d(TAG, "DEBUGGING BALANCE: "+ balanceText);
         expensesTextView.setText(expensesText);
         balanceTextView.setText(balanceText);
         // Retrieve today's transaction

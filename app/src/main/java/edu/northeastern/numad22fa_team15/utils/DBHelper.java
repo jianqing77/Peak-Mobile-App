@@ -86,19 +86,6 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
     private static final String RECEIPT_PHOTO_COL = "receiptPhoto";
     private static final String TRANSACTION_FK_SUMMARY_ID_COL = "fk_summaryID";
 
-    private static final String CATEGORY_ENUM = "Enum('" + Category.DINING.name() + "', '"
-            + Category.GROCERIES.name() + "', '"
-            + Category.SHOPPING.name() + "', '"
-            + Category.LIVING.name() + "', '"
-            + Category.ENTERTAINMENT.name() + "', '"
-            + Category.EDUCATION.name() + "', '"
-            + Category.BEAUTY.name() + "', '"
-            + Category.TRANSPORTATION.name() + "', '"
-            + Category.HEALTH.name() + "', '"
-            + Category.TRAVEL.name() + "', '"
-            + Category.PET.name() + "', '"
-            + Category.OTHER.name() + "')";
-
     public DBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
@@ -416,7 +403,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
             int month = cursor.getInt(2);
             float totalBudget = cursor.getFloat(3);
             float currentExpense = cursor.getFloat(4);
-            // float currentBalance = cursor.getFloat(5);
+//            float currentBalance = cursor.getFloat(5);
             float diningBudget = cursor.getFloat(6);
             float diningExpense = cursor.getFloat(7);
             float groceriesBudget = cursor.getFloat(8);
@@ -525,7 +512,6 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         }
         cursor.close();
         int summaryID = summary.getSummaryID();
-
 
         ContentValues values = new ContentValues();
         values.put(EXPENSE_COL, expense);
@@ -693,7 +679,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         cursor.close();
 
         return savingModel;
-    };
+    }
 
     private Cursor getSavingCursor() {
         SQLiteDatabase db = this.getReadableDatabase();
