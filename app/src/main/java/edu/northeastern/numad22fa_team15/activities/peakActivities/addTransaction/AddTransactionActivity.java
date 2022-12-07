@@ -4,6 +4,7 @@ import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessage
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.getByteArrayFromInputStream;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.nullOrEmptyInputChecker;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.setPictureToGivenImageView;
+import static edu.northeastern.numad22fa_team15.utils.CommonUtils.updateSummaryTable;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -402,6 +403,10 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
         Log.d(TAG, "Receipt Photo to be added: " + Arrays.toString(receiptPictureByteArray));
         // Try to add transaction to the transactionEntry Table
         boolean addTransaction = dbHelper.addTranTableTransaction(expense, description, category, transactionDate, receiptPictureByteArray);
+        boolean updateSummary = updateSummaryTable(dbHelper, expense, category, transactionDate);
+        if (!updateSummary) {
+            Log.d(TAG, "Failed to update the summary table after adding a transaction.");
+        }
         String transactionMessage = "Failed to add Transaction.";
         if (addTransaction) {
             transactionMessage = "Transaction added successfully.";
@@ -488,6 +493,10 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
         Log.d(TAG, "Receipt Photo to be added: " + Arrays.toString(receiptPictureByteArray));
         // Try to add transaction to the transactionEntry Table
         boolean addTransaction = dbHelper.addTranTableTransaction(expense, description, category, transactionDate, receiptPictureByteArray);
+        boolean updateSummary = updateSummaryTable(dbHelper, expense, category, transactionDate);
+        if (!updateSummary) {
+            Log.d(TAG, "Failed to update the summary table after adding a transaction.");
+        }
         String transactionMessage = "Failed to add Transaction.";
         if (addTransaction) {
             transactionMessage = "Transaction added successfully.";

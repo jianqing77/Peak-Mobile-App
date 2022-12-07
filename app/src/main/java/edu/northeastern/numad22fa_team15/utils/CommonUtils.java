@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import edu.northeastern.numad22fa_team15.models.databaseModels.SummaryModel;
 import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
 
 public class CommonUtils {
@@ -140,6 +141,86 @@ public class CommonUtils {
         int day = Integer.parseInt(date.substring(8, 10));
         int[] yearMonthAndDay = new int[]{year, month, day};
         return yearMonthAndDay;
+    }
+
+    /**
+     * This update summary table method should be called after the user adds a transaction to the database.
+     * @param dbHelper database helper
+     * @param expense expense
+     * @param category category
+     * @param transactionDate transaction date
+     * @return true if the update operation is successful. Otherwise, return false.
+     */
+    public static boolean updateSummaryTable(IDBHelper dbHelper, float expense, String category, String transactionDate) {
+        SummaryModel currentSummary = dbHelper.retrieveLatestSummaryInfoTableSummary();
+        float currentExpense = currentSummary.getCurrentExpense();
+        float diningExpense = currentSummary.getDiningExpense();
+        float groceriesExpense = currentSummary.getGroceriesExpense();
+        float shoppingExpense = currentSummary.getShoppingExpense();
+        float livingExpense = currentSummary.getLivingExpense();
+        float entertainmentExpense = currentSummary.getEntertainmentExpense();
+        float educationExpense = currentSummary.getEducationExpense();
+        float beautyExpense = currentSummary.getBeautyExpense();
+        float transportationExpense = currentSummary.getTransportationExpense();
+        float healthExpense = currentSummary.getHealthExpense();
+        float travelExpense = currentSummary.getTravelExpense();
+        float petExpense = currentSummary.getPetExpense();
+        float otherExpense = currentSummary.getOtherExpense();
+
+        // TODO: No need to try-catch because category should all be in capital letters in app
+        Category selectedCategory = Category.valueOf(category);
+        System.out.println("Selected category: " + selectedCategory);
+
+        switch (selectedCategory) {
+            case DINING:
+                diningExpense += expense;
+                break;
+            case EDUCATION:
+                educationExpense += expense;
+                break;
+            case BEAUTY:
+                beautyExpense += expense;
+                break;
+            case HEALTH:
+                healthExpense += expense;
+                break;
+            case SHOPPING:
+                shoppingExpense += expense;
+                break;
+            case GROCERIES:
+                groceriesExpense += expense;
+                break;
+            case LIVING:
+                livingExpense += expense;
+                break;
+            case TRAVEL:
+                travelExpense += expense;
+                break;
+            case TRANSPORTATION:
+                transportationExpense += expense;
+                break;
+            case PET:
+                petExpense += expense;
+                break;
+            case ENTERTAINMENT:
+                entertainmentExpense += expense;
+                break;
+            case OTHER:
+                otherExpense += expense;
+                break;
+        }
+
+        currentExpense += expense;
+
+        int[] yearAndMonth = getYearAndMonthFromDateString(transactionDate);
+        int year = yearAndMonth[0];
+        int month = yearAndMonth[1];
+
+        boolean updateSummaryResult = dbHelper.updateExpenseTableSummary(year, month, currentExpense,
+                diningExpense, groceriesExpense, shoppingExpense, livingExpense, entertainmentExpense,
+                educationExpense, beautyExpense, transportationExpense, healthExpense, travelExpense,
+                petExpense, otherExpense);
+        return updateSummaryResult;
     }
 
 }

@@ -2,6 +2,7 @@ package edu.northeastern.numad22fa_team15.activities.peakActivities;
 
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.closeKeyboard;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessageInSnackbar;
+import static edu.northeastern.numad22fa_team15.utils.CommonUtils.getYearAndMonthFromDateString;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.nullOrEmptyInputChecker;
 
 import android.content.Context;
@@ -117,12 +118,16 @@ public class PeakAddTransaction extends AppCompatActivity {
         }
         displayMessageInSnackbar(view, transactionMessage, Snackbar.LENGTH_SHORT);
 
-        updateSummaryTable(expense, category, transactionDate);
+        boolean updateSummaryResult = updateSummaryTable(expense, category, transactionDate);
+        String summaryMessage = "Fail to update summary";
+        if (updateSummaryResult) {
+            summaryMessage = "Successfully update";
+        }
 
-
+        Toast.makeText(getApplicationContext(), transactionMessage, Toast.LENGTH_SHORT).show();
     }
 
-    private void updateSummaryTable(float expense, String category, String transactionDate) {
+    private boolean updateSummaryTable(float expense, String category, String transactionDate) {
         SummaryModel currentSummary = dbHelper.retrieveLatestSummaryInfoTableSummary();
         float currentExpense = currentSummary.getCurrentExpense();
         float diningExpense = currentSummary.getDiningExpense();
@@ -138,60 +143,60 @@ public class PeakAddTransaction extends AppCompatActivity {
         float petExpense = currentSummary.getPetExpense();
         float otherExpense = currentSummary.getOtherExpense();
 
-        //
+        // TODO: No need to try-catch because category should all be in capital letters in app
+        Category selectedCategory = Category.valueOf(category);
+        System.out.println("Selected category: " + selectedCategory);
 
-        // TODO: hardcoded for now, need a better helper function
-        if (category.equals("DINING")) {
-            diningExpense += expense;
-        } else if (category.equals("GROCERIES")) {
-            groceriesExpense += expense;
-        } else if (category.equals("SHOPPING")) {
-            shoppingExpense += expense;
-        } else if (category.equals("LIVING")) {
-            livingExpense += expense;
-        } else if (category.equals("ENTERTAINMENT")) {
-            entertainmentExpense += expense;
-        } else if (category.equals("EDUCATION")) {
-            educationExpense += expense;
-        } else if (category.equals("BEAUTY")) {
-            beautyExpense += expense;
-        } else if (category.equals("TRANSPORTATION")) {
-            transportationExpense += expense;
-        } else if (category.equals("HEALTH")) {
-            healthExpense += expense;
-        } else if (category.equals("TRAVEL")) {
-            travelExpense += expense;
-        } else if (category.equals("PET")) {
-            petExpense += expense;
-        } else if (category.equals("OTHER")) {
-            otherExpense += expense;
-        } else {
-            String message = "invalid category";
-            Context context = getApplicationContext();
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, message, duration);
-            toast.show();
+        switch (selectedCategory) {
+            case DINING:
+                diningExpense += expense;
+                break;
+            case EDUCATION:
+                educationExpense += expense;
+                break;
+            case BEAUTY:
+                beautyExpense += expense;
+                break;
+            case HEALTH:
+                healthExpense += expense;
+                break;
+            case SHOPPING:
+                shoppingExpense += expense;
+                break;
+            case GROCERIES:
+                groceriesExpense += expense;
+                break;
+            case LIVING:
+                livingExpense += expense;
+                break;
+            case TRAVEL:
+                travelExpense += expense;
+                break;
+            case TRANSPORTATION:
+                transportationExpense += expense;
+                break;
+            case PET:
+                petExpense += expense;
+                break;
+            case ENTERTAINMENT:
+                entertainmentExpense += expense;
+                break;
+            case OTHER:
+                otherExpense += expense;
+                break;
         }
+
         currentExpense += expense;
 
-        int year = Integer.parseInt(transactionDate.substring(0, 4));
-        int month = Integer.parseInt(transactionDate.substring(5, 7));
+        int[] yearAndMonth = getYearAndMonthFromDateString(transactionDate);
+        int year = yearAndMonth[0];
+        int month = yearAndMonth[1];
 
-        boolean updateSummary = dbHelper.updateExpenseTableSummary(year, month, currentExpense,
+        boolean updateSummaryResult = dbHelper.updateExpenseTableSummary(year, month, currentExpense,
                 diningExpense, groceriesExpense, shoppingExpense, livingExpense, entertainmentExpense,
                 educationExpense, beautyExpense, transportationExpense, healthExpense, travelExpense,
                 petExpense, otherExpense);
-        String transactionMessage = "Fail to update summary";
-        if (updateSummary) {
-            transactionMessage = "Successfully added transaction";
-        }
-        // displayMessageInSnackbar(, transactionMessage, Snackbar.LENGTH_SHORT);
-
-        Context context = getApplicationContext();
-        int duration = Toast.LENGTH_SHORT;
-
-        Toast toast = Toast.makeText(context, transactionMessage, duration);
-        toast.show();
+        return updateSummaryResult;
     }
 
     private boolean invalidCategoryChecker(String categoryInput) {

@@ -2,6 +2,7 @@ package edu.northeastern.numad22fa_team15.activities.peakActivities.lockScreen;
 
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessageInSnackbar;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.nullOrEmptyInputChecker;
+import static edu.northeastern.numad22fa_team15.utils.CommonUtils.updateSummaryTable;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -312,7 +313,11 @@ public class PeakLockScreen extends AppCompatActivity implements View.OnClickLis
         // Try to add transaction to the transactionEntry Table
         // Set null as receiptPhoto's value
         boolean addTransaction = dbHelper.addTranTableTransaction(expense, description, category, transactionDate, null);
-        String transactionMessage = "Failed to add Transaction.";
+        boolean updateSummary = updateSummaryTable(dbHelper, expense, category, transactionDate);
+        if (!updateSummary) {
+            Log.d(TAG, "Failed to update the summary table after adding a transaction.");
+        }
+        String transactionMessage = "Failed to add transaction.";
         if (addTransaction) {
             transactionMessage = "Transaction added successfully.";
         }
