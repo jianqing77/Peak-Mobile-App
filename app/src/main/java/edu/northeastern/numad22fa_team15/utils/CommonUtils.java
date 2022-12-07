@@ -221,6 +221,11 @@ public class CommonUtils {
         return updateSummaryResult;
     }
 
+    /**
+     * Add a default budget summary in table summary.
+     * @param dbHelper database helper
+     * @return true if summary is successfully added. Otherwise, return false
+     */
     public static boolean createDefaultBudgetTableSummary(IDBHelper dbHelper) {
         LocalDateTime now = LocalDateTime.now();
         String currentDate = String.valueOf(now);

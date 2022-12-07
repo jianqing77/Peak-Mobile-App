@@ -1,13 +1,8 @@
 package edu.northeastern.numad22fa_team15.activities.peakActivities.piggySavings;
 
-import static android.content.ContentValues.TAG;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.closeKeyboard;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessageInSnackbar;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.nullOrEmptyInputChecker;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,12 +12,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.textfield.TextInputEditText;
 
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.addTransaction.AddTransactionActivity;
@@ -31,8 +29,11 @@ import edu.northeastern.numad22fa_team15.activities.peakActivities.homePage.Peak
 import edu.northeastern.numad22fa_team15.activities.peakActivities.profilePage.ProfileActivity;
 import edu.northeastern.numad22fa_team15.models.databaseModels.SavingModel;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
+import edu.northeastern.numad22fa_team15.utils.IDBHelper;
 
 public class SavingsActivity extends AppCompatActivity {
+
+    private static final String TAG = "SavingsActivity___";
 
     private NavigationBarView navigationBarView;
     private EditText savingGoal_et;
@@ -42,7 +43,7 @@ public class SavingsActivity extends AppCompatActivity {
     private TextView goalDescription_tv;
     private TextView savedAmount_tv;
     private TextView remainingAmount_tv;
-    DBHelper dbHelper;
+    private IDBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,17 +94,16 @@ public class SavingsActivity extends AppCompatActivity {
 
     // Bottom Navigation Bar -- add transaction
     public void addTransactionFAB(View view) {
-//        Log.v(TAG, "Trying to add a new transaction");
+        Log.v(TAG, "Trying to add a new transaction");
         Intent intent = new Intent(SavingsActivity.this, AddTransactionActivity.class);
         startActivity(intent);
         finish();
     }
 
     public void editGoalDialog(View view) {
-        Log.d(TAG, "Edit piggybank goal button was clicked");
+        Log.d(TAG, "Edit piggy bank goal button was clicked");
 
         AlertDialog.Builder b = new AlertDialog.Builder(this);
-        b.setTitle("Receipt Picture Preview");
         View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.dialog_edit_piggybank_goal, null);
         b.setView(dialogView);
         AlertDialog alert = b.create();
@@ -126,11 +126,13 @@ public class SavingsActivity extends AppCompatActivity {
                 }
                 int newGoal = Integer.parseInt(newGoal_str);
                 boolean updateSaving = dbHelper.updateLatestSavingTableSaving(newGoal, newGoalDescription);
+
                 String savingMessage = "Fail to update saving goal";
                 if (updateSaving) {
                     savingMessage = "Successfully updated saving goal";
+                    alert.dismiss();
                 }
-                displayMessageInSnackbar(view, savingMessage, Snackbar.LENGTH_SHORT);
+                Toast.makeText(getApplicationContext(), savingMessage, Toast.LENGTH_SHORT).show();
 
                 // show current saving info
                 SavingModel saving = dbHelper.retrieveLatestSavingTableSaving();
@@ -139,9 +141,9 @@ public class SavingsActivity extends AppCompatActivity {
                 savedAmount_tv.setText("$ " + saving.getSavingSoFar());
                 float remainingAmount = saving.getSavingGoal() - saving.getSavingSoFar();
                 remainingAmount_tv.setText("$ " + remainingAmount);
-
             }
         });
         alert.show();
     }
+
 }
