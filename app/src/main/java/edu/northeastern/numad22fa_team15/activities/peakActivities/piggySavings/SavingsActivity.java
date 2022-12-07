@@ -109,6 +109,9 @@ public class SavingsActivity extends AppCompatActivity {
         AlertDialog alert = b.create();
         savingGoal_et = dialogView.findViewById(R.id.et_edit_goal_amount);
         goalDescription_et = dialogView.findViewById(R.id.et_edit_goal_description);
+        SavingModel saving = dbHelper.retrieveLatestSavingTableSaving();
+        savingGoal_et.setHint("" + saving.getSavingGoal());
+        goalDescription_et.setHint(saving.getGoalDescription());
         confirmGoal_btn = dialogView.findViewById(R.id.btn_confirm_edit_goal);
         confirmGoal_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,6 +134,7 @@ public class SavingsActivity extends AppCompatActivity {
 
                 // show current saving info
                 SavingModel saving = dbHelper.retrieveLatestSavingTableSaving();
+                goal_tv.setText("$ " + saving.getSavingGoal());
                 goalDescription_tv.setText("Goal: " + saving.getGoalDescription());
                 savedAmount_tv.setText("$ " + saving.getSavingSoFar());
                 float remainingAmount = saving.getSavingGoal() - saving.getSavingSoFar();
