@@ -106,10 +106,10 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         String createSavingTableQuery =
                 "CREATE TABLE IF NOT EXISTS " + SAVING_TABLE_NAME + " ("
                 + SAVING_ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
-                + SAVING_GOAL_COL + " FLOAT NOT NULL, "
-                + SAVING_GOAL_DESCRIPTION_COL + " TEXT NOT NULL, "
-                + SAVING_SO_FAR_COL + " FLOAT NOT NULL, "
-                + SAVING_STATUS_COL + " BOOLEAN NOT NULL)";
+                + SAVING_GOAL_COL + " INT DEFAULT 0, "
+                + SAVING_GOAL_DESCRIPTION_COL + " TEXT DEFAULT 'GOAL', "
+                + SAVING_SO_FAR_COL + " FLOAT DEFAULT 0, "
+                + SAVING_STATUS_COL + " BOOLEAN DEFAULT 'FALSE')";
 
         String createSummaryTableQuery =
                 "CREATE TABLE IF NOT EXISTS " + SUMMARY_TABLE_NAME + " ("
@@ -620,6 +620,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         return (rowsAffected != 0);
     }
 
+    /*
     @Override
     public boolean addSavingTableSaving(float savingGoal, String goalDescription, float savingSoFar, boolean savingStatus) {
         // TODO
@@ -635,8 +636,19 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         return (result != -1);
     }
 
+     */
+
     @Override
-    public boolean updateLatestSavingTableSaving(float savingGoal, String goalDescription, float savingSoFar, boolean savingStatus) {
+    public boolean addSavingTableSaving(String goalDescription) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(SAVING_GOAL_DESCRIPTION_COL, goalDescription);
+        long result = db.insert(SAVING_TABLE_NAME, null, values);
+        return (result != -1);
+    }
+
+    @Override
+    public boolean updateLatestSavingTableSaving(float savingGoal, String goalDescription) {
         // Retrieve latest saving ID
         Cursor cursor = getSavingCursor();
         int savingID = -1;
@@ -655,8 +667,6 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         ContentValues values = new ContentValues();
         values.put(SAVING_GOAL_COL, savingGoal);
         values.put(SAVING_GOAL_DESCRIPTION_COL, goalDescription);
-        values.put(SAVING_SO_FAR_COL, savingSoFar);
-        values.put(SAVING_STATUS_COL, savingStatus);
 
         String whereClause = String.format("%s = ?", SAVING_ID_COL);
         int numOfRowsImpacted = db.update(SAVING_TABLE_NAME, values, whereClause, new String[]{String.valueOf(savingID)});
@@ -670,7 +680,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
 
         SavingModel savingModel = null;
         if (cursor.moveToLast()) {
-            float savingGoal = cursor.getFloat(1);
+            int savingGoal = cursor.getInt(1);
             String goalDescription = cursor.getString(2);
             float savingSoFar = cursor.getFloat(3);
             boolean savingStatus = Boolean.valueOf(cursor.getString(4));
@@ -687,5 +697,6 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         Cursor cursor = db.rawQuery(getSavingQuery, null);
         return cursor;
     }
+
 
 }

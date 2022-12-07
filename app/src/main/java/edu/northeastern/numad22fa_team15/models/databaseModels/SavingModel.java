@@ -8,12 +8,12 @@ package edu.northeastern.numad22fa_team15.models.databaseModels;
 
 public class SavingModel {
     private int savingID;
-    private float savingGoal;
+    private int savingGoal;
     private String goalDescription;
     private float savingSoFar;
     private boolean savingStatus;
 
-    public SavingModel(float savingGoal, String goalDescription, float savingSoFar, boolean savingStatus) {
+    public SavingModel(int savingGoal, String goalDescription, float savingSoFar, boolean savingStatus) {
         this.savingGoal = savingGoal;
         this.goalDescription = goalDescription;
         this.savingSoFar = savingSoFar;
@@ -28,11 +28,11 @@ public class SavingModel {
         this.savingID = savingID;
     }
 
-    public float getSavingGoal() {
+    public int getSavingGoal() {
         return this.savingGoal;
     }
 
-    public void setSavingGoal(float savingGoal) {
+    public void setSavingGoal(int savingGoal) {
         this.savingGoal = savingGoal;
     }
 

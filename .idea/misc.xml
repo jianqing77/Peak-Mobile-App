@@ -52,14 +52,18 @@
         <entry key="app/src/main/res/layout/activity_movie_search.xml" value="0.3496376811594203" />
         <entry key="app/src/main/res/layout/activity_movie_search_w_recycler_view.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_peak_add_transaction.xml" value="0.2427536231884058" />
+        <entry key="app/src/main/res/layout/activity_peak_graph.xml" value="0.16210739614994935" />
         <entry key="app/src/main/res/layout/activity_peak_home_page.xml" value="0.26766304347826086" />
         <entry key="app/src/main/res/layout/activity_peak_lock_screen.xml" value="0.21920289855072464" />
         <entry key="app/src/main/res/layout/activity_peak_login.xml" value="0.21354166666666666" />
+        <entry key="app/src/main/res/layout/activity_peak_monthlyspending_cardview.xml" value="0.16210739614994935" />
+        <entry key="app/src/main/res/layout/activity_peak_piggybank.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_peak_sign_up.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_peak_summary_pie_chart.xml" value="0.20260416666666667" />
         <entry key="app/src/main/res/layout/activity_peak_transaction_cardview.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/activity_profile_page.xml" value="0.18333333333333332" />
         <entry key="app/src/main/res/layout/activity_reset_passcode.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_savings.xml" value="0.2368659420289855" />
         <entry key="app/src/main/res/layout/activity_sticker_history.xml" value="0.13518518518518519" />
         <entry key="app/src/main/res/layout/activity_test_budget.xml" value="0.21920289855072464" />
         <entry key="app/src/main/res/layout/activity_test_peak_add_transaction.xml" value="0.3292155504468244" />

@@ -43,12 +43,13 @@ public interface IDBHelper {
     List<TransactionModel> retrieveTransactionsByDateTableTransaction(int yearInput, int monthInput, int dayInput);
 
     // Methods that interact with the saving table
-    boolean addSavingTableSaving(float savingGoal, String goalDescription, float savingSoFar, boolean savingStatus);
-    boolean updateLatestSavingTableSaving(float savingGoal, String goalDescription, float savingSoFar, boolean savingStatus);
+    boolean addSavingTableSaving(String goalDescription);
+    boolean updateLatestSavingTableSaving(float savingGoal, String goalDescription);
     SavingModel retrieveLatestSavingTableSaving();
 
     // Methods that interact with multiple tables in the database
     boolean truncateTablesTransactionSummaryAndSaving();
+
 
 
 
