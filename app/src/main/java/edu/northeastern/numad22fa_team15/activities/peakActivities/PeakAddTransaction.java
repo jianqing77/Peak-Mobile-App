@@ -110,14 +110,14 @@ public class PeakAddTransaction extends AppCompatActivity {
         }
 
         // TODO: check if there's correlated summary table and create?
-//        boolean addTransaction = dbHelper.addTranTableTransaction(expense, description, category, transactionDate);
-//        String transactionMessage = "Fail to add Transaction";
-//        if (addTransaction) {
-//            transactionMessage = "Successfully added transaction";
-//        }
-//        displayMessageInSnackbar(view, transactionMessage, Snackbar.LENGTH_SHORT);
-//
-//        updateSummaryTable(expense, category, transactionDate);
+        boolean addTransaction = dbHelper.addTranTableTransaction(expense, description, category, transactionDate, null);
+        String transactionMessage = "Fail to add Transaction";
+        if (addTransaction) {
+            transactionMessage = "Successfully added transaction";
+        }
+        displayMessageInSnackbar(view, transactionMessage, Snackbar.LENGTH_SHORT);
+
+        updateSummaryTable(expense, category, transactionDate);
 
 
     }
@@ -137,6 +137,8 @@ public class PeakAddTransaction extends AppCompatActivity {
         float travelExpense = currentSummary.getTravelExpense();
         float petExpense = currentSummary.getPetExpense();
         float otherExpense = currentSummary.getOtherExpense();
+
+        //
 
         // TODO: hardcoded for now, need a better helper function
         if (category.equals("DINING")) {

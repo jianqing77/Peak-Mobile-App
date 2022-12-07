@@ -3,10 +3,10 @@ package edu.northeastern.numad22fa_team15.activities.peakActivities.addTransacti
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessageInSnackbar;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.getByteArrayFromInputStream;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.nullOrEmptyInputChecker;
+import static edu.northeastern.numad22fa_team15.utils.CommonUtils.setPictureToGivenImageView;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -201,9 +201,8 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
         if (imageView == null) {
             Log.d(TAG, "Something wrong");
         }
-        // Not sure why setPictureToGivenImageView() method does not work here
-        Bitmap bitmap = BitmapFactory.decodeByteArray(receiptPictureByteArray,0, receiptPictureByteArray.length);
-        imageView.setImageBitmap(bitmap);
+        // Set receipt picture to given image view
+        setPictureToGivenImageView(receiptPictureByteArray, imageView);
         Button okButton = (Button) dialogView.findViewById(R.id.ok_button_drpp);
         b.setView(dialogView);
         AlertDialog alert = b.create();
@@ -214,9 +213,6 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
             }
         });
         alert.show();
-    }
-
-    private void setPictureToGivenImageView(byte[] receiptPictureByteArray, ImageView imageView) {
     }
 
     @Override
