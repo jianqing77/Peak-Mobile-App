@@ -1,5 +1,6 @@
 package edu.northeastern.numad22fa_team15.activities.peakActivities.profilePage;
 
+import static edu.northeastern.numad22fa_team15.utils.CommonUtils.createDefaultBudgetTableSummary;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessageInSnackbar;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.setProfilePictureToGivenImageView;
 
@@ -171,6 +172,8 @@ public class ProfileActivity extends AppCompatActivity {
                 }
                 // If delete action succeeded, bring user to the create budge page.
                 String message = "Account reset. Start fresh with a new budget plan.";
+                // Create a default budget
+                createDefaultBudgetTableSummary(dbHelper);
                 Intent intent = new Intent(getApplicationContext(), PeakCreateBudget.class);
                 intent.putExtra("message", message);
                 startActivity(intent);

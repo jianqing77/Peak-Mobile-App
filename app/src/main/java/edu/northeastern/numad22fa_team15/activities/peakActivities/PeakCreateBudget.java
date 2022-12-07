@@ -62,6 +62,9 @@ public class PeakCreateBudget extends AppCompatActivity {
         dbHelper = new DBHelper(PeakCreateBudget.this);
         SummaryModel currentSummary = dbHelper.retrieveLatestSummaryInfoTableSummary();
 
+        // After resetting account, currentSummary would be null so set a new default summary row.
+
+
         totalBudget_tv = (TextView) findViewById(R.id.edit_budget_amount);
         totalBudget_tv.setText("$ " + currentSummary.getTotalBudget() + "0");
 

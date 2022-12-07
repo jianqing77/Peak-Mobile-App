@@ -14,6 +14,7 @@ import com.google.android.material.snackbar.Snackbar;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -167,10 +168,7 @@ public class CommonUtils {
         float petExpense = currentSummary.getPetExpense();
         float otherExpense = currentSummary.getOtherExpense();
 
-        // TODO: No need to try-catch because category should all be in capital letters in app
         Category selectedCategory = Category.valueOf(category);
-        System.out.println("Selected category: " + selectedCategory);
-
         switch (selectedCategory) {
             case DINING:
                 diningExpense += expense;
@@ -221,6 +219,22 @@ public class CommonUtils {
                 educationExpense, beautyExpense, transportationExpense, healthExpense, travelExpense,
                 petExpense, otherExpense);
         return updateSummaryResult;
+    }
+
+    public static boolean createDefaultBudgetTableSummary(IDBHelper dbHelper) {
+        LocalDateTime now = LocalDateTime.now();
+        String currentDate = String.valueOf(now);
+
+        Integer currentYear = Integer.parseInt(currentDate.substring(0,4));
+        Integer currentMonth = Integer.parseInt(currentDate.substring(5,7));
+
+        float defaultBudget = 500;
+        float totalBudget = defaultBudget * 12;
+
+        boolean addSummary = dbHelper.addSummaryTableSummary(currentYear, currentMonth, totalBudget,
+                defaultBudget, defaultBudget, defaultBudget, defaultBudget, defaultBudget, defaultBudget,
+                defaultBudget, defaultBudget, defaultBudget, defaultBudget, defaultBudget, defaultBudget);
+        return addSummary;
     }
 
 }

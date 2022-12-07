@@ -1,6 +1,7 @@
 package edu.northeastern.numad22fa_team15.activities.peakActivities.userRegister;
 
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.closeKeyboard;
+import static edu.northeastern.numad22fa_team15.utils.CommonUtils.createDefaultBudgetTableSummary;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessageInSnackbar;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.fourDigitPasscodeChecker;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.nullOrEmptyInputChecker;
@@ -76,30 +77,30 @@ public class PeakSignUp extends AppCompatActivity {
             return;
         }
         boolean addResult = dbHelper.addUserTableUser(username, firstName, lastName, passcode);
-         String resultMessage = "Failed to add user"; // Default message
+        String resultMessage = "Failed to add user"; // Default message
         if (addResult) {
             // ---> OPTION 1: JUMP TO LOGIN PAGE
             // Intent intent = new Intent(PeakSignUp.this, PeakLogin.class);
             // ---> OPTION 2: JUMP TO CONFIRMATION PAGE --> NO NEED TO ENTER USERNAME AND PASSCODE AGAIN
             Intent intent = new Intent(PeakSignUp.this, PeakSignUpConfirmation.class);
             startActivity(intent);
-            // resultMessage = "User was added successfully.";
         }
          displayMessageInSnackbar(view, resultMessage, Snackbar.LENGTH_SHORT);
 
-        // create a default budget
-        LocalDateTime now = LocalDateTime.now();
-        String currentDate = String.valueOf(now);
-
-        Integer currentYear = Integer.parseInt(currentDate.substring(0,4));
-        Integer currentMonth = Integer.parseInt(currentDate.substring(5,7));
-
-        float defaultBudget = 500;
-        float totalBudget = defaultBudget * 12;
-
-        boolean addSummary = dbHelper.addSummaryTableSummary(currentYear, currentMonth, totalBudget,
-                defaultBudget, defaultBudget, defaultBudget, defaultBudget, defaultBudget, defaultBudget,
-                defaultBudget, defaultBudget, defaultBudget, defaultBudget, defaultBudget, defaultBudget);
+        // Create a default budget
+        Boolean addSummary = createDefaultBudgetTableSummary(dbHelper);
+//        LocalDateTime now = LocalDateTime.now();
+//        String currentDate = String.valueOf(now);
+//
+//        Integer currentYear = Integer.parseInt(currentDate.substring(0,4));
+//        Integer currentMonth = Integer.parseInt(currentDate.substring(5,7));
+//
+//        float defaultBudget = 500;
+//        float totalBudget = defaultBudget * 12;
+//
+//        boolean addSummary = dbHelper.addSummaryTableSummary(currentYear, currentMonth, totalBudget,
+//                defaultBudget, defaultBudget, defaultBudget, defaultBudget, defaultBudget, defaultBudget,
+//                defaultBudget, defaultBudget, defaultBudget, defaultBudget, defaultBudget, defaultBudget);
 
         String budgetMessage = "Fail to add Summary";
         if (addSummary) {
