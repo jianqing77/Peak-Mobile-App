@@ -19,7 +19,7 @@
         android:background="@color/FinalProj_Primary"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="18dp"/>
 
     <TextView
         android:layout_width="wrap_content"
