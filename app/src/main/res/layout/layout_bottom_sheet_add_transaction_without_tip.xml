@@ -28,7 +28,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
 
             <TextView
                 android:id="@+id/tv_amount_no_tip"
@@ -36,39 +37,43 @@
                 android:layout_height="70dp"
                 android:gravity="center"
                 android:text="Amount: "
-                android:textStyle="bold"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
             <EditText
                 android:id="@+id/et_transaction_amount_no_tip"
-                android:layout_width="match_parent"
+                android:layout_width="280dp"
                 android:layout_height="70dp"
-                android:layout_toRightOf="@id/tv_amount_no_tip"
                 android:layout_marginStart="40dp"
+                android:layout_toRightOf="@id/tv_amount_no_tip"
                 android:hint="Transaction Amount"
-                android:inputType="numberDecimal"/>
+                android:inputType="numberDecimal" />
 
         </RelativeLayout>
 
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+
             <TextView
                 android:id="@+id/tv_description_no_tip"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
                 android:gravity="center"
                 android:text="Description: "
-                android:textStyle="bold"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
             <EditText
                 android:id="@+id/et_description_no_tip"
-                android:layout_width="match_parent"
+                android:layout_width="280dp"
                 android:layout_height="70dp"
                 android:layout_marginStart="15dp"
                 android:layout_toRightOf="@id/tv_description_no_tip"
                 android:hint="Add a description"
-                android:inputType="textShortMessage"/>
+                android:inputType="textShortMessage" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -79,10 +84,12 @@
                 android:id="@+id/tv_receipt_no_tip"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
+                android:layout_marginStart="124dp"
                 android:gravity="center"
                 android:text="Receipt:"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+
             <Button
                 android:id="@+id/btn_view_receipt_no_tip"
                 android:layout_width="wrap_content"
@@ -99,19 +106,20 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal">
 
             <Button
                 android:id="@+id/btn_add_receipt_no_tip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add receipt"
+                android:layout_marginRight="40dp"
+                android:layout_toLeftOf="@+id/btn_done_add_transaction_no_tip"
                 android:backgroundTint="@color/FinalProj_Primary"
-                android:textColor="@color/FinalProj_Dark"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="30dp"
+                android:drawableLeft="@drawable/ic_add_receipt"
                 android:padding="8dp"
-                android:drawableLeft="@drawable/ic_add_receipt"/>
+                android:text="Add receipt"
+                android:textColor="@color/FinalProj_Dark" />
 
             <Button
                 android:id="@+id/btn_done_add_transaction_no_tip"

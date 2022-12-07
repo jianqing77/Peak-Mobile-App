@@ -44,8 +44,7 @@ public class ChangePasscodeActivity extends AppCompatActivity {
      * Clicking the BACK button will lead user back to the Profile page.
      */
     @Override
-    public void onBackPressed()
-    {
+    public void onBackPressed() {
         super.onBackPressed();
 
         Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);

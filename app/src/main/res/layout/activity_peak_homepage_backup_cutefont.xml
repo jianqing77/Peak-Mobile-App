@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.peakActivities.homePage.PeakHomePage">
+
+
+    <View
+        android:id="@+id/view_header_backgrund"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@color/FinalProj_Primary"
+        app:layout_constraintTop_toTopOf="parent">
+    </View>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <TextView
+        android:id="@+id/welcome_back"
+        style="@style/onboarding_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/fredoka_one"
+        android:text="Welcome back, "
+        android:textColor="@color/FinalProj_Dark"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_home_name"
+        style="@style/onboarding_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="John"
+        android:fontFamily="@font/fredoka_one"
+        android:textStyle="normal"
+        android:textColor="@color/FinalProj_Dark"
+        app:layout_constraintBottom_toBottomOf="@id/welcome_back"
+        app:layout_constraintStart_toEndOf="@id/welcome_back"
+        app:layout_constraintTop_toTopOf="@id/welcome_back" />
+
+
+    <LinearLayout
+        android:id="@+id/summary"
+        android:background="@drawable/bg_homepage_summary"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toTopOf="@id/home_page_divider"
+        app:layout_constraintEnd_toStartOf="@id/btn_pick_date"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/welcome_back"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/tv_summary"
+            style="@style/default_page_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/fredoka_one"
+            android:textStyle="normal"
+            android:text="Monthly Summary"
+            android:textColor="@color/FinalProj_Dark" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="51dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/coin_pic">
+
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/tv_home1"
+                    style="@style/default_page_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/fredoka_one"
+                    android:textStyle="normal"
+                    android:textColor="@color/FinalProj_Dark"
+                    android:text="Expenses"
+                    android:layout_gravity="center_horizontal" />
+
+                <TextView
+                    android:id="@+id/tv_expenses"
+                    style="@style/default_page_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/fredoka_one"
+                    android:textColor="@color/FinalProj_Dark"
+                    android:text="$1000"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="41dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/piggysaving">
+
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/tv_home2"
+                    style="@style/default_page_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Balance"
+                    android:textColor="@color/FinalProj_Dark"
+                    android:fontFamily="@font/fredoka_one"
+                    android:textStyle="normal"/>
+
+                <TextView
+                    android:id="@+id/tv_balance"
+                    style="@style/default_page_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="13dp"
+                    android:text="$5000"
+                    android:textColor="@color/FinalProj_Dark"
+                    android:fontFamily="@font/fredoka_one"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_pick_date"
+        style="@style/button_light"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/FinalProj_Primary"
+        android:fontFamily="@font/fredoka_one"
+        android:onClick="datePickerDialog"
+        android:text="Today"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#3B4249"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/summary" />
+
+    <View
+        android:id="@+id/home_page_divider"
+        android:layout_width="match_parent"
+        android:layout_height=".5dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/FinalProj_Primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_pick_date" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_page_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        app:layout_constraintTop_toBottomOf="@id/home_page_divider"
+        app:layout_constraintBottom_toTopOf="@id/coordinatorLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <!-- Static Navigation Bar -->
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottom_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:fabCradleMargin="10dp"
+            app:fabCradleRoundedCornerRadius="10dp"
+            app:fabCradleVerticalOffset="10dp">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navigation_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/nav_transparent_background"
+                app:menu="@menu/bottom_nav_menu" />
+
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/nav_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/FinalProj_Primary"
+            android:src="@drawable/ic_nav_add"
+            android:onClick="addTransactionFAB"
+            app:layout_anchor="@id/bottom_app_bar" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
