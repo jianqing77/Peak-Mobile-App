@@ -58,7 +58,7 @@ public class PeakHomePage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_peak_home_page);
+        setContentView(R.layout.activity_peak_home_page_backup);
 
         // TODO: Ask user to set budget if it's their first time to open the app
 

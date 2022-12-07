@@ -94,7 +94,6 @@ public class TransactionHistoryAdapter extends RecyclerView.Adapter<TransactionH
             // set the expense text
             holder.itemExpense.setText(String.valueOf(transactions.get(position).getExpense()));
             holder.itemView.setOnClickListener(view -> {
-                // TODO: XH
                 // Open the dialog that displays the detail of a transaction
                 openViewTransactionDetailDialog(transaction, holder.itemView);
             });
