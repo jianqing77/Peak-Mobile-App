@@ -38,6 +38,7 @@ public class SavingsActivity extends AppCompatActivity {
     private EditText savingGoal_et;
     private EditText goalDescription_et;
     private Button confirmGoal_btn;
+    private TextView goal_tv;
     private TextView goalDescription_tv;
     private TextView savedAmount_tv;
     private TextView remainingAmount_tv;
@@ -50,12 +51,14 @@ public class SavingsActivity extends AppCompatActivity {
 
         dbHelper = new DBHelper(SavingsActivity.this);
 
+        goal_tv = findViewById(R.id.tv_goal_amount);
         goalDescription_tv = findViewById(R.id.tv_goal_description);
         savedAmount_tv = findViewById(R.id.tv_saved_amount);
         remainingAmount_tv = findViewById(R.id.tv_remaining_amount);
 
         // show current saving info
         SavingModel saving = dbHelper.retrieveLatestSavingTableSaving();
+        goal_tv.setText("$ " + saving.getSavingGoal());
         goalDescription_tv.setText("Goal: " + saving.getGoalDescription());
         savedAmount_tv.setText("$ " + saving.getSavingSoFar());
         float remainingAmount = saving.getSavingGoal() - saving.getSavingSoFar();
