@@ -67,6 +67,8 @@
         <entry key="app/src/main/res/layout/activity_peak_login.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/layout/activity_peak_sign_up.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_peak_transaction_cardview.xml" value="0.19791666666666666" />
+        <entry key="app/src/main/res/layout/activity_peak_sign_up_confirmation.xml" value="0.21920289855072464" />
+        <entry key="app/src/main/res/layout/activity_peak_summary_pie_chart.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_profile_page.xml" value="0.18333333333333332" />
         <entry key="app/src/main/res/layout/activity_reset_passcode.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_sticker_history.xml" value="0.13518518518518519" />

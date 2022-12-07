@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".PeakSummaryPieChart">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewGraph"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:elevation="10dp"
+        app:cardCornerRadius="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <org.eazegraph.lib.charts.PieChart
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/summary_piechart"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:padding="6dp"
+                android:layout_weight="1"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="15dp"
+
+                />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/piechart_dining_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical">
+
+                    <View
+                        android:id="@+id/piechart_dining_view"
+                        android:layout_width="15dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/dining" />
+
+                    <TextView
+                        android:id="@+id/piechart_dining_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="Dining" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/piechart_groceries_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp">
+
+                    <View
+                        android:id="@+id/piechart_groceries_view"
+                        android:layout_width="15dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/groceries" />
+
+                    <TextView
+                        android:id="@+id/piechart_groceries_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="Groceries" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/piechart_shopping_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp">
+
+                    <View
+                        android:id="@+id/piechart_shopping_view"
+                        android:layout_width="15dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/shopping" />
+
+                    <TextView
+                        android:id="@+id/piechart_shopping_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="Shopping" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/piechart_living_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp">
+
+                    <View
+                        android:id="@+id/piechart_living_view"
+                        android:layout_width="15dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/living" />
+
+                    <TextView
+                        android:id="@+id/piechart_living_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="Living" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/piechart_entertainment_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop='5dp'>
+
+                    <View
+                        android:id="@+id/piechart_entertainment_view"
+                        android:layout_width="15dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/entertainment" />
+
+                    <TextView
+                        android:id="@+id/piechart_entertainment_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="Entertainment" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/piechart_education_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop='5dp'>
+
+                    <View
+                        android:id="@+id/piechart_education_view"
+                        android:layout_width="15dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/education" />
+
+                    <TextView
+                        android:id="@+id/piechart_education_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="Education" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/piechart_beauty_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop='5dp'>
+
+                    <View
+                        android:id="@+id/piechart_beauty_view"
+                        android:layout_width="15dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/beauty" />
+
+                    <TextView
+                        android:id="@+id/piechart_beauty_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="Beauty" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/piechart_transportation_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop='5dp'>
+
+                    <View
+                        android:id="@+id/piechart_transportation_view"
+                        android:layout_width="15dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/transportation" />
+
+                    <TextView
+                        android:id="@+id/piechart_transportation_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="Transportation" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/piechart_health_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop='5dp'>
+
+                    <View
+                        android:id="@+id/piechart_health_view"
+                        android:layout_width="15dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/health" />
+
+                    <TextView
+                        android:id="@+id/piechart_health_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="Health" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/piechart_travel_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop='5dp'>
+
+                    <View
+                        android:id="@+id/piechart_travel_view"
+                        android:layout_width="15dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/travel" />
+
+                    <TextView
+                        android:id="@+id/piechart_travel_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="Travel" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/piechart_pet_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop='5dp'>
+
+                    <View
+                        android:id="@+id/piechart_pet_view"
+                        android:layout_width="15dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/pet" />
+
+                    <TextView
+                        android:id="@+id/piechart_pet_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="Pet" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/piechart_other_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop='5dp'>
+
+                    <View
+                        android:id="@+id/piechart_other_view"
+                        android:layout_width="15dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/other" />
+
+                    <TextView
+                        android:id="@+id/piechart_other_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="Other" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
