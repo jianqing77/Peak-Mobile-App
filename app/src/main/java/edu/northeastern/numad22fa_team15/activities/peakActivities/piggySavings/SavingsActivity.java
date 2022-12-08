@@ -65,6 +65,18 @@ public class SavingsActivity extends AppCompatActivity {
         float remainingAmount = saving.getSavingGoal() - saving.getSavingSoFar();
         remainingAmount_tv.setText("$ " + remainingAmount);
 
+        // if reach saving goal, play animation
+        if (saving.getSavingSoFar() >= saving.getSavingGoal()) {
+            // TODO: CONGRATULATIONS!!!
+            float remainingSaving = saving.getSavingSoFar() - saving.getSavingGoal();
+            boolean resetSaving = dbHelper.resetSavingTableSaving(remainingSaving);
+            String resetMessage = "Failed to reset saving";
+            if (resetSaving) {
+                resetMessage = "Successfully reset saving";
+            }
+            Log.d(TAG, resetMessage);
+        }
+
         // set up navigation bar
         navigationBarView = findViewById(R.id.bottom_navigation_id);
         navigationBarView.setSelectedItemId(R.id.nav_savings);
@@ -104,6 +116,7 @@ public class SavingsActivity extends AppCompatActivity {
         Log.d(TAG, "Edit piggy bank goal button was clicked");
 
         AlertDialog.Builder b = new AlertDialog.Builder(this);
+        b.setTitle("Edit Savings Goal");
         View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.dialog_edit_piggybank_goal, null);
         b.setView(dialogView);
         AlertDialog alert = b.create();

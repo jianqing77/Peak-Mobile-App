@@ -12,12 +12,13 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewGraph"
         android:layout_width="match_parent"
-        android:layout_height="280dp"
+        android:layout_height="320dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="15dp"
         android:elevation="10dp"
-        app:cardCornerRadius="10dp">
+        app:cardCornerRadius="10dp"
+        app:cardElevation="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,20 +50,21 @@
                 <LinearLayout
                     android:id="@+id/piechart_dining_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"
+                    android:layout_height="20dp"
                     android:layout_gravity="center_vertical">
 
                     <View
                         android:id="@+id/piechart_dining_view"
                         android:layout_width="15dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/dining" />
+                        android:layout_height="15dp"
+                        android:background="@color/dining"
+                        android:layout_gravity="center_vertical"/>
 
                     <TextView
                         android:id="@+id/piechart_dining_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:text="Dining" />
 
                 </LinearLayout>
@@ -70,21 +72,22 @@
                 <LinearLayout
                     android:id="@+id/piechart_groceries_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"
+                    android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop="5dp">
 
                     <View
                         android:id="@+id/piechart_groceries_view"
                         android:layout_width="15dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/groceries" />
+                        android:layout_height="15dp"
+                        android:background="@color/groceries"
+                        android:layout_gravity="center_vertical"/>
 
                     <TextView
                         android:id="@+id/piechart_groceries_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:text="Groceries" />
 
                 </LinearLayout>
@@ -92,21 +95,22 @@
                 <LinearLayout
                     android:id="@+id/piechart_shopping_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"
+                    android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop="5dp">
 
                     <View
                         android:id="@+id/piechart_shopping_view"
                         android:layout_width="15dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/shopping" />
+                        android:layout_height="15dp"
+                        android:background="@color/shopping"
+                        android:layout_gravity="center_vertical"/>
 
                     <TextView
                         android:id="@+id/piechart_shopping_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:text="Shopping" />
 
                 </LinearLayout>
@@ -114,21 +118,22 @@
                 <LinearLayout
                     android:id="@+id/piechart_living_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"
+                    android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop="5dp">
 
                     <View
                         android:id="@+id/piechart_living_view"
                         android:layout_width="15dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/living" />
+                        android:layout_height="15dp"
+                        android:background="@color/living"
+                        android:layout_gravity="center_vertical"/>
 
                     <TextView
                         android:id="@+id/piechart_living_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:text="Living" />
 
                 </LinearLayout>
@@ -136,21 +141,22 @@
                 <LinearLayout
                     android:id="@+id/piechart_entertainment_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"
+                    android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop='5dp'>
 
                     <View
                         android:id="@+id/piechart_entertainment_view"
                         android:layout_width="15dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/entertainment" />
+                        android:layout_height="15dp"
+                        android:background="@color/entertainment"
+                        android:layout_gravity="center_vertical"/>
 
                     <TextView
                         android:id="@+id/piechart_entertainment_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:text="Entertainment" />
 
                 </LinearLayout>
@@ -158,21 +164,22 @@
                 <LinearLayout
                     android:id="@+id/piechart_education_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"
+                    android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop='5dp'>
 
                     <View
                         android:id="@+id/piechart_education_view"
                         android:layout_width="15dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/education" />
+                        android:layout_height="15dp"
+                        android:background="@color/education"
+                        android:layout_gravity="center_vertical"/>
 
                     <TextView
                         android:id="@+id/piechart_education_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:text="Education" />
 
                 </LinearLayout>
@@ -180,21 +187,22 @@
                 <LinearLayout
                     android:id="@+id/piechart_beauty_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"
+                    android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop='5dp'>
 
                     <View
                         android:id="@+id/piechart_beauty_view"
                         android:layout_width="15dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/beauty" />
+                        android:layout_height="15dp"
+                        android:background="@color/beauty"
+                        android:layout_gravity="center_vertical"/>
 
                     <TextView
                         android:id="@+id/piechart_beauty_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:text="Beauty" />
 
                 </LinearLayout>
@@ -202,21 +210,22 @@
                 <LinearLayout
                     android:id="@+id/piechart_transportation_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"
+                    android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop='5dp'>
 
                     <View
                         android:id="@+id/piechart_transportation_view"
                         android:layout_width="15dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/transportation" />
+                        android:layout_height="15dp"
+                        android:background="@color/transportation"
+                        android:layout_gravity="center_vertical"/>
 
                     <TextView
                         android:id="@+id/piechart_transportation_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:text="Transportation" />
 
                 </LinearLayout>
@@ -224,21 +233,22 @@
                 <LinearLayout
                     android:id="@+id/piechart_health_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"
+                    android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop='5dp'>
 
                     <View
                         android:id="@+id/piechart_health_view"
                         android:layout_width="15dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/health" />
+                        android:layout_height="15dp"
+                        android:background="@color/health"
+                        android:layout_gravity="center_vertical"/>
 
                     <TextView
                         android:id="@+id/piechart_health_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:text="Health" />
 
                 </LinearLayout>
@@ -246,21 +256,22 @@
                 <LinearLayout
                     android:id="@+id/piechart_travel_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"
+                    android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop='5dp'>
 
                     <View
                         android:id="@+id/piechart_travel_view"
                         android:layout_width="15dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/travel" />
+                        android:layout_height="15dp"
+                        android:background="@color/travel"
+                        android:layout_gravity="center_vertical"/>
 
                     <TextView
                         android:id="@+id/piechart_travel_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:text="Travel" />
 
                 </LinearLayout>
@@ -268,21 +279,22 @@
                 <LinearLayout
                     android:id="@+id/piechart_pet_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"
+                    android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop='5dp'>
 
                     <View
                         android:id="@+id/piechart_pet_view"
                         android:layout_width="15dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/pet" />
+                        android:layout_height="15dp"
+                        android:background="@color/pet"
+                        android:layout_gravity="center_vertical"/>
 
                     <TextView
                         android:id="@+id/piechart_pet_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:text="Pet" />
 
                 </LinearLayout>
@@ -290,21 +302,22 @@
                 <LinearLayout
                     android:id="@+id/piechart_other_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"
+                    android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop='5dp'>
 
                     <View
                         android:id="@+id/piechart_other_view"
                         android:layout_width="15dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/other" />
+                        android:layout_height="15dp"
+                        android:background="@color/other"
+                        android:layout_gravity="center_vertical"/>
 
                     <TextView
                         android:id="@+id/piechart_other_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:text="Other" />
 
                 </LinearLayout>
