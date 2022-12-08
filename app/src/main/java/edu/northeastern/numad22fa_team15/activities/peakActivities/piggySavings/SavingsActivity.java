@@ -34,6 +34,7 @@ import edu.northeastern.numad22fa_team15.utils.DBHelper;
 
 public class SavingsActivity extends AppCompatActivity {
 
+    private static final String TAG = "PeakSavingsActivity___";
     private NavigationBarView navigationBarView;
     private EditText savingGoal_et;
     private EditText goalDescription_et;
@@ -63,6 +64,18 @@ public class SavingsActivity extends AppCompatActivity {
         savedAmount_tv.setText("$ " + saving.getSavingSoFar());
         float remainingAmount = saving.getSavingGoal() - saving.getSavingSoFar();
         remainingAmount_tv.setText("$ " + remainingAmount);
+
+        // if reach saving goal, play animation
+        if (saving.getSavingSoFar() >= saving.getSavingGoal()) {
+            // TODO: CONGRATULATIONS!!!
+            float remainingSaving = saving.getSavingSoFar() - saving.getSavingGoal();
+            boolean resetSaving = dbHelper.resetSavingTableSaving(remainingSaving);
+            String resetMessage = "Failed to reset saving";
+            if (resetSaving) {
+                resetMessage = "Successfully reset saving";
+            }
+            Log.d(TAG, resetMessage);
+        }
 
         // set up navigation bar
         navigationBarView = findViewById(R.id.bottom_navigation_id);

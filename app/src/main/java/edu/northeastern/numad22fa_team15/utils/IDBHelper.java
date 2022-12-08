@@ -46,6 +46,7 @@ public interface IDBHelper {
     boolean addSavingTableSaving(String goalDescription);
     boolean updateLatestSavingTableSaving(float savingGoal, String goalDescription);
     boolean updateSavingSoFarTableSaving(float newSaving);
+    boolean resetSavingTableSaving(float remainingSaving);
     SavingModel retrieveLatestSavingTableSaving();
 
     // Methods that interact with multiple tables in the database

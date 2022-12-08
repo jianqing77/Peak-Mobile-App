@@ -709,6 +709,21 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
     }
 
     @Override
+    public boolean resetSavingTableSaving(float remainingSaving) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(SAVING_GOAL_COL, 0);
+        values.put(SAVING_GOAL_DESCRIPTION_COL, "GOAL");
+        values.put(SAVING_SO_FAR_COL, remainingSaving);
+
+        String whereClause = String.format("%s = ?", SAVING_ID_COL);
+        int numOfRowsImpacted = db.update(SAVING_TABLE_NAME, values, whereClause, new String[]{String.valueOf(1)});
+        return (numOfRowsImpacted != 0);
+
+    }
+
+    @Override
     public SavingModel retrieveLatestSavingTableSaving() {
         Cursor cursor = getSavingCursor();
 
