@@ -116,7 +116,6 @@ public class SavingsActivity extends AppCompatActivity {
         Log.d(TAG, "Edit piggy bank goal button was clicked");
 
         AlertDialog.Builder b = new AlertDialog.Builder(this);
-        b.setTitle("Edit Savings Goal");
         View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.dialog_edit_piggybank_goal, null);
         b.setView(dialogView);
         AlertDialog alert = b.create();
