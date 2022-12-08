@@ -663,6 +663,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
 
     @Override
     public boolean updateLatestSavingTableSaving(float savingGoal, String goalDescription) {
+        /*
         // Retrieve latest saving ID
         Cursor cursor = getSavingCursor();
         int savingID = -1;
@@ -676,6 +677,8 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
             return false;
         }
 
+         */
+
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -683,8 +686,25 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         values.put(SAVING_GOAL_DESCRIPTION_COL, goalDescription);
 
         String whereClause = String.format("%s = ?", SAVING_ID_COL);
-        int numOfRowsImpacted = db.update(SAVING_TABLE_NAME, values, whereClause, new String[]{String.valueOf(savingID)});
+        int numOfRowsImpacted = db.update(SAVING_TABLE_NAME, values, whereClause, new String[]{String.valueOf(1)});
 
+        return (numOfRowsImpacted != 0);
+    }
+
+    @Override
+    public boolean updateSavingSoFarTableSaving(float newSaving) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        SavingModel saving = this.retrieveLatestSavingTableSaving();
+        float savingSoFar = saving.getSavingSoFar();
+        savingSoFar += newSaving;
+        System.out.println("saving so far: " + savingSoFar);
+
+        ContentValues values = new ContentValues();
+        values.put(SAVING_SO_FAR_COL, savingSoFar);
+
+        String whereClause = String.format("%s = ?", SAVING_ID_COL);
+        int numOfRowsImpacted = db.update(SAVING_TABLE_NAME, values, whereClause, new String[]{String.valueOf(1)});
         return (numOfRowsImpacted != 0);
     }
 

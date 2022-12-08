@@ -95,6 +95,17 @@ public class PeakLockScreen extends AppCompatActivity implements View.OnClickLis
                 budgetMessage = "Successfully added summary";
             }
             Log.d(TAG, budgetMessage);
+
+            float remainingBudget = lastSummary.getTotalBudget() - lastSummary.getCurrentExpense();
+            boolean updateSaving = dbHelper.updateSavingSoFarTableSaving(remainingBudget);
+
+            String savingMessage = "Fail to update Saving";
+            if (updateSaving) {
+                savingMessage = "Successfully updated saving";
+            }
+            Log.d(TAG, savingMessage);
+
+
         }
     }
 
