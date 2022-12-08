@@ -2,8 +2,14 @@ package edu.northeastern.numad22fa_team15.activities.peakActivities.homePage;
 
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessageInSnackbar;
 
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +22,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,8 +31,10 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
+import edu.northeastern.numad22fa_team15.utils.DailyBroadcastReceiver;
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.activities.MainActivity;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.addTransaction.AddTransactionActivity;
@@ -42,6 +51,7 @@ import edu.northeastern.numad22fa_team15.utils.recyclerUtils.peakTransactionHist
 public class PeakHomePage extends AppCompatActivity {
 
     private static final String TAG = "PeakHomePage___";
+    private static final String CHANNEL_ID = "channel_two"; // Notification Channel
 
     private RecyclerView recyclerView;
     private List<TransactionModel> matchResults;
@@ -98,8 +108,12 @@ public class PeakHomePage extends AppCompatActivity {
             }
         });
 
-        // set homepage information with data from database
+        // Set homepage information with data from database
         setInfoOnHomePage();
+
+        // Call createNotificationChannel before a notification is sent.
+        createNotificationChannel();
+        setAlert();
     }
 
     // Bottom Navigation Bar -- add transaction
@@ -229,6 +243,70 @@ public class PeakHomePage extends AppCompatActivity {
         finish();
     }
 
+    private void setAlert(){
+        Intent intent = new Intent(this, DailyBroadcastReceiver.class);
+        Notification notification = buildNotification();
+        intent.putExtra("notification", notification);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                this.getApplicationContext(), 0, intent, 0);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        // Set the alarm to start at approximately 8:00 p.m.
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, 20);
+        // TODO: Remember to set the alarm manager correctly.
+//        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+//                AlarmManager.INTERVAL_DAY, pendingIntent);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()
+                + (3 * 1000), pendingIntent);
+        Log.d(TAG, "Daily notification alarm set on 8 pm.");
+    }
+
+    /**
+     * This helper method creates the notification channel.
+     */
+    private void createNotificationChannel() {
+        Log.d(TAG, "Create Peak daily notification channel");
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = getString(R.string.channel_two_name);
+            String description = getString(R.string.channel_two_description);
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+    /**
+     * Build notification.
+     */
+    private Notification buildNotification() {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.setAction(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_LAUNCHER);
+        PendingIntent checkIntent = PendingIntent.getActivity(getApplicationContext(),
+                (int) System.currentTimeMillis(), intent, PendingIntent.FLAG_IMMUTABLE);
+
+        String contentTitle = String.format("Hi Peak user %s", firstNameTextView.getText().toString());
+        String contentText = "Remember to add your spending in Peak. =)";
+        // Build notification
+        Notification notification = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
+                .setContentTitle(contentTitle)
+                .setSmallIcon(R.drawable.notification_icon)
+                .setContentText(contentText)
+                .setContentIntent(checkIntent)
+                .build();
+
+        // Hide notification after it is selected
+        notification.flags = Notification.FLAG_AUTO_CANCEL;
+        return notification;
+    }
+
     @Override
     protected void onPause() {
         Log.v(TAG, "onPause()");
@@ -265,42 +343,4 @@ public class PeakHomePage extends AppCompatActivity {
         super.onStop();
     }
 
-
-//    // navigation bar
-//    bottomAppBar = (BottomAppBar) findViewById(R.id.bottom_app_bar);
-//        bottomAppBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-//        @Override
-//        public boolean onMenuItemClick(MenuItem item) {
-//            switch (item.getItemId()) {
-//                case R.id.nav_home:
-//                    Log.v(TAG, "clicked the home page menu button");
-//                    Toast.makeText(PeakHomePage.this, "Home", Toast.LENGTH_SHORT).show();
-////                        Intent intent_openHome = new Intent(PeakHomePage.this, PeakHomePage.class);
-////                        startActivity(intent_openHome);
-//                    break;
-//                case R.id.nav_graph:
-//                    Log.v(TAG, "clicked the graph page menu button");
-//                    Toast.makeText(PeakHomePage.this, "Graph", Toast.LENGTH_SHORT).show();
-//
-////                        Intent intent_openGraph = new Intent(PeakHomePage.this, GraphActivity.class);
-////                        startActivity(intent_openGraph);
-//                    break;
-//                case R.id.nav_savings:
-//                    Log.v(TAG, "clicked the savings page menu button");
-//                    Toast.makeText(PeakHomePage.this, "savings", Toast.LENGTH_SHORT).show();
-////                        Intent intent_openSavings = new Intent(PeakHomePage.this, SavingsActivity.class);
-////                        startActivity(intent_openSavings);
-//                    break;
-//                case R.id.nav_profile:
-//                    Log.v(TAG, "clicked the profile page menu button");
-//                    Toast.makeText(PeakHomePage.this, "profile", Toast.LENGTH_SHORT).show();
-//
-////                        Intent intent_openProfile = new Intent(PeakHomePage.this, ProfileActivity.class);
-////                        startActivity(intent_openProfile);
-//                    break;
-//                default:
-//            }
-//            return true;
-//        }
-//    });
 }

@@ -46,6 +46,8 @@
     <string name="send">Send</string>
     <string name="channel_name">channel_one</string>
     <string name="channel_description">channel_one_description</string>
+    <string name="channel_two_name">channel_two</string>
+    <string name="channel_two_description">channel_two_description</string>
     <string name="welcome">Welcome</string>
     <string name="usernameHint">Username</string>
     <string name="log_in">log in</string>

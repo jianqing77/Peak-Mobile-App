@@ -8,8 +8,11 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <queries>
+    <!--    Alarm Permission-->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
+    <queries>
         <!-- Camera -->
         <intent>
             <action android:name="android.media.action.IMAGE_CAPTURE" />
@@ -94,8 +97,7 @@
         <activity android:name=".activities.peakActivities.userRegister.PeakSignUp" />
         <activity android:name=".activities.peakActivities.userRegister.PeakSignUpConfirmation" />
         <activity
-            android:name=".activities.peakActivities.lockScreen.PeakLockScreen"
-            android:configChanges="orientation|screenSize" />
+            android:name=".activities.peakActivities.lockScreen.PeakLockScreen" />
         <activity
             android:name=".activities.peakActivities.homePage.PeakHomePage" />
         <activity
@@ -114,12 +116,20 @@
             android:name=".activities.peakActivities.addTransaction.AddTransactionActivity"
             android:configChanges="orientation|screenSize" />
 
+        <activity android:name=".activities.peakActivities.TestAlarmManangerActivity"/>
+
         <meta-data
             android:name="API_KEY"
             android:value="${API_KEY}" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <receiver
+            android:name=".DailyBroadcastReceiver"
+            android:exported="true">
+        </receiver>
+
     </application>
 
 </manifest>

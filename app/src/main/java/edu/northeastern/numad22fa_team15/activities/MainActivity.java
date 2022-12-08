@@ -11,11 +11,7 @@ import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.activities.firebaseActivities.FirebaseSignUpActivity;
 import edu.northeastern.numad22fa_team15.activities.movieApiActivities.MovieSearchActivityWithRecyclerView;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakAddTransaction;
-import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakCreateBudget;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakEntrance;
-import edu.northeastern.numad22fa_team15.activities.peakActivities.homePage.PeakHomePage;
-import edu.northeastern.numad22fa_team15.activities.peakActivities.lockScreen.PeakLockScreen;
-import edu.northeastern.numad22fa_team15.activities.peakActivities.profilePage.ProfileActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -88,23 +84,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), AboutTeamActivity.class);
         startActivity(intent);
     }
-
-//    /**
-//     * Clicking the BUTTON button will start the EditProfile activity.
-//     * @param view view
-//     */
-//    public void profileTestActivity(View view) {
-//        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-//        startActivity(intent);
-//    }
-
-//    /**
-//     * Test for the homepage button
-//     */
-//    public void homePageActivity(View view) {
-//        Intent intent = new Intent(getApplicationContext(), PeakHomePage.class);
-//        startActivity(intent);
-//    }
 
     @Override
     protected void onPause() {
