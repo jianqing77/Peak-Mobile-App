@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/bg_view_dark_oval.xml" value="0.3515" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/bg_view_grey_oval.xml" value="0.3515" />
+        <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/ic_heart.xml" value="0.3515" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/ic_logo_piggybank.xml" value="0.3515" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/piggybank_boxes.xml" value="0.2275" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/round_corner.xml" value="0.2275" />
@@ -23,12 +24,14 @@
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_peak_transaction_cardview.xml" value="0.2975630611372381" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_profile_page.xml" value="0.2975630611372381" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_savings.xml" value="0.2975630611372381" />
+        <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_test_confetti.xml" value="0.2860196665241556" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_test_peak_first_page.xml" value="0.24166666666666667" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/change_profile_picture_bottomsheet.xml" value="0.22894736842105262" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/dialog_edit_piggybank_goal.xml" value="0.2975630611372381" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/edit_profile.xml" value="0.25" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/onboarding_slider_layout.xml" value="0.2975630611372381" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/profile_page.xml" value="0.22894736842105262" />
+        <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/test_confetti.xml" value="0.2967079948696024" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/ic_nav_home.xml" value="0.2105" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/ic_onboarding_1.xml" value="0.242" />
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/ic_onboarding_3.xml" value="0.2105" />

@@ -5,6 +5,7 @@ import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessage
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.nullOrEmptyInputChecker;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.snackbar.Snackbar;
@@ -33,15 +35,20 @@ import edu.northeastern.numad22fa_team15.models.databaseModels.SavingModel;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
 import edu.northeastern.numad22fa_team15.utils.IDBHelper;
 
+import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
+
 import nl.dionsegijn.konfetti.core.Angle;
 import nl.dionsegijn.konfetti.core.Party;
 import nl.dionsegijn.konfetti.core.PartyFactory;
+import nl.dionsegijn.konfetti.core.Position;
 import nl.dionsegijn.konfetti.core.Spread;
 import nl.dionsegijn.konfetti.core.emitter.Emitter;
 import nl.dionsegijn.konfetti.core.emitter.EmitterConfig;
 import nl.dionsegijn.konfetti.core.models.Shape;
 import nl.dionsegijn.konfetti.core.models.Size;
 import nl.dionsegijn.konfetti.xml.KonfettiView;
+import static nl.dionsegijn.konfetti.core.Position.Relative;
 
 public class SavingsActivity extends AppCompatActivity {
 
@@ -72,18 +79,10 @@ public class SavingsActivity extends AppCompatActivity {
         savedAmount_tv = findViewById(R.id.tv_saved_amount);
         remainingAmount_tv = findViewById(R.id.tv_remaining_amount);
 
-        // Confetti
+        final Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_heart);
+        drawableShape = new Shape.DrawableShape(drawable, true);
         konfettiView = findViewById(R.id.konfettiView);
         EmitterConfig emitterConfig = new Emitter(5L, TimeUnit.SECONDS).perSecond(50);
-        Party party = new PartyFactory(emitterConfig)
-                .angle(270)
-                .spread(90)
-                .setSpeedBetween(1f, 5f)
-                .timeToLive(2000L)
-                .shapes(new Shape.Rectangle(0.2f), drawableShape)
-                .sizes(new Size(12, 5f, 0.2f))
-                .position(0.0, 0.0, 1.0, 0.0)
-                .build();
 
         // show current saving info
         SavingModel saving = dbHelper.retrieveLatestSavingTableSaving();
@@ -94,9 +93,9 @@ public class SavingsActivity extends AppCompatActivity {
         remainingAmount_tv.setText("$ " + remainingAmount);
 
         // if reach saving goal, play animation
-        if (saving.getSavingSoFar() >= saving.getSavingGoal()) {
-            // TODO: CONGRATULATIONS!!!
-            konfettiView.start(party);
+        if (saving.getSavingSoFar() >= saving.getSavingGoal() && saving.getSavingGoal() != 0) {
+            // TODO: goal resets everytime app is reopened
+            explode();
             float remainingSaving = saving.getSavingSoFar() - saving.getSavingGoal();
             boolean resetSaving = dbHelper.resetSavingTableSaving(remainingSaving);
             String resetMessage = "Failed to reset saving";
@@ -122,6 +121,8 @@ public class SavingsActivity extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.nav_savings:
+                        startActivity(new Intent(getApplicationContext(), SavingsActivity.class));
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.nav_profile:
                         startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
@@ -131,6 +132,19 @@ public class SavingsActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    public void explode() {
+        EmitterConfig emitterConfig = new Emitter(100L, TimeUnit.MILLISECONDS).max(100);
+        konfettiView.start(
+                new PartyFactory(emitterConfig)
+                        .spread(360)
+                        .shapes(Arrays.asList(Shape.Square.INSTANCE, Shape.Circle.INSTANCE, drawableShape))
+                        .colors(Arrays.asList(0xfce18a, 0xff726d, 0xf4306d, 0xb48def))
+                        .setSpeedBetween(0f, 30f)
+                        .position(new Relative(0.5, 0.3))
+                        .build()
+        );
     }
 
     // Bottom Navigation Bar -- add transaction

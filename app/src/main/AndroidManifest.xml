@@ -6,13 +6,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-    <!--    Alarm Permission-->
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- Alarm Permission -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <queries>
+
         <!-- Camera -->
         <intent>
             <action android:name="android.media.action.IMAGE_CAPTURE" />
@@ -29,6 +28,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NUMAD22Fa_Team15"
         tools:targetApi="31">
+        <activity
+            android:name=".test_confetti"
+            android:exported="false" />
         <activity
             android:name=".PeakSummaryPieChart"
             android:exported="false" />
@@ -96,10 +98,8 @@
             android:configChanges="orientation|screenSize" />
         <activity android:name=".activities.peakActivities.userRegister.PeakSignUp" />
         <activity android:name=".activities.peakActivities.userRegister.PeakSignUpConfirmation" />
-        <activity
-            android:name=".activities.peakActivities.lockScreen.PeakLockScreen" />
-        <activity
-            android:name=".activities.peakActivities.homePage.PeakHomePage" />
+        <activity android:name=".activities.peakActivities.lockScreen.PeakLockScreen" />
+        <activity android:name=".activities.peakActivities.homePage.PeakHomePage" />
         <activity
             android:name=".activities.peakActivities.profilePage.TermsAndConditionActivity"
             android:configChanges="orientation|screenSize" />
@@ -115,8 +115,7 @@
         <activity
             android:name=".activities.peakActivities.addTransaction.AddTransactionActivity"
             android:configChanges="orientation|screenSize" />
-
-        <activity android:name=".activities.peakActivities.TestAlarmManangerActivity"/>
+        <activity android:name=".activities.peakActivities.TestAlarmManangerActivity" />
 
         <meta-data
             android:name="API_KEY"
@@ -127,9 +126,7 @@
 
         <receiver
             android:name=".DailyBroadcastReceiver"
-            android:exported="true">
-        </receiver>
-
+            android:exported="true"></receiver>
     </application>
 
 </manifest>
