@@ -22,6 +22,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.concurrent.TimeUnit;
+
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.addTransaction.AddTransactionActivity;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.graph.GraphActivity;
@@ -30,6 +32,16 @@ import edu.northeastern.numad22fa_team15.activities.peakActivities.profilePage.P
 import edu.northeastern.numad22fa_team15.models.databaseModels.SavingModel;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
 import edu.northeastern.numad22fa_team15.utils.IDBHelper;
+
+import nl.dionsegijn.konfetti.core.Angle;
+import nl.dionsegijn.konfetti.core.Party;
+import nl.dionsegijn.konfetti.core.PartyFactory;
+import nl.dionsegijn.konfetti.core.Spread;
+import nl.dionsegijn.konfetti.core.emitter.Emitter;
+import nl.dionsegijn.konfetti.core.emitter.EmitterConfig;
+import nl.dionsegijn.konfetti.core.models.Shape;
+import nl.dionsegijn.konfetti.core.models.Size;
+import nl.dionsegijn.konfetti.xml.KonfettiView;
 
 public class SavingsActivity extends AppCompatActivity {
 
@@ -45,6 +57,9 @@ public class SavingsActivity extends AppCompatActivity {
     private TextView remainingAmount_tv;
     private IDBHelper dbHelper;
 
+    private KonfettiView konfettiView = null;
+    private Shape.DrawableShape drawableShape = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +72,19 @@ public class SavingsActivity extends AppCompatActivity {
         savedAmount_tv = findViewById(R.id.tv_saved_amount);
         remainingAmount_tv = findViewById(R.id.tv_remaining_amount);
 
+        // Confetti
+        konfettiView = findViewById(R.id.konfettiView);
+        EmitterConfig emitterConfig = new Emitter(5L, TimeUnit.SECONDS).perSecond(50);
+        Party party = new PartyFactory(emitterConfig)
+                .angle(270)
+                .spread(90)
+                .setSpeedBetween(1f, 5f)
+                .timeToLive(2000L)
+                .shapes(new Shape.Rectangle(0.2f), drawableShape)
+                .sizes(new Size(12, 5f, 0.2f))
+                .position(0.0, 0.0, 1.0, 0.0)
+                .build();
+
         // show current saving info
         SavingModel saving = dbHelper.retrieveLatestSavingTableSaving();
         goal_tv.setText("$ " + saving.getSavingGoal());
@@ -68,6 +96,7 @@ public class SavingsActivity extends AppCompatActivity {
         // if reach saving goal, play animation
         if (saving.getSavingSoFar() >= saving.getSavingGoal()) {
             // TODO: CONGRATULATIONS!!!
+            konfettiView.start(party);
             float remainingSaving = saving.getSavingSoFar() - saving.getSavingGoal();
             boolean resetSaving = dbHelper.resetSavingTableSaving(remainingSaving);
             String resetMessage = "Failed to reset saving";
