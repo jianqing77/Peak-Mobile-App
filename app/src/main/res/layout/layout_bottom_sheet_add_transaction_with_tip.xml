@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="Dining"
             android:textColor="@color/FinalProj_Dark"
@@ -100,7 +100,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/tv_receipt"
                 android:backgroundTint="@color/FinalProj_Primary"
-                android:text="View"
+                android:text="View the receipt"
                 android:textColor="@color/FinalProj_Dark" />
 
         </RelativeLayout>

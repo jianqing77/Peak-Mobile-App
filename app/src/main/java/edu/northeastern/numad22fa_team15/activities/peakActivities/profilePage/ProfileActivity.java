@@ -26,6 +26,7 @@ import com.google.android.material.snackbar.Snackbar;
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.activities.MainActivity;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakCreateBudget;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.addTransaction.AddTransactionActivity;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.graph.GraphActivity;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.homePage.PeakHomePage;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.piggySavings.SavingsActivity;
@@ -189,6 +190,14 @@ public class ProfileActivity extends AppCompatActivity {
         });
         AlertDialog alert = b.create();
         alert.show();
+    }
+
+    // Bottom Navigation Bar -- add transaction
+    public void addTransactionFAB(View view) {
+        Log.v(TAG, "Trying to add a new transaction");
+        Intent intent = new Intent(ProfileActivity.this, AddTransactionActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override

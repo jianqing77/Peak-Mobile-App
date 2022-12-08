@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/bottomTransactionContainerNoTip"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottomTransactionContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -15,24 +17,24 @@
 
         <!-- chosen category-->
         <TextView
-            android:id="@+id/tv_category_without_tip"
+            android:id="@+id/tv_category_with_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_gravity="center"
-            android:text="Grocery"
             android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Dining"
             android:textColor="@color/FinalProj_Dark"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal">
+            android:layout_gravity="center_horizontal">
 
             <TextView
-                android:id="@+id/tv_amount_no_tip"
+                android:id="@+id/tv_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
                 android:gravity="center"
@@ -41,24 +43,25 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/et_transaction_amount_no_tip"
+                android:id="@+id/et_transaction_amount_tip"
                 android:layout_width="280dp"
                 android:layout_height="70dp"
                 android:layout_marginStart="40dp"
-                android:layout_toRightOf="@id/tv_amount_no_tip"
+                android:layout_toRightOf="@id/tv_amount"
                 android:hint="Transaction Amount"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                tools:ignore="TextContrastCheck" />
 
         </RelativeLayout>
 
 
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal">
+            android:layout_gravity="center_horizontal">
 
             <TextView
-                android:id="@+id/tv_description_no_tip"
+                android:id="@+id/tv_description"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
                 android:gravity="center"
@@ -67,72 +70,82 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/et_description_no_tip"
+                android:id="@+id/et_description_tip"
                 android:layout_width="280dp"
                 android:layout_height="70dp"
                 android:layout_marginStart="15dp"
-                android:layout_toRightOf="@id/tv_description_no_tip"
+                android:layout_toRightOf="@id/tv_description"
                 android:hint="Add a description"
-                android:inputType="textShortMessage" />
+                android:inputType="textShortMessage"
+                tools:ignore="TextContrastCheck" />
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
 
             <TextView
-                android:id="@+id/tv_receipt_no_tip"
+                android:id="@+id/tv_receipt"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
                 android:gravity="center"
                 android:text="Receipt:"
                 android:textSize="18sp"
                 android:textStyle="bold" />
-
             <Button
-                android:id="@+id/btn_view_receipt_no_tip"
-                android:layout_width="wrap_content"
+                android:id="@+id/btn_view_receipt"
+                android:layout_width="280dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="55dp"
                 android:layout_marginTop="10dp"
-                android:layout_toRightOf="@+id/tv_receipt_no_tip"
+                android:layout_toRightOf="@+id/tv_receipt"
                 android:backgroundTint="@color/FinalProj_Primary"
                 android:text="View the receipt"
                 android:textColor="@color/FinalProj_Dark" />
 
         </RelativeLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center_horizontal">
 
-            <Button
-                android:id="@+id/btn_add_receipt_no_tip"
+            <Spinner
+                android:id="@+id/spinner_add_tip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="40dp"
-                android:layout_toLeftOf="@+id/btn_done_add_transaction_no_tip"
+                android:spinnerMode="dropdown"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+            <Button
+                android:id="@+id/btn_add_receipt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:backgroundTint="@color/FinalProj_Primary"
                 android:drawableLeft="@drawable/ic_add_receipt"
                 android:padding="8dp"
                 android:text="Add receipt"
-                android:textColor="@color/FinalProj_Dark" />
+                android:textColor="@color/FinalProj_Dark"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <Button
-                android:id="@+id/btn_done_add_transaction_no_tip"
+                android:id="@+id/btn_done_add_transaction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="45dp"
+                android:layout_marginLeft="5dp"
                 android:backgroundTint="@color/FinalProj_Primary"
                 android:drawableLeft="@drawable/ic_done_add"
                 android:padding="8dp"
                 android:text="Done"
-                android:textColor="@color/FinalProj_Dark" />
+                android:textColor="@color/FinalProj_Dark"
+                tools:ignore="TouchTargetSizeCheck" />
 
-        </RelativeLayout>
+        </LinearLayout>
+
 
     </LinearLayout>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
