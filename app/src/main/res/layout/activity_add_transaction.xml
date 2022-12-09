@@ -22,7 +22,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginRight="50dp"
             android:background="@drawable/round_corner"
-            android:contentDescription="Dining Button"
+            android:contentDescription="@string/dining_button"
             android:onClick="addTransactionCategoryDining"
             android:radius="10dp"
             android:src="@drawable/ic_dining"
@@ -35,7 +35,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginRight="50dp"
             android:background="@drawable/round_corner"
-            android:contentDescription="Groceries Button"
+            android:contentDescription="@string/groceries_button"
             android:onClick="addTransactionCategoryGroceries"
             android:radius="10dp"
             android:src="@drawable/ic_groceries"
@@ -47,7 +47,7 @@
             android:layout_height="51dp"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/round_corner"
-            android:contentDescription="Shopping Button"
+            android:contentDescription="@string/shopping_button"
             android:onClick="addTransactionCategoryShopping"
             android:radius="10dp"
             android:src="@drawable/ic_shopping"
@@ -57,17 +57,17 @@
             android:layout_gravity="center"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="20dp"
-            android:text="Dining" />
+            android:text="@string/dining" />
 
         <TextView
-            android:text="Groceries"
+            android:text="@string/groceries"
             android:layout_gravity="center"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
-            android:text="Shopping"
+            android:text="@string/shopping"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="20dp" />
 
@@ -78,7 +78,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginRight="50dp"
             android:background="@drawable/round_corner"
-            android:contentDescription="Living Button"
+            android:contentDescription="@string/living_button"
             android:onClick="addTransactionCategoryLiving"
             android:radius="10dp"
             android:src="@drawable/ic_living"
@@ -91,7 +91,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginRight="50dp"
             android:background="@drawable/round_corner"
-            android:contentDescription="Entertainment Button"
+            android:contentDescription="@string/entertainment_button"
             android:onClick="addTransactionCategoryEntertainment"
             android:radius="10dp"
             android:src="@drawable/ic_entertainment"
@@ -103,26 +103,26 @@
             android:layout_height="51dp"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/round_corner"
-            android:contentDescription="Education Button"
+            android:contentDescription="@string/education_button"
             android:onClick="addTransactionCategoryEducation"
             android:radius="10dp"
             android:src="@drawable/ic_education"
             tools:ignore="ImageContrastCheck,RedundantDescriptionCheck" />
 
         <TextView
-            android:text="Living"
+            android:text="@string/living"
             android:layout_gravity="center"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="20dp" />
 
         <TextView
-            android:text="Entertainment"
+            android:text="@string/entertainment"
             android:layout_gravity="center"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="20dp" />
 
         <TextView
-            android:text="Education"
+            android:text="@string/education"
             android:layout_gravity="center"
             android:layout_marginBottom="20dp" />
 
@@ -133,7 +133,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginRight="50dp"
             android:background="@drawable/round_corner"
-            android:contentDescription="Beauty Button"
+            android:contentDescription="@string/beauty_button"
             android:onClick="addTransactionCategoryBeauty"
             android:radius="10dp"
             android:src="@drawable/ic_beauty"
@@ -146,7 +146,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginRight="50dp"
             android:background="@drawable/round_corner"
-            android:contentDescription="Transportation Button"
+            android:contentDescription="@string/transportation_button"
             android:onClick="addTransactionCategoryTransportation"
             android:radius="10dp"
             android:src="@drawable/ic_transportation"
@@ -158,26 +158,26 @@
             android:layout_height="51dp"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/round_corner"
-            android:contentDescription="Health Button"
+            android:contentDescription="@string/health_button"
             android:onClick="addTransactionCategoryHealth"
             android:radius="10dp"
             android:src="@drawable/ic_health"
             tools:ignore="ImageContrastCheck,RedundantDescriptionCheck" />
 
         <TextView
-            android:text="Beauty"
+            android:text="@string/beauty"
             android:layout_gravity="center"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="20dp" />
 
         <TextView
-            android:text="Transportation"
+            android:text="@string/transportation"
             android:layout_gravity="center"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="20dp" />
 
         <TextView
-            android:text="Health"
+            android:text="@string/health"
             android:layout_gravity="center"
             android:layout_marginBottom="20dp" />
 
@@ -188,7 +188,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginRight="50dp"
             android:background="@drawable/round_corner"
-            android:contentDescription="Travel Button"
+            android:contentDescription="@string/travel_button"
             android:onClick="addTransactionCategoryTravel"
             android:radius="10dp"
             android:src="@drawable/ic_travel"
@@ -201,7 +201,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginRight="50dp"
             android:background="@drawable/round_corner"
-            android:contentDescription="Pet Button"
+            android:contentDescription="@string/pet_button"
             android:onClick="addTransactionCategoryPet"
             android:radius="10dp"
             android:src="@drawable/ic_pet"
@@ -213,26 +213,26 @@
             android:layout_height="51dp"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/round_corner"
-            android:contentDescription="Other Button"
+            android:contentDescription="@string/other_button"
             android:onClick="addTransactionCategoryOther"
             android:radius="10dp"
             android:src="@drawable/ic_other"
             tools:ignore="ImageContrastCheck,RedundantDescriptionCheck" />
 
         <TextView
-            android:text="Travel"
+            android:text="@string/travel"
             android:layout_gravity="center"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="20dp" />
 
         <TextView
-            android:text="Pet"
+            android:text="@string/pet"
             android:layout_gravity="center"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="20dp" />
 
         <TextView
-            android:text="Other"
+            android:text="@string/other"
             android:layout_gravity="center"
             android:layout_marginBottom="20dp" />
 

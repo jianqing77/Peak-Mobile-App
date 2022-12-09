@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
-            android:text="Monthly Spending"
+            android:text="@string/monthly_spending"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -40,7 +40,7 @@
             android:paddingTop="6dp"
             android:paddingRight="10dp"
             android:paddingBottom="6dp"
-            android:text="Receipts"
+            android:text="@string/receipts"
             android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -134,7 +134,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
-                                android:text="Dining" />
+                                android:text="@string/dining" />
 
                         </LinearLayout>
 
@@ -157,7 +157,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
-                                android:text="Groceries" />
+                                android:text="@string/groceries" />
 
                         </LinearLayout>
 
@@ -180,7 +180,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
-                                android:text="Shopping" />
+                                android:text="@string/shopping" />
 
                         </LinearLayout>
 
@@ -203,7 +203,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
-                                android:text="Living" />
+                                android:text="@string/living" />
 
                         </LinearLayout>
 
@@ -226,7 +226,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
-                                android:text="Entertainment" />
+                                android:text="@string/entertainment" />
 
                         </LinearLayout>
 
@@ -249,7 +249,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
-                                android:text="Education" />
+                                android:text="@string/education" />
 
                         </LinearLayout>
 
@@ -272,7 +272,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
-                                android:text="Beauty" />
+                                android:text="@string/beauty" />
 
                         </LinearLayout>
 
@@ -295,7 +295,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
-                                android:text="Transportation" />
+                                android:text="@string/transportation" />
 
                         </LinearLayout>
 
@@ -318,7 +318,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
-                                android:text="Health" />
+                                android:text="@string/health" />
 
                         </LinearLayout>
 
@@ -341,7 +341,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
-                                android:text="Travel" />
+                                android:text="@string/travel" />
 
                         </LinearLayout>
 
@@ -364,7 +364,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
-                                android:text="Pet" />
+                                android:text="@string/pet" />
 
                         </LinearLayout>
 
@@ -387,7 +387,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
-                                android:text="Other" />
+                                android:text="@string/other" />
 
                         </LinearLayout>
                     </LinearLayout>
@@ -418,7 +418,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="25dp"
                         android:layout_marginTop="20dp"
-                        android:text="Monthly Expense by Category"
+                        android:text="@string/monthly_expense_by_category"
                         android:textSize="23sp"
                         android:textStyle="bold" />
 
@@ -444,7 +444,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
-                            android:text="Dining"
+                            android:text="@string/dining"
                             android:textSize="18sp" />
 
                         <TextView
@@ -454,7 +454,7 @@
                             android:layout_alignParentRight="true"
                             android:fontFamily="sans-serif-light"
                             android:gravity="right"
-                            android:text="100"
+                            android:text="@string/value_100"
                             android:textAlignment="textEnd"
                             android:textColor="@color/FinalProj_Dark"
                             android:textSize="18sp"
@@ -475,7 +475,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
-                            android:text="Groceries"
+                            android:text="@string/groceries"
                             android:textSize="18sp" />
 
                         <TextView
@@ -485,7 +485,7 @@
                             android:layout_alignParentRight="true"
                             android:fontFamily="sans-serif-light"
                             android:gravity="right"
-                            android:text="100"
+                            android:text="@string/value_100"
                             android:textAlignment="textEnd"
                             android:textColor="@color/FinalProj_Dark"
                             android:textSize="18sp"
@@ -506,7 +506,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
-                            android:text="Shopping"
+                            android:text="@string/shopping"
                             android:textSize="18sp" />
 
                         <TextView
@@ -516,7 +516,7 @@
                             android:layout_alignParentRight="true"
                             android:fontFamily="sans-serif-light"
                             android:gravity="right"
-                            android:text="100"
+                            android:text="@string/value_100"
                             android:textAlignment="textEnd"
                             android:textColor="@color/FinalProj_Dark"
                             android:textSize="18sp"
@@ -537,7 +537,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
-                            android:text="Living"
+                            android:text="@string/living"
                             android:textSize="18sp" />
 
                         <TextView
@@ -547,7 +547,7 @@
                             android:layout_alignParentRight="true"
                             android:fontFamily="sans-serif-light"
                             android:gravity="right"
-                            android:text="100"
+                            android:text="@string/value_100"
                             android:textAlignment="textEnd"
                             android:textColor="@color/FinalProj_Dark"
                             android:textSize="18sp"
@@ -568,7 +568,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
-                            android:text="Entertainment"
+                            android:text="@string/entertainment"
                             android:textSize="18sp" />
 
                         <TextView
@@ -578,7 +578,7 @@
                             android:layout_alignParentRight="true"
                             android:fontFamily="sans-serif-light"
                             android:gravity="right"
-                            android:text="100"
+                            android:text="@string/value_100"
                             android:textAlignment="textEnd"
                             android:textColor="@color/FinalProj_Dark"
                             android:textSize="18sp"
@@ -599,7 +599,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
-                            android:text="Education"
+                            android:text="@string/education"
                             android:textSize="18sp" />
 
                         <TextView
@@ -609,7 +609,7 @@
                             android:layout_alignParentRight="true"
                             android:fontFamily="sans-serif-light"
                             android:gravity="right"
-                            android:text="100"
+                            android:text="@string/value_100"
                             android:textAlignment="textEnd"
                             android:textColor="@color/FinalProj_Dark"
                             android:textSize="18sp"
@@ -630,7 +630,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
-                            android:text="Beauty"
+                            android:text="@string/beauty"
                             android:textSize="18sp" />
 
                         <TextView
@@ -640,7 +640,7 @@
                             android:layout_alignParentRight="true"
                             android:fontFamily="sans-serif-light"
                             android:gravity="right"
-                            android:text="100"
+                            android:text="@string/value_100"
                             android:textAlignment="textEnd"
                             android:textColor="@color/FinalProj_Dark"
                             android:textSize="18sp"
@@ -661,7 +661,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
-                            android:text="Transportation"
+                            android:text="@string/transportation"
                             android:textSize="18sp" />
 
                         <TextView
@@ -671,7 +671,7 @@
                             android:layout_alignParentRight="true"
                             android:fontFamily="sans-serif-light"
                             android:gravity="right"
-                            android:text="100"
+                            android:text="@string/value_100"
                             android:textAlignment="textEnd"
                             android:textColor="@color/FinalProj_Dark"
                             android:textSize="18sp"
@@ -692,7 +692,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
-                            android:text="Health"
+                            android:text="@string/health"
                             android:textSize="18sp" />
 
                         <TextView
@@ -702,7 +702,7 @@
                             android:layout_alignParentRight="true"
                             android:fontFamily="sans-serif-light"
                             android:gravity="right"
-                            android:text="100"
+                            android:text="@string/value_100"
                             android:textAlignment="textEnd"
                             android:textColor="@color/FinalProj_Dark"
                             android:textSize="18sp"
@@ -723,7 +723,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
-                            android:text="Travel"
+                            android:text="@string/travel"
                             android:textSize="18sp" />
 
                         <TextView
@@ -733,7 +733,7 @@
                             android:layout_alignParentRight="true"
                             android:fontFamily="sans-serif-light"
                             android:gravity="right"
-                            android:text="100"
+                            android:text="@string/value_100"
                             android:textAlignment="textEnd"
                             android:textColor="@color/FinalProj_Dark"
                             android:textSize="18sp"
@@ -754,7 +754,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
-                            android:text="Pet"
+                            android:text="@string/pet"
                             android:textSize="18sp" />
 
                         <TextView
@@ -764,7 +764,7 @@
                             android:layout_alignParentRight="true"
                             android:fontFamily="sans-serif-light"
                             android:gravity="right"
-                            android:text="100"
+                            android:text="@string/value_100"
                             android:textAlignment="textEnd"
                             android:textColor="@color/FinalProj_Dark"
                             android:textSize="18sp"
@@ -785,7 +785,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
-                            android:text="Other"
+                            android:text="@string/other"
                             android:textSize="18sp" />
 
                         <TextView
@@ -795,7 +795,7 @@
                             android:layout_alignParentRight="true"
                             android:fontFamily="sans-serif-light"
                             android:gravity="right"
-                            android:text="100"
+                            android:text="@string/value_100"
                             android:textAlignment="textEnd"
                             android:textColor="@color/FinalProj_Dark"
                             android:textSize="18sp"

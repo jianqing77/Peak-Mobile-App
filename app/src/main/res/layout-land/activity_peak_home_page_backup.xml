@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
-        android:text="Welcome back, "
+        android:text="@string/welcome_back"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@id/guideline"
         app:layout_constraintTop_toTopOf="parent" />
@@ -38,7 +38,7 @@
         style="@style/onboarding_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="John"
+        android:text="@string/john"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@id/welcome_back"
         app:layout_constraintStart_toEndOf="@id/welcome_back"
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:text="Monthly Summary"
+                android:text="@string/monthly_summary"
                 android:textColor="@color/FinalProj_Dark" />
 
             <LinearLayout
@@ -99,7 +99,7 @@
                         style="@style/default_page_header"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Expenses"
+                        android:text="@string/expense"
                         android:layout_gravity="center_horizontal"
                         android:textStyle="bold" />
 
@@ -109,7 +109,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="$1000"
+                        android:text="@string/value_1000"
                         android:textStyle="normal" />
                 </LinearLayout>
 
@@ -132,7 +132,7 @@
                         style="@style/default_page_header"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Balance"
+                        android:text="@string/balance"
                         android:textStyle="bold" />
 
                     <TextView
@@ -141,7 +141,7 @@
                         android:gravity="center_horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="$5000"
+                        android:text="@string/value_5000"
                         android:textStyle="normal" />
                 </LinearLayout>
 
@@ -158,7 +158,7 @@
             android:onClick="datePickerDialog"
             android:textSize="14sp"
             android:layout_marginTop="5dp"
-            android:text="Today"
+            android:text="@string/today"
             android:layout_gravity="center"
             android:textAlignment="center"
             android:textAllCaps="false" />
