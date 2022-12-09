@@ -6,6 +6,7 @@ import static edu.northeastern.numad22fa_team15.utils.CommonUtils.nullOrEmptyInp
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.setPictureToGivenImageView;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.updateSummaryTable;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -137,7 +138,7 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
         final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this,
                 R.style.BottomSheetDialogTheme);
         bottomSheetView = LayoutInflater.from(getApplicationContext())
-                .inflate(R.layout.layout_bottom_sheet_add_transaction_with_tip, null);
+                .inflate(R.layout.layout_bottom_sheet_dialog_with_tip_backup, null);
         bottomSheetDialog.setContentView(bottomSheetView);
 
         BottomSheetBehavior mBehavior = BottomSheetBehavior.from((View) bottomSheetView.getParent());
@@ -237,6 +238,7 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private void showBottomSheetDialog(View view) {
         final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
         View bottomSheetView = LayoutInflater.from(getApplicationContext())
@@ -372,7 +374,6 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
     }
 
     /**
@@ -426,7 +427,7 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
         final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this,
                 R.style.BottomSheetDialogTheme);
         bottomSheetView = LayoutInflater.from(getApplicationContext())
-                .inflate(R.layout.layout_bottom_sheet_add_transaction_without_tip, null);
+                .inflate(R.layout.layout_bottom_sheet_dialog_without_tip_backup, null);
         bottomSheetDialog.setContentView(bottomSheetView);
 
         BottomSheetBehavior mBehavior = BottomSheetBehavior.from((View) bottomSheetView.getParent());
@@ -507,6 +508,7 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
 
         bottomSheetDialog.dismiss();
     }
+
 
     @Override
     public void onBackPressed() {
