@@ -36,10 +36,9 @@ public class PeakSummaryPieChart extends AppCompatActivity {
         setContentView(R.layout.activity_peak_summary_pie_chart);
 
         dbHelper = new DBHelper(PeakSummaryPieChart.this);
-        piechart = findViewById(R.id.graph_piechart);
+        piechart = findViewById(R.id.graph_pieChart);
         setPiechart();
 
-        /*
         // set up navigation bar
         navigationBarView = findViewById(R.id.bottom_navigation_id);
         navigationBarView.setSelectedItemId(R.id.nav_home);
@@ -68,7 +67,6 @@ public class PeakSummaryPieChart extends AppCompatActivity {
             }
         });
 
-         */
     }
 
     // Bottom Navigation Bar -- add transaction
@@ -108,5 +106,6 @@ public class PeakSummaryPieChart extends AppCompatActivity {
         piechart.addPieSlice(new PieModel("Other", otherExpense, Color.parseColor("#bdc3c7")));
 
         piechart.startAnimation();
+
     }
 }
