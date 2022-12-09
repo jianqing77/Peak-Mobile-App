@@ -247,8 +247,9 @@ public class PeakHomePage extends AppCompatActivity {
         Intent intent = new Intent(this, DailyBroadcastReceiver.class);
         Notification notification = buildNotification();
         intent.putExtra("notification", notification);
+        // TODO: modified flag from 0 to immutable. Not sure but it fixed my bug
         PendingIntent pendingIntent = PendingIntent.getBroadcast(
-                this.getApplicationContext(), 0, intent, 0);
+                this.getApplicationContext(), 0, intent, PendingIntent.FLAG_IMMUTABLE);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         // Set the alarm to start at approximately 8:00 p.m.
         Calendar calendar = Calendar.getInstance();

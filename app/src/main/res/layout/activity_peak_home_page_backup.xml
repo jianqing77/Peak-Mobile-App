@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Welcome back, "
+        android:text="@string/welcome_back"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@id/guideline"
         app:layout_constraintTop_toTopOf="parent" />
@@ -38,7 +38,7 @@
         style="@style/onboarding_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="John"
+        android:text="@string/john"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@id/welcome_back"
         app:layout_constraintStart_toEndOf="@id/welcome_back"
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:text="Monthly Summary"
+                android:text="@string/monthly_summary"
                 android:textColor="@color/FinalProj_Dark" />
 
             <LinearLayout
@@ -110,7 +110,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="$1000"
+                        android:text="@string/value_1000"
                         android:textStyle="normal" />
                 </LinearLayout>
 
@@ -133,22 +133,21 @@
                         style="@style/default_page_header"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Balance"
+                        android:text="@string/balance"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/tv_balance"
                         style="@style/default_page_header"
+                        android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="13dp"
-                        android:text="$5000"
+                        android:text="@string/value_5000"
                         android:textStyle="normal" />
                 </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
-
 
         <Button
             android:id="@+id/btn_pick_date"
@@ -159,7 +158,7 @@
             android:layout_gravity="center_horizontal"
             android:backgroundTint="@color/FinalProj_Primary"
             android:onClick="datePickerDialog"
-            android:text="Today"
+            android:text="@string/today"
             android:textAlignment="center"
             android:textAllCaps="false" />
     </LinearLayout>

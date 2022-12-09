@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:paddingStart="30dp"
         android:paddingEnd="30dp"
-        android:text="This should be the Entrance Page \nbut to be modified when user press the back button"
+        android:text="@string/this_should_be_the_entrance_page_nbut_to_be_modified_when_user_press_the_back_button"
         android:textSize="20sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

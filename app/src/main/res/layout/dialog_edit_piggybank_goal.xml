@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Edit Goal"
+        android:text="@string/edit_goal"
         style="@style/profile_page_title"
         android:gravity="center_horizontal"
         android:layout_marginBottom="18dp"/>
@@ -24,13 +24,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Goal Amount"/>
+        android:text="@string/goal_amount"/>
 
     <EditText
         android:id="@+id/et_edit_goal_amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="2000"
+        android:hint="@string/val_2000"
         android:background="@drawable/peak_text_input"
         android:padding="10dp"
         android:layout_marginTop="4dp"
@@ -39,14 +39,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Goal Description"
+        android:text="@string/goal_description"
         android:layout_marginTop="14dp"/>
 
     <EditText
         android:id="@+id/et_edit_goal_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Go to Aruba"
+        android:hint="@string/go_to_aruba"
         android:background="@drawable/peak_text_input"
         android:padding="10dp"
         android:layout_marginTop="4dp"
@@ -56,7 +56,7 @@
         android:id="@+id/btn_confirm_edit_goal"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="Confirm Changes"
+        android:text="@string/confirm_changes"
         style="@style/button_light"
         android:textAllCaps="false"
         android:backgroundTint="@color/FinalProj_Light"
