@@ -1,20 +1,34 @@
 package edu.northeastern.numad22fa_team15;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+
+import com.google.android.material.navigation.NavigationBarView;
 
 import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
 
+import edu.northeastern.numad22fa_team15.activities.peakActivities.addTransaction.AddTransactionActivity;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.graph.GraphActivity;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.homePage.PeakHomePage;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.piggySavings.SavingsActivity;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.profilePage.ProfileActivity;
 import edu.northeastern.numad22fa_team15.models.databaseModels.SummaryModel;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
 
 public class PeakSummaryPieChart extends AppCompatActivity {
 
+    private static final String TAG = "PeakSummaryPieChart___";
     private PieChart piechart;
     private DBHelper dbHelper;
+    private NavigationBarView navigationBarView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +36,47 @@ public class PeakSummaryPieChart extends AppCompatActivity {
         setContentView(R.layout.activity_peak_summary_pie_chart);
 
         dbHelper = new DBHelper(PeakSummaryPieChart.this);
-        piechart = findViewById(R.id.summary_piechart);
+        piechart = findViewById(R.id.graph_piechart);
         setPiechart();
+
+        /*
+        // set up navigation bar
+        navigationBarView = findViewById(R.id.bottom_navigation_id);
+        navigationBarView.setSelectedItemId(R.id.nav_home);
+        navigationBarView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.nav_home:
+                        startActivity(new Intent(getApplicationContext(), PeakHomePage.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.nav_graph:
+                        // startActivity(new Intent(getApplicationContext(), GraphActivity.class));
+                        // overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.nav_savings:
+                        startActivity(new Intent(getApplicationContext(), SavingsActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.nav_profile:
+                        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                }
+                return false;
+            }
+        });
+
+         */
+    }
+
+    // Bottom Navigation Bar -- add transaction
+    public void addTransactionFAB(View view) {
+        Log.v(TAG, "Trying to add a new transaction");
+        Intent intent = new Intent(PeakSummaryPieChart.this, AddTransactionActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void setPiechart() {

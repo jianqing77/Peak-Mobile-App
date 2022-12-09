@@ -1,331 +1,849 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".activities.peakActivities.graph.GraphActivity">
 
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/constraint_layout_monthly_spending"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".PeakSummaryPieChart">
+    android:layout_height="wrap_content"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewGraph"
+    <TextView
+        android:id="@+id/tv_monthly_spending_header"
+        style="@style/profile_page_title"
         android:layout_width="match_parent"
-        android:layout_height="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:text="Monthly Spending"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_view_receipts"
+        style="@style/button_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/FinalProj_Light"
+        android:letterSpacing="-0.01"
+        android:paddingLeft="10dp"
+        android:paddingTop="6dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="6dp"
+        android:text="Receipts"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_monthly_spending_header" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="2dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="14dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="15dp"
-        android:elevation="10dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="15dp">
+        android:layout_marginBottom="20dp"
+        android:background="@color/FinalProj_Primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_view_receipts" />
 
-        <LinearLayout
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<!-- Static Navigation Bar -->
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:id="@+id/coordinatorLayout_graph"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_alignParentBottom="true"
+    app:layout_constraintBottom_toBottomOf="parent">
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottom_app_bar_graph"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:fabCradleMargin="10dp"
+        app:fabCradleRoundedCornerRadius="10dp"
+        app:fabCradleVerticalOffset="10dp">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation_id_graph"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="2">
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/nav_transparent_background"
+            app:menu="@menu/bottom_nav_menu" />
 
-            <org.eazegraph.lib.charts.PieChart
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/summary_piechart"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:padding="6dp"
-                android:layout_weight="1"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginBottom="15dp"
+    </com.google.android.material.bottomappbar.BottomAppBar>
 
-                />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/nav_fab_graph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/FinalProj_Primary"
+        android:contentDescription="@string/add_spending_floating_action_button"
+        android:src="@drawable/ic_nav_add"
+        app:layout_anchor="@id/bottom_app_bar_graph" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+<ScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="0dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/constraint_layout_monthly_spending"
+    app:layout_constraintBottom_toTopOf="@id/coordinatorLayout_graph" >
+
+    <RelativeLayout
+        android:id="@+id/scrollview_graph"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/coordinatorLayout_graph"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraint_layout_monthly_spending">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewGraph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:elevation="10dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="15dp">
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="20dp"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <org.eazegraph.lib.charts.PieChart
+                    android:id="@+id/graph_piechart"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_weight="1"
+                    android:padding="6dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/piechart_dining_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical">
+
+                        <View
+                            android:id="@+id/piechart_dining_view"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/dining" />
+
+                        <TextView
+                            android:id="@+id/piechart_dining_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="Dining" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/piechart_groceries_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="5dp">
+
+                        <View
+                            android:id="@+id/piechart_groceries_view"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/groceries" />
+
+                        <TextView
+                            android:id="@+id/piechart_groceries_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="Groceries" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/piechart_shopping_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="5dp">
+
+                        <View
+                            android:id="@+id/piechart_shopping_view"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/shopping" />
+
+                        <TextView
+                            android:id="@+id/piechart_shopping_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="Shopping" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/piechart_living_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="5dp">
+
+                        <View
+                            android:id="@+id/piechart_living_view"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/living" />
+
+                        <TextView
+                            android:id="@+id/piechart_living_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="Living" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/piechart_entertainment_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop='5dp'>
+
+                        <View
+                            android:id="@+id/piechart_entertainment_view"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/entertainment" />
+
+                        <TextView
+                            android:id="@+id/piechart_entertainment_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="Entertainment" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/piechart_education_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop='5dp'>
+
+                        <View
+                            android:id="@+id/piechart_education_view"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/education" />
+
+                        <TextView
+                            android:id="@+id/piechart_education_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="Education" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/piechart_beauty_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop='5dp'>
+
+                        <View
+                            android:id="@+id/piechart_beauty_view"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/beauty" />
+
+                        <TextView
+                            android:id="@+id/piechart_beauty_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="Beauty" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/piechart_transportation_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop='5dp'>
+
+                        <View
+                            android:id="@+id/piechart_transportation_view"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/transportation" />
+
+                        <TextView
+                            android:id="@+id/piechart_transportation_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="Transportation" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/piechart_health_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop='5dp'>
+
+                        <View
+                            android:id="@+id/piechart_health_view"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/health" />
+
+                        <TextView
+                            android:id="@+id/piechart_health_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="Health" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/piechart_travel_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop='5dp'>
+
+                        <View
+                            android:id="@+id/piechart_travel_view"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/travel" />
+
+                        <TextView
+                            android:id="@+id/piechart_travel_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="Travel" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/piechart_pet_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop='5dp'>
+
+                        <View
+                            android:id="@+id/piechart_pet_view"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/pet" />
+
+                        <TextView
+                            android:id="@+id/piechart_pet_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="Pet" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/piechart_other_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop='5dp'>
+
+                        <View
+                            android:id="@+id/piechart_other_view"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/other" />
+
+                        <TextView
+                            android:id="@+id/piechart_other_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="Other" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/detailExpense_cardview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cardViewGraph"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:elevation="10dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/piechart_dining_layout"
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Monthly Expense by Category"
+                    android:textSize="23sp"
+                    android:textStyle="bold" />
 
-                    <View
-                        android:id="@+id/piechart_dining_view"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:background="@color/dining"
-                        android:layout_gravity="center_vertical"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/FinalProj_Dark" />
+
+                <RelativeLayout
+                    android:id="@+id/diningExpense_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginBottom="10dp">
 
                     <TextView
-                        android:id="@+id/piechart_dining_tv"
+                        android:id="@+id/diningExpenseName_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:text="Dining" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/piechart_groceries_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="5dp">
-
-                    <View
-                        android:id="@+id/piechart_groceries_view"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:background="@color/groceries"
-                        android:layout_gravity="center_vertical"/>
+                        android:fontFamily="sans-serif-light"
+                        android:text="Dining"
+                        android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/piechart_groceries_tv"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/diningExpenseNum_tv"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:text="Groceries" />
+                        android:layout_alignParentRight="true"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="right"
+                        android:text="100"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/FinalProj_Dark"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/piechart_shopping_layout"
+                <RelativeLayout
+                    android:id="@+id/groceriesExpense_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="5dp">
-
-                    <View
-                        android:id="@+id/piechart_shopping_view"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:background="@color/shopping"
-                        android:layout_gravity="center_vertical"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginBottom="10dp">
 
                     <TextView
-                        android:id="@+id/piechart_shopping_tv"
+                        android:id="@+id/groceriesExpenseName_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:text="Shopping" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/piechart_living_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="5dp">
-
-                    <View
-                        android:id="@+id/piechart_living_view"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:background="@color/living"
-                        android:layout_gravity="center_vertical"/>
+                        android:fontFamily="sans-serif-light"
+                        android:text="Groceries"
+                        android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/piechart_living_tv"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/groceriesExpenseNum_tv"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:text="Living" />
+                        android:layout_alignParentRight="true"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="right"
+                        android:text="100"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/FinalProj_Dark"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/piechart_entertainment_layout"
+                <RelativeLayout
+                    android:id="@+id/shoppingExpense_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop='5dp'>
-
-                    <View
-                        android:id="@+id/piechart_entertainment_view"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:background="@color/entertainment"
-                        android:layout_gravity="center_vertical"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginBottom="10dp">
 
                     <TextView
-                        android:id="@+id/piechart_entertainment_tv"
+                        android:id="@+id/shoppingExpenseName_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:text="Entertainment" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/piechart_education_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop='5dp'>
-
-                    <View
-                        android:id="@+id/piechart_education_view"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:background="@color/education"
-                        android:layout_gravity="center_vertical"/>
+                        android:fontFamily="sans-serif-light"
+                        android:text="Shopping"
+                        android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/piechart_education_tv"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/shoppingExpenseNum_tv"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:text="Education" />
+                        android:layout_alignParentRight="true"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="right"
+                        android:text="100"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/FinalProj_Dark"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/piechart_beauty_layout"
+                <RelativeLayout
+                    android:id="@+id/livingExpense_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop='5dp'>
-
-                    <View
-                        android:id="@+id/piechart_beauty_view"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:background="@color/beauty"
-                        android:layout_gravity="center_vertical"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginBottom="10dp">
 
                     <TextView
-                        android:id="@+id/piechart_beauty_tv"
+                        android:id="@+id/livingExpenseName_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:text="Beauty" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/piechart_transportation_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop='5dp'>
-
-                    <View
-                        android:id="@+id/piechart_transportation_view"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:background="@color/transportation"
-                        android:layout_gravity="center_vertical"/>
+                        android:fontFamily="sans-serif-light"
+                        android:text="Living"
+                        android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/piechart_transportation_tv"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/livingExpenseNum_tv"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:text="Transportation" />
+                        android:layout_alignParentRight="true"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="right"
+                        android:text="100"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/FinalProj_Dark"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/piechart_health_layout"
+                <RelativeLayout
+                    android:id="@+id/entertainmentExpense_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop='5dp'>
-
-                    <View
-                        android:id="@+id/piechart_health_view"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:background="@color/health"
-                        android:layout_gravity="center_vertical"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginBottom="10dp">
 
                     <TextView
-                        android:id="@+id/piechart_health_tv"
+                        android:id="@+id/entertainmentExpenseName_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:text="Health" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/piechart_travel_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop='5dp'>
-
-                    <View
-                        android:id="@+id/piechart_travel_view"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:background="@color/travel"
-                        android:layout_gravity="center_vertical"/>
+                        android:fontFamily="sans-serif-light"
+                        android:text="Entertainment"
+                        android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/piechart_travel_tv"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/entertainmentExpenseNum_tv"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:text="Travel" />
+                        android:layout_alignParentRight="true"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="right"
+                        android:text="100"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/FinalProj_Dark"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/piechart_pet_layout"
+                <RelativeLayout
+                    android:id="@+id/educationExpense_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop='5dp'>
-
-                    <View
-                        android:id="@+id/piechart_pet_view"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:background="@color/pet"
-                        android:layout_gravity="center_vertical"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginBottom="10dp">
 
                     <TextView
-                        android:id="@+id/piechart_pet_tv"
+                        android:id="@+id/educationExpenseName_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:text="Pet" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/piechart_other_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop='5dp'>
-
-                    <View
-                        android:id="@+id/piechart_other_view"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:background="@color/other"
-                        android:layout_gravity="center_vertical"/>
+                        android:fontFamily="sans-serif-light"
+                        android:text="Education"
+                        android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/piechart_other_tv"
+                        android:id="@+id/educationExpenseNum_tv"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="right"
+                        android:text="100"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/FinalProj_Dark"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/beautyExpense_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/beautyExpenseName_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:text="Other" />
+                        android:fontFamily="sans-serif-light"
+                        android:text="Beauty"
+                        android:textSize="18sp" />
 
-                </LinearLayout>
+                    <TextView
+                        android:id="@+id/beautyExpenseNum_tv"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="right"
+                        android:text="100"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/FinalProj_Dark"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/transportationExpense_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/transportationExpenseName_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="Transportation"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/transportationExpenseNum_tv"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="right"
+                        android:text="100"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/FinalProj_Dark"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/healthExpense_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/healthExpenseName_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="Health"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/healthExpenseNum_tv"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="right"
+                        android:text="100"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/FinalProj_Dark"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/travelExpense_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/travelExpenseName_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="Travel"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/travelExpenseNum_tv"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="right"
+                        android:text="100"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/FinalProj_Dark"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/petExpense_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/petExpenseName_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="Pet"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/petExpenseNum_tv"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="right"
+                        android:text="100"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/FinalProj_Dark"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/otherExpense_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/otherExpenseName_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="Other"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/otherExpenseNum_tv"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="right"
+                        android:text="100"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/FinalProj_Dark"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
 
             </LinearLayout>
 
-        </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-    </androidx.cardview.widget.CardView>
+    </RelativeLayout>
 
-</RelativeLayout>
+</ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
