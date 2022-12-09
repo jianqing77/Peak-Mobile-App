@@ -63,7 +63,7 @@ public class PeakCreateBudget extends AppCompatActivity {
 
         // After resetting account, currentSummary would be null so set a new default summary row.
         totalBudget_tv = (TextView) findViewById(R.id.edit_budget_amount);
-        totalBudget_tv.setText("$ " + currentSummary.getTotalBudget() + "0");
+        totalBudget_tv.setText(currentSummary.getTotalBudget() + "0");
 
         UserModel user = dbHelper.retrieveUserInfoTableUser();
 
@@ -492,7 +492,7 @@ public class PeakCreateBudget extends AppCompatActivity {
         float totalBudget = diningBudget + groceriesBudget + shoppingBudget + livingBudget + entertainmentBudget
                 + educationBudget + beautyBudget + transportationBudget + healthBudget + travelBudget
                 + petBudget + otherBudget;
-        totalBudget_tv.setText("$ " + totalBudget + "0");
+        totalBudget_tv.setText(totalBudget + "0");
     }
 
     @Override
