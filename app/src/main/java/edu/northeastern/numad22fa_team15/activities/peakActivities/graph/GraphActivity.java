@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -30,6 +31,19 @@ public class GraphActivity extends AppCompatActivity {
     private static final String TAG = "PeakGraphPage___";
     private NavigationBarView navigationBarView;
 
+    private TextView dining_tv;
+    private TextView groceries_tv;
+    private TextView shopping_tv;
+    private TextView living_tv;
+    private TextView entertainment_tv;
+    private TextView education_tv;
+    private TextView beauty_tv;
+    private TextView transportation_tv;
+    private TextView health_tv;
+    private TextView travel_tv;
+    private TextView pet_tv;
+    private TextView other_tv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +53,7 @@ public class GraphActivity extends AppCompatActivity {
         dbHelper = new DBHelper(GraphActivity .this);
         piechart = findViewById(R.id.graph_pieChart);
         setPiechart();
+        setCategoryInfo();
 
         // set up navigation bar
         navigationBarView = findViewById(R.id.bottom_navigation_id);
@@ -75,6 +90,7 @@ public class GraphActivity extends AppCompatActivity {
         finish();
     }
 
+    // set up piechart value
     private void setPiechart() {
         SummaryModel summary = dbHelper.retrieveLatestSummaryInfoTableSummary();
         int diningExpense = (int) summary.getDiningExpense();
@@ -104,5 +120,36 @@ public class GraphActivity extends AppCompatActivity {
         piechart.addPieSlice(new PieModel("Other", otherExpense, Color.parseColor("#bdc3c7")));
 
         piechart.startAnimation();
+    }
+
+    // set up current expense by category value
+    private void setCategoryInfo() {
+        dining_tv = findViewById(R.id.diningExpenseNum_tv);
+        groceries_tv = findViewById(R.id.groceriesExpenseNum_tv);
+        shopping_tv = findViewById(R.id.shoppingExpenseNum_tv);
+        living_tv = findViewById(R.id.livingExpenseNum_tv);
+        entertainment_tv = findViewById(R.id.entertainmentExpenseNum_tv);
+        education_tv = findViewById(R.id.educationExpenseNum_tv);
+        beauty_tv = findViewById(R.id.beautyExpenseNum_tv);
+        transportation_tv = findViewById(R.id.transportationExpenseNum_tv);
+        health_tv = findViewById(R.id.healthExpenseNum_tv);
+        travel_tv = findViewById(R.id.travelExpenseNum_tv);
+        pet_tv = findViewById(R.id.petExpenseNum_tv);
+        other_tv = findViewById(R.id.otherExpenseNum_tv);
+
+        SummaryModel summary = dbHelper.retrieveLatestSummaryInfoTableSummary();
+        dining_tv.setText("$ " + summary.getDiningExpense());
+        groceries_tv.setText("$ " + summary.getGroceriesExpense());
+        shopping_tv.setText("$ " + summary.getShoppingExpense());
+        living_tv.setText("$ " + summary.getLivingExpense());
+        entertainment_tv.setText("$ " + summary.getEntertainmentExpense());
+        education_tv.setText("$ " + summary.getEducationExpense());
+        beauty_tv.setText("$ " + summary.getBeautyExpense());
+        transportation_tv.setText("$ " + summary.getTransportationExpense());
+        health_tv.setText("$ " + summary.getHealthExpense());
+        travel_tv.setText("$ " + summary.getTravelExpense());
+        pet_tv.setText("$ " + summary.getPetExpense());
+        other_tv.setText("$ " + summary.getOtherExpense());
+
     }
 }
