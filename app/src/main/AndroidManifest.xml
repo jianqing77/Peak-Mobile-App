@@ -116,8 +116,6 @@
             android:name=".activities.peakActivities.addTransaction.AddTransactionActivity"
             android:configChanges="orientation|screenSize" />
 
-        <activity android:name=".activities.peakActivities.TestAlarmManangerActivity"/>
-
         <meta-data
             android:name="API_KEY"
             android:value="${API_KEY}" />
@@ -126,7 +124,7 @@
             android:resource="@array/preloaded_fonts" />
 
         <receiver
-            android:name=".DailyBroadcastReceiver"
+            android:name=".utils.DailyBroadcastReceiver"
             android:exported="true">
         </receiver>
 

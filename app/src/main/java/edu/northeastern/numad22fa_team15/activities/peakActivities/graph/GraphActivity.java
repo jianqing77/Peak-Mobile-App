@@ -28,7 +28,7 @@ public class GraphActivity extends AppCompatActivity {
 
     private PieChart piechart;
     private DBHelper dbHelper;
-    private static final String TAG = "PeakGraphPage___";
+    private static final String TAG = "GraphActivity___";
     private NavigationBarView navigationBarView;
 
     private TextView dining_tv;
