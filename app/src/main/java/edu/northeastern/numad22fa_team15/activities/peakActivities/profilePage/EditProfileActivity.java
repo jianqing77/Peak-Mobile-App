@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -76,6 +77,10 @@ public class EditProfileActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * This method gets called when the BACK button is clicked. It brings user back to the
+     * ProfileActivity page.
+     */
     @Override
     public void onBackPressed()
     {
@@ -149,19 +154,23 @@ public class EditProfileActivity extends AppCompatActivity {
             startActivityForResult(intent, CAMERA_ACTION_CODE);
         } else {
             String errorMessage = "No app supports this action.";
-            displayMessageInSnackbar(view, errorMessage, Snackbar.LENGTH_SHORT);
+            Log.d(TAG, errorMessage);
+            Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
         }
     }
 
     private void pickFromPhotos(View view) {
+        Log.d(TAG, "pickFromPhotos() method");
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
 
         // Check if a image gallery exists on the device.
         if (intent.resolveActivity(getPackageManager()) != null) {
+            Log.d(TAG, "Image gallery exists.");
             startActivityForResult(intent, PICK_IMAGE_CODE);
         } else {
             String errorMessage = "No image gallery found.";
-            displayMessageInSnackbar(view, errorMessage, Snackbar.LENGTH_SHORT);
+            Log.d(TAG, errorMessage);
+            Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -6,18 +6,15 @@ import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessage
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.fourDigitPasscodeChecker;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.nullOrEmptyInputChecker;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
@@ -89,18 +86,6 @@ public class PeakSignUp extends AppCompatActivity {
 
         // Create a default budget
         Boolean addSummary = createDefaultBudgetTableSummary(dbHelper);
-//        LocalDateTime now = LocalDateTime.now();
-//        String currentDate = String.valueOf(now);
-//
-//        Integer currentYear = Integer.parseInt(currentDate.substring(0,4));
-//        Integer currentMonth = Integer.parseInt(currentDate.substring(5,7));
-//
-//        float defaultBudget = 500;
-//        float totalBudget = defaultBudget * 12;
-//
-//        boolean addSummary = dbHelper.addSummaryTableSummary(currentYear, currentMonth, totalBudget,
-//                defaultBudget, defaultBudget, defaultBudget, defaultBudget, defaultBudget, defaultBudget,
-//                defaultBudget, defaultBudget, defaultBudget, defaultBudget, defaultBudget, defaultBudget);
 
         String budgetMessage = "Fail to add Summary";
         if (addSummary) {
@@ -111,8 +96,9 @@ public class PeakSignUp extends AppCompatActivity {
         boolean addSaving = dbHelper.addSavingTableSaving("GOAL");
         String savingMessage = "Fail to add Saving Goal";
         if (addSaving) {
-            savingMessage = "Succcessfully added saving goal";
+            savingMessage = "Successfully added saving goal";
         }
         displayMessageInSnackbar(view, savingMessage, Snackbar.LENGTH_LONG);
     }
+
 }

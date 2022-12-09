@@ -1,15 +1,14 @@
 package edu.northeastern.numad22fa_team15.activities.peakActivities.userRegister;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.activities.MainActivity;
-import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakCreateBudget;
-import edu.northeastern.numad22fa_team15.activities.peakActivities.homePage.PeakHomePage;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.profilePage.PeakCreateBudget;
 
 public class PeakSignUpConfirmation extends AppCompatActivity {
 

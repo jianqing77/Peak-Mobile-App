@@ -59,7 +59,7 @@
         <entry key="app/src/main/res/layout/activity_full_image.xml" value="0.19202898550724637" />
         <entry key="app/src/main/res/layout/activity_graph.xml" value="0.16210739614994935" />
         <entry key="app/src/main/res/layout/activity_home_transaction_cardview_backup.xml" value="0.18854166666666666" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2719355265299479" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2742685953776041" />
         <entry key="app/src/main/res/layout/activity_movie_search.xml" value="0.3496376811594203" />
         <entry key="app/src/main/res/layout/activity_movie_search_w_recycler_view.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_peak_add_transaction.xml" value="0.2427536231884058" />
@@ -80,10 +80,6 @@
         <entry key="app/src/main/res/layout/activity_test_peak_add_transaction.xml" value="0.3292155504468244" />
         <entry key="app/src/main/res/layout/activity_test_peak_first_page.xml" value="0.2140625" />
         <entry key="app/src/main/res/layout/change_profile_picture_bottomsheet.xml" value="0.2515625" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.43697916666666664" />
-        <entry key="app/src/main/res/layout/activity_movie_search.xml" value="0.3496376811594203" />
-        <entry key="app/src/main/res/layout/activity_movie_search_w_recycler_view.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/activity_sticker_history.xml" value="0.13518518518518519" />
         <entry key="app/src/main/res/layout/dialog_add_friend.xml" value="0.335" />
         <entry key="app/src/main/res/layout/dialog_send_sticker_w_recycler_view.xml" value="0.30027173913043476" />
         <entry key="app/src/main/res/layout/dialog_year_picker.xml" value="0.1" />

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardBackgroundColor="@color/white"
@@ -28,17 +29,18 @@
             android:id="@+id/tv_monthly_spending_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dining"
-            android:textStyle="bold"
-            android:letterSpacing="0.01"
-            android:textSize="18sp"
-            android:textColor="@color/FinalProj_Primary"
-            app:layout_constraintTop_toTopOf="@+id/iv_monthly_spending_category"
-            app:layout_constraintStart_toEndOf="@id/iv_monthly_spending_category"
-            app:layout_constraintBottom_toTopOf="@id/tv_monthly_spending_category_amount"
             android:layout_marginLeft="10dp"
+            android:letterSpacing="0.01"
             android:paddingTop="4dp"
-            android:paddingBottom="4dp"/>
+            android:paddingBottom="4dp"
+            android:text="@string/dining"
+            android:textColor="@color/FinalProj_Primary"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tv_monthly_spending_category_amount"
+            app:layout_constraintStart_toEndOf="@id/iv_monthly_spending_category"
+            app:layout_constraintTop_toTopOf="@+id/iv_monthly_spending_category"
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/tv_monthly_spending_category_amount"
@@ -52,15 +54,16 @@
 
         <TextView
             android:id="@+id/tv_monthly_spending_category_budget"
+            style="@style/default_page_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/_150_00"
-            style="@style/default_page_header"
             android:textColor="#969696"
             android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="@id/tv_monthly_spending_category_amount"
             app:layout_constraintStart_toEndOf="@id/tv_monthly_spending_category_amount"
             app:layout_constraintTop_toTopOf="@id/tv_monthly_spending_category_amount"
-            app:layout_constraintBottom_toBottomOf="@id/tv_monthly_spending_category_amount"/>
+            tools:ignore="TextContrastCheck" />
 
         <SeekBar
             android:id="@+id/monthly_spending_seekbar"

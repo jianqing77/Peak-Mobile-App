@@ -5,13 +5,19 @@
     <!-- Internet Permission -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- Alarm Permission -->
+    <!-- Media Images Permission-->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <!-- Alarm Permission -->
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <queries>
-
         <!-- Camera -->
         <intent>
             <action android:name="android.media.action.IMAGE_CAPTURE" />
@@ -28,9 +34,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NUMAD22Fa_Team15"
         tools:targetApi="31">
-<!--        <activity-->
-<!--            android:name=".test_confetti"-->
-<!--            android:exported="false" />-->
         <activity
             android:name=".PeakSummaryPieChart"
             android:exported="false" />
@@ -38,7 +41,7 @@
             android:name=".activities.peakActivities.PeakAddTransaction"
             android:exported="false" />
         <activity
-            android:name=".activities.peakActivities.PeakCreateBudget"
+            android:name=".activities.peakActivities.profilePage.PeakCreateBudget"
             android:exported="false"
             android:windowSoftInputMode="stateHidden" />
         <activity

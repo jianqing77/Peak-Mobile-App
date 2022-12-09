@@ -1,4 +1,4 @@
-package edu.northeastern.numad22fa_team15.activities.peakActivities;
+package edu.northeastern.numad22fa_team15.activities.peakActivities.profilePage;
 
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.closeKeyboard;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessageInSnackbar;
@@ -21,7 +21,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import edu.northeastern.numad22fa_team15.R;
-import edu.northeastern.numad22fa_team15.activities.peakActivities.profilePage.ProfileActivity;
 import edu.northeastern.numad22fa_team15.models.databaseModels.SummaryModel;
 import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
@@ -63,8 +62,6 @@ public class PeakCreateBudget extends AppCompatActivity {
         SummaryModel currentSummary = dbHelper.retrieveLatestSummaryInfoTableSummary();
 
         // After resetting account, currentSummary would be null so set a new default summary row.
-
-
         totalBudget_tv = (TextView) findViewById(R.id.edit_budget_amount);
         totalBudget_tv.setText("$ " + currentSummary.getTotalBudget() + "0");
 

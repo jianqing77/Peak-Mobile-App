@@ -27,9 +27,10 @@ import edu.northeastern.numad22fa_team15.utils.IDBHelper;
 
 public class GraphActivity extends AppCompatActivity {
 
+    private static final String TAG = "GraphActivity___";
+
     private PieChart piechart;
     private IDBHelper dbHelper;
-    private static final String TAG = "GraphActivity___";
     private NavigationBarView navigationBarView;
 
     private TextView dining_tv;
@@ -161,6 +162,6 @@ public class GraphActivity extends AppCompatActivity {
         travel_tv.setText("$ " + summary.getTravelExpense());
         pet_tv.setText("$ " + summary.getPetExpense());
         other_tv.setText("$ " + summary.getOtherExpense());
-
     }
+
 }

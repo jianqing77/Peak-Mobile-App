@@ -41,7 +41,6 @@ import java.util.Arrays;
 
 import edu.northeastern.numad22fa_team15.R;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.homePage.PeakHomePage;
-import edu.northeastern.numad22fa_team15.models.databaseModels.SummaryModel;
 import edu.northeastern.numad22fa_team15.utils.Category;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
 import edu.northeastern.numad22fa_team15.utils.IDBHelper;
@@ -289,6 +288,7 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
     }
 
     private void takePhotoUsingCamera(View view) {
+        Log.d(TAG, "takePhotosUsingCamera() method");
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
         // Check if a camera application exists on the device.
@@ -296,11 +296,13 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
             startActivityForResult(intent, CAMERA_ACTION_CODE);
         } else {
             String errorMessage = "No app supports this action.";
-            displayMessageInSnackbar(view, errorMessage, Snackbar.LENGTH_SHORT);
+            Log.d(TAG, errorMessage);
+            Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
         }
     }
 
     private void pickFromPhotos(View view) {
+        Log.d(TAG, "pickFromPhotos() method");
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
 
         // Check if a image gallery exists on the device.
@@ -308,7 +310,8 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
             startActivityForResult(intent, PICK_IMAGE_CODE);
         } else {
             String errorMessage = "No image gallery found.";
-            displayMessageInSnackbar(view, errorMessage, Snackbar.LENGTH_SHORT);
+            Log.d(TAG, errorMessage);
+            Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
         }
     }
 

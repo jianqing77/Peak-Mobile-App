@@ -44,7 +44,7 @@ public class DailyBroadcastReceiver extends BroadcastReceiver {
             NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
             notificationManager.notify(NOTIFICATION_UNIQUE_ID + notificationGeneration, n);
         } else {
-            Log.d(TAG, "Transaction record found,");
+            Log.d(TAG, "Transaction record found.");
         }
     }
 

@@ -33,7 +33,19 @@ public class ReceiptsCollectionActivity extends AppCompatActivity {
 
         dbHelper = new DBHelper(ReceiptsCollectionActivity .this);
 
-        // Retrieve this month's transactions with receipt in a list
+        List<TransactionModel> transactionsWithReceipts = retrieveThisMonthTransactionsWithReceipts();
+
+        receiptsGridView = (GridView) findViewById(R.id.receipts_collection_grid_view);
+        ViewCompat.setNestedScrollingEnabled(receiptsGridView, true);
+        receiptsGridViewAdapter = new ReceiptsGridViewAdapter(this, transactionsWithReceipts);
+        receiptsGridView.setAdapter(receiptsGridViewAdapter);
+    }
+
+    /**
+     * Retrieve this month's transactions with receipt in a list.
+     * @return this month's transactions with receipt
+     */
+    private List<TransactionModel> retrieveThisMonthTransactionsWithReceipts() {
         LocalDateTime now = LocalDateTime.now();
         String transactionDate = String.valueOf(now);
         int[] yearAndMonth = getYearAndMonthFromDateString(transactionDate);
@@ -41,11 +53,7 @@ public class ReceiptsCollectionActivity extends AppCompatActivity {
         int currentMonth = yearAndMonth[1];
         List<TransactionModel> transactionsWithReceipts = dbHelper.retrieveTransactionsWithReceiptByYearMonthTableTransaction(currentYear, currentMonth);
         Log.d(TAG, "Number of transactions with receipt this month: " + transactionsWithReceipts.size());
-
-        receiptsGridView = (GridView) findViewById(R.id.receipts_collection_grid_view);
-        ViewCompat.setNestedScrollingEnabled(receiptsGridView, true);
-        receiptsGridViewAdapter = new ReceiptsGridViewAdapter(this, transactionsWithReceipts);
-        receiptsGridView.setAdapter(receiptsGridViewAdapter);
+        return transactionsWithReceipts;
     }
 
     @Override

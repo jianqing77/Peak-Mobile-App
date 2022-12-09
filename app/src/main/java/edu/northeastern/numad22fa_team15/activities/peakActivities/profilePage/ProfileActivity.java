@@ -10,7 +10,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -24,14 +23,11 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.snackbar.Snackbar;
 
 import edu.northeastern.numad22fa_team15.R;
-import edu.northeastern.numad22fa_team15.activities.MainActivity;
-import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakCreateBudget;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.addTransaction.AddTransactionActivity;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.graph.GraphActivity;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.homePage.PeakHomePage;
 import edu.northeastern.numad22fa_team15.activities.peakActivities.piggySavings.SavingsActivity;
 import edu.northeastern.numad22fa_team15.models.databaseModels.SummaryModel;
-
 import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
 import edu.northeastern.numad22fa_team15.utils.IDBHelper;
@@ -160,7 +156,6 @@ public class ProfileActivity extends AppCompatActivity {
         b.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                // TODO
                 // Truncate the following tables:
                 // (1) TransactionEntry (2) Summary (3) Saving
                 boolean truncateResult = dbHelper.truncateTablesTransactionSummaryAndSaving();
