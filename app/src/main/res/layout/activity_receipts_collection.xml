@@ -11,9 +11,12 @@
         android:id="@+id/receipts_collection_grid_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
         android:horizontalSpacing="6dp"
         android:numColumns="2"
+        android:scrollbars="vertical"
         android:verticalSpacing="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
