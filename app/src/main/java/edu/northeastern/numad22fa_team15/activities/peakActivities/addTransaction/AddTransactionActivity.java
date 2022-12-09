@@ -414,6 +414,7 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
         }
         Toast.makeText(getApplicationContext(), transactionMessage, Toast.LENGTH_SHORT).show();
 
+        receiptPictureByteArray = null;
         bottomSheetDialog.dismiss();
     }
 
@@ -505,6 +506,7 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
         }
         Toast.makeText(getApplicationContext(), transactionMessage, Toast.LENGTH_SHORT).show();
 
+        receiptPictureByteArray = null;
         bottomSheetDialog.dismiss();
     }
 

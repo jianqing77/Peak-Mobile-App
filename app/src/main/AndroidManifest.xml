@@ -110,6 +110,9 @@
             android:name=".activities.peakActivities.graph.GraphActivity"
             android:configChanges="orientation|screenSize" />
         <activity
+            android:name=".activities.peakActivities.graph.ReceiptsCollectionActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity
             android:name=".activities.peakActivities.piggySavings.SavingsActivity"
             android:configChanges="orientation|screenSize" />
         <activity

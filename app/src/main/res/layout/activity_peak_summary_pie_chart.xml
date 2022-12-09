@@ -36,6 +36,7 @@
             android:layout_marginTop="10dp"
             android:backgroundTint="@color/FinalProj_Light"
             android:letterSpacing="-0.01"
+            android:onClick="receiptsCollectionActivity"
             android:paddingLeft="10dp"
             android:paddingTop="6dp"
             android:paddingRight="10dp"

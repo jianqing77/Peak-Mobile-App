@@ -105,8 +105,6 @@ public class PeakLockScreen extends AppCompatActivity implements View.OnClickLis
                 savingMessage = "Successfully updated saving";
             }
             Log.d(TAG, savingMessage);
-
-
         }
     }
 

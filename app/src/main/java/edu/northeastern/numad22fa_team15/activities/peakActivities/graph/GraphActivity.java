@@ -23,11 +23,12 @@ import edu.northeastern.numad22fa_team15.activities.peakActivities.piggySavings.
 import edu.northeastern.numad22fa_team15.activities.peakActivities.profilePage.ProfileActivity;
 import edu.northeastern.numad22fa_team15.models.databaseModels.SummaryModel;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
+import edu.northeastern.numad22fa_team15.utils.IDBHelper;
 
 public class GraphActivity extends AppCompatActivity {
 
     private PieChart piechart;
-    private DBHelper dbHelper;
+    private IDBHelper dbHelper;
     private static final String TAG = "GraphActivity___";
     private NavigationBarView navigationBarView;
 
@@ -82,9 +83,19 @@ public class GraphActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * This method gets called when the RECEIPTS button is clicked
+     * @param view
+     */
+    public void receiptsCollectionActivity(View view) {
+        Log.d(TAG, "RECEIPTS button was clicked");
+        Intent intent = new Intent(GraphActivity.this, ReceiptsCollectionActivity.class);
+        startActivity(intent);
+    }
+
     // Bottom Navigation Bar -- add transaction
     public void addTransactionFAB(View view) {
-        Log.v(TAG, "Trying to add a new transaction");
+        Log.d(TAG, "Trying to add a new transaction");
         Intent intent = new Intent(GraphActivity.this, AddTransactionActivity.class);
         startActivity(intent);
         finish();

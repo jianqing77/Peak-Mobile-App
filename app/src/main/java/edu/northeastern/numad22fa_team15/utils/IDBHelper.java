@@ -40,6 +40,7 @@ public interface IDBHelper {
     boolean addTranTableTransaction(float expense, String description, String category, String transactionDate, byte[] receiptPhoto);
     boolean updateTranTableTransaction(float expense, String description, String category, int transactionID);
     List<TransactionModel> retrieveTransactionsByYearMonthTableTransaction(int yearInput, int monthInput);
+    List<TransactionModel> retrieveTransactionsWithReceiptByYearMonthTableTransaction(int yearInput, int monthInput);
     List<TransactionModel> retrieveTransactionsByDateTableTransaction(int yearInput, int monthInput, int dayInput);
 
     // Methods that interact with the saving table

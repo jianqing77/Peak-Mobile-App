@@ -576,6 +576,37 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
     }
 
     @Override
+    public List<TransactionModel> retrieveTransactionsWithReceiptByYearMonthTableTransaction(int yearInput, int monthInput) {
+        List<TransactionModel> transactionList = new ArrayList<TransactionModel>();
+        Cursor cursor = getTransactionCursor();
+
+        if (cursor.moveToFirst()) {
+            do {
+                // Retrieve TRANSACTION_DATE_COL from database
+                String transactionDate = cursor.getString(4);
+                // Retrieve year and month from transactionDate String
+                int[] yearAndMonth = getYearAndMonthFromDateString(transactionDate);
+                // Check if year and month match
+                if (yearInput == yearAndMonth[0] && monthInput == yearAndMonth[1]) {
+                    byte[] receiptPhoto = cursor.getBlob(5);
+                    // Check if receiptPhoto is null or empty
+                    if (receiptPhoto != null && receiptPhoto.length > 0) {
+                        // If not null and not empty, add to transactionList
+                        float expense = cursor.getFloat(1);
+                        Category category = Category.valueOf(cursor.getString(2).toUpperCase());
+                        String description = cursor.getString(3);
+
+                        TransactionModel transactionModel = new TransactionModel(expense, category, description, transactionDate, receiptPhoto);
+                        transactionList.add(transactionModel);
+                    }
+                }
+            } while (cursor.moveToNext());
+            // moving our cursor to next.
+        }
+        return transactionList;
+    }
+
+    @Override
     public List<TransactionModel> retrieveTransactionsByDateTableTransaction(int yearInput, int monthInput, int dayInput) {
         List<TransactionModel> transactionList = new ArrayList<TransactionModel>();
         Cursor cursor = getTransactionCursor();
