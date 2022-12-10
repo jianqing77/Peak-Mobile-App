@@ -651,24 +651,6 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         return (rowsAffected != 0);
     }
 
-    /*
-    @Override
-    public boolean addSavingTableSaving(float savingGoal, String goalDescription, float savingSoFar, boolean savingStatus) {
-        // TODO
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(SAVING_GOAL_COL, savingGoal);
-        values.put(SAVING_GOAL_DESCRIPTION_COL, goalDescription);
-        values.put(SAVING_SO_FAR_COL, savingSoFar);
-        values.put(SAVING_STATUS_COL, savingStatus);
-
-        long result = db.insert(SAVING_TABLE_NAME, null, values);
-        return (result != -1);
-    }
-
-     */
-
     @Override
     public boolean addSavingTableSaving(String goalDescription) {
         SQLiteDatabase db = this.getWritableDatabase();

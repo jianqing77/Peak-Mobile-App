@@ -91,14 +91,14 @@ public class PeakSignUp extends AppCompatActivity {
         if (addSummary) {
             budgetMessage = "Successfully added summary";
         }
-        displayMessageInSnackbar(view, budgetMessage, Snackbar.LENGTH_SHORT);
+        Log.d(TAG, budgetMessage);
 
-        boolean addSaving = dbHelper.addSavingTableSaving("GOAL");
+        boolean addSaving = dbHelper.addSavingTableSaving("Set a saving goal!");
         String savingMessage = "Fail to add Saving Goal";
         if (addSaving) {
             savingMessage = "Successfully added saving goal";
         }
-        displayMessageInSnackbar(view, savingMessage, Snackbar.LENGTH_LONG);
+        Log.d(TAG, savingMessage);
     }
 
 }

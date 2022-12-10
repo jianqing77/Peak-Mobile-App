@@ -170,6 +170,8 @@ public class ProfileActivity extends AppCompatActivity {
                 String message = "Account reset. Start fresh with a new budget plan.";
                 // Create a default budget
                 createDefaultBudgetTableSummary(dbHelper);
+                // Create a default saving goal
+                dbHelper.addSavingTableSaving("Set a saving goal!");
                 Intent intent = new Intent(getApplicationContext(), PeakCreateBudget.class);
                 intent.putExtra("message", message);
                 startActivity(intent);
