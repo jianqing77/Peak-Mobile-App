@@ -145,6 +145,7 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
         // REF: https://stackoverflow.com/questions/41591733/bottom-sheet-landscape-issue
         bottomSheetDialog.setOnShowListener(dialogInterface -> {
             mBehavior.setPeekHeight(1000);
+            mBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
         });
 
         categoryText = (TextView) bottomSheetView.findViewById(R.id.tv_category_with_tip);
@@ -252,6 +253,7 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
         // REF: https://stackoverflow.com/questions/41591733/bottom-sheet-landscape-issue
         bottomSheetDialog.setOnShowListener(dialogInterface -> {
             mBehavior.setPeekHeight(700);
+            mBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
         });
 
         ImageButton takePictureButton = (ImageButton) bottomSheetDialog.findViewById(R.id.btn_take_profile_picture);
@@ -437,6 +439,7 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
         BottomSheetBehavior mBehavior = BottomSheetBehavior.from((View) bottomSheetView.getParent());
         bottomSheetDialog.setOnShowListener(dialogInterface -> {
             mBehavior.setPeekHeight(1000);
+            mBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
         });
 
         // set category text

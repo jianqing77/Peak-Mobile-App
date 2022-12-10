@@ -668,8 +668,9 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         values.put(SAVING_GOAL_COL, savingGoal);
         values.put(SAVING_GOAL_DESCRIPTION_COL, goalDescription);
 
-        String whereClause = String.format("%s = ?", SAVING_ID_COL);
-        int numOfRowsImpacted = db.update(SAVING_TABLE_NAME, values, whereClause, new String[]{String.valueOf(1)});
+        // XH note: The following lines are just a walk around the actual issue.
+        String whereClause = String.format("%s = ?", SAVING_STATUS_COL);
+        int numOfRowsImpacted = db.update(SAVING_TABLE_NAME, values, whereClause, new String[]{"FALSE"});
 
         return (numOfRowsImpacted != 0);
     }
@@ -681,13 +682,13 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         SavingModel saving = this.retrieveLatestSavingTableSaving();
         float savingSoFar = saving.getSavingSoFar();
         savingSoFar += newSaving;
-        System.out.println("saving so far: " + savingSoFar);
 
         ContentValues values = new ContentValues();
         values.put(SAVING_SO_FAR_COL, savingSoFar);
 
-        String whereClause = String.format("%s = ?", SAVING_ID_COL);
-        int numOfRowsImpacted = db.update(SAVING_TABLE_NAME, values, whereClause, new String[]{String.valueOf(1)});
+        // XH note: The following lines are just a walk around the actual issue.
+        String whereClause = String.format("%s = ?", SAVING_STATUS_COL);
+        int numOfRowsImpacted = db.update(SAVING_TABLE_NAME, values, whereClause, new String[]{"FALSE"});
         return (numOfRowsImpacted != 0);
     }
 
@@ -700,8 +701,9 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
         values.put(SAVING_GOAL_DESCRIPTION_COL, "(Set a new goal today!)");
         values.put(SAVING_SO_FAR_COL, remainingSaving);
 
-        String whereClause = String.format("%s = ?", SAVING_ID_COL);
-        int numOfRowsImpacted = db.update(SAVING_TABLE_NAME, values, whereClause, new String[]{String.valueOf(1)});
+        // XH note: The following lines are just a walk around the actual issue.
+        String whereClause = String.format("%s = ?", SAVING_STATUS_COL);
+        int numOfRowsImpacted = db.update(SAVING_TABLE_NAME, values, whereClause, new String[]{"FALSE"});
         return (numOfRowsImpacted != 0);
     }
 

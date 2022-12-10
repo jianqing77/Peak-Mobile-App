@@ -104,6 +104,7 @@ public class EditProfileActivity extends AppCompatActivity {
         // REF: https://stackoverflow.com/questions/41591733/bottom-sheet-landscape-issue
         bottomSheetDialog.setOnShowListener(dialogInterface -> {
             mBehavior.setPeekHeight(500);
+            mBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
         });
 
         ImageButton takePictureButton = (ImageButton) bottomSheetDialog.findViewById(R.id.btn_take_profile_picture);
