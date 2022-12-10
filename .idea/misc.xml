@@ -9,9 +9,13 @@
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/ic_logo_piggybank.xml" value="0.3515" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/piggybank_boxes.xml" value="0.2275" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/drawable/round_corner.xml" value="0.2275" />
+        <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout-land/activity_on_boading_animation.xml" value="0.25" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout-land/activity_on_boarding.xml" value="0.26512968299711814" />
+        <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout-land/activity_peak_graph.xml" value="0.25" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout-land/activity_peak_sign_up.xml" value="0.2967079948696024" />
+        <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout-land/activity_peak_summary_pie_chart.xml" value="0.22" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout-land/change_profile_picture_bottomsheet.xml" value="0.5438221462163317" />
+        <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout-land/layout_bottom_sheet_add_transaction_with_tip.xml" value="0.47346938775510206" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_add_transaction_with_tip_popup.xml" value="0.2975630611372381" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_confetti.xml" value="0.2967079948696024" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_create_budget.xml" value="0.2975630611372381" />
@@ -33,10 +37,12 @@
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_peak_summary_pie_chart.xml" value="0.2975630611372381" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_peak_transaction_cardview.xml" value="0.2975630611372381" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_profile_page.xml" value="0.1" />
+        <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_receipts_collection.xml" value="0.271875" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_savings.xml" value="0.2975630611372381" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_test_confetti.xml" value="0.2860196665241556" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/activity_test_peak_first_page.xml" value="0.24166666666666667" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/change_profile_picture_bottomsheet.xml" value="0.22894736842105262" />
+        <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/delete_this_layout.xml" value="0.271875" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/dialog_edit_piggybank_goal.xml" value="0.2975630611372381" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/edit_profile.xml" value="0.25" />
         <entry key="..\:/Users/pcgam/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/layout/onboarding_slider_layout.xml" value="0.2975630611372381" />
