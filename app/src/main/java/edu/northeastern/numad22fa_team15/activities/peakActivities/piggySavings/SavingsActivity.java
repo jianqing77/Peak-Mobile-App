@@ -6,6 +6,7 @@ import static edu.northeastern.numad22fa_team15.utils.CommonUtils.nullOrEmptyInp
 import static nl.dionsegijn.konfetti.core.Position.Relative;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -60,6 +61,14 @@ public class SavingsActivity extends AppCompatActivity {
     private Shape.DrawableShape drawableShape = null;
 
     @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_peak_piggybank);
@@ -109,8 +118,6 @@ public class SavingsActivity extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.nav_savings:
-                        startActivity(new Intent(getApplicationContext(), SavingsActivity.class));
-                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.nav_profile:
                         startActivity(new Intent(getApplicationContext(), ProfileActivity.class));

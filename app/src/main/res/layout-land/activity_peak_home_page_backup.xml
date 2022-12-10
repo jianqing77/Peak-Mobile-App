@@ -42,7 +42,8 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@id/welcome_back"
         app:layout_constraintStart_toEndOf="@id/welcome_back"
-        app:layout_constraintTop_toTopOf="@id/welcome_back" />
+        app:layout_constraintTop_toTopOf="@id/welcome_back"
+        android:layout_marginLeft="5dp"/>
 
 
     <LinearLayout

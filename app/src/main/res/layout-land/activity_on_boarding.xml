@@ -42,6 +42,24 @@
             android:textSize="15sp"
             android:onClick="skipToEnd"
             style="?android:attr/buttonBarButtonStyle" />
+
+        <!-- Next button -->
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/FinalProj_Light"
+            android:clickable="true"
+            android:text="@string/get_started"
+            android:textAppearance="@style/button_light"
+            android:textColor="@color/FinalProj_Dark"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            app:cornerRadius="10dp"
+            android:onClick="moveToNext"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"/>
     </RelativeLayout>
 
 
@@ -68,28 +86,6 @@
         app:layout_constraintTop_toBottomOf="@id/slideViewPager"
         app:layout_constraintBottom_toBottomOf="parent">
     </LinearLayout>
-
-
-    <!-- Next button -->
-    <Button
-        android:id="@+id/btn_next"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="-40dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="@color/FinalProj_Light"
-        android:clickable="true"
-        android:text="@string/get_started"
-        android:textAppearance="@style/button_light"
-        android:textColor="@color/FinalProj_Dark"
-        android:textStyle="bold"
-        android:textSize="15dp"
-        app:cornerRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/slideViewPager"
-        android:onClick="moveToNext"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

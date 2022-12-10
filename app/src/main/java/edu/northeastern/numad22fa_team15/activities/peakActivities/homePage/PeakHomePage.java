@@ -9,6 +9,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -64,6 +65,14 @@ public class PeakHomePage extends AppCompatActivity {
     private NavigationBarView navigationBarView;
 
     private IDBHelper dbHelper;
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

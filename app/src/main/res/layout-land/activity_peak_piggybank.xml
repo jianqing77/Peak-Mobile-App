@@ -13,15 +13,6 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true">
 
-        <nl.dionsegijn.konfetti.xml.KonfettiView
-            android:id="@+id/konfettiView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Scrollable Main Section -->
@@ -80,20 +71,18 @@
             android:layout_marginTop="16dp"
             android:text="@string/goal_go_to_aruba"
             android:textStyle="normal"
-            app:layout_constraintBottom_toTopOf="@id/iv_piggybank_logo"
-            app:layout_constraintEnd_toEndOf="@id/piggybank_divider"
-            app:layout_constraintStart_toStartOf="@id/piggybank_divider"
-            app:layout_constraintTop_toBottomOf="@id/piggybank_divider" />
+            app:layout_constraintStart_toEndOf="@id/iv_piggybank_logo"
+            app:layout_constraintTop_toTopOf="@id/iv_piggybank_logo"
+            app:layout_constraintEnd_toEndOf="@id/view_piggybank_remaining"/>
 
         <ImageView
             android:id="@+id/iv_piggybank_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_marginTop="20dp"
             android:src="@drawable/ic_logo_piggybank"
-            app:layout_constraintEnd_toEndOf="@id/piggybank_divider"
             app:layout_constraintStart_toStartOf="@id/piggybank_divider"
-            app:layout_constraintTop_toBottomOf="@id/tv_goal_description" />
+            app:layout_constraintTop_toBottomOf="@id/piggybank_divider" />
 
         <TextView
             android:id="@+id/tv_goal_amount"
@@ -117,9 +106,9 @@
             android:layout_height="60dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/piggybank_boxes"
-            app:layout_constraintEnd_toStartOf="@id/view_piggybank_remaining"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_piggybank_logo" />
+            app:layout_constraintStart_toEndOf="@id/iv_piggybank_logo"
+            app:layout_constraintStart_toStartOf="@id/tv_goal_description"
+            app:layout_constraintTop_toBottomOf="@id/tv_goal_description"/>
 
         <TextView
             android:id="@+id/tv_saved"
@@ -151,9 +140,9 @@
             android:layout_height="60dp"
             android:background="@drawable/piggybank_boxes"
             app:layout_constraintBottom_toBottomOf="@id/view_piggybank_saved"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/view_piggybank_saved"
-            app:layout_constraintTop_toTopOf="@id/view_piggybank_saved" />
+            app:layout_constraintTop_toTopOf="@id/view_piggybank_saved"
+            android:layout_marginLeft="20dp"/>
 
         <TextView
             android:id="@+id/tv_remaining"
@@ -178,6 +167,11 @@
             app:layout_constraintEnd_toEndOf="@id/view_piggybank_remaining"
             app:layout_constraintStart_toStartOf="@id/view_piggybank_remaining"
             app:layout_constraintTop_toBottomOf="@id/tv_remaining" />
+
+            <nl.dionsegijn.konfetti.xml.KonfettiView
+                android:id="@+id/konfettiView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
