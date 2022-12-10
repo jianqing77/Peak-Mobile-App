@@ -64,7 +64,7 @@
     <string name="heading_three">Reach your goals faster</string>
     <string name="desc_three">Each month, your unspent budget will automatically be added to your virtual piggy bank. Add a savings goal and watch your piggy bank grow!</string>
     <string name="heading_four">Add without unlocking</string>
-    <string name="desc_four">After two minutes of inactivity, the app will lock. Don’t worry! You can still add spendings right from the lock screen.</string>
+    <string name="desc_four">You can add spendings right from the lock screen.</string>
     <string name="skip">Skip</string>
     <string name="next">Next</string>
     <string name="two_people_budgeting">Two people budgetting</string>

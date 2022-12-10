@@ -95,7 +95,9 @@
             android:configChanges="orientation|screenSize" />
         <activity android:name=".activities.peakActivities.userRegister.PeakSignUp" />
         <activity android:name=".activities.peakActivities.userRegister.PeakSignUpConfirmation" />
-        <activity android:name=".activities.peakActivities.lockScreen.PeakLockScreen" />
+        <activity
+            android:name=".activities.peakActivities.lockScreen.PeakLockScreen"
+            android:configChanges="orientation|screenSize"/>
         <activity android:name=".activities.peakActivities.homePage.PeakHomePage" />
         <activity
             android:name=".activities.peakActivities.profilePage.TermsAndConditionActivity"
