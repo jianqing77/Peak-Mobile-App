@@ -17,11 +17,12 @@
             android:id="@+id/peak_text_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:text="@string/peak"
-            android:textSize="35sp"
             android:textAppearance="@style/peak_logo"
-            android:layout_gravity="center_horizontal"/>
+            android:textSize="35sp"
+            tools:ignore="TextContrastCheck" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -74,31 +75,36 @@
 
                 <Button
                     android:id="@+id/btn_01"
-                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@drawable/nav_transparent_background"
                     android:text="@string/value_1"
+                    android:textColor="@color/FinalProj_Dark"
                     android:textSize="16sp"
-                    android:textColor="@color/FinalProj_Dark"/>
+                    tools:ignore="TouchTargetSizeCheck" />
+
                 <Button
                     android:id="@+id/btn_02"
-                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@drawable/nav_transparent_background"
                     android:text="@string/value_2"
+                    android:textColor="@color/FinalProj_Dark"
                     android:textSize="16sp"
-                    android:textColor="@color/FinalProj_Dark"/>
+                    tools:ignore="TouchTargetSizeCheck" />
+
                 <Button
                     android:id="@+id/btn_03"
-                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@drawable/nav_transparent_background"
                     android:text="@string/value_3"
+                    android:textColor="@color/FinalProj_Dark"
                     android:textSize="16sp"
-                    android:textColor="@color/FinalProj_Dark"/>
+                    tools:ignore="TouchTargetSizeCheck" />
 
             </LinearLayout>
 
@@ -111,31 +117,36 @@
 
                 <Button
                     android:id="@+id/btn_04"
-                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@drawable/nav_transparent_background"
                     android:text="@string/value_4"
+                    android:textColor="@color/FinalProj_Dark"
                     android:textSize="16sp"
-                    android:textColor="@color/FinalProj_Dark"/>
+                    tools:ignore="TouchTargetSizeCheck" />
+
                 <Button
                     android:id="@+id/btn_05"
-                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@drawable/nav_transparent_background"
                     android:text="@string/value_5"
+                    android:textColor="@color/FinalProj_Dark"
                     android:textSize="16sp"
-                    android:textColor="@color/FinalProj_Dark"/>
+                    tools:ignore="TouchTargetSizeCheck" />
+
                 <Button
                     android:id="@+id/btn_06"
-                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@drawable/nav_transparent_background"
                     android:text="@string/value_6"
+                    android:textColor="@color/FinalProj_Dark"
                     android:textSize="16sp"
-                    android:textColor="@color/FinalProj_Dark"/>
+                    tools:ignore="TouchTargetSizeCheck" />
 
             </LinearLayout>
 
@@ -148,31 +159,36 @@
 
                 <Button
                     android:id="@+id/btn_07"
-                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@drawable/nav_transparent_background"
                     android:text="@string/value_7"
+                    android:textColor="@color/FinalProj_Dark"
                     android:textSize="16sp"
-                    android:textColor="@color/FinalProj_Dark"/>
+                    tools:ignore="TouchTargetSizeCheck" />
+
                 <Button
                     android:id="@+id/btn_08"
-                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@drawable/nav_transparent_background"
                     android:text="@string/value_8"
+                    android:textColor="@color/FinalProj_Dark"
                     android:textSize="16sp"
-                    android:textColor="@color/FinalProj_Dark"/>
+                    tools:ignore="TouchTargetSizeCheck" />
+
                 <Button
                     android:id="@+id/btn_09"
-                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@drawable/nav_transparent_background"
                     android:text="@string/value_9"
+                    android:textColor="@color/FinalProj_Dark"
                     android:textSize="16sp"
-                    android:textColor="@color/FinalProj_Dark"/>
+                    tools:ignore="TouchTargetSizeCheck" />
 
             </LinearLayout>
 
@@ -184,28 +200,33 @@
                 android:weightSum="5">
 
                 <Button
-                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:background="@drawable/nav_transparent_background"/>
+                    android:layout_weight="1"
+                    android:background="@drawable/nav_transparent_background"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
                 <Button
                     android:id="@+id/btn_00"
-                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@drawable/nav_transparent_background"
                     android:text="@string/value_0"
+                    android:textColor="@color/FinalProj_Dark"
                     android:textSize="16sp"
-                    android:textColor="@color/FinalProj_Dark"/>
+                    tools:ignore="TouchTargetSizeCheck" />
+
                 <Button
                     android:id="@+id/btn_clear"
-                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@drawable/nav_transparent_background"
                     android:text="@string/clear"
+                    android:textColor="@color/FinalProj_Dark"
                     android:textSize="16sp"
-                    android:textColor="@color/FinalProj_Dark"/>
+                    tools:ignore="TouchTargetSizeCheck" />
 
             </LinearLayout>
 
@@ -214,17 +235,18 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="40dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="100dp"
+            android:layout_marginBottom="90dp"
             android:backgroundTint="@color/FinalProj_Light"
+            android:onClick="quickAddDialog"
             android:text="@string/quick_add"
             android:textAllCaps="false"
             android:textColor="@color/FinalProj_Dark"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="100dp"
-            android:onClick="quickAddDialog"
-            android:layout_marginLeft="100dp"
-            android:layout_marginBottom="90dp" />
+            tools:ignore="TouchTargetSizeCheck" />
 
     </LinearLayout>
 
