@@ -136,9 +136,9 @@ public class GraphActivity extends AppCompatActivity {
         piechart.addPieSlice(new PieModel("Beauty", beautyExpense, Color.parseColor("#3498db")));
         piechart.addPieSlice(new PieModel("Transportation", transportationExpense, Color.parseColor("#2980b9")));
         piechart.addPieSlice(new PieModel("Health", healthExpense, Color.parseColor("#9b59b6")));
-        piechart.addPieSlice(new PieModel("Travel", travelExpense, Color.parseColor("#34495e")));
-        piechart.addPieSlice(new PieModel("Pet", petExpense, Color.parseColor("#7f8c8d")));
-        piechart.addPieSlice(new PieModel("Other", otherExpense, Color.parseColor("#bdc3c7")));
+        piechart.addPieSlice(new PieModel("Travel", travelExpense, Color.parseColor("#FF6200EE")));
+        piechart.addPieSlice(new PieModel("Pet", petExpense, Color.parseColor("#FF3700B3")));
+        piechart.addPieSlice(new PieModel("Other", otherExpense, Color.parseColor("#34495e")));
 
         piechart.startAnimation();
     }

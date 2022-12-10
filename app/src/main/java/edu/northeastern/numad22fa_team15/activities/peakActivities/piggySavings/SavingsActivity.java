@@ -199,12 +199,12 @@ public class SavingsActivity extends AppCompatActivity {
         Log.d(TAG, "savingSoFar: " + savingSoFar);
         goal_tv.setText("$ " + savingGoal);
         goalDescription_tv.setText("Goal: " + goalDescription);
-        savedAmount_tv.setText("$ " + savingSoFar);
+        savedAmount_tv.setText("$ " + String.format("%.2f", savingSoFar));
         float remainingAmount = savingGoal - savingSoFar;
         if (remainingAmount < 0) {
             remainingAmount = 0;
         }
-        remainingAmount_tv.setText("$ " + remainingAmount);
+        remainingAmount_tv.setText("$ " + String.format("%.2f", remainingAmount));
     }
 
 
