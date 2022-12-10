@@ -107,7 +107,7 @@ public class DBHelper extends SQLiteOpenHelper implements IDBHelper {
                 "CREATE TABLE IF NOT EXISTS " + SAVING_TABLE_NAME + " ("
                 + SAVING_ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
                 + SAVING_GOAL_COL + " INT DEFAULT 0, "
-                + SAVING_GOAL_DESCRIPTION_COL + " TEXT DEFAULT 'GOAL', "
+                + SAVING_GOAL_DESCRIPTION_COL + " TEXT DEFAULT 'Set a new goal!', "
                 + SAVING_SO_FAR_COL + " FLOAT DEFAULT 0, "
                 + SAVING_STATUS_COL + " BOOLEAN DEFAULT 'FALSE')";
 

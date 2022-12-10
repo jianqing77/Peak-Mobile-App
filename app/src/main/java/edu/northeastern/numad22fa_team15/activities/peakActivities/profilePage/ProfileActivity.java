@@ -171,7 +171,7 @@ public class ProfileActivity extends AppCompatActivity {
                 // Create a default budget
                 createDefaultBudgetTableSummary(dbHelper);
                 // Create a default saving goal
-                dbHelper.addSavingTableSaving("Set a saving goal!");
+                dbHelper.addSavingTableSaving("(Set a saving goal!)");
                 Intent intent = new Intent(getApplicationContext(), PeakCreateBudget.class);
                 intent.putExtra("message", message);
                 startActivity(intent);

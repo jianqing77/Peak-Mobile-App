@@ -93,7 +93,7 @@ public class PeakSignUp extends AppCompatActivity {
         }
         Log.d(TAG, budgetMessage);
 
-        boolean addSaving = dbHelper.addSavingTableSaving("Set a saving goal!");
+        boolean addSaving = dbHelper.addSavingTableSaving("(Set a saving goal!)");
         String savingMessage = "Fail to add Saving Goal";
         if (addSaving) {
             savingMessage = "Successfully added saving goal";
