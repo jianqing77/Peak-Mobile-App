@@ -209,7 +209,6 @@ public class PeakCreateBudget extends AppCompatActivity {
                     + educationBudget + beautyBudget + transportationBudget + healthBudget + travelBudget
                     + petBudget + otherBudget;
 
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             LocalDateTime now = LocalDateTime.now();
             String currentDate = String.valueOf(now);
 
