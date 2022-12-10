@@ -109,8 +109,6 @@ public class SavingsActivity extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.nav_savings:
-                        startActivity(new Intent(getApplicationContext(), SavingsActivity.class));
-                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.nav_profile:
                         startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
