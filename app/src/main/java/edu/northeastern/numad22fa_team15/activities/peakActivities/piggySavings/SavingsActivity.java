@@ -6,6 +6,7 @@ import static edu.northeastern.numad22fa_team15.utils.CommonUtils.nullOrEmptyInp
 import static nl.dionsegijn.konfetti.core.Position.Relative;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -58,6 +59,14 @@ public class SavingsActivity extends AppCompatActivity {
 
     private KonfettiView konfettiView = null;
     private Shape.DrawableShape drawableShape = null;
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
