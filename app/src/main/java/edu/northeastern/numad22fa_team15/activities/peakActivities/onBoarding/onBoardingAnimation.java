@@ -29,12 +29,12 @@ public class onBoardingAnimation extends AppCompatActivity {
         setContentView(R.layout.activity_on_boading_animation);
 
         piggyAnimationView = findViewById(R.id.lottie_animation_piggy);
-        piggyWelcomeHeader = findViewById(R.id.welcome_header);
-        piggyWelcomeSlogan = findViewById(R.id.welcome_slogan);
+        piggyWelcomeHeader = findViewById(R.id.welcome_splash_header);
+        piggyWelcomeSlogan = findViewById(R.id.welcome_splash_slogan);
 
-        piggyAnimationView.animate().translationY(-1600).setDuration(1000).setStartDelay(4000);
-        piggyWelcomeHeader.animate().translationY(-1600).setDuration(1000).setStartDelay(4000);
-        piggyWelcomeSlogan.animate().translationY(-1600).setDuration(1000).setStartDelay(4000);
+        piggyAnimationView.animate().translationY(0).setDuration(1000).setStartDelay(4000);
+        piggyWelcomeHeader.animate().translationY(0).setDuration(1000).setStartDelay(4000);
+        piggyWelcomeSlogan.animate().translationY(0).setDuration(1000).setStartDelay(4000);
 
         timer = new Timer();
         timer.schedule(new TimerTask() {
