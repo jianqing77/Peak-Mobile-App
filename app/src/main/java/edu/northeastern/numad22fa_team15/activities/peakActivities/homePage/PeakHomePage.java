@@ -60,6 +60,7 @@ public class PeakHomePage extends AppCompatActivity {
     private TextView expensesTextView;
     private TextView balanceTextView;
     private Button datePickerButton;
+    private String buttonText;
 
     private NavigationBarView navigationBarView;
 
@@ -152,7 +153,9 @@ public class PeakHomePage extends AppCompatActivity {
             matchResults.add(transaction);
         }
         recyclerView.getAdapter().notifyDataSetChanged();
-        String buttonText = String.format("%s/%s/%s", currentMonth, currentDay, currentYear);
+        if(buttonText == null){
+            buttonText = String.format("%s/%s/%s", currentMonth, currentDay, currentYear);
+        }
         datePickerButton.setText(buttonText);
     }
 
@@ -188,7 +191,7 @@ public class PeakHomePage extends AppCompatActivity {
                     matchResults.add(transaction);
                 }
                 recyclerView.getAdapter().notifyDataSetChanged();
-                String buttonText = String.format("%s/%s/%s", month, day, year);
+                buttonText = String.format("%s/%s/%s", month, day, year);
                 datePickerButton.setText(buttonText);
             }
         });
@@ -305,6 +308,19 @@ public class PeakHomePage extends AppCompatActivity {
         // Hide notification after it is selected
         notification.flags = Notification.FLAG_AUTO_CANCEL;
         return notification;
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("Button Text", buttonText);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        buttonText = savedInstanceState.getString("Button Text");
+        datePickerButton.setText(buttonText);
     }
 
     @Override
