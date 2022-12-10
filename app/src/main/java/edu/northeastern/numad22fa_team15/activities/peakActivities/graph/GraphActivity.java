@@ -164,4 +164,11 @@ public class GraphActivity extends AppCompatActivity {
         other_tv.setText("$ " + summary.getOtherExpense());
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), PeakHomePage.class);
+        startActivity(intent);
+        finish();
+    }
+
 }

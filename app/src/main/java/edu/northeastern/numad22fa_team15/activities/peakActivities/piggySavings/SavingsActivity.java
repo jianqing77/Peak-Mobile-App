@@ -227,4 +227,11 @@ public class SavingsActivity extends AppCompatActivity {
         );
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), PeakHomePage.class);
+        startActivity(intent);
+        finish();
+    }
+
 }
