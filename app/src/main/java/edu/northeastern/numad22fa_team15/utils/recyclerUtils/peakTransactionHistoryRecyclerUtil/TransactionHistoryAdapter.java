@@ -90,7 +90,11 @@ public class TransactionHistoryAdapter extends RecyclerView.Adapter<TransactionH
             // set the image
             holder.itemCategoryIcon.setImageResource(drawableResourceID);
             // set the description
-            holder.itemDescription.setText(transactions.get(position).getDescription());
+            String transactionDescription = transactions.get(position).getDescription();
+            if (transactionDescription.length() >= 18) {
+                transactionDescription = transactionDescription.substring(0, 18) + "...";
+            }
+            holder.itemDescription.setText(transactionDescription);
             // set the expense text
             holder.itemExpense.setText(String.valueOf(transactions.get(position).getExpense()));
             holder.itemView.setOnClickListener(view -> {
