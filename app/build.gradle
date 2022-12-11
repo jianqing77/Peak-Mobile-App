@@ -61,4 +61,8 @@ dependencies {
     // Confetti library
     implementation 'nl.dionsegijn:konfetti-xml:2.0.2'
 
+    // Image picker libaray
+    implementation 'com.github.dhaval2404:imagepicker:2.1'
+
+
 }
