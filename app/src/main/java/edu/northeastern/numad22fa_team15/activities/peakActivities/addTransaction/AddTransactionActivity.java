@@ -1,6 +1,5 @@
 package edu.northeastern.numad22fa_team15.activities.peakActivities.addTransaction;
 
-import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessageInSnackbar;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.getByteArrayFromInputStream;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.nullOrEmptyInputChecker;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.setPictureToGivenImageView;
@@ -10,10 +9,8 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +18,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -36,9 +32,7 @@ import androidx.core.app.ActivityCompat;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.snackbar.Snackbar;
 
-import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -272,16 +266,16 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
         Uri uri = intent.getData();
-        InputStream inputStream = null;
-        try {
-            inputStream = getContentResolver().openInputStream(uri);
-        } catch (FileNotFoundException e) {
-            Log.v(TAG, "File not found");
-        }
-        try {
-            receiptPictureByteArray =  getByteArrayFromInputStream(inputStream);
-        } catch (IOException e) {
-            Log.v(TAG, "Failed to get byte array from input stream");
+        if (uri != null) {
+            InputStream inputStream;
+            try {
+                inputStream = getContentResolver().openInputStream(uri);
+                receiptPictureByteArray =  getByteArrayFromInputStream(inputStream);
+            } catch (FileNotFoundException e) {
+                Log.v(TAG, "File not found");
+            } catch (IOException e) {
+                Log.v(TAG, "Failed to get byte array from input stream");
+            }
         }
     }
 

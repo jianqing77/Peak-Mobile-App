@@ -1,6 +1,8 @@
 package edu.northeastern.numad22fa_team15.activities.peakActivities.homePage;
 
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessageInSnackbar;
+import static edu.northeastern.numad22fa_team15.utils.CommonUtils.getYearAndMonthFromDateString;
+import static edu.northeastern.numad22fa_team15.utils.CommonUtils.getYearMonthAndDayFromDateString;
 
 import android.app.AlarmManager;
 import android.app.Notification;
@@ -53,6 +55,7 @@ public class PeakHomePage extends AppCompatActivity {
 
     private static final String TAG = "PeakHomePage___";
     private static final String CHANNEL_ID = "channel_two"; // Notification Channel
+    private static final String STATE_BUTTON_TEXT = "Button Text"; // For date picker
 
     private RecyclerView recyclerView;
     private List<TransactionModel> matchResults;
@@ -151,11 +154,18 @@ public class PeakHomePage extends AppCompatActivity {
         Log.d(TAG, "DEBUGGING BALANCE: "+ balanceText);
         expensesTextView.setText(expensesText);
         balanceTextView.setText(balanceText);
+        // Check if savedInstance has button text
         // Retrieve today's transaction
         LocalDateTime now = LocalDateTime.now();
         int currentYear = now.getYear();
         int currentMonth = now.getMonth().getValue();
         int currentDay = now.getDayOfMonth();
+        if (buttonText != null) {
+            int[] yearMonthAndDay = getYearMonthAndDayFromDateString(buttonText);
+            currentYear = yearMonthAndDay[0];
+            currentMonth = yearMonthAndDay[1];
+            currentDay = yearMonthAndDay[2];
+        }
         matchResults.clear();
         List<TransactionModel> transactions = dbHelper.retrieveTransactionsByDateTableTransaction(currentYear, currentMonth, currentDay);
         for (TransactionModel transaction : transactions) {
@@ -322,13 +332,15 @@ public class PeakHomePage extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString("Button Text", buttonText);
+        Log.d(TAG, "onSaveInstanceState() method: " + buttonText);
+        outState.putString(STATE_BUTTON_TEXT, buttonText);
     }
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        buttonText = savedInstanceState.getString("Button Text");
+        Log.d(TAG, "onRestoreInstanceState() method: " + buttonText);
+        buttonText = savedInstanceState.getString(STATE_BUTTON_TEXT);
         datePickerButton.setText(buttonText);
     }
 

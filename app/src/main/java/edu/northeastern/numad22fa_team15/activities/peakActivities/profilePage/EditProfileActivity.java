@@ -181,17 +181,17 @@ public class EditProfileActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
         Uri uri = intent.getData();
-        InputStream inputStream = null;
-        try {
-            inputStream = getContentResolver().openInputStream(uri);
-        } catch (FileNotFoundException e) {
-            Log.v(TAG, "File not found");
-        }
-        try {
-            profilePictureByteArray =  getByteArrayFromInputStream(inputStream);
-            profilePictureImageView.setImageURI(uri);
-        } catch (IOException e) {
-            Log.v(TAG, "Failed to get byte array from input stream");
+        if (uri != null) {
+            InputStream inputStream;
+            try {
+                inputStream = getContentResolver().openInputStream(uri);
+                profilePictureByteArray = getByteArrayFromInputStream(inputStream);
+                profilePictureImageView.setImageURI(uri);
+            } catch (FileNotFoundException e) {
+                Log.v(TAG, "File not found");
+            } catch (IOException e) {
+                Log.v(TAG, "Failed to get byte array from input stream");
+            }
         }
     }
 
