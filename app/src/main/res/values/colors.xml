@@ -22,7 +22,8 @@
     <color name="beauty">#3498db</color>
     <color name="transportation">#2980b9</color>
     <color name="health">#9b59b6</color>
-    <color name="travel">#34495e</color>
-    <color name="pet">#7f8c8d</color>
-    <color name="other">#bdc3c7</color>
+    <color name="travel">#FF6200EE</color>
+    <color name="pet">#FF3700B3</color>
+    <color name="other">#34495e</color>
+
 </resources>

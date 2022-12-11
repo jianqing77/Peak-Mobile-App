@@ -115,7 +115,6 @@ public class TransactionHistoryAdapter extends RecyclerView.Adapter<TransactionH
         String yearMonthAndDayString = String.format("%d/%d/%d", yearMonthAndDay[1], yearMonthAndDay[2], yearMonthAndDay[0]);
         String description = transaction.getDescription();
         byte[] receiptPictureByteArray = transaction.getReceiptPhoto();
-//        System.out.println("In adapter. Receipt Byte Array: " + receiptPictureByteArray);
 
         // Retrieve TextView(s), ImageView, and OK Button
         View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_view_transaction, null);

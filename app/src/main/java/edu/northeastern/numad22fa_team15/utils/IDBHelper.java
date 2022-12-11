@@ -52,9 +52,4 @@ public interface IDBHelper {
 
     // Methods that interact with multiple tables in the database
     boolean truncateTablesTransactionSummaryAndSaving();
-
-
-
-
-
 }
