@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.peakActivities.addTransaction.AddTransactionActivity">
+
+    <GridLayout
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:paddingBottom="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:rowCount="8">
+
+        <ImageButton
+            android:id="@+id/btn_dining"
+            android:layout_width="83dp"
+            android:layout_height="51dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/round_corner"
+            android:contentDescription="@string/dining_button"
+            android:onClick="addTransactionCategoryDining"
+            android:radius="10dp"
+            android:src="@drawable/ic_dining"
+            tools:ignore="RedundantDescriptionCheck,ImageContrastCheck" />
+
+        <ImageButton
+            android:id="@+id/btn_groceries"
+            android:layout_width="83dp"
+            android:layout_height="51dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/round_corner"
+            android:contentDescription="@string/groceries_button"
+            android:onClick="addTransactionCategoryGroceries"
+            android:radius="10dp"
+            android:src="@drawable/ic_groceries"
+            tools:ignore="RedundantDescriptionCheck,ImageContrastCheck" />
+
+        <ImageButton
+            android:id="@+id/btn_shopping"
+            android:layout_width="83dp"
+            android:layout_height="51dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/round_corner"
+            android:contentDescription="@string/shopping_button"
+            android:onClick="addTransactionCategoryShopping"
+            android:radius="10dp"
+            android:src="@drawable/ic_shopping"
+            tools:ignore="RedundantDescriptionCheck,ImageContrastCheck" />
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/dining" />
+
+        <TextView
+            android:text="@string/groceries"
+            android:layout_gravity="center"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="@string/shopping"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp" />
+
+        <ImageButton
+            android:id="@+id/btn_living"
+            android:layout_width="83dp"
+            android:layout_height="51dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/round_corner"
+            android:contentDescription="@string/living_button"
+            android:onClick="addTransactionCategoryLiving"
+            android:radius="10dp"
+            android:src="@drawable/ic_living"
+            tools:ignore="ImageContrastCheck,RedundantDescriptionCheck" />
+
+        <ImageButton
+            android:id="@+id/btn_entertainment"
+            android:layout_width="83dp"
+            android:layout_height="51dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/round_corner"
+            android:contentDescription="@string/entertainment_button"
+            android:onClick="addTransactionCategoryEntertainment"
+            android:radius="10dp"
+            android:src="@drawable/ic_entertainment"
+            tools:ignore="ImageContrastCheck,RedundantDescriptionCheck" />
+
+        <ImageButton
+            android:id="@+id/btn_education"
+            android:layout_width="83dp"
+            android:layout_height="51dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/round_corner"
+            android:contentDescription="@string/education_button"
+            android:onClick="addTransactionCategoryEducation"
+            android:radius="10dp"
+            android:src="@drawable/ic_education"
+            tools:ignore="ImageContrastCheck,RedundantDescriptionCheck" />
+
+        <TextView
+            android:text="@string/living"
+            android:layout_gravity="center"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:text="@string/entertainment"
+            android:layout_gravity="center"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:text="@string/education"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp" />
+
+        <ImageButton
+            android:id="@+id/btn_beauty"
+            android:layout_width="83dp"
+            android:layout_height="51dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/round_corner"
+            android:contentDescription="@string/beauty_button"
+            android:onClick="addTransactionCategoryBeauty"
+            android:radius="10dp"
+            android:src="@drawable/ic_beauty"
+            tools:ignore="RedundantDescriptionCheck,ImageContrastCheck" />
+
+        <ImageButton
+            android:id="@+id/btn_transportation"
+            android:layout_width="83dp"
+            android:layout_height="51dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/round_corner"
+            android:contentDescription="@string/transportation_button"
+            android:onClick="addTransactionCategoryTransportation"
+            android:radius="10dp"
+            android:src="@drawable/ic_transportation"
+            tools:ignore="RedundantDescriptionCheck,ImageContrastCheck" />
+
+        <ImageButton
+            android:id="@+id/btn_health"
+            android:layout_width="83dp"
+            android:layout_height="51dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/round_corner"
+            android:contentDescription="@string/health_button"
+            android:onClick="addTransactionCategoryHealth"
+            android:radius="10dp"
+            android:src="@drawable/ic_health"
+            tools:ignore="ImageContrastCheck,RedundantDescriptionCheck" />
+
+        <TextView
+            android:text="@string/beauty"
+            android:layout_gravity="center"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:text="@string/transportation"
+            android:layout_gravity="center"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:text="@string/health"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp" />
+
+        <ImageButton
+            android:id="@+id/btn_travel"
+            android:layout_width="83dp"
+            android:layout_height="51dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/round_corner"
+            android:contentDescription="@string/travel_button"
+            android:onClick="addTransactionCategoryTravel"
+            android:radius="10dp"
+            android:src="@drawable/ic_travel"
+            tools:ignore="RedundantDescriptionCheck,ImageContrastCheck" />
+
+        <ImageButton
+            android:id="@+id/btn_pet"
+            android:layout_width="83dp"
+            android:layout_height="51dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/round_corner"
+            android:contentDescription="@string/pet_button"
+            android:onClick="addTransactionCategoryPet"
+            android:radius="10dp"
+            android:src="@drawable/ic_pet"
+            tools:ignore="ImageContrastCheck,RedundantDescriptionCheck" />
+
+        <ImageButton
+            android:id="@+id/btn_other"
+            android:layout_width="83dp"
+            android:layout_height="51dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/round_corner"
+            android:contentDescription="@string/other_button"
+            android:onClick="addTransactionCategoryOther"
+            android:radius="10dp"
+            android:src="@drawable/ic_other"
+            tools:ignore="ImageContrastCheck,RedundantDescriptionCheck" />
+
+        <TextView
+            android:text="@string/travel"
+            android:layout_gravity="center"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:text="@string/pet"
+            android:layout_gravity="center"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:text="@string/other"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp" />
+
+    </GridLayout>
+
+</ScrollView>

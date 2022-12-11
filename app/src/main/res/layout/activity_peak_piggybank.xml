@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true">
+
+        <nl.dionsegijn.konfetti.xml.KonfettiView
+            android:id="@+id/konfettiView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Scrollable Main Section -->
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/coordinatorLayout"
+        android:layout_alignParentTop="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/piggybank_header"
+            style="@style/profile_page_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/piggy_bank"
+            app:layout_constraintEnd_toEndOf="@id/piggybank_divider"
+            app:layout_constraintStart_toStartOf="@id/piggybank_divider"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_piggybank_goal"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_nav_add"
+            android:backgroundTint="#667080"
+            android:clickable="true"
+            android:onClick="editGoalDialog"
+            app:layout_constraintBottom_toBottomOf="@id/piggybank_header"
+            app:layout_constraintEnd_toEndOf="@id/piggybank_divider"
+            app:layout_constraintTop_toTopOf="@id/piggybank_header"
+            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <View
+            android:id="@+id/piggybank_divider"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="30dp"
+            android:background="@color/FinalProj_Primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/piggybank_header" />
+
+        <TextView
+            android:id="@+id/tv_goal_description"
+            style="@style/onboarding_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/goal_go_to_aruba"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toTopOf="@id/iv_piggybank_logo"
+            app:layout_constraintEnd_toEndOf="@id/piggybank_divider"
+            app:layout_constraintStart_toStartOf="@id/piggybank_divider"
+            app:layout_constraintTop_toBottomOf="@id/piggybank_divider" />
+
+        <ImageView
+            android:id="@+id/iv_piggybank_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_logo_piggybank"
+            app:layout_constraintEnd_toEndOf="@id/piggybank_divider"
+            app:layout_constraintStart_toStartOf="@id/piggybank_divider"
+            app:layout_constraintTop_toBottomOf="@id/tv_goal_description" />
+
+        <TextView
+            android:id="@+id/tv_goal_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing=".02"
+            android:text="@string/value_2000"
+            android:textColor="@color/FinalProj_Secondary"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_piggybank_logo"
+            app:layout_constraintEnd_toEndOf="@+id/iv_piggybank_logo"
+            app:layout_constraintHorizontal_bias="0.38"
+            app:layout_constraintStart_toStartOf="@+id/iv_piggybank_logo"
+            app:layout_constraintTop_toTopOf="@+id/iv_piggybank_logo"
+            app:layout_constraintVertical_bias="0.78" />
+
+        <View
+            android:id="@+id/view_piggybank_saved"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/piggybank_boxes"
+            app:layout_constraintEnd_toStartOf="@id/view_piggybank_remaining"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_piggybank_logo" />
+
+        <TextView
+            android:id="@+id/tv_saved"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/saved"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tv_saved_amount"
+            app:layout_constraintEnd_toEndOf="@id/view_piggybank_saved"
+            app:layout_constraintStart_toStartOf="@id/view_piggybank_saved"
+            app:layout_constraintTop_toTopOf="@id/view_piggybank_saved" />
+
+        <TextView
+            android:id="@+id/tv_saved_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/value_26_22"
+            android:textColor="#36CE00"
+            app:layout_constraintBottom_toBottomOf="@id/view_piggybank_saved"
+            app:layout_constraintEnd_toEndOf="@id/view_piggybank_saved"
+            app:layout_constraintStart_toStartOf="@id/view_piggybank_saved"
+            app:layout_constraintTop_toBottomOf="@id/tv_saved" />
+
+        <View
+            android:id="@+id/view_piggybank_remaining"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:background="@drawable/piggybank_boxes"
+            app:layout_constraintBottom_toBottomOf="@id/view_piggybank_saved"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/view_piggybank_saved"
+            app:layout_constraintTop_toTopOf="@id/view_piggybank_saved" />
+
+        <TextView
+            android:id="@+id/tv_remaining"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/remaining"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tv_remaining_amount"
+            app:layout_constraintEnd_toEndOf="@id/view_piggybank_remaining"
+            app:layout_constraintStart_toStartOf="@id/view_piggybank_remaining"
+            app:layout_constraintTop_toTopOf="@id/view_piggybank_remaining" />
+
+        <TextView
+            android:id="@+id/tv_remaining_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/value_1973_78"
+            android:textColor="#CE0000"
+            app:layout_constraintBottom_toBottomOf="@id/view_piggybank_remaining"
+            app:layout_constraintEnd_toEndOf="@id/view_piggybank_remaining"
+            app:layout_constraintStart_toStartOf="@id/view_piggybank_remaining"
+            app:layout_constraintTop_toBottomOf="@id/tv_remaining" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <!-- Static Navigation Bar -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottom_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:fabCradleMargin="10dp"
+            app:fabCradleRoundedCornerRadius="10dp"
+            app:fabCradleVerticalOffset="10dp">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navigation_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/nav_transparent_background"
+                app:menu="@menu/bottom_nav_menu" />
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/nav_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/FinalProj_Primary"
+            android:onClick="addTransactionFAB"
+            android:src="@drawable/ic_nav_add"
+            app:layout_anchor="@id/bottom_app_bar"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</RelativeLayout>

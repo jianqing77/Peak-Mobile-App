@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/edit_goal"
+        style="@style/profile_page_title"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="18dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/FinalProj_Primary"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="18dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/goal_amount"/>
+
+    <EditText
+        android:id="@+id/et_edit_goal_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/val_2000"
+        android:background="@drawable/peak_text_input"
+        android:padding="10dp"
+        android:layout_marginTop="4dp"
+        android:inputType="number"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/goal_description"
+        android:layout_marginTop="14dp"/>
+
+    <EditText
+        android:id="@+id/et_edit_goal_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/go_to_aruba"
+        android:background="@drawable/peak_text_input"
+        android:padding="10dp"
+        android:layout_marginTop="4dp"
+        android:inputType="textShortMessage"/>
+
+    <Button
+        android:id="@+id/btn_confirm_edit_goal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/confirm_changes"
+        style="@style/button_light"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/FinalProj_Light"
+        android:layout_marginTop="20dp"/>
+
+</LinearLayout>

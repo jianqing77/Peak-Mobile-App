@@ -47,4 +47,22 @@ dependencies {
 
     // required to avoid crash on Android 12 API 31
     implementation 'androidx.work:work-runtime:2.7.1'
+
+    // Bottom navigation bar
+    implementation 'com.google.android.material:material:1.8.0-alpha02'
+
+    // animation: Lottie
+    implementation "com.airbnb.android:lottie:5.2.0"
+
+    // Chart and graph library
+    implementation 'com.github.blackfizz:eazegraph:1.2.5l@aar'
+    implementation 'com.nineoldandroids:library:2.4.0'
+
+    // Confetti library
+    implementation 'nl.dionsegijn:konfetti-xml:2.0.2'
+
+    // Image picker libaray
+    implementation 'com.github.dhaval2404:imagepicker:2.1'
+
+
 }

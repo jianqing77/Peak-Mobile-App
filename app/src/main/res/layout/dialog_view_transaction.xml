@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.peakActivities.userRegister.PeakSignUp"
+    tools:ignore="SpeakableTextPresentCheck">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp">
+
+
+        <TextView
+            android:id="@+id/expense_tv_dvt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/expense"
+            android:textColor="@color/black"
+            android:layout_marginTop="5dp"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@id/category_tv_dvt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/category_tv_dvt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/category"
+            android:textColor="@color/black"
+            android:layout_marginTop="5dp"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/date_tv_dvt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/expense_tv_dvt" />
+
+        <TextView
+            android:id="@+id/date_tv_dvt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/date"
+            android:textColor="@color/black"
+            android:layout_marginTop="5dp"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/description_tv_dvt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/category_tv_dvt" />
+
+        <TextView
+            android:id="@+id/description_tv_dvt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/description"
+            android:textColor="@color/black"
+            android:layout_marginTop="5dp"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/receipt_photo_preview_image_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/date_tv_dvt" />
+
+        <ImageView
+            android:id="@+id/receipt_photo_preview_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:layout_marginTop="5dp"
+            android:contentDescription="@string/receipt_photo"
+            app:layout_constraintBottom_toTopOf="@+id/ok_button_drpp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description_tv_dvt"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <Button
+            android:id="@+id/ok_button_drpp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ok"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/receipt_photo_preview_image_view" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

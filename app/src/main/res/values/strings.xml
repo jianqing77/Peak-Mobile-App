@@ -46,10 +46,171 @@
     <string name="send">Send</string>
     <string name="channel_name">channel_one</string>
     <string name="channel_description">channel_one_description</string>
+    <string name="channel_two_name">channel_two</string>
+    <string name="channel_two_description">channel_two_description</string>
     <string name="welcome">Welcome</string>
     <string name="usernameHint">Username</string>
     <string name="log_in">log in</string>
     <string name="new_user">New User?</string>
     <string name="passwordHint">Password (No need to fill in)</string>
     <string name="already_have_an_account">Already have an account?</string>
+    <string name="peak">Peak</string>
+
+    // On Boarding Page
+    <string name="heading_one">Create a budget</string>
+    <string name="desc_one">Allocate a custom amount of money to each spending category for the month.</string>
+    <string name="heading_two">Track your expenses</string>
+    <string name="desc_two">Enter your spendings and capture images of your receipts. We calculate tip, too!</string>
+    <string name="heading_three">Reach your goals faster</string>
+    <string name="desc_three">Each month, your unspent budget will automatically be added to your virtual piggy bank. Add a savings goal and watch your piggy bank grow!</string>
+    <string name="heading_four">Add without unlocking</string>
+    <string name="desc_four">You can add spendings right from the lock screen.</string>
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
+    <string name="two_people_budgeting">Two people budgetting</string>
+    <string name="dots">Dots</string>
+    <string name="tracking_expenses">Tracking expenses</string>
+    <string name="back">Back</string>
+    <string name="peak_sign_up">Sign Up</string>
+    <string name="thank_you_for_signing_up">Thank you for signing up!</string>
+    <string name="on_boarding">On Boarding</string>
+    <string name="get_started">Get Started!</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="passcode">4-digit-Passcode</string>
+    <string name="confirm_passcode">Confirm Passcode</string>
+    <string name="piggy_bank_image">Piggy Bank Image</string>
+    <string name="user_profile_picture">User profile picture</string>
+    <string name="your_current_budget_is">Your current budget is $</string>
+    <string name="month">/ month</string>
+    <string name="full_name">Full Name</string>
+    <string name="username">Username</string>
+    <string name="_2500">2500</string>
+    <string name="account">ACCOUNT</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="edit_budget">Edit Budget</string>
+    <string name="change_passcode">Change Passcode</string>
+    <string name="security_and_privacy">SECURITY AND PRIVACY</string>
+    <string name="security_settings">Security Settings</string>
+    <string name="terms_and_conditions">Terms and Conditions</string>
+    <string name="reset_account">Reset Account</string>
+    <string name="add_spending_floating_action_button">Add Spending Floating Action Button</string>
+    <string name="your_profile">Your Profile</string>
+    <string name="edit_button">Edit button</string>
+    <string name="confirm_changes">Confirm Changes</string>
+    <string name="change_profile_picture">Change profile picture:</string>
+    <string name="take_photo_button">take photo button</string>
+    <string name="delete_profile_picture_button">delete profile picture button</string>
+    <string name="select_photo_button">select photo button</string>
+    <string name="please_reset_your_passcode">Please reset your passcode</string>
+    <string name="new_4_digit_passcode">New 4-Digit Passcode</string>
+    <string name="confirm_new_passcode">Confirm New Passcode</string>
+    <string name="reset_passcode">Reset Passcode</string>
+    <string name="_1234">1234</string>
+    <string name="terms_and_condition_text">\t\t\tPEAK is licensed to You (End-User) by Team 15, located and registered at 360 Huntington Ave, Boston, Massachusetts 02115, United States (“Licensor”), for use only under the terms of this License Agreement.\n\n\t\t\tBy downloading the Licensed Application from Google’s software distribution platform (“Play Store”), and any update thereto (as permitted by this License Agreement), You indicate that You agree to be bound by all of the terms and conditions of this License Agreement, and that You accept this LicenseAgreement. Play Store is referred to in this License Agreement as “Services.”\n\n\t\t\tThe parties of this License Agreement acknowledge that the Services are not a Party to this License Agreement and are not bound by any provisions or obligations with regard to the Licensed Application, such as warranty, liability, maintenance and support thereof. Team 15, not the Services, is solely responsible for the Licensed Application and the content thereof.\n\n\t\t\tThis License Agreement may not provide for usage rules for the Licensed Application that are in conflict with the latest Google Play Terms of Service (“Usage Rules” ). Team 15 acknowledges that it had the opportunity to review the Usage Rules and this License Agreement is not conflicting with them.\n\n\t\t\tPEAK when purchased or downloaded through the Services, is licensed to You for use only under the terms of this License Agreement. The Licensor reserves all rights not expressly granted to You. PEAK is to be used on devices that operate with Google’s operating system (“Android”)</string>
+    <string name="dollar_sign">$</string>
+    <string name="receipt_photo">receipt photo</string>
+    <string name="expense">Expense:</string>
+    <string name="category">Category:</string>
+    <string name="date">Date:</string>
+    <string name="description">Description:</string>
+    <string name="ok">Ok</string>
+    <string name="welcome_back">Welcome back,</string>
+    <string name="dining_button">Dining Button</string>
+    <string name="groceries_button">Groceries Button</string>
+    <string name="shopping_button">Shopping Button</string>
+    <string name="dining">Dining</string>
+    <string name="groceries">Groceries</string>
+    <string name="shopping">Shopping</string>
+    <string name="living_button">Living Button</string>
+    <string name="entertainment_button">Entertainment Button</string>
+    <string name="education_button">Education Button</string>
+    <string name="living">Living</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="education">Education</string>
+    <string name="beauty_button">Beauty Button</string>
+    <string name="transportation_button">Transportation Button</string>
+    <string name="health_button">Health Button</string>
+    <string name="beauty">Beauty</string>
+    <string name="transportation">Transportation</string>
+    <string name="health">Health</string>
+    <string name="travel_button">Travel Button</string>
+    <string name="pet_button">Pet Button</string>
+    <string name="other_button">Other Button</string>
+    <string name="travel">Travel</string>
+    <string name="pet">Pet</string>
+    <string name="other">Other</string>
+    <string name="john">John</string>
+    <string name="monthly_summary">Monthly Summary</string>
+    <string name="value_1000">$1000</string>
+    <string name="balance">Balance</string>
+    <string name="value_5000">$5000</string>
+    <string name="today">Today</string>
+    <string name="description_user_profile_picture">User profile picture</string>
+    <string name="value_0">0</string>
+    <string name="confirm">Confirm</string>
+    <string name="this_should_be_the_entrance_page_nbut_to_be_modified_when_user_press_the_back_button">This should be the Entrance Page \nbut to be modified when user press the back button</string>
+    <string name="receipts">Receipts</string>
+    <string name="monthly_spending">Monthly Spending</string>
+    <string name="value_1">1</string>
+    <string name="quick_add">Quick Add</string>
+    <string name="clear">Clear</string>
+    <string name="value_9">9</string>
+    <string name="value_8">8</string>
+    <string name="value_7">7</string>
+    <string name="value_6">6</string>
+    <string name="value_5">5</string>
+    <string name="value_4">4</string>
+    <string name="value_3">3</string>
+    <string name="value_2">2</string>
+    <string name="_150_00">/ $150.00</string>
+    <string name="_132_50">$132.50</string>
+    <string name="piggy_bank">Piggy Bank</string>
+    <string name="goal_go_to_aruba">Goal: Go to Aruba</string>
+    <string name="value_2000">$2000</string>
+    <string name="saved">SAVED</string>
+    <string name="value_26_22">$26.22</string>
+    <string name="remaining">REMAINING</string>
+    <string name="value_1973_78">$1973.78</string>
+    <string name="go_to_your_budget">Go to Your Budget!</string>
+    <string name="monthly_expense_by_category">Monthly Expense by Category</string>
+    <string name="value_100">100</string>
+    <string name="category_icon">Category Icon</string>
+    <string name="avengers_movie_with_friends">Avengers movie with friends</string>
+    <string name="amount_16">$16</string>
+    <string name="edit_goal">Edit Goal</string>
+    <string name="goal_amount">Goal Amount</string>
+    <string name="goal_description">Goal Description</string>
+    <string name="go_to_aruba">Go to Aruba</string>
+    <string name="val_2000">2000</string>
+    <string name="forgot_your_passcode">Forgot your passcode?</string>
+    <string name="amount">Amount:</string>
+    <string name="transaction_amount">Transaction Amount</string>
+    <string name="description_col">Description:</string>
+    <string name="add_a_description">Add a description</string>
+    <string name="receipt">Receipt:</string>
+    <string name="view_the_receipt">View the receipt</string>
+    <string name="add_receipt">Add receipt</string>
+    <string name="done">Done</string>
+    <string-array name="tip_choices">
+        <item>0% tip</item>
+        <item>15% tip</item>
+        <item>18% tip</item>
+        <item>20% tip</item>
+        <item>25% tip</item>
+    </string-array>
+    <string-array name="category_choices">
+        <item>OTHER</item>
+        <item>DINING</item>
+        <item>GROCERIES</item>
+        <item>SHOPPING</item>
+        <item>LIVING</item>
+        <item>ENTERTAINMENT</item>
+        <item>EDUCATION</item>
+        <item>BEAUTY</item>
+        <item>TRANSPORTATION</item>
+        <item>HEALTH</item>
+        <item>TRAVEL</item>
+        <item>PET</item>
+    </string-array>
 </resources>

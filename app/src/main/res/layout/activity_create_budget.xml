@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.peakActivities.profilePage.PeakCreateBudget">
+
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_profile_picture_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                app:cardCornerRadius="39dp"
+                app:cardPreventCornerOverlap="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/edit_budget_profile_picture"
+                    android:layout_width="78dp"
+                    android:layout_height="78dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_anonymous_person_24"
+                    android:contentDescription="@string/description_user_profile_picture" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tv_edit_budget_full_name"
+                style="@style/default_page_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/full_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cv_profile_picture_2" />
+
+            <TextView
+                android:id="@+id/tv_edit_budget_username"
+                style="@style/default_page_italicized"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/username"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_edit_budget_full_name" />
+
+            <View
+                android:id="@+id/edit_budget_divider"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginRight="50dp"
+                android:background="@color/FinalProj_Primary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_edit_budget_username" />
+
+            <TextView
+                android:id="@+id/textView"
+                style="@style/onboarding_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/your_current_budget_is"
+                app:layout_constraintEnd_toStartOf="@id/edit_budget_amount"
+                app:layout_constraintStart_toStartOf="@+id/edit_budget_divider"
+                app:layout_constraintTop_toBottomOf="@+id/edit_budget_divider" />
+
+            <TextView
+                android:id="@+id/edit_budget_amount"
+                style="@style/onboarding_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$-----"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@id/textView2"
+                app:layout_constraintStart_toEndOf="@+id/textView"
+                app:layout_constraintTop_toTopOf="@+id/textView" />
+
+            <TextView
+                android:id="@+id/textView2"
+                style="@style/onboarding_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="25dp"
+                android:text=" / month"
+                app:layout_constraintEnd_toEndOf="@+id/edit_budget_divider"
+                app:layout_constraintStart_toEndOf="@+id/edit_budget_amount"
+                app:layout_constraintTop_toTopOf="@+id/textView" />
+
+            <TextView
+                android:id="@+id/tv_dining"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/dining"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/seekbar_dining"
+                app:layout_constraintTop_toBottomOf="@id/textView" />
+
+            <EditText
+                android:id="@+id/et_seekbar_dining"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:background="@null"
+                android:text="@string/value_0"
+                android:maxLines="1"
+                android:maxLength="4"
+                android:inputType="number"
+                app:layout_constraintBottom_toBottomOf="@id/tv_dining"
+                app:layout_constraintEnd_toEndOf="@id/seekbar_dining"
+                app:layout_constraintTop_toTopOf="@id/tv_dining"/>
+
+            <SeekBar
+                android:id="@+id/seekbar_dining"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                android:max="5000"
+                android:progressDrawable="@drawable/seekbar_style"
+                android:splitTrack="false"
+                android:thumb="@drawable/seekbar_thumb_style"
+                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
+                app:layout_constraintStart_toStartOf="@id/tv_dining"
+                app:layout_constraintTop_toBottomOf="@id/tv_dining" />
+
+            <TextView
+                android:id="@+id/tv_groceries"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/groceries"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/seekbar_groceries"
+                app:layout_constraintTop_toBottomOf="@id/seekbar_dining" />
+
+            <EditText
+                android:id="@+id/et_seekbar_groceries"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:background="@null"
+                android:text="@string/value_0"
+                android:maxLines="1"
+                android:maxLength="4"
+                android:inputType="number"
+                app:layout_constraintBottom_toBottomOf="@id/tv_groceries"
+                app:layout_constraintEnd_toEndOf="@id/seekbar_groceries"
+                app:layout_constraintTop_toTopOf="@id/tv_groceries" />
+
+            <SeekBar
+                android:id="@+id/seekbar_groceries"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                android:max="5000"
+                android:progressDrawable="@drawable/seekbar_style"
+                android:splitTrack="false"
+                android:thumb="@drawable/seekbar_thumb_style"
+                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
+                app:layout_constraintStart_toStartOf="@id/tv_groceries"
+                app:layout_constraintTop_toBottomOf="@id/tv_groceries" />
+
+            <TextView
+                android:id="@+id/tv_shopping"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/shopping"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/seekbar_shopping"
+                app:layout_constraintTop_toBottomOf="@id/seekbar_groceries" />
+
+            <EditText
+                android:id="@+id/et_seekbar_shopping"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:background="@null"
+                android:text="@string/value_0"
+                android:maxLines="1"
+                android:maxLength="4"
+                android:inputType="number"
+                app:layout_constraintBottom_toBottomOf="@id/tv_shopping"
+                app:layout_constraintEnd_toEndOf="@id/seekbar_shopping"
+                app:layout_constraintTop_toTopOf="@id/tv_shopping" />
+
+            <SeekBar
+                android:id="@+id/seekbar_shopping"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                android:max="5000"
+                android:progressDrawable="@drawable/seekbar_style"
+                android:splitTrack="false"
+                android:thumb="@drawable/seekbar_thumb_style"
+                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
+                app:layout_constraintStart_toStartOf="@id/tv_shopping"
+                app:layout_constraintTop_toBottomOf="@id/tv_shopping" />
+
+            <TextView
+                android:id="@+id/tv_living"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/living"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/seekbar_living"
+                app:layout_constraintTop_toBottomOf="@id/seekbar_shopping" />
+
+            <EditText
+                android:id="@+id/et_seekbar_living"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:background="@null"
+                android:text="@string/value_0"
+                android:maxLines="1"
+                android:maxLength="4"
+                android:inputType="number"
+                app:layout_constraintBottom_toBottomOf="@id/tv_living"
+                app:layout_constraintEnd_toEndOf="@id/seekbar_living"
+                app:layout_constraintTop_toTopOf="@id/tv_living" />
+
+            <SeekBar
+                android:id="@+id/seekbar_living"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                android:max="5000"
+                android:progressDrawable="@drawable/seekbar_style"
+                android:splitTrack="false"
+                android:thumb="@drawable/seekbar_thumb_style"
+                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
+                app:layout_constraintStart_toStartOf="@id/tv_living"
+                app:layout_constraintTop_toBottomOf="@id/tv_living" />
+
+            <TextView
+                android:id="@+id/tv_entertainment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/entertainment"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/seekbar_entertainment"
+                app:layout_constraintTop_toBottomOf="@id/seekbar_living" />
+
+            <EditText
+                android:id="@+id/et_seekbar_entertainment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:background="@null"
+                android:text="@string/value_0"
+                android:maxLines="1"
+                android:maxLength="4"
+                android:inputType="number"
+                app:layout_constraintBottom_toBottomOf="@id/tv_entertainment"
+                app:layout_constraintEnd_toEndOf="@id/seekbar_entertainment"
+                app:layout_constraintTop_toTopOf="@id/tv_entertainment" />
+
+            <SeekBar
+                android:id="@+id/seekbar_entertainment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                android:max="5000"
+                android:progressDrawable="@drawable/seekbar_style"
+                android:splitTrack="false"
+                android:thumb="@drawable/seekbar_thumb_style"
+                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
+                app:layout_constraintStart_toStartOf="@id/tv_entertainment"
+                app:layout_constraintTop_toBottomOf="@id/tv_entertainment" />
+
+            <TextView
+                android:id="@+id/tv_education"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/education"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/seekbar_education"
+                app:layout_constraintTop_toBottomOf="@id/seekbar_entertainment" />
+
+            <EditText
+                android:id="@+id/et_seekbar_education"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:background="@null"
+                android:text="@string/value_0"
+                android:maxLines="1"
+                android:maxLength="4"
+                android:inputType="number"
+                app:layout_constraintBottom_toBottomOf="@id/tv_education"
+                app:layout_constraintEnd_toEndOf="@id/seekbar_education"
+                app:layout_constraintTop_toTopOf="@id/tv_education" />
+
+            <SeekBar
+                android:id="@+id/seekbar_education"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                android:max="5000"
+                android:progressDrawable="@drawable/seekbar_style"
+                android:splitTrack="false"
+                android:thumb="@drawable/seekbar_thumb_style"
+                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
+                app:layout_constraintStart_toStartOf="@id/tv_education"
+                app:layout_constraintTop_toBottomOf="@id/tv_education" />
+
+            <TextView
+                android:id="@+id/tv_beauty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/beauty"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/seekbar_beauty"
+                app:layout_constraintTop_toBottomOf="@id/seekbar_education" />
+
+            <EditText
+                android:id="@+id/et_seekbar_beauty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:background="@null"
+                android:text="@string/value_0"
+                android:maxLines="1"
+                android:maxLength="4"
+                android:inputType="number"
+                app:layout_constraintBottom_toBottomOf="@id/tv_beauty"
+                app:layout_constraintEnd_toEndOf="@id/seekbar_beauty"
+                app:layout_constraintTop_toTopOf="@id/tv_beauty" />
+
+            <SeekBar
+                android:id="@+id/seekbar_beauty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                android:max="5000"
+                android:progressDrawable="@drawable/seekbar_style"
+                android:splitTrack="false"
+                android:thumb="@drawable/seekbar_thumb_style"
+                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
+                app:layout_constraintStart_toStartOf="@id/tv_beauty"
+                app:layout_constraintTop_toBottomOf="@id/tv_beauty" />
+
+            <TextView
+                android:id="@+id/tv_transportation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/transportation"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/seekbar_transportation"
+                app:layout_constraintTop_toBottomOf="@id/seekbar_beauty" />
+
+            <EditText
+                android:id="@+id/et_seekbar_transportation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:background="@null"
+                android:text="@string/value_0"
+                android:maxLines="1"
+                android:maxLength="4"
+                android:inputType="number"
+                app:layout_constraintBottom_toBottomOf="@id/tv_transportation"
+                app:layout_constraintEnd_toEndOf="@id/seekbar_transportation"
+                app:layout_constraintTop_toTopOf="@id/tv_transportation" />
+
+            <SeekBar
+                android:id="@+id/seekbar_transportation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                android:max="5000"
+                android:progressDrawable="@drawable/seekbar_style"
+                android:splitTrack="false"
+                android:thumb="@drawable/seekbar_thumb_style"
+                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
+                app:layout_constraintStart_toStartOf="@id/tv_transportation"
+                app:layout_constraintTop_toBottomOf="@id/tv_transportation" />
+
+            <TextView
+                android:id="@+id/tv_health"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/health"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/seekbar_health"
+                app:layout_constraintTop_toBottomOf="@id/seekbar_transportation" />
+
+            <EditText
+                android:id="@+id/et_seekbar_health"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:background="@null"
+                android:text="@string/value_0"
+                android:maxLines="1"
+                android:maxLength="4"
+                android:inputType="number"
+                app:layout_constraintBottom_toBottomOf="@id/tv_health"
+                app:layout_constraintEnd_toEndOf="@id/seekbar_health"
+                app:layout_constraintTop_toTopOf="@id/tv_health" />
+
+            <SeekBar
+                android:id="@+id/seekbar_health"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                android:max="5000"
+                android:progressDrawable="@drawable/seekbar_style"
+                android:splitTrack="false"
+                android:thumb="@drawable/seekbar_thumb_style"
+                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
+                app:layout_constraintStart_toStartOf="@id/tv_health"
+                app:layout_constraintTop_toBottomOf="@id/tv_health" />
+
+            <TextView
+                android:id="@+id/tv_travel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/travel"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/seekbar_travel"
+                app:layout_constraintTop_toBottomOf="@id/seekbar_health" />
+
+            <EditText
+                android:id="@+id/et_seekbar_travel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:background="@null"
+                android:text="@string/value_0"
+                android:maxLines="1"
+                android:maxLength="4"
+                android:inputType="number"
+                app:layout_constraintBottom_toBottomOf="@id/tv_travel"
+                app:layout_constraintEnd_toEndOf="@id/seekbar_travel"
+                app:layout_constraintTop_toTopOf="@id/tv_travel" />
+
+            <SeekBar
+                android:id="@+id/seekbar_travel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                android:max="5000"
+                android:progressDrawable="@drawable/seekbar_style"
+                android:splitTrack="false"
+                android:thumb="@drawable/seekbar_thumb_style"
+                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
+                app:layout_constraintStart_toStartOf="@id/tv_travel"
+                app:layout_constraintTop_toBottomOf="@id/tv_travel" />
+
+            <TextView
+                android:id="@+id/tv_pet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/pet"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/seekbar_pet"
+                app:layout_constraintTop_toBottomOf="@id/seekbar_travel" />
+
+            <EditText
+                android:id="@+id/et_seekbar_pet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text="@string/value_0"
+                android:maxLines="1"
+                android:maxLength="4"
+                android:inputType="number"
+                app:layout_constraintBottom_toBottomOf="@id/tv_pet"
+                app:layout_constraintEnd_toEndOf="@id/seekbar_pet"
+                app:layout_constraintTop_toTopOf="@id/tv_pet"
+                android:background="@null"/>
+
+            <SeekBar
+                android:id="@+id/seekbar_pet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                android:max="5000"
+                android:progressDrawable="@drawable/seekbar_style"
+                android:splitTrack="false"
+                android:thumb="@drawable/seekbar_thumb_style"
+                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
+                app:layout_constraintStart_toStartOf="@id/tv_pet"
+                app:layout_constraintTop_toBottomOf="@id/tv_pet" />
+
+            <TextView
+                android:id="@+id/tv_other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/other"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/seekbar_other"
+                app:layout_constraintTop_toBottomOf="@id/seekbar_pet" />
+
+            <EditText
+                android:id="@+id/et_seekbar_other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text="@string/value_0"
+                android:maxLines="1"
+                android:maxLength="4"
+                android:inputType="number"
+                app:layout_constraintBottom_toBottomOf="@id/tv_other"
+                app:layout_constraintEnd_toEndOf="@id/seekbar_other"
+                app:layout_constraintTop_toTopOf="@id/tv_other"
+                android:background="@null"/>
+
+            <SeekBar
+                android:id="@+id/seekbar_other"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                android:max="5000"
+                android:progressDrawable="@drawable/seekbar_style"
+                android:splitTrack="false"
+                android:thumb="@drawable/seekbar_thumb_style"
+                app:layout_constraintEnd_toEndOf="@id/edit_budget_divider"
+                app:layout_constraintStart_toStartOf="@id/tv_other"
+                app:layout_constraintTop_toBottomOf="@id/tv_other" />
+
+            <Button
+                android:id="@+id/btn_confirm_new_budget"
+                style="@style/button_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="40dp"
+                android:backgroundTint="@color/FinalProj_Light"
+                android:text="@string/confirm"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btn_cancel_new_budget"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/seekbar_other" />
+
+            <Button
+                android:id="@+id/btn_cancel_new_budget"
+                style="@style/button_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:backgroundTint="@color/FinalProj_Light"
+                android:text="@string/cancel"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/btn_confirm_new_budget"
+                app:layout_constraintTop_toTopOf="@id/btn_confirm_new_budget" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
+

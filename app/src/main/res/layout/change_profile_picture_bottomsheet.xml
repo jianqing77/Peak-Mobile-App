@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/edit_profile_picture_dialog">
+
+    <TextView
+        android:id="@+id/tv_change_picture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Change profile picture:"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <ImageButton
+        android:id="@+id/btn_take_profile_picture"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/rounded_corner_square_button"
+        android:clickable="true"
+        android:src="@drawable/ic_outline_photo_camera_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_upload_profile_picture"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_change_picture"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/btn_upload_profile_picture"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:background="@drawable/rounded_corner_square_button"
+        android:clickable="true"
+        android:src="@drawable/ic_outline_photo_24"
+        app:layout_constraintEnd_toStartOf="@id/btn_delete_profile_picture"
+        app:layout_constraintStart_toEndOf="@+id/btn_take_profile_picture"
+        app:layout_constraintTop_toTopOf="@+id/btn_take_profile_picture"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/btn_delete_profile_picture"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/rounded_corner_square_button"
+        android:clickable="true"
+        android:src="@drawable/ic_outline_delete_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_upload_profile_picture"
+        app:layout_constraintTop_toTopOf="@+id/btn_upload_profile_picture"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
