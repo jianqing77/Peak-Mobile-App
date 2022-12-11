@@ -309,6 +309,7 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
         descriptionEditText = (EditText) bottomSheetView.findViewById(R.id.et_description_tip);
 
         String expenseString = expenseEditText.getText().toString();
+        Log.d(TAG, "Expense before constraining decimal places " + expenseString);
         String description = descriptionEditText.getText().toString();
 
         Log.d(TAG, String.format("Category: %s. Expense: %s. Description: %s",
@@ -321,6 +322,10 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
         }
 
         float expense = Float.parseFloat(expenseString);
+        // 2 Decimal Places constraint
+        String expenseTwoDecimal = String.format("%.2f", expense);
+        expense = Float.parseFloat(expenseTwoDecimal);
+        Log.d(TAG, "Expense after constraining decimal places " + String.valueOf(expense));
         LocalDateTime now = LocalDateTime.now();
         String transactionDate = String.valueOf(now);
         Log.d(TAG, "Receipt Photo to be added: " + Arrays.toString(receiptPictureByteArray));
@@ -414,6 +419,9 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
         }
 
         float expense = Float.parseFloat(expenseString);
+        // 2 Decimal Places constraint
+        String expenseTwoDecimal = String.format("%.2f", expense);
+        expense = Float.parseFloat(expenseTwoDecimal);
         LocalDateTime now = LocalDateTime.now();
         String transactionDate = String.valueOf(now);
         Log.d(TAG, "Receipt Photo to be added: " + Arrays.toString(receiptPictureByteArray));

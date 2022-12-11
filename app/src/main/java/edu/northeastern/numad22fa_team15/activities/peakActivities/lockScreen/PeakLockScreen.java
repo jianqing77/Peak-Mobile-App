@@ -317,6 +317,9 @@ public class PeakLockScreen extends AppCompatActivity implements View.OnClickLis
         }
 
         float expense = Float.parseFloat(expenseString);
+        // 2 Decimal Places constraint
+        String expenseTwoDecimal = String.format("%.2f", expense);
+        expense = Float.parseFloat(expenseTwoDecimal);
         LocalDateTime now = LocalDateTime.now();
         String transactionDate = String.valueOf(now);
         // Try to add transaction to the transactionEntry Table
