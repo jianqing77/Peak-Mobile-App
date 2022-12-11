@@ -245,7 +245,11 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
             ActivityCompat.requestPermissions(AddTransactionActivity.this,
                     new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION_CODE);
         } else {
-            ImagePicker.with(this).start();
+            ImagePicker.with(this)
+                    .crop(9f, 16f)
+                    .compress(1024)
+                    .maxResultSize(480, 480)
+                    .start();
         }
     }
 
@@ -254,7 +258,11 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == CAMERA_PERMISSION_CODE){
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                ImagePicker.with(this).start();
+                ImagePicker.with(this)
+                        .crop(9f, 16f)
+                        .compress(1024)
+                        .maxResultSize(480, 480)
+                        .start();
             } else {
                 String msg = "Camera permission denied, please allow permission first before accessing the camera features";
                 Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();

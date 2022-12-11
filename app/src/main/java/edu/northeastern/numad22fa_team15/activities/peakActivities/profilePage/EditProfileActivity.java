@@ -105,7 +105,11 @@ public class EditProfileActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(EditProfileActivity.this,
                     new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION_CODE);
         } else {
-            ImagePicker.with(this).start();
+            ImagePicker.with(this)
+                    .cropSquare()
+                    .compress(1024)
+                    .maxResultSize(480, 480)
+                    .start();
         }
     }
 
@@ -115,7 +119,11 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == CAMERA_PERMISSION_CODE){
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                ImagePicker.with(this).start();
+                ImagePicker.with(this)
+                        .cropSquare()
+                        .compress(1024)
+                        .maxResultSize(480, 480)
+                        .start();
             } else {
                 String msg = "Camera permission denied, please allow permission first before accessing the camera features";
                 Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
