@@ -35,7 +35,7 @@ Our implementation meets the requirements set out in our project proposal. The U
   - Passcode Login
     - Users need to unlock the app with their custom passcode
   - Quick Add
-    - Users can quickly add a transaction record without unlocking the app.
+    - Users can quickly add a transaction record without unlocking the app
 
 - Home Page
   - Personalized Greeting Message
@@ -64,10 +64,10 @@ Our implementation meets the requirements set out in our project proposal. The U
   - Edit Budget
   - Change Passcode
   - Security Settings
-    - This feature allows users to set or modify permissions in the App Info setting.
+    - This feature allows users to set or modify permissions in the App Info setting
   - Terms and Conditions
   - Reset Account
-    - This feature allows users to erase all existing transaction history, budget plan, and saving goal.  
+    - This feature allows users to erase all existing transaction history, budget plan, and saving goal  
 
 #### Sensor Feature
 
