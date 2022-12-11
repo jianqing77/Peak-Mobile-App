@@ -34,9 +34,7 @@
                     android:layout_height="76dp"
                     android:contentDescription="@string/user_profile_picture"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_anonymous_person_24"
-                    android:tintMode="src_atop"
-                    app:tint="#6F000000" />
+                    android:src="@drawable/ic_anonymous_person_24"/>
 
             </androidx.cardview.widget.CardView>
 

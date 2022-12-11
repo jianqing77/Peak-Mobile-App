@@ -30,7 +30,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/welcome_back"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@id/guideline"
+        app:layout_constraintStart_toStartOf="@id/summary"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -155,14 +155,15 @@
             style="@style/button_light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
             android:backgroundTint="@color/FinalProj_Primary"
             android:onClick="datePickerDialog"
-            android:textSize="14sp"
-            android:layout_marginTop="5dp"
             android:text="@string/today"
-            android:layout_gravity="center"
             android:textAlignment="center"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            tools:ignore="TouchTargetSizeCheck" />
 
     </LinearLayout>
 
@@ -228,9 +229,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/FinalProj_Primary"
-            android:src="@drawable/ic_nav_add"
             android:onClick="addTransactionFAB"
-            app:layout_anchor="@id/bottom_app_bar" />
+            android:src="@drawable/ic_nav_add"
+            app:layout_anchor="@id/bottom_app_bar"
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
