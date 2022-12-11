@@ -115,7 +115,9 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == CAMERA_PERMISSION_CODE){
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                ImagePicker.with(this).start();
+                ImagePicker.with(this).crop().start();
+                String msg = "Successfully changed the profile picture.";
+                Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
             } else {
                 String msg = "Camera permission denied, please allow permission first before accessing the camera features";
                 Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();

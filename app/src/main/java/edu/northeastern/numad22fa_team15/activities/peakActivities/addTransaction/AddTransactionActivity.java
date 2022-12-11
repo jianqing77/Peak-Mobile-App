@@ -254,7 +254,9 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == CAMERA_PERMISSION_CODE){
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                ImagePicker.with(this).crop().start();
+                ImagePicker.with(this).crop(16f, 9f).start();
+                String msg = "Successfully added a receipt.";
+                Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
             } else {
                 String msg = "Camera permission denied, please allow permission first before accessing the camera features";
                 Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
