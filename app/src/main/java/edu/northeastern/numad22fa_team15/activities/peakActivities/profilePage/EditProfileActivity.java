@@ -5,7 +5,9 @@ import static edu.northeastern.numad22fa_team15.utils.CommonUtils.displayMessage
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.getByteArrayFromInputStream;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.setProfilePictureToGivenImageView;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,17 +20,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 
 import edu.northeastern.numad22fa_team15.R;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.addTransaction.AddTransactionActivity;
 import edu.northeastern.numad22fa_team15.models.databaseModels.UserModel;
 import edu.northeastern.numad22fa_team15.utils.DBHelper;
 import edu.northeastern.numad22fa_team15.utils.IDBHelper;
@@ -36,9 +44,7 @@ import edu.northeastern.numad22fa_team15.utils.IDBHelper;
 public class EditProfileActivity extends AppCompatActivity {
 
     private static final String TAG = "EditProfileActivity______";
-
-    private static final int CAMERA_ACTION_CODE = 1;
-    private static final int PICK_IMAGE_CODE = 11;
+    private static final int CAMERA_PERMISSION_CODE = 1;
 
     private ImageView profilePictureImageView;
     private ImageView editProfileImageView;
@@ -94,85 +100,28 @@ public class EditProfileActivity extends AppCompatActivity {
      * and (3) delete profile picture.
      */
     private void showBottomSheetDialog(View view) {
-        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
-        View bottomSheetView = LayoutInflater.from(getApplicationContext())
-                .inflate(R.layout.change_profile_picture_bottomsheet, null);
-        bottomSheetDialog.setContentView(bottomSheetView);
-
-        BottomSheetBehavior mBehavior = BottomSheetBehavior.from((View) bottomSheetView.getParent());
-
-        // REF: https://stackoverflow.com/questions/41591733/bottom-sheet-landscape-issue
-        bottomSheetDialog.setOnShowListener(dialogInterface -> {
-            mBehavior.setPeekHeight(500);
-            mBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-        });
-
-        ImageButton takePictureButton = (ImageButton) bottomSheetDialog.findViewById(R.id.btn_take_profile_picture);
-        ImageButton uploadPictureButton = (ImageButton) bottomSheetDialog.findViewById(R.id.btn_upload_profile_picture);
-        ImageButton deletePictureButton = (ImageButton) bottomSheetDialog.findViewById(R.id.btn_delete_profile_picture);
-
-        // Add onClickListener to the buttons
-        takePictureButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "Take picture button clicked.");
-                takePhotoUsingCamera(v);
-                bottomSheetDialog.dismiss();
-            }
-        });
-        uploadPictureButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "Upload picture button clicked.");
-                pickFromPhotos(v);
-                bottomSheetDialog.dismiss();
-            }
-        });
-        deletePictureButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "Delete picture button clicked.");
-                deleteProfilePicture();
-                bottomSheetDialog.dismiss();
-            }
-        });
-
-        bottomSheetDialog.show();
-    }
-
-    private void deleteProfilePicture() {
-        // Set image view to null
-        profilePictureImageView.setImageBitmap(null);
-        // Set this.profilePictureByteArray to null
-        this.profilePictureByteArray = null;
-    }
-
-    private void takePhotoUsingCamera(View view) {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-        // Check if a camera application exists on the device.
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(intent, CAMERA_ACTION_CODE);
+        if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(EditProfileActivity.this,
+                    new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION_CODE);
         } else {
-            String errorMessage = "No app supports this action.";
-            Log.d(TAG, errorMessage);
-            Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
+            ImagePicker.with(this).start();
         }
     }
 
-    private void pickFromPhotos(View view) {
-        Log.d(TAG, "pickFromPhotos() method");
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-
-        // Check if a image gallery exists on the device.
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            Log.d(TAG, "Image gallery exists.");
-            startActivityForResult(intent, PICK_IMAGE_CODE);
-        } else {
-            String errorMessage = "No image gallery found.";
-            Log.d(TAG, errorMessage);
-            Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == CAMERA_PERMISSION_CODE){
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                ImagePicker.with(this).start();
+            } else {
+                String msg = "Camera permission denied, please allow permission first before accessing the camera features";
+                Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+            }
         }
+
     }
 
     /**
@@ -231,35 +180,18 @@ public class EditProfileActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
-
-        String profilePictureMessage = "Failed to update profile picture.";
-        if (requestCode == CAMERA_ACTION_CODE && resultCode == RESULT_OK && intent != null) {
-            Log.d(TAG, "CAMERA_ACTION onActivityResult()");
-            try {
-                Bundle bundle = intent.getExtras();
-                Bitmap photoTaken = (Bitmap) bundle.get("data");
-                profilePictureImageView.setImageBitmap(photoTaken);
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                photoTaken.compress(Bitmap.CompressFormat.JPEG,80,stream);
-                profilePictureByteArray = stream.toByteArray();
-            } catch (Exception e) {
-                Log.d(TAG, "Fail to set profile picture using image taken by device camera.");
-                Log.d(TAG, e.getMessage());
-                displayMessageInSnackbar(profilePictureImageView.getRootView(), profilePictureMessage, Snackbar.LENGTH_SHORT);
-            }
+        Uri uri = intent.getData();
+        InputStream inputStream = null;
+        try {
+            inputStream = getContentResolver().openInputStream(uri);
+        } catch (FileNotFoundException e) {
+            Log.v(TAG, "File not found");
         }
-        if (requestCode == PICK_IMAGE_CODE && resultCode == RESULT_OK && intent != null) {
-            Log.d(TAG, "PICK_IMAGE onActivityResult()");
-            try {
-                Uri imageUri = intent.getData();
-                profilePictureImageView.setImageURI(imageUri);
-                InputStream inputStream = getContentResolver().openInputStream(imageUri);
-                profilePictureByteArray = getByteArrayFromInputStream(inputStream);
-            } catch (Exception e) {
-                Log.d(TAG, "Fail to set profile picture using image picked from photo library.");
-                Log.d(TAG, e.getMessage());
-                displayMessageInSnackbar(profilePictureImageView.getRootView(), profilePictureMessage, Snackbar.LENGTH_SHORT);
-            }
+        try {
+            profilePictureByteArray =  getByteArrayFromInputStream(inputStream);
+            profilePictureImageView.setImageURI(uri);
+        } catch (IOException e) {
+            Log.v(TAG, "Failed to get byte array from input stream");
         }
     }
 

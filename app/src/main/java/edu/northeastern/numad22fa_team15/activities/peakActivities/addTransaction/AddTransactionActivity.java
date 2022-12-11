@@ -6,8 +6,10 @@ import static edu.northeastern.numad22fa_team15.utils.CommonUtils.nullOrEmptyInp
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.setPictureToGivenImageView;
 import static edu.northeastern.numad22fa_team15.utils.CommonUtils.updateSummaryTable;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,15 +27,20 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
@@ -49,8 +56,7 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
 
     private static final String TAG = "AddTransactionActivity______";
 
-    private static final int CAMERA_ACTION_CODE = 2;
-    private static final int PICK_IMAGE_CODE = 22;
+    private static final int CAMERA_PERMISSION_CODE = 1;
     private byte[] receiptPictureByteArray;
 
     private IDBHelper dbHelper;
@@ -240,126 +246,42 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
 
     @SuppressLint("SetTextI18n")
     private void showBottomSheetDialog(View view) {
-        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
-        View bottomSheetView = LayoutInflater.from(getApplicationContext())
-                .inflate(R.layout.change_profile_picture_bottomsheet, null);
-        TextView bottomSheetTitle = bottomSheetView.findViewById(R.id.tv_change_picture);
-        bottomSheetTitle.setText("Add Receipt Photo:");
-
-        bottomSheetDialog.setContentView(bottomSheetView);
-
-        BottomSheetBehavior mBehavior = BottomSheetBehavior.from((View) bottomSheetView.getParent());
-
-        // REF: https://stackoverflow.com/questions/41591733/bottom-sheet-landscape-issue
-        bottomSheetDialog.setOnShowListener(dialogInterface -> {
-            mBehavior.setPeekHeight(700);
-            mBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-        });
-
-        ImageButton takePictureButton = (ImageButton) bottomSheetDialog.findViewById(R.id.btn_take_profile_picture);
-        ImageButton uploadPictureButton = (ImageButton) bottomSheetDialog.findViewById(R.id.btn_upload_profile_picture);
-        ImageButton deletePictureButton = (ImageButton) bottomSheetDialog.findViewById(R.id.btn_delete_profile_picture);
-
-        // Add onClickListener to the buttons
-        takePictureButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "Take picture button clicked.");
-                takePhotoUsingCamera(v);
-                bottomSheetDialog.dismiss();
-            }
-        });
-        uploadPictureButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "Upload picture button clicked.");
-                pickFromPhotos(v);
-                bottomSheetDialog.dismiss();
-            }
-        });
-        deletePictureButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "Delete picture button clicked.");
-                deleteProfilePicture();
-                bottomSheetDialog.dismiss();
-            }
-        });
-
-        bottomSheetDialog.show();
-    }
-
-    private void takePhotoUsingCamera(View view) {
-        Log.d(TAG, "takePhotosUsingCamera() method");
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-        // Check if a camera application exists on the device.
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(intent, CAMERA_ACTION_CODE);
+        if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA)
+        != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(AddTransactionActivity.this,
+                    new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION_CODE);
         } else {
-            String errorMessage = "No app supports this action.";
-            Log.d(TAG, errorMessage);
-            Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
+            ImagePicker.with(this).start();
         }
     }
 
-    private void pickFromPhotos(View view) {
-        Log.d(TAG, "pickFromPhotos() method");
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-
-        // Check if a image gallery exists on the device.
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(intent, PICK_IMAGE_CODE);
-        } else {
-            String errorMessage = "No image gallery found.";
-            Log.d(TAG, errorMessage);
-            Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == CAMERA_PERMISSION_CODE){
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                ImagePicker.with(this).start();
+            } else {
+                String msg = "Camera permission denied, please allow permission first before accessing the camera features";
+                Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+            }
         }
-    }
-
-    private void deleteProfilePicture() {
-        // Set this.profilePictureByteArray to null
-        this.receiptPictureByteArray = null;
-        String receiptPictureMessage = "Receipt picture deleted.";
-        Toast.makeText(getApplicationContext(), receiptPictureMessage, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
-
-        String receiptPictureMessage = "Failed to add receipt picture.";
-        if (requestCode == CAMERA_ACTION_CODE && resultCode == RESULT_OK && intent != null) {
-            Log.d(TAG, "CAMERA_ACTION onActivityResult()");
-            try {
-                Bundle bundle = intent.getExtras();
-                Bitmap photoTaken = (Bitmap) bundle.get("data");
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                photoTaken.compress(Bitmap.CompressFormat.JPEG,80,stream);
-                receiptPictureByteArray = stream.toByteArray();
-                Log.d(TAG, "Receipt Photo Byte Array: " + receiptPictureByteArray);
-                receiptPictureMessage = "Receipt picture added.";
-                Toast.makeText(getApplicationContext(), receiptPictureMessage, Toast.LENGTH_SHORT).show();
-            } catch (Exception e) {
-                Log.d(TAG, "Fail to add receipt photo using image taken by device camera.");
-                Log.d(TAG, e.getMessage());
-                Toast.makeText(getApplicationContext(), receiptPictureMessage, Toast.LENGTH_SHORT).show();
-            }
+        Uri uri = intent.getData();
+        InputStream inputStream = null;
+        try {
+            inputStream = getContentResolver().openInputStream(uri);
+        } catch (FileNotFoundException e) {
+            Log.v(TAG, "File not found");
         }
-        if (requestCode == PICK_IMAGE_CODE && resultCode == RESULT_OK && intent != null) {
-            Log.d(TAG, "PICK_IMAGE onActivityResult()");
-            try {
-                Uri imageUri = intent.getData();
-                InputStream inputStream = getContentResolver().openInputStream(imageUri);
-                receiptPictureByteArray = getByteArrayFromInputStream(inputStream);
-                Log.d(TAG, "Receipt Photo Byte Array: " + receiptPictureByteArray);
-                receiptPictureMessage = "Receipt picture added.";
-                Toast.makeText(getApplicationContext(), receiptPictureMessage, Toast.LENGTH_SHORT).show();
-            } catch (Exception e) {
-                Log.d(TAG, "Fail to add receipt photo using image picked from photo library.");
-                Log.d(TAG, e.getMessage());
-                Toast.makeText(getApplicationContext(), receiptPictureMessage, Toast.LENGTH_SHORT).show();
-            }
+        try {
+            receiptPictureByteArray =  getByteArrayFromInputStream(inputStream);
+        } catch (IOException e) {
+            Log.v(TAG, "Failed to get byte array from input stream");
         }
     }
 
