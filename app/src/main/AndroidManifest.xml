@@ -88,9 +88,7 @@
         <activity
             android:name=".activities.AboutTeamActivity"
             android:configChanges="orientation|screenSize" />
-        <activity
-            android:name=".activities.peakActivities.PeakEntrance"
-            android:configChanges="orientation|screenSize" /> <!-- New User -->
+        <!-- New User -->
         <activity
             android:name=".activities.peakActivities.onBoarding.onBoarding"
             android:configChanges="orientation|screenSize" />

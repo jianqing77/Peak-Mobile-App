@@ -3,61 +3,35 @@ package edu.northeastern.numad22fa_team15.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import edu.northeastern.numad22fa_team15.R;
-import edu.northeastern.numad22fa_team15.activities.firebaseActivities.FirebaseSignUpActivity;
-import edu.northeastern.numad22fa_team15.activities.movieApiActivities.MovieSearchActivityWithRecyclerView;
-import edu.northeastern.numad22fa_team15.activities.peakActivities.PeakEntrance;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.lockScreen.PeakLockScreen;
+import edu.northeastern.numad22fa_team15.activities.peakActivities.onBoarding.onBoardingAnimation;
+import edu.northeastern.numad22fa_team15.utils.DBHelper;
+import edu.northeastern.numad22fa_team15.utils.IDBHelper;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "PeakEntrance";
+    private IDBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.v(TAG, "OnCreate()");
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
+        setContentView(R.layout.activity_peak_entrance);
+        dbHelper = new DBHelper(this);
 
-    /**
-     * Clicking the MOVIE/TV SEARCH button will start the MovieSearchActivityWithRecyclerView activity.
-     * @param view view
-     */
-    public void movieSearchActivity(View view) {
-        Intent intent = new Intent(getApplicationContext(), MovieSearchActivityWithRecyclerView.class);
-        startActivity(intent);
-    }
-
-    /**
-     * Clicking the FIREBASE button will start the FirebaseLoginActivity activity.
-     * @param view view
-     */
-    public void firebaseLoginActivity(View view) {
-        Intent intent = new Intent(getApplicationContext(), FirebaseSignUpActivity.class);
-        startActivity(intent);
-    }
-
-    /**
-     * Clicking the PEAK button will start the PeakEntrance activity.
-     * @param view view
-     */
-    public void peakProjectActivity(View view) {
-        Intent intent = new Intent(getApplicationContext(), PeakEntrance.class);
-        startActivity(intent);
-    }
-
-    /**
-     * Clicking the ABOUT button will start the AboutTeamActivity activity.
-     * @param view view
-     */
-    public void aboutTeamActivity(View view) {
-        Intent intent = new Intent(getApplicationContext(), AboutTeamActivity.class);
-        startActivity(intent);
+        // if user does not exist --> jump to Signup Page
+        if (dbHelper.retrieveUserInfoTableUser() == null) {
+            Intent intent = new Intent(MainActivity.this, onBoardingAnimation.class);
+            startActivity(intent);
+        } else {
+            // if user already exist --> jump to the PeakLockScreen
+            Intent intent = new Intent(MainActivity.this, PeakLockScreen.class);
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -72,10 +46,14 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
+    /**
+     * Make sure the page will not show up after created, so that open the PEAK will directly jump
+     * to lock screen
+     */
     @Override
     protected void onResume() {
-        Log.v(TAG, "onResume()");
         super.onResume();
+        finish();
     }
 
     @Override
