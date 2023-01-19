@@ -87,8 +87,14 @@
         <entry key="..\:/Users/sijai/OneDrive/Documents/GitHub/NUMADFa22_Team15/app/src/main/res/menu/bottom_nav_menu.xml" value="0.17401315789473684" />
         <entry key="app/src/main/res/drawable-anydpi/ic_button_close.xml" value="0.23" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.23" />
+        <entry key="app/src/main/res/drawable/bg_bottom_sheet_add_transaction.xml" value="0.265" />
+        <entry key="app/src/main/res/drawable/ic_beauty.xml" value="0.265" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.23" />
         <entry key="app/src/main/res/drawable/ic_launcher_team15_background.xml" value="0.23" />
+        <entry key="app/src/main/res/drawable/ic_peak_logo_large.xml" value="0.265" />
+        <entry key="app/src/main/res/drawable/ic_peak_logo_small.xml" value="0.265" />
+        <entry key="app/src/main/res/drawable/ic_pet.xml" value="0.265" />
+        <entry key="app/src/main/res/drawable/piggybank_boxes.xml" value="0.265" />
         <entry key="app/src/main/res/layout-land/activity_firebase_login.xml" value="0.263668430335097" />
         <entry key="app/src/main/res/layout/activity_about_team.xml" value="0.25679347826086957" />
         <entry key="app/src/main/res/layout/activity_firebase_friend_list.xml" value="0.2586050724637681" />
@@ -98,8 +104,11 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.43697916666666664" />
         <entry key="app/src/main/res/layout/activity_movie_search.xml" value="0.3496376811594203" />
         <entry key="app/src/main/res/layout/activity_movie_search_w_recycler_view.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_on_boading_animation.xml" value="0.2598958333333333" />
         <entry key="app/src/main/res/layout/activity_peak_entrance.xml" value="0.32155797101449274" />
+        <entry key="app/src/main/res/layout/activity_peak_graph.xml" value="0.2598958333333333" />
         <entry key="app/src/main/res/layout/activity_peak_home_page_backup.xml" value="0.3203125" />
+        <entry key="app/src/main/res/layout/activity_peak_piggybank.xml" value="0.2598958333333333" />
         <entry key="app/src/main/res/layout/activity_sticker_history.xml" value="0.13518518518518519" />
         <entry key="app/src/main/res/layout/dialog_add_friend.xml" value="0.335" />
         <entry key="app/src/main/res/layout/dialog_send_sticker_w_recycler_view.xml" value="0.30027173913043476" />
@@ -113,6 +122,7 @@
         <entry key="app/src/main/res/layout/send_sticker_dialog_w_recycler_view.xml" value="0.1752786220871327" />
         <entry key="app/src/main/res/layout/sticker_history_cardview.xml" value="0.1" />
         <entry key="app/src/main/res/layout/sticker_history_recycler_view.xml" value="0.1752786220871327" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_team15_round.xml" value="0.265" />
       </map>
     </option>
   </component>
