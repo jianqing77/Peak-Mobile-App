@@ -1,19 +1,14 @@
-# Team 15 Group Project
+# Mobile App: Peak
+![Peak Logo](https://github.com/xinyu-hou/Peak-Mobile-App/blob/xh_onlyPeak/app/src/main/res/mipmap-xxxhdpi/ic_launcher_peak_round.png)
 
-## Project: Peak
-
-### Note
-
-Everyone on the team fully participated in the development, and all participated in recording the tour video. Since our app uses SQLite, we don't have any test accounts for the graders.
-
-### Demo Video
+## Demo Video
 [App Video Tour](https://youtu.be/zGaMZyUh3pA)
 
-### App Slogan
+## App Slogan
 
 Building better spending habits
 
-### Description
+## Description
 
 Managing money has never been easier. Whether you are a beginner or seasoned budgeter, Peak’s goal is to help you save more and spend less. With its user-friendly and simple interface, Peak allows you to record your expenses and capture pictures of your receipts in only a few taps.
 
@@ -21,15 +16,15 @@ Peak allows you to customize your budget from the start. Set up your first budge
 
 Going out for drinks or a meal? We’ve got you covered. Peak offers a tipping calculator where you can quickly calculate the tip amount. If you’re out with friends and splitting the bill, input the total bill amount or just your portion of the meal. Choose from predetermined tip percentages and know your tip amount.
 
-### Target Users
+## Target Users
 
 Young adults (college age 18 - 26, recent graduates, those with limited income) who are just beginning their budgeting journey or already have some experience with budgeting.
 
-### Features
+## Features
 
 Our implementation meets the requirements set out in our project proposal. The UI is smooth and user-friendly. The app aims to keep users engaged. After extensive testing, the app is proven to be robust. Peak includes the following features and more:
 
-#### Basic Features
+### Basic Features
 
 - Lock Screen Page
   - Passcode Login
@@ -69,17 +64,17 @@ Our implementation meets the requirements set out in our project proposal. The U
   - Reset Account
     - This feature allows users to erase all existing transaction history, budget plan, and saving goal  
 
-#### Sensor Feature
+### Sensor Feature
 
 For both features below, users can take a picture with their device camera or pick an image from their photo gallery.
 
 - Custom Profile Picture
 - Receipt Picture
 
-#### Notification Feature
+### Notification Feature
 
 - With user's permission, a daily notification will pop up at the end of the day if users have not added any spendings for that day.
 
-#### Security Feature
+### Security Feature
 
 - To prevent others from retrieving user's info, users need to unlock the app with their custom passcode.
