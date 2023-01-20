@@ -1,5 +1,5 @@
 # Mobile App: Peak
-![Peak Logo](https://github.com/xinyu-hou/Peak-Mobile-App/blob/xh_onlyPeak/app/src/main/res/mipmap-xxxhdpi/ic_launcher_peak_round.png)
+![Peak Logo](https://github.com/xinyu-hou/Peak-Mobile-App/blob/xh_onlyPeak/app/src/main/res/mipmap-xxhdpi/ic_launcher_peak_round.png)
 
 ## Demo Video
 [App Video Tour](https://youtu.be/zGaMZyUh3pA)
