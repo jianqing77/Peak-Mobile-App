@@ -13,7 +13,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import edu.northeastern.numad22fa_team15.R;
-import edu.northeastern.numad22fa_team15.activities.firebaseActivities.FirebaseSignUpActivity;
 
 public class onBoardingAnimation extends AppCompatActivity {
 
