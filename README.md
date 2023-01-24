@@ -4,6 +4,9 @@
 ## Demo Video
 [App Video Tour](https://youtu.be/zGaMZyUh3pA)
 
+## UI Prototypes
+[Prototypes (Figma)](https://drive.google.com/drive/folders/10nzXpStx-BdiUDv24sojokq97wT4p--7?usp=sharing)
+
 ## App Slogan
 
 Building better spending habits
